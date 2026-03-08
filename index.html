@@ -8,21 +8,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --black: #080A0F;
-  --dark: #0D1017;
-  --card: #111620;
-  --card2: #151B27;
-  --border: rgba(99,140,255,0.12);
-  --border2: rgba(255,255,255,0.06);
-  --blue: #638CFF;
-  --blue-dim: #3A5FD9;
-  --blue-glow: rgba(99,140,255,0.18);
-  --slate: #8899BB;
-  --muted: #4A5568;
-  --white: #F0F4FF;
-  --text: #C8D4EE;
-  --glow: rgba(99,140,255,0.08);
-  --grid-line: rgba(99,140,255,0.04);
+  /* TEMA PADRÃO: META */
+  --black: #0A0E14;
+  --dark: #0F1620;
+  --card: #141D2B;
+  --card2: #192334;
+  --border: rgba(0,130,251,0.15);
+  --border2: rgba(255,255,255,0.07);
+  --blue: #0082FB;
+  --slate: #7A9AB8;
+  --muted: #3D5266;
+  --white: #E8F4FF;
+  --text: #B8D0E8;
+  --glow: rgba(0,130,251,0.10);
+  --grid-line: rgba(0,100,224,0.05);
 
   --radius-xs:   4px;
   --radius-sm:   8px;
@@ -32,12 +31,12 @@
   --radius-2xl:  24px;
   --radius-full: 9999px;
 
-  /* ── Gap padrão entre seções ───────────────────────────────
-     Todas as seções usam --section-py como padding vertical.
-     Seções de destaque (hero, final-cta) usam --section-py-lg.
-  ──────────────────────────────────────────────────────── */
   --section-py:    88px;
   --section-py-lg: 120px;
+
+  /* Wrap metrics for scroll alignment */
+  --wrap-max: 1100px;
+  --wrap-px: 40px;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -117,7 +116,7 @@ body::before {
 .btn-sm { padding: 13px 32px !important; font-size: 12px !important; }
 
 /* ── WRAP ── */
-.wrap { max-width: 1100px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 1; }
+.wrap { max-width: var(--wrap-max); margin: 0 auto; padding: 0 var(--wrap-px); position: relative; z-index: 1; }
 
 /* ═══════════════════════════════════════════════════
    HERO
@@ -231,9 +230,7 @@ body::before {
 }
 
 /* ═══════════════════════════════════════════════════
-   SISTEMA DE SEÇÕES — gap padronizado
-   Todas as seções de conteúdo: padding var(--section-py)
-   Seções sobre fundo --dark (alternado): idem
+   SISTEMA DE SEÇÕES
 ═══════════════════════════════════════════════════ */
 .section          { padding: var(--section-py) 0; position: relative; }
 .problem-section  { padding: var(--section-py) 0; background: var(--dark); position: relative; overflow: hidden; }
@@ -244,12 +241,7 @@ body::before {
 .final-section    { padding: var(--section-py-lg) 0; background: var(--dark); position: relative; overflow: hidden; text-align: center; }
 
 /* ═══════════════════════════════════════════════════
-   SISTEMA DE CABEÇALHOS DE SEÇÃO — padronizado
-   Regra:
-   - section-tag: sempre presente, sempre mesmo estilo
-   - section-title: fonte/peso/tamanho fixos
-   - section-sub: opcional, mas sempre mesmo estilo quando presente
-   - Alinhamento (left vs center) é definido pela seção via modificador
+   SISTEMA DE CABEÇALHOS
 ═══════════════════════════════════════════════════ */
 .section-tag {
   font-size: 11px;
@@ -261,7 +253,6 @@ body::before {
   align-items: center;
   gap: 10px;
 }
-/* Variante alinhada à esquerda (padrão) */
 .section-tag--left::before {
   content: '';
   width: 24px; height: 1px;
@@ -269,10 +260,7 @@ body::before {
   opacity: 0.5;
   flex-shrink: 0;
 }
-/* Variante centralizada */
-.section-tag--center {
-  justify-content: center;
-}
+.section-tag--center { justify-content: center; }
 .section-tag--center::before {
   content: '';
   width: 24px; height: 1px;
@@ -299,22 +287,13 @@ body::before {
   margin-bottom: 40px;
   max-width: 560px;
 }
-/* section-sub centralizado herda max-width e margin auto */
 .section-header--center .section-sub {
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Wrapper de cabeçalho de seção centralizado */
-.section-header--center {
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto 48px;
-}
-/* Wrapper de cabeçalho de seção à esquerda */
-.section-header--left {
-  margin-bottom: 40px;
-}
+.section-header--center { text-align: center; max-width: 600px; margin: 0 auto 48px; }
+.section-header--left { margin-bottom: 40px; }
 
 /* ── FICHA TÉCNICA ── */
 .ficha-grid {
@@ -364,30 +343,64 @@ body::before {
 .phase-list li { font-size: 14px; color: var(--slate); padding-left: 16px; position: relative; }
 .phase-list li::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
 
-/* ── SCROLL PLANTAS ── */
+/* ══════════════════════════════════════════════════════
+   SCROLL HORIZONTAL — SISTEMA UNIFICADO
+══════════════════════════════════════════════════════ */
+.scroll-wrapper,
+.gallery-scroll-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 20px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  margin-right: calc(-1 * var(--wrap-px));
+  padding-right: var(--wrap-px);
+}
 .scroll-wrapper {
-  width: 100%; overflow-x: auto; padding-bottom: 20px; margin-top: 32px;
-  scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+  margin-top: 32px;
 }
-.scroll-wrapper::-webkit-scrollbar { height: 6px; }
-.scroll-wrapper::-webkit-scrollbar-track { background: var(--border2); border-radius: 10px; }
-.scroll-wrapper::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
-.scroll-wrapper::-webkit-scrollbar-thumb:hover { background: var(--blue); }
-.scroll-inner { display: flex; gap: 16px; width: max-content; }
-.scroll-card-image {
-  width: 340px; height: 420px; object-fit: cover;
-  border-radius: var(--radius-2xl); scroll-snap-align: start; flex-shrink: 0;
-  display: block; border: 1px solid var(--border);
+.gallery-scroll-wrapper {
+  margin-top: 0;
 }
-/* Cards de planta com tag overlay */
+
+.scroll-wrapper::-webkit-scrollbar,
+.gallery-scroll-wrapper::-webkit-scrollbar { height: 6px; }
+.scroll-wrapper::-webkit-scrollbar-track,
+.gallery-scroll-wrapper::-webkit-scrollbar-track { background: var(--border2); border-radius: 10px; }
+.scroll-wrapper::-webkit-scrollbar-thumb,
+.gallery-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+.scroll-wrapper::-webkit-scrollbar-thumb:hover,
+.gallery-scroll-wrapper::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+
+.scroll-inner,
+.gallery-scroll-inner {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  padding: 4px 0;
+}
+
+.gallery-scroll-inner { gap: 12px; }
+
 .scroll-card-wrap {
-  position: relative; flex-shrink: 0; scroll-snap-align: start;
-  width: 340px; height: 420px; border-radius: var(--radius-2xl); overflow: hidden;
+  width: 340px;
+  height: auto !important;
+  aspect-ratio: auto !important;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
   border: 1px solid var(--border);
+  position: relative;
+  flex-shrink: 0;
+  scroll-snap-align: start;
 }
 .scroll-card-wrap .scroll-card-image {
-  width: 100%; height: 100%; scroll-snap-align: unset; flex-shrink: unset;
-  border-radius: 0; border: none;
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+  object-fit: fill !important;
+  position: static !important;
+  transform: none !important;
+  aspect-ratio: auto !important;
 }
 .scroll-card-tag {
   position: absolute; top: 14px; left: 14px;
@@ -399,9 +412,12 @@ body::before {
   box-shadow: 0 0 10px rgba(99,140,255,0.18);
   pointer-events: none; z-index: 2;
 }
-/* Cards bloqueados no scroll de plantas */
+
 .scroll-card-lock {
-  width: 340px; height: 420px; flex-shrink: 0; scroll-snap-align: start;
+  width: 340px;
+  height: auto;
+  align-self: stretch;
+  flex-shrink: 0; scroll-snap-align: start;
   border-radius: var(--radius-2xl); border: 1px solid var(--border);
   background: var(--card); display: flex; flex-direction: column;
   align-items: center; justify-content: center; gap: 16px;
@@ -426,68 +442,7 @@ body::before {
   margin-bottom: 8px; letter-spacing: 0.02em;
 }
 .scroll-lock-text span { font-size: 12px; color: var(--muted); line-height: 1.55; }
-.scroll-card-wrap {
-  position: relative; flex-shrink: 0; scroll-snap-align: start;
-  width: 340px; border-radius: var(--radius-2xl); overflow: hidden;
-  border: 1px solid var(--border);
-}
-.scroll-card-wrap .scroll-card-image {
-  width: 100%; border-radius: 0; border: none; scroll-snap-align: unset; flex-shrink: unset;
-}
-.scroll-card-tag {
-  position: absolute; top: 14px; left: 14px;
-  background: rgba(8,10,15,0.75); backdrop-filter: blur(8px);
-  border: 1px solid rgba(99,140,255,0.45); color: var(--blue);
-  font-size: 10px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase;
-  padding: 5px 12px; border-radius: var(--radius-full);
-  box-shadow: 0 0 10px rgba(99,140,255,0.2), inset 0 0 6px rgba(99,140,255,0.06);
-  pointer-events: none; z-index: 2;
-}
-.scroll-card-lock {
-  width: 340px; height: 420px; flex-shrink: 0; scroll-snap-align: start;
-  border-radius: var(--radius-2xl); border: 1px solid var(--border);
-  background: var(--card); display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 14px;
-  position: relative; overflow: hidden;
-}
-.scroll-card-lock::before {
-  content: ''; position: absolute; inset: 0;
-  background: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 20px,
-    rgba(99,140,255,0.025) 20px,
-    rgba(99,140,255,0.025) 21px
-  );
-}
-.scroll-lock-icon {
-  width: 40px; height: 40px; border-radius: 50%;
-  background: rgba(99,140,255,0.08); border: 1px solid rgba(99,140,255,0.2);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--blue); position: relative; z-index: 1;
-}
-.scroll-lock-text {
-  text-align: center; padding: 0 28px; position: relative; z-index: 1;
-}
-.scroll-lock-text strong {
-  display: block; font-size: 13px; font-weight: 600; color: var(--slate);
-  margin-bottom: 6px; letter-spacing: 0.02em;
-}
-.scroll-lock-text span {
-  font-size: 12px; color: var(--muted); line-height: 1.5;
-}
 
-/* ── GALLERY ── */
-/* ── GALLERY SLIDE ── */
-.gallery-scroll-wrapper {
-  width: 100%; overflow-x: auto; padding-bottom: 20px; margin-top: 0;
-  scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-}
-.gallery-scroll-wrapper::-webkit-scrollbar { height: 6px; }
-.gallery-scroll-wrapper::-webkit-scrollbar-track { background: var(--border2); border-radius: 10px; }
-.gallery-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
-.gallery-scroll-wrapper::-webkit-scrollbar-thumb:hover { background: var(--blue); }
-.gallery-scroll-inner { display: flex; gap: 12px; width: max-content; padding: 4px 2px; }
 .gal-slide {
   width: 480px; height: 300px; flex-shrink: 0; scroll-snap-align: start;
   border-radius: var(--radius-2xl); position: relative; overflow: hidden;
@@ -653,7 +608,7 @@ footer {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  :root { --section-py: 64px; --section-py-lg: 88px; }
+  :root { --section-py: 64px; --section-py-lg: 88px; --wrap-px: 24px; }
   .site-header .wrap { text-align: center; }
   .site-header { padding: 24px 0; }
   .hero-inner { grid-template-columns: 1fr; gap: 48px; }
@@ -666,11 +621,10 @@ footer {
   .sticky-bar { padding: 14px 24px; }
 }
 @media (max-width: 600px) {
-  :root { --section-py: 52px; --section-py-lg: 72px; }
+  :root { --section-py: 52px; --section-py-lg: 72px; --wrap-px: 20px; }
   .selos { flex-wrap: wrap; gap: 8px; }
   footer { flex-direction: column; text-align: center; }
   .footer-links { justify-content: center; }
-  .scroll-wrapper { margin-right: -24px; padding-right: 24px; }
   .scroll-card-image { width: 280px; }
   .hero-bg-image { height: 55%; }
   .ficha-grid { grid-template-columns: repeat(2, 1fr); }
@@ -678,11 +632,6 @@ footer {
 
 /* ══════════════════════════════════════════════════════════════════
    CARD SHINE SYSTEM
-   Todos os cards usam position:relative + overflow:hidden.
-   .card-shine--top    → gradiente no topo
-   .card-shine--bottom → gradiente na base
-   .card-shine--left   → gradiente na lateral esq
-   .card-shine--right  → gradiente na lateral dir
 ═══════════════════════════════════════════════════════════════ */
 [class*="card-shine--"]::before {
   content: '';
@@ -693,27 +642,19 @@ footer {
 }
 .card-shine--top::before {
   top: 0; left: 0; right: 0; height: 2px; border-radius: 0;
-  background: linear-gradient(90deg,
-    var(--card) 0%, transparent 20%, var(--blue) 50%, transparent 80%, var(--card) 100%
-  ) !important;
+  background: linear-gradient(90deg, var(--card) 0%, transparent 20%, var(--blue) 50%, transparent 80%, var(--card) 100%) !important;
 }
 .card-shine--bottom::before {
   bottom: 0; left: 0; right: 0; height: 2px; border-radius: 0;
-  background: linear-gradient(90deg,
-    var(--card) 0%, transparent 20%, var(--blue) 50%, transparent 80%, var(--card) 100%
-  ) !important;
+  background: linear-gradient(90deg, var(--card) 0%, transparent 20%, var(--blue) 50%, transparent 80%, var(--card) 100%) !important;
 }
 .card-shine--left::before {
   left: 0; top: 0; bottom: 0; width: 2px; border-radius: 0;
-  background: linear-gradient(180deg,
-    var(--card) 0%, transparent 20%, var(--blue) 50%, transparent 80%, var(--card) 100%
-  ) !important;
+  background: linear-gradient(180deg, var(--card) 0%, transparent 20%, var(--blue) 50%, transparent 80%, var(--card) 100%) !important;
 }
 .card-shine--right::before {
   right: 0; top: 0; bottom: 0; width: 2px; border-radius: 0;
-  background: linear-gradient(180deg,
-    var(--card) 0%, transparent 20%, var(--blue) 50%, transparent 80%, var(--card) 100%
-  ) !important;
+  background: linear-gradient(180deg, var(--card) 0%, transparent 20%, var(--blue) 50%, transparent 80%, var(--card) 100%) !important;
 }
 [class*="card-shine--"] > * { position: relative; z-index: 1; }
 
@@ -734,7 +675,6 @@ footer {
 #themeSwitcher:hover svg { transform: rotate(60deg); }
 #themeAccentDot { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
 
-/* Transição suave ao trocar tema */
 *, *::before, *::after {
   transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease !important;
 }
@@ -745,7 +685,6 @@ footer {
     transform 0.3s cubic-bezier(0.16,1,0.3,1),
     box-shadow 0.3s ease !important;
 }
-
 
 /* ── MOBILE CTA BAR ── */
 .mobile-cta-bar {
@@ -783,14 +722,12 @@ footer {
 </head>
 <body>
 
-<!-- ─── HEADER ─── -->
 <header class="site-header">
   <div class="wrap">
     <img src="logogreco.svg" alt="Anderson Greco Logo" class="site-logo">
   </div>
 </header>
 
-<!-- ─── STICKY BAR ─── -->
 <div class="sticky-bar" id="stickyBar">
   <div class="sticky-bar-left">
     <span class="sticky-offer">Oferta atual</span>
@@ -799,7 +736,6 @@ footer {
   <a href="#comprar" class="btn btn-primary btn-sm">Quero o projeto</a>
 </div>
 
-<!-- ─── HERO ─── -->
 <section class="hero">
   <img src="hero.png" alt="Projeto Casa Moderna" class="hero-bg-image">
   <div class="wrap">
@@ -811,7 +747,7 @@ footer {
           <div class="selo">Construção Econômica</div>
         </div>
         <h1 class="hero-headline">
-          Construção econômica com <span class="accent">design premium</span>. Expanda de 70m² para 170m².
+          Construção econômica com <span class="accent">design premium</span>. Amplie de 70m² para 170m².
         </h1>
         <p class="hero-sub">
           Ideal para financiar (Minha Casa Minha Vida) e construir no seu ritmo. Inicie com uma base otimizada e amplie sem improvisos ou quebra-quebra quando tiver mais recursos.
@@ -855,7 +791,6 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ─── FICHA TÉCNICA ─── -->
 <section class="ficha-section">
   <div class="wrap">
     <div class="section-header--center reveal">
@@ -911,7 +846,6 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ─── FASES DO PROJETO ─── -->
 <section class="section">
   <div class="wrap">
     <div class="section-header--left reveal">
@@ -970,40 +904,35 @@ footer {
   </div>
 </section>
 
-<!-- ─── GALERIA — logo após fases ─── -->
 <section class="gallery-section" id="galeria">
   <div class="wrap">
     <div class="section-header--left reveal">
       <div class="section-tag section-tag--left">Visualização</div>
-      <h2 class="section-title">Veja o projeto <span class="accent">por dentro</span></h2>
+      <h2 class="section-title">Veja o projeto <span class="accent">em 3D</span></h2>
       <p class="section-sub">Renders e plantas do projeto real — fachada, perspectiva 3D e layouts de ambos os pavimentos.</p>
     </div>
-  </div>
-  <div style="padding: 0 40px; max-width: 1180px; margin: 0 auto; position: relative; z-index: 1;">
     <div class="gallery-scroll-wrapper reveal">
       <div class="gallery-scroll-inner">
-        <!-- Cards com imagem real -->
         <div class="gal-slide">
           <img src="image001.png" alt="Fachada principal">
           <div class="gal-tag">Fachada</div>
         </div>
         <div class="gal-slide">
           <img src="image002.png" alt="Perspectiva 3D">
-          <div class="gal-tag">3D</div>
+          <div class="gal-tag">Fachada</div>
         </div>
         <div class="gal-slide">
           <img src="image003.png" alt="Planta Fase 01">
-          <div class="gal-tag">70m²</div>
+          <div class="gal-tag">Fachada</div>
         </div>
         <div class="gal-slide">
           <img src="image004.png" alt="Planta Fase 02">
-          <div class="gal-tag">170m²</div>
+          <div class="gal-tag">Facahda sem muro</div>
         </div>
         <div class="gal-slide">
           <img src="image005.png" alt="Ambiente interno">
-          <div class="gal-tag">Interior</div>
+          <div class="gal-tag">Fundos</div>
         </div>
-        <!-- Cards bloqueados -->
         <div class="gal-slide-lock">
           <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
           <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
@@ -1031,7 +960,6 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ─── O PROBLEMA ─── -->
 <section class="problem-section">
   <div class="wrap">
     <div class="problem-grid">
@@ -1057,7 +985,6 @@ footer {
   </div>
 </section>
 
-<!-- ─── O QUE VOCÊ RECEBE ─── -->
 <section class="section">
   <div class="wrap">
     <div class="section-header--left reveal">
@@ -1092,7 +1019,6 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ─── PARA QUEM É ─── -->
 <section class="forwho-section">
   <div class="wrap">
     <div class="section-header--center reveal">
@@ -1117,7 +1043,6 @@ footer {
   </div>
 </section>
 
-<!-- ─── GARANTIA ─── -->
 <section class="section">
   <div class="wrap">
     <div class="guarantee-box card-shine--top reveal">
@@ -1127,7 +1052,6 @@ footer {
   </div>
 </section>
 
-<!-- ─── NOTA TÉCNICA ─── -->
 <section class="section" style="padding-top:0">
   <div class="wrap">
     <div style="max-width:640px;margin:0 auto;text-align:center" class="reveal">
@@ -1138,7 +1062,6 @@ footer {
   </div>
 </section>
 
-<!-- ─── FAQ ─── -->
 <section class="faq-section" style="padding-top:0">
   <div class="wrap">
     <div class="faq-wrap" id="faq">
@@ -1170,7 +1093,6 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ─── SOBRE O ARQUITETO ─── -->
 <section class="section about-section" id="sobre">
   <div class="wrap">
     <div class="about-grid">
@@ -1196,7 +1118,6 @@ footer {
   </div>
 </section>
 
-<!-- ─── FINAL CTA ─── -->
 <section class="final-section">
   <div class="wrap">
     <div class="final-inner">
@@ -1231,7 +1152,6 @@ footer {
   </div>
 </section>
 
-<!-- ─── FOOTER ─── -->
 <footer>
   <img src="logogreco.svg" alt="Anderson Greco Logo" class="site-logo" style="opacity:0.8">
   <ul class="footer-links">
@@ -1243,18 +1163,16 @@ footer {
   <p class="footer-copy">© 2025 · Todos os direitos reservados</p>
 </footer>
 
-<!-- ─── THEME SWITCHER ─── -->
 <button id="themeSwitcher" aria-label="Trocar tema de cores">
   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
     <circle cx="12" cy="12" r="4"/>
     <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
   </svg>
   <div id="themeAccentDot"></div>
-  <span id="themeLabel">default</span>
+  <span id="themeLabel">meta</span>
 </button>
 
 <script>
-
 // ── STICKY BAR ──────────────────────────────────────────
 const bar = document.getElementById('stickyBar');
 window.addEventListener('scroll', () => {
@@ -1281,16 +1199,6 @@ document.querySelectorAll('.faq-q').forEach(btn => {
 // ── THEME SWITCHER ───────────────────────────────────────
 const themes = [
   {
-    label: 'default',
-    vars: {
-      '--black': '#080A0F', '--dark': '#0D1017', '--card': '#111620', '--card2': '#151B27',
-      '--border': 'rgba(99,140,255,0.12)', '--border2': 'rgba(255,255,255,0.06)',
-      '--blue': '#638CFF', '--slate': '#8899BB', '--muted': '#4A5568',
-      '--white': '#F0F4FF', '--text': '#C8D4EE',
-      '--glow': 'rgba(99,140,255,0.08)', '--grid-line': 'rgba(99,140,255,0.04)',
-    }
-  },
-  {
     label: 'meta',
     vars: {
       '--black': '#0A0E14', '--dark': '#0F1620', '--card': '#141D2B', '--card2': '#192334',
@@ -1298,6 +1206,16 @@ const themes = [
       '--blue': '#0082FB', '--slate': '#7A9AB8', '--muted': '#3D5266',
       '--white': '#E8F4FF', '--text': '#B8D0E8',
       '--glow': 'rgba(0,130,251,0.10)', '--grid-line': 'rgba(0,100,224,0.05)',
+    }
+  },
+  {
+    label: 'default',
+    vars: {
+      '--black': '#080A0F', '--dark': '#0D1017', '--card': '#111620', '--card2': '#151B27',
+      '--border': 'rgba(99,140,255,0.12)', '--border2': 'rgba(255,255,255,0.06)',
+      '--blue': '#638CFF', '--slate': '#8899BB', '--muted': '#4A5568',
+      '--white': '#F0F4FF', '--text': '#C8D4EE',
+      '--glow': 'rgba(99,140,255,0.08)', '--grid-line': 'rgba(99,140,255,0.04)',
     }
   },
   {
@@ -1395,7 +1313,6 @@ document.getElementById('themeSwitcher').addEventListener('click', () => {
 })();
 </script>
 
-<!-- ─── MOBILE CTA BAR ─── -->
 <div class="mobile-cta-bar">
   <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" target="_blank" rel="noopener">
     <span>Garantir meu projeto</span>
