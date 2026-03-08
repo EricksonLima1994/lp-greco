@@ -1270,22 +1270,19 @@ document.getElementById('themeSwitcher').addEventListener('click', () => {
   function getParam(name) {
     try { return new URL(window.location.href).searchParams.get(name); } catch { return null; }
   }
+
   function alreadySent(key) {
     try { return sessionStorage.getItem(key) === "1"; } catch { return false; }
   }
+
   function markSent(key) {
     try { sessionStorage.setItem(key, "1"); } catch {}
   }
 
-  function sendVisit() {
-    var pathFull = window.location.pathname + window.location.search;
-    var dedupeKey = "sv:v1:" + pathFull;
-    if (alreadySent(dedupeKey)) return;
-    markSent(dedupeKey);
-
-    var payload = {
+  function buildPayload() {
+    return {
       site: "lp",
-      path: pathFull,
+      path: window.location.pathname + window.location.search,
       organizationId: ORG_ID,
       referrer: document.referrer || null,
       fbclid: getParam("fbclid"),
@@ -1296,19 +1293,46 @@ document.getElementById('themeSwitcher').addEventListener('click', () => {
       utm_term: getParam("utm_term"),
       userAgent: navigator.userAgent || null,
     };
+  }
+
+  function sendVisit() {
+    var pathFull = window.location.pathname + window.location.search;
+    var dedupeKey = "sv:v1:" + pathFull;
+
+    if (alreadySent(dedupeKey)) return;
+
+    var payload = buildPayload();
 
     fetch(BASE_URL + "/api/track/visit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       keepalive: true,
       body: JSON.stringify(payload),
-    }).catch(function () {});
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error("Falha ao registrar visita");
+        markSent(dedupeKey);
+        return res.text();
+      })
+      .catch(function () {
+        fetch(BASE_URL + "/api/track/visit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        })
+          .then(function (res) {
+            if (!res.ok) throw new Error("Falha ao registrar visita");
+            markSent(dedupeKey);
+            return res.text();
+          })
+          .catch(function () {});
+      });
   }
 
-  if (document.readyState === "complete" || document.readyState === "interactive") {
+  if (document.readyState === "complete") {
     sendVisit();
   } else {
-    document.addEventListener("DOMContentLoaded", sendVisit);
+    window.addEventListener("load", sendVisit, { once: true });
   }
 })();
 </script>
