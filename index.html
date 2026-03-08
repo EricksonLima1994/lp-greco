@@ -381,13 +381,29 @@ body::before {
 }
 /* Cards de planta com tag overlay */
 .scroll-card-wrap {
-  position: relative; flex-shrink: 0; scroll-snap-align: start;
-  width: 340px; height: 420px; border-radius: var(--radius-2xl); overflow: hidden;
+  width: 300px;
+  /* Altura automática para se adequar à imagem */
+  height: auto !important;
+  aspect-ratio: auto !important;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
   border: 1px solid var(--border);
+  position: relative;
+  flex-shrink: 0;
+  scroll-snap-align: start;
 }
+
 .scroll-card-wrap .scroll-card-image {
-  width: 100%; height: 100%; scroll-snap-align: unset; flex-shrink: unset;
-  border-radius: 0; border: none;
+  /* Preenche 100% da largura do card parent */
+  width: 100% !important;
+  /* Mantém a proporção original da imagem sem cortar */
+  height: auto !important;
+  display: block;
+  object-fit: fill !important;
+  /* Remove estilos conflitantes anteriores */
+  position: static !important;
+  transform: none !important;
+  aspect-ratio: auto !important;
 }
 .scroll-card-tag {
   position: absolute; top: 14px; left: 14px;
