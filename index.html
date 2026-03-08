@@ -95,22 +95,26 @@ body::before {
 
 /* ── BUTTONS ── */
 .btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
-  cursor: pointer; border: none; border-radius: var(--radius-md);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative; overflow: hidden;
+  display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 10px;
+  font-family: 'Poppins', sans-serif !important; font-size: 13px !important; font-weight: 600 !important;
+  letter-spacing: 0.08em !important; text-transform: uppercase !important; text-decoration: none !important;
+  cursor: pointer; border: none !important; border-radius: var(--radius-md) !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, background-color 0.3s ease, opacity 0.3s ease !important;
+  position: relative !important; overflow: hidden !important;
+  line-height: 1 !important; white-space: nowrap;
 }
-.btn-primary { background: var(--blue); color: #fff; padding: 18px 44px; }
+.btn-primary {
+  background: var(--blue) !important; color: #fff !important;
+  padding: 18px 44px !important;
+}
 .btn-primary::before {
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
-  opacity: 0; transition: opacity 0.3s;
+  opacity: 0; transition: opacity 0.3s !important;
 }
 .btn-primary:hover::before { opacity: 1; }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(99,140,255,0.35); }
-.btn-sm { padding: 13px 32px; font-size: 12px; }
+.btn-primary:hover { transform: translateY(-2px) !important; box-shadow: 0 12px 40px rgba(99,140,255,0.35) !important; }
+.btn-sm { padding: 13px 32px !important; font-size: 12px !important; }
 
 /* ── WRAP ── */
 .wrap { max-width: 1100px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 1; }
@@ -206,7 +210,7 @@ body::before {
   border: 1px solid rgba(99,140,255,0.2);
   border-radius: var(--radius-full); padding: 4px 14px;
 }
-.price-cta { width: 100%; font-size: 14px; padding: 18px; border-radius: var(--radius-md); letter-spacing: 0.06em; }
+.price-cta { width: 100% !important; font-size: 14px !important; padding: 18px !important; border-radius: var(--radius-md) !important; letter-spacing: 0.06em !important; text-align: center !important; }
 .price-safe {
   display: flex; align-items: center; justify-content: center; gap: 8px;
   margin-top: 14px; padding: 10px 14px;
@@ -746,7 +750,7 @@ footer {
           </li>
         </ul>
         <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" target="_blank" rel="noopener" class="btn btn-primary price-cta">Quero acessar o projeto agora</a>
-        <div class="price-safe">Garantia de 7 dias — Risco zero</div>
+        <div class="price-safe">Garantia de 7 dias — RISCO ZEROdiv>
       </div>
     </div>
   </div>
