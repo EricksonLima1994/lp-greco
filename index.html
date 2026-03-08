@@ -375,7 +375,7 @@ body::before {
 .scroll-wrapper::-webkit-scrollbar-thumb:hover { background: var(--blue); }
 .scroll-inner { display: flex; gap: 16px; width: max-content; }
 .scroll-card-image {
-  width: 340px; height: 420px; object-fit: cover;
+  width: 340px; height: 420px; object-fit: contain; background: var(--card);
   border-radius: var(--radius-2xl); scroll-snap-align: start; flex-shrink: 0;
   display: block; border: 1px solid var(--border);
 }
@@ -975,7 +975,7 @@ footer {
   <div class="wrap">
     <div class="section-header--left reveal">
       <div class="section-tag section-tag--left">Visualização</div>
-      <h2 class="section-title">Veja o projeto <span class="accent">por dentro</span></h2>
+      <h2 class="section-title">Veja o projeto <span class="accent">em 3D</span></h2>
       <p class="section-sub">Renders e plantas do projeto real — fachada, perspectiva 3D e layouts de ambos os pavimentos.</p>
     </div>
   </div>
