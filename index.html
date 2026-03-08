@@ -345,21 +345,19 @@ body::before {
 
 /* ══════════════════════════════════════════════════════
    SCROLL HORIZONTAL — SISTEMA UNIFICADO
-   Alinha o primeiro card com a borda interna do .wrap
+   Fica dentro do .wrap para herdar o padding-left.
+   Usa margin-right negativo para estender até a borda
+   direita da viewport, permitindo scroll edge-to-edge.
 ══════════════════════════════════════════════════════ */
 .scroll-wrapper,
 .gallery-scroll-wrapper {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  box-sizing: border-box;
   overflow-x: auto;
+  overflow-y: hidden;
   padding-bottom: 20px;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  /* Alinha o primeiro card com o conteúdo do .wrap:
-     Em telas largas: (50vw - metade do max-width) = margem do wrap
-     Em telas estreitas: cai no padding mínimo do wrap */
-  padding-left: max(calc(50vw - var(--wrap-max) / 2 + var(--wrap-px)), var(--wrap-px));
+  /* Estende o scroll até a borda direita da viewport */
+  margin-right: calc(-1 * var(--wrap-px));
   padding-right: var(--wrap-px);
 }
 .scroll-wrapper {
@@ -380,7 +378,12 @@ body::before {
 .gallery-scroll-wrapper::-webkit-scrollbar-thumb:hover { background: var(--blue); }
 
 .scroll-inner,
-.gallery-scroll-inner { display: flex; gap: 16px; width: max-content; padding: 4px 2px; }
+.gallery-scroll-inner {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  padding: 4px 0;
+}
 
 .gallery-scroll-inner { gap: 12px; }
 
@@ -884,29 +887,28 @@ footer {
         </ul>
       </div>
     </div>
-  </div>
-  <!-- Scroll de plantas — agora fora do .wrap mas com padding alinhado -->
-  <div class="scroll-wrapper reveal">
-    <div class="scroll-inner">
-      <div class="scroll-card-wrap">
-        <img src="plantaa.png" alt="Planta da casa 70m²" class="scroll-card-image">
-        <div class="scroll-card-tag">Planta inicial · 70m²</div>
-      </div>
-      <div class="scroll-card-wrap">
-        <img src="plantab.png" alt="Planta da casa 170m²" class="scroll-card-image">
-        <div class="scroll-card-tag">Projeto com ampliação · 170m²</div>
-      </div>
-      <div class="scroll-card-lock">
-        <div class="scroll-lock-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-        <div class="scroll-lock-text"><strong>⚠ Conteúdo Bloqueado</strong><span>Compre e libere o projeto completo com as medidas.</span></div>
-      </div>
-      <div class="scroll-card-lock">
-        <div class="scroll-lock-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-        <div class="scroll-lock-text"><strong>⚠ Conteúdo Bloqueado</strong><span>Compre e libere o projeto completo com as medidas.</span></div>
-      </div>
-      <div class="scroll-card-lock">
-        <div class="scroll-lock-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-        <div class="scroll-lock-text"><strong>⚠ Conteúdo Bloqueado</strong><span>Compre e libere o projeto completo com as medidas.</span></div>
+    <div class="scroll-wrapper reveal">
+      <div class="scroll-inner">
+        <div class="scroll-card-wrap">
+          <img src="plantaa.png" alt="Planta da casa 70m²" class="scroll-card-image">
+          <div class="scroll-card-tag">Planta inicial · 70m²</div>
+        </div>
+        <div class="scroll-card-wrap">
+          <img src="plantab.png" alt="Planta da casa 170m²" class="scroll-card-image">
+          <div class="scroll-card-tag">Projeto com ampliação · 170m²</div>
+        </div>
+        <div class="scroll-card-lock">
+          <div class="scroll-lock-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="scroll-lock-text"><strong>⚠ Conteúdo Bloqueado</strong><span>Compre e libere o projeto completo com as medidas.</span></div>
+        </div>
+        <div class="scroll-card-lock">
+          <div class="scroll-lock-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="scroll-lock-text"><strong>⚠ Conteúdo Bloqueado</strong><span>Compre e libere o projeto completo com as medidas.</span></div>
+        </div>
+        <div class="scroll-card-lock">
+          <div class="scroll-lock-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="scroll-lock-text"><strong>⚠ Conteúdo Bloqueado</strong><span>Compre e libere o projeto completo com as medidas.</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -919,49 +921,48 @@ footer {
       <h2 class="section-title">Veja o projeto <span class="accent">em 3D</span></h2>
       <p class="section-sub">Renders e plantas do projeto real — fachada, perspectiva 3D e layouts de ambos os pavimentos.</p>
     </div>
-  </div>
-  <!-- Gallery scroll — agora fora do .wrap mas com padding alinhado -->
-  <div class="gallery-scroll-wrapper reveal">
-    <div class="gallery-scroll-inner">
-      <div class="gal-slide">
-        <img src="image001.png" alt="Fachada principal">
-        <div class="gal-tag">Fachada</div>
-      </div>
-      <div class="gal-slide">
-        <img src="image002.png" alt="Perspectiva 3D">
-        <div class="gal-tag">Fachada</div>
-      </div>
-      <div class="gal-slide">
-        <img src="image003.png" alt="Planta Fase 01">
-        <div class="gal-tag">Fachada</div>
-      </div>
-      <div class="gal-slide">
-        <img src="image004.png" alt="Planta Fase 02">
-        <div class="gal-tag">Facahda sem muro</div>
-      </div>
-      <div class="gal-slide">
-        <img src="image005.png" alt="Ambiente interno">
-        <div class="gal-tag">Fundos</div>
-      </div>
-      <div class="gal-slide-lock">
-        <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-        <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
-      </div>
-      <div class="gal-slide-lock">
-        <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-        <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
-      </div>
-      <div class="gal-slide-lock">
-        <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-        <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
-      </div>
-      <div class="gal-slide-lock">
-        <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-        <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
-      </div>
-      <div class="gal-slide-lock">
-        <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-        <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
+    <div class="gallery-scroll-wrapper reveal">
+      <div class="gallery-scroll-inner">
+        <div class="gal-slide">
+          <img src="image001.png" alt="Fachada principal">
+          <div class="gal-tag">Fachada</div>
+        </div>
+        <div class="gal-slide">
+          <img src="image002.png" alt="Perspectiva 3D">
+          <div class="gal-tag">Fachada</div>
+        </div>
+        <div class="gal-slide">
+          <img src="image003.png" alt="Planta Fase 01">
+          <div class="gal-tag">Fachada</div>
+        </div>
+        <div class="gal-slide">
+          <img src="image004.png" alt="Planta Fase 02">
+          <div class="gal-tag">Facahda sem muro</div>
+        </div>
+        <div class="gal-slide">
+          <img src="image005.png" alt="Ambiente interno">
+          <div class="gal-tag">Fundos</div>
+        </div>
+        <div class="gal-slide-lock">
+          <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
+        </div>
+        <div class="gal-slide-lock">
+          <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
+        </div>
+        <div class="gal-slide-lock">
+          <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
+        </div>
+        <div class="gal-slide-lock">
+          <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
+        </div>
+        <div class="gal-slide-lock">
+          <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1169,7 +1170,7 @@ footer {
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#sobre">Contato</a></li>
   </ul>
-  <p class="footer-copy">© 2026 · Todos os direitos reservados</p>
+  <p class="footer-copy">© 2025 · Todos os direitos reservados</p>
 </footer>
 
 <button id="themeSwitcher" aria-label="Trocar tema de cores">
