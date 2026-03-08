@@ -190,17 +190,30 @@ body::before {
   position: relative; border-radius: var(--radius-lg); overflow: hidden;
   animation: fadeUp 0.7s 0.1s ease both; z-index: 3;
 }
-.price-old { font-size: 13px; color: var(--muted); text-decoration: line-through; margin-bottom: 6px; letter-spacing: 0.05em; }
-.price-value { font-family: 'Poppins', sans-serif; font-size: 64px; font-weight: 800; color: var(--white); line-height: 1; letter-spacing: -0.03em; margin-bottom: 4px; }
-.price-value sup { font-size: 24px; vertical-align: super; margin-right: 2px; color: var(--blue); }
-.price-type { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 28px; }
-.price-cta { width: 100%; }
+.price-header {
+  text-align: center;
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--border2);
+}
+.price-old { font-size: 13px; color: var(--muted); text-decoration: line-through; margin-bottom: 10px; letter-spacing: 0.05em; }
+.price-value { font-family: 'Poppins', sans-serif; font-size: 72px; font-weight: 800; color: var(--white); line-height: 1; letter-spacing: -0.03em; margin-bottom: 8px; }
+.price-value sup { font-size: 26px; vertical-align: super; margin-right: 2px; color: var(--blue); }
+.price-type {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--blue); background: rgba(99,140,255,0.08);
+  border: 1px solid rgba(99,140,255,0.2);
+  border-radius: var(--radius-full); padding: 4px 14px;
+}
+.price-cta { width: 100%; font-size: 14px; padding: 18px; border-radius: var(--radius-md); letter-spacing: 0.06em; }
 .price-safe {
-  display: flex; align-items: center; gap: 8px; margin-top: 14px; padding: 10px 14px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-top: 14px; padding: 10px 14px;
   background: rgba(99,140,255,0.04); border: 1px solid var(--border);
   border-radius: var(--radius-sm); font-size: 12px; color: var(--muted);
 }
-.price-benefits { list-style: none; margin: 24px 0 32px; display: flex; flex-direction: column; gap: 12px; }
+.price-benefits { list-style: none; margin: 0 0 28px; display: flex; flex-direction: column; gap: 12px; }
 .price-benefits li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--slate); line-height: 1.4; }
 .price-benefits li svg { color: var(--blue); flex-shrink: 0; margin-top: 2px; }
 .price-benefits li strong { color: var(--white); font-weight: 500; }
@@ -632,6 +645,39 @@ footer {
     box-shadow 0.3s ease !important;
 }
 
+
+/* ── MOBILE CTA BAR ── */
+.mobile-cta-bar {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 999;
+  background: rgba(8,10,15,0.97);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+  padding: 12px 20px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom));
+}
+.mobile-cta-bar a {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--blue); color: #fff;
+  font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+  border-radius: var(--radius-md); padding: 15px;
+  position: relative; overflow: hidden;
+}
+.mobile-cta-bar a::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+}
+.mobile-cta-bar-price {
+  font-size: 11px; opacity: 0.75; font-weight: 400; letter-spacing: 0.04em;
+}
+@media (max-width: 768px) {
+  .mobile-cta-bar { display: block; }
+  .sticky-bar { display: none !important; }
+  footer { padding-bottom: 90px; }
+}
 </style>
 </head>
 <body>
@@ -672,9 +718,11 @@ footer {
       </div>
 
       <div class="price-card card-shine--top" id="comprar">
-        <p class="price-old">De R$ 1.470,00</p>
-        <div class="price-value"><sup>R$</sup>47</div>
-        <p class="price-type">no PIX</p>
+        <div class="price-header">
+          <p class="price-old">De R$ 1.470,00</p>
+          <div class="price-value"><sup>R$</sup>47</div>
+          <p class="price-type">no PIX</p>
+        </div>
         <ul class="price-benefits">
           <li>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -697,7 +745,7 @@ footer {
             <span><strong>Acesso imediato</strong> — Receba agora no E-mail e WhatsApp</span>
           </li>
         </ul>
-        <a href="#" class="btn btn-primary price-cta">Quero acessar o projeto agora</a>
+        <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" target="_blank" rel="noopener" class="btn btn-primary price-cta">Quero acessar o projeto agora</a>
         <div class="price-safe">Garantia de 7 dias — Risco zero</div>
       </div>
     </div>
@@ -804,7 +852,7 @@ footer {
 </section>
 
 <!-- ─── GALERIA — logo após fases ─── -->
-<section class="gallery-section">
+<section class="gallery-section" id="galeria">
   <div class="wrap">
     <div class="section-header--left reveal">
       <div class="section-tag section-tag--left">Visualização</div>
@@ -822,19 +870,19 @@ footer {
         </div>
         <div class="gal-slide">
           <img src="image002.png" alt="Perspectiva 3D">
-          <div class="gal-tag">Fachada</div>
+          <div class="gal-tag">3D</div>
         </div>
         <div class="gal-slide">
           <img src="image003.png" alt="Planta Fase 01">
-          <div class="gal-tag">Fachada</div>
+          <div class="gal-tag">70m²</div>
         </div>
         <div class="gal-slide">
           <img src="image004.png" alt="Planta Fase 02">
-          <div class="gal-tag">Fachada sem muro</div>
+          <div class="gal-tag">170m²</div>
         </div>
         <div class="gal-slide">
           <img src="image005.png" alt="Ambiente interno">
-          <div class="gal-tag">Área piscina</div>
+          <div class="gal-tag">Interior</div>
         </div>
         <!-- Cards bloqueados -->
         <div class="gal-slide-lock">
@@ -881,9 +929,9 @@ footer {
           <p>Economia no projeto e na obra, mas com valorização de imóvel premium.</p>
         </div>
         <div class="method-points">
-          <div class="method-point card-shine--right">Ideal para aprovação rápida no Minha Casa Minha Vida</div>
-          <div class="method-point card-shine--right">Zero desperdício de material na Fase 1 de 70m²</div>
-          <div class="method-point card-shine--right">Expansão planejada: a casa cresce junto com o seu bolso</div>
+          <div class="method-point">Ideal para aprovação rápida no Minha Casa Minha Vida</div>
+          <div class="method-point">Zero desperdício de material na Fase 1 de 70m²</div>
+          <div class="method-point">Expansão planejada: a casa cresce junto com o seu bolso</div>
         </div>
       </div>
     </div>
@@ -974,7 +1022,7 @@ footer {
 <!-- ─── FAQ ─── -->
 <section class="faq-section" style="padding-top:0">
   <div class="wrap">
-    <div class="faq-wrap">
+    <div class="faq-wrap" id="faq">
       <div class="section-header--center reveal">
         <div class="section-tag section-tag--center">Dúvidas</div>
         <h2 class="section-title">Perguntas <span class="accent">frequentes</span></h2>
@@ -1004,7 +1052,7 @@ footer {
 <div class="divider"></div>
 
 <!-- ─── SOBRE O ARQUITETO ─── -->
-<section class="section about-section">
+<section class="section about-section" id="sobre">
   <div class="wrap">
     <div class="about-grid">
       <div class="about-content reveal">
@@ -1038,9 +1086,11 @@ footer {
         <p class="final-sub">Por R$47 — menos que o preço de uma pizza — você evita erros de milhares de reais na sua obra e garante o projeto completo para começar hoje.</p>
       </div>
       <div class="price-card card-shine--top reveal" style="max-width:420px;margin:0 auto 40px;text-align:left;">
-        <p class="price-old">De R$ 1.470,00</p>
-        <div class="price-value"><sup>R$</sup>47</div>
-        <p class="price-type">Pagamento único</p>
+        <div class="price-header">
+          <p class="price-old">De R$ 1.470,00</p>
+          <div class="price-value"><sup>R$</sup>47</div>
+          <p class="price-type">Pagamento único</p>
+        </div>
         <ul class="price-benefits">
           <li>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1055,7 +1105,7 @@ footer {
             <span><strong>Acesso imediato</strong> (E-mail e WhatsApp)</span>
           </li>
         </ul>
-        <a href="#" class="btn btn-primary price-cta">Garantir meu projeto agora</a>
+        <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" target="_blank" rel="noopener" class="btn btn-primary price-cta">Garantir meu projeto agora</a>
         <div class="price-safe">Garantia de 7 dias — Risco zero</div>
       </div>
     </div>
@@ -1066,10 +1116,10 @@ footer {
 <footer>
   <img src="logogreco.svg" alt="Anderson Greco Logo" class="site-logo" style="opacity:0.8">
   <ul class="footer-links">
-    <li><a href="#">Projeto</a></li>
-    <li><a href="#">Galeria</a></li>
-    <li><a href="#">FAQ</a></li>
-    <li><a href="#">Contato</a></li>
+    <li><a href="#comprar">Projeto</a></li>
+    <li><a href="#galeria">Galeria</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#sobre">Contato</a></li>
   </ul>
   <p class="footer-copy">© 2025 · Todos os direitos reservados</p>
 </footer>
@@ -1174,5 +1224,13 @@ document.getElementById('themeSwitcher').addEventListener('click', () => {
   applyTheme(themes[current]);
 });
 </script>
+
+<!-- ─── MOBILE CTA BAR ─── -->
+<div class="mobile-cta-bar">
+  <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" target="_blank" rel="noopener">
+    <span>Garantir meu projeto</span>
+    <span class="mobile-cta-bar-price">R$47 · Acesso imediato</span>
+  </a>
+</div>
 </body>
 </html>
