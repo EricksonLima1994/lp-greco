@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projeto Casa Moderna 12x25 | De 70m² a 170m² | R$47</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #080A0F;
+  --dark: #0D1017;
+  --card: #111620;
+  --card2: #151B27;
+  --border: rgba(99,140,255,0.12);
+  --border2: rgba(255,255,255,0.06);
+  --blue: #638CFF;
+  --blue-dim: #3A5FD9;
+  --blue-glow: rgba(99,140,255,0.18);
+  --slate: #8899BB;
+  --muted: #4A5568;
+  --white: #F0F4FF;
+  --text: #C8D4EE;
+  --glow: rgba(99,140,255,0.08);
+  --grid-line: rgba(99,140,255,0.04);
+
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   20px;
+  --radius-2xl:  24px;
+  --radius-full: 9999px;
+
+  /* ── Gap padrão entre seções ───────────────────────────────
+     Todas as seções usam --section-py como padding vertical.
+     Seções de destaque (hero, final-cta) usam --section-py-lg.
+  ──────────────────────────────────────────────────────── */
+  --section-py:    88px;
+  --section-py-lg: 120px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--text);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* ── HEADER ── */
+.site-header {
+  position: absolute;
+  top: 0; left: 0; width: 100%;
+  padding: 40px 0;
+  z-index: 10;
+}
+.site-logo { height: 32px; width: auto; display: inline-block; }
+
+/* ── STICKY BAR ── */
+.sticky-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 999;
+  background: rgba(8,10,15,0.96);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+  padding: 14px 40px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transform: translateY(100%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sticky-bar.show { transform: translateY(0); }
+.sticky-bar-left { display: flex; align-items: center; gap: 16px; }
+.sticky-offer { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.sticky-price { font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 700; color: var(--white); }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+  cursor: pointer; border: none; border-radius: var(--radius-md);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative; overflow: hidden;
+}
+.btn-primary { background: var(--blue); color: #fff; padding: 18px 44px; }
+.btn-primary::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.3s;
+}
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(99,140,255,0.35); }
+.btn-sm { padding: 13px 32px; font-size: 12px; }
+
+/* ── WRAP ── */
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 1; }
+
+/* ═══════════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 140px 0 var(--section-py);
+  position: relative; overflow: hidden;
+}
+.hero-bg-image {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: .2; z-index: 0;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 40%, transparent 100%);
+  z-index: 1;
+}
+.hero .wrap { z-index: 2; }
+.hero-inner {
+  display: grid; grid-template-columns: 1fr 420px;
+  gap: 80px; align-items: center; position: relative;
+}
+
+.selos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+  animation: fadeUp 0.7s ease both;
+}
+
+.selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(99,140,255,0.5);
+  background: rgba(99,140,255,0.06);
+  padding: 7px 16px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 12px rgba(99,140,255,0.15), inset 0 0 8px rgba(99,140,255,0.06);
+  white-space: nowrap;
+}
+
+.hero-headline {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(30px, 3.8vw, 50px); font-weight: 800;
+  line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); margin-bottom: 20px;
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+.hero-headline .accent { color: var(--blue); }
+
+.hero-sub {
+  font-size: 15px; line-height: 1.7; color: var(--slate);
+  max-width: 540px; margin-bottom: 0;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+
+/* ── PRICE CARD ── */
+.price-card {
+  background: var(--card); border: 1px solid var(--border); padding: 40px 36px;
+  position: relative; border-radius: var(--radius-lg); overflow: hidden;
+  animation: fadeUp 0.7s 0.1s ease both; z-index: 3;
+}
+.price-old { font-size: 13px; color: var(--muted); text-decoration: line-through; margin-bottom: 6px; letter-spacing: 0.05em; }
+.price-value { font-family: 'Poppins', sans-serif; font-size: 64px; font-weight: 800; color: var(--white); line-height: 1; letter-spacing: -0.03em; margin-bottom: 4px; }
+.price-value sup { font-size: 24px; vertical-align: super; margin-right: 2px; color: var(--blue); }
+.price-type { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 28px; }
+.price-cta { width: 100%; }
+.price-safe {
+  display: flex; align-items: center; gap: 8px; margin-top: 14px; padding: 10px 14px;
+  background: rgba(99,140,255,0.04); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); font-size: 12px; color: var(--muted);
+}
+.price-benefits { list-style: none; margin: 24px 0 32px; display: flex; flex-direction: column; gap: 12px; }
+.price-benefits li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--slate); line-height: 1.4; }
+.price-benefits li svg { color: var(--blue); flex-shrink: 0; margin-top: 2px; }
+.price-benefits li strong { color: var(--white); font-weight: 500; }
+
+/* ═══════════════════════════════════════════════════
+   DIVIDER
+═══════════════════════════════════════════════════ */
+.divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+/* ═══════════════════════════════════════════════════
+   SISTEMA DE SEÇÕES — gap padronizado
+   Todas as seções de conteúdo: padding var(--section-py)
+   Seções sobre fundo --dark (alternado): idem
+═══════════════════════════════════════════════════ */
+.section          { padding: var(--section-py) 0; position: relative; }
+.problem-section  { padding: var(--section-py) 0; background: var(--dark); position: relative; overflow: hidden; }
+.forwho-section   { padding: var(--section-py) 0; background: var(--dark); }
+.gallery-section  { padding: var(--section-py) 0; }
+.faq-section      { padding: var(--section-py) 0; }
+.ficha-section    { padding: var(--section-py) 0; position: relative; z-index: 1; }
+.final-section    { padding: var(--section-py-lg) 0; background: var(--dark); position: relative; overflow: hidden; text-align: center; }
+
+/* ═══════════════════════════════════════════════════
+   SISTEMA DE CABEÇALHOS DE SEÇÃO — padronizado
+   Regra:
+   - section-tag: sempre presente, sempre mesmo estilo
+   - section-title: fonte/peso/tamanho fixos
+   - section-sub: opcional, mas sempre mesmo estilo quando presente
+   - Alinhamento (left vs center) é definido pela seção via modificador
+═══════════════════════════════════════════════════ */
+.section-tag {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/* Variante alinhada à esquerda (padrão) */
+.section-tag--left::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--blue);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+/* Variante centralizada */
+.section-tag--center {
+  justify-content: center;
+}
+.section-tag--center::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--blue);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.section-title .accent { color: var(--blue); }
+
+.section-sub {
+  font-size: 15px;
+  color: var(--slate);
+  line-height: 1.7;
+  margin-bottom: 40px;
+  max-width: 560px;
+}
+/* section-sub centralizado herda max-width e margin auto */
+.section-header--center .section-sub {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Wrapper de cabeçalho de seção centralizado */
+.section-header--center {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 48px;
+}
+/* Wrapper de cabeçalho de seção à esquerda */
+.section-header--left {
+  margin-bottom: 40px;
+}
+
+/* ── FICHA TÉCNICA ── */
+.ficha-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.ficha-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 24px 20px;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  gap: 0; position: relative; overflow: hidden;
+  transition: border-color 0.3s, background 0.3s;
+}
+.ficha-card:hover { border-color: rgba(99,140,255,0.3); background: var(--card2); }
+.ficha-icon {
+  width: 36px; height: 36px;
+  background: rgba(99,140,255,0.08);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--blue); margin-bottom: 12px; flex-shrink: 0;
+}
+.ficha-label {
+  font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 6px;
+}
+.ficha-value {
+  font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 700;
+  color: var(--white); line-height: 1.1; letter-spacing: -0.02em;
+}
+.ficha-value.sm { font-size: 16px; }
+
+/* ── PHASES ── */
+.phases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 36px 32px;
+  position: relative; overflow: hidden;
+}
+.phase-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+.phase-title { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+.phase-area { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.phase-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.phase-list li { font-size: 14px; color: var(--slate); padding-left: 16px; position: relative; }
+.phase-list li::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
+
+/* ── SCROLL PLANTAS ── */
+.scroll-wrapper {
+  width: 100%; overflow-x: auto; padding-bottom: 20px; margin-top: 32px;
+  scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+}
+.scroll-wrapper::-webkit-scrollbar { height: 6px; }
+.scroll-wrapper::-webkit-scrollbar-track { background: var(--border2); border-radius: 10px; }
+.scroll-wrapper::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+.scroll-wrapper::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+.scroll-inner { display: flex; gap: 16px; width: max-content; }
+.scroll-card-image {
+  width: 340px; height: 420px; object-fit: cover;
+  border-radius: var(--radius-2xl); scroll-snap-align: start; flex-shrink: 0;
+  display: block; border: 1px solid var(--border);
+}
+
+/* ── GALLERY ── */
+/* ── GALLERY SLIDE ── */
+.gallery-scroll-wrapper {
+  width: 100%; overflow-x: auto; padding-bottom: 20px; margin-top: 0;
+  scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+}
+.gallery-scroll-wrapper::-webkit-scrollbar { height: 6px; }
+.gallery-scroll-wrapper::-webkit-scrollbar-track { background: var(--border2); border-radius: 10px; }
+.gallery-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+.gallery-scroll-wrapper::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+.gallery-scroll-inner { display: flex; gap: 12px; width: max-content; padding: 4px 2px; }
+.gal-slide {
+  width: 480px; height: 300px; flex-shrink: 0; scroll-snap-align: start;
+  border-radius: var(--radius-2xl); position: relative; overflow: hidden;
+  border: 1px solid var(--border2); display: block;
+}
+.gal-slide img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.gal-slide-lock {
+  width: 480px; height: 300px; flex-shrink: 0; scroll-snap-align: start;
+  border-radius: var(--radius-2xl); position: relative; overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--card);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; text-align: center; padding: 32px;
+  cursor: default;
+}
+.gal-slide-lock::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent, transparent 8px,
+    rgba(99,140,255,0.02) 8px, rgba(99,140,255,0.02) 16px
+  );
+}
+.gal-lock-icon {
+  width: 44px; height: 44px;
+  background: rgba(99,140,255,0.08);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--blue); flex-shrink: 0; position: relative; z-index: 1;
+}
+.gal-lock-text {
+  font-size: 12px; line-height: 1.6; color: var(--muted);
+  max-width: 260px; position: relative; z-index: 1;
+}
+.gal-lock-text strong { display: block; color: var(--slate); font-weight: 500; font-size: 13px; margin-bottom: 4px; }
+.gal-tag {
+  position: absolute; bottom: 12px; left: 12px;
+  background: rgba(8,10,15,0.9); border: 1px solid var(--border);
+  border-radius: var(--radius-xs); padding: 4px 10px;
+  font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--blue);
+  z-index: 2;
+}
+
+/* ── ITEMS LIST ── */
+.items-list { display: flex; flex-direction: column; gap: 0; }
+.item-row { display: flex; align-items: flex-start; gap: 16px; padding: 22px 0; border-bottom: 1px solid var(--border2); }
+.item-row:first-child { border-top: 1px solid var(--border2); }
+.item-num { font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--blue); opacity: 0.4; min-width: 24px; padding-top: 2px; }
+.item-text strong { display: block; font-size: 15px; font-weight: 500; color: var(--white); margin-bottom: 2px; }
+.item-text span { font-size: 13px; color: var(--slate); }
+
+/* ── PROBLEM SECTION ── */
+.problem-section::before {
+  content: ''; position: absolute; right: -200px; top: 50%; transform: translateY(-50%);
+  width: 600px; height: 600px; background: radial-gradient(circle, var(--glow) 0%, transparent 70%); pointer-events: none;
+}
+.problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.problem-text { font-size: 16px; line-height: 1.75; color: var(--slate); }
+.problem-text em { font-style: normal; color: var(--white); }
+.problem-highlight {
+  background: var(--card); border: 1px solid var(--border); padding: 32px;
+  position: relative; border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 4px;
+}
+.problem-highlight p { font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.45; }
+.method-points { display: flex; flex-direction: column; gap: 4px; }
+.method-point {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-md); padding: 18px 24px;
+  font-size: 14px; color: var(--slate); position: relative; overflow: hidden;
+}
+
+/* ── ABOUT ── */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-text { font-size: 15px; line-height: 1.75; color: var(--slate); margin-bottom: 16px; }
+.about-text strong { color: var(--white); font-weight: 500; }
+.about-image-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-2xl); position: relative; overflow: hidden; display: block;
+}
+
+/* ── FOR WHO ── */
+.forwho-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+.forwho-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); padding: 32px 28px;
+  transition: border-color 0.3s, background 0.3s; position: relative; overflow: hidden;
+}
+.forwho-card:hover { border-color: rgba(99,140,255,0.3); background: var(--card2); }
+.forwho-title { font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 600; color: var(--white); line-height: 1.4; margin-bottom: 10px; }
+.forwho-desc { font-size: 13px; line-height: 1.65; color: var(--slate); }
+
+/* ── GUARANTEE ── */
+.guarantee-box {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 36px; max-width: 640px;
+  margin: 0 auto; text-align: center; position: relative; overflow: hidden;
+}
+.guarantee-title { font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+.guarantee-text { font-size: 14px; line-height: 1.7; color: var(--slate); }
+
+/* ── FAQ ── */
+.faq-wrap { max-width: 720px; margin: 0 auto; }
+.faq-list { display: flex; flex-direction: column; gap: 0; margin-top: 40px; }
+.faq-item { border-bottom: 1px solid var(--border2); }
+.faq-item:first-child { border-top: 1px solid var(--border2); }
+.faq-q {
+  width: 100%; background: none; border: none; text-align: left; padding: 22px 0;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  cursor: pointer; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 600;
+  color: var(--white); transition: color 0.2s;
+}
+.faq-q:hover { color: var(--blue); }
+.faq-icon {
+  width: 28px; height: 28px; border: 1px solid var(--border); border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  color: var(--blue); transition: transform 0.3s, background 0.3s;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); background: rgba(99,140,255,0.1); }
+.faq-a { overflow: hidden; max-height: 0; transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.faq-a-inner { padding-bottom: 20px; font-size: 14px; line-height: 1.7; color: var(--slate); }
+.faq-item.open .faq-a { max-height: 200px; }
+
+/* ── FINAL CTA ── */
+.final-section::before {
+  content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 800px; height: 500px; background: radial-gradient(ellipse, rgba(99,140,255,0.09) 0%, transparent 70%); pointer-events: none;
+}
+.final-section::after {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black, transparent);
+}
+.final-inner { position: relative; z-index: 1; }
+.final-title { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 52px); font-weight: 800; color: var(--white); letter-spacing: -0.02em; line-height: 1.08; margin-bottom: 16px; }
+.final-title .accent { color: var(--blue); }
+.final-sub { font-size: 15px; color: var(--slate); max-width: 460px; margin: 0 auto 40px; line-height: 1.7; }
+.final-note { margin-top: 20px; font-size: 12px; color: var(--muted); display: flex; align-items: center; justify-content: center; gap: 8px; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black); border-top: 1px solid var(--border2);
+  padding: 40px 40px 100px; display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  position: relative; z-index: 1;
+}
+.footer-links { display: flex; gap: 28px; list-style: none; }
+.footer-links a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--blue); }
+.footer-copy { font-size: 12px; color: rgba(74,85,104,0.5); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.05s; }
+.reveal-d2 { transition-delay: 0.12s; }
+.reveal-d3 { transition-delay: 0.18s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  :root { --section-py: 64px; --section-py-lg: 88px; }
+  .site-header .wrap { text-align: center; }
+  .site-header { padding: 24px 0; }
+  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+  .phases-grid { grid-template-columns: 1fr; }
+  .problem-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .forwho-grid { grid-template-columns: 1fr; }
+  .ficha-grid { grid-template-columns: repeat(2, 1fr); }
+  .wrap { padding: 0 24px; }
+  .sticky-bar { padding: 14px 24px; }
+}
+@media (max-width: 600px) {
+  :root { --section-py: 52px; --section-py-lg: 72px; }
+  .selos { flex-wrap: wrap; gap: 8px; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+  .scroll-wrapper { margin-right: -24px; padding-right: 24px; }
+  .scroll-card-image { width: 280px; }
+  .hero-bg-image { height: 55%; }
+  .ficha-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   CARD SHINE SYSTEM
+   Todos os cards usam position:relative + overflow:hidden.
+   .card-shine--top    → gradiente no topo
+   .card-shine--bottom → gradiente na base
+   .card-shine--left   → gradiente na lateral esq
+   .card-shine--right  → gradiente na lateral dir
+═══════════════════════════════════════════════════════════════ */
+[class*="card-shine--"]::before {
+  content: '';
+  position: absolute;
+  opacity: var(--shine-opacity, 0.7);
+  pointer-events: none;
+  z-index: 0;
+}
+.card-shine--top::before {
+  top: 0; left: 0; right: 0; height: 2px; border-radius: 0;
+  background: linear-gradient(90deg,
+    var(--card) 0%, transparent 20%, var(--blue) 50%, transparent 80%, var(--card) 100%
+  ) !important;
+}
+.card-shine--bottom::before {
+  bottom: 0; left: 0; right: 0; height: 2px; border-radius: 0;
+  background: linear-gradient(90deg,
+    var(--card) 0%, transparent 20%, var(--blue) 50%, transparent 80%, var(--card) 100%
+  ) !important;
+}
+.card-shine--left::before {
+  left: 0; top: 0; bottom: 0; width: 2px; border-radius: 0;
+  background: linear-gradient(180deg,
+    var(--card) 0%, transparent 20%, var(--blue) 50%, transparent 80%, var(--card) 100%
+  ) !important;
+}
+.card-shine--right::before {
+  right: 0; top: 0; bottom: 0; width: 2px; border-radius: 0;
+  background: linear-gradient(180deg,
+    var(--card) 0%, transparent 20%, var(--blue) 50%, transparent 80%, var(--card) 100%
+  ) !important;
+}
+[class*="card-shine--"] > * { position: relative; z-index: 1; }
+
+/* ══════════════════════════════════════
+   THEME SWITCHER
+══════════════════════════════════════ */
+#themeSwitcher {
+  position: fixed; bottom: 88px; right: 20px; z-index: 998;
+  display: flex; align-items: center; gap: 7px; padding: 7px 14px 7px 10px;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-full); cursor: pointer;
+  font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 500;
+  letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.25);
+  backdrop-filter: blur(12px); user-select: none;
+}
+#themeSwitcher:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.5); }
+#themeSwitcher svg { flex-shrink: 0; transition: transform 0.5s ease; }
+#themeSwitcher:hover svg { transform: rotate(60deg); }
+#themeAccentDot { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
+
+/* Transição suave ao trocar tema */
+*, *::before, *::after {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease !important;
+}
+.btn-primary, .forwho-card, .faq-icon, .faq-q, #themeSwitcher svg {
+  transition:
+    background-color 0.3s cubic-bezier(0.16,1,0.3,1),
+    color 0.2s ease, border-color 0.3s ease,
+    transform 0.3s cubic-bezier(0.16,1,0.3,1),
+    box-shadow 0.3s ease !important;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header class="site-header">
+  <div class="wrap">
+    <img src="logogreco.svg" alt="Anderson Greco Logo" class="site-logo">
+  </div>
+</header>
+
+<!-- ─── STICKY BAR ─── -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-bar-left">
+    <span class="sticky-offer">Oferta atual</span>
+    <span class="sticky-price"><sup style="font-size:14px;vertical-align:super;color:var(--blue)">R$</sup>47</span>
+  </div>
+  <a href="#comprar" class="btn btn-primary btn-sm">Quero o projeto</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <img src="hero.png" alt="Projeto Casa Moderna" class="hero-bg-image">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div>
+        <div class="selos">
+          <div class="selo">Aprovável no MCMV</div>
+          <div class="selo">Estilo Alto Padrão</div>
+          <div class="selo">Construção Econômica</div>
+        </div>
+        <h1 class="hero-headline">
+          Construção econômica com <span class="accent">design premium</span>. Expanda de 70m² para 170m².
+        </h1>
+        <p class="hero-sub">
+          Ideal para financiar (Minha Casa Minha Vida) e construir no seu ritmo. Inicie com uma base otimizada e amplie sem improvisos ou quebra-quebra quando tiver mais recursos.
+        </p>
+      </div>
+
+      <div class="price-card card-shine--top" id="comprar">
+        <p class="price-old">De R$ 1.470,00</p>
+        <div class="price-value"><sup>R$</sup>47</div>
+        <p class="price-type">no PIX</p>
+        <ul class="price-benefits">
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Planta técnica + Fachada 3D</strong> — Pronto para o pedreiro e engenheiro</span>
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Guia de Ampliação</strong> — O mapa para crescer de 70m² a 170m²</span>
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Otimizado para MCMV</strong> — Ideal para aprovação de financiamento</span>
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Economia na Obra</strong> — Projeto pensado para zero desperdício</span>
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Acesso imediato</strong> — Receba agora no E-mail e WhatsApp</span>
+          </li>
+        </ul>
+        <a href="#" class="btn btn-primary price-cta">Quero acessar o projeto agora</a>
+        <div class="price-safe">Garantia de 7 dias — Risco zero</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── FICHA TÉCNICA ─── -->
+<section class="ficha-section">
+  <div class="wrap">
+    <div class="section-header--center reveal">
+      <div class="section-tag section-tag--center">Informações Importantes</div>
+      <h2 class="section-title">Ficha Técnica do <span class="accent">Projeto 001</span></h2>
+      <p class="section-sub">Dimensões, área e referência de custo para você planejar com segurança.</p>
+    </div>
+    <div class="ficha-grid reveal">
+      <div class="ficha-card card-shine--top">
+        <div class="ficha-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M13 12H3"/>
+          </svg>
+        </div>
+        <span class="ficha-label">Área Construída Inicial</span>
+        <strong class="ficha-value">70,00 m²</strong>
+      </div>
+      <div class="ficha-card card-shine--top">
+        <div class="ficha-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="1"/>
+            <line x1="3" y1="9" x2="21" y2="9"/>
+            <line x1="9" y1="21" x2="9" y2="9"/>
+          </svg>
+        </div>
+        <span class="ficha-label">Terreno (Lar × Prof)</span>
+        <strong class="ficha-value">12m × 25m</strong>
+      </div>
+      <div class="ficha-card card-shine--top">
+        <div class="ficha-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <polyline points="8 6 2 12 8 18"/>
+            <polyline points="16 6 22 12 16 18"/>
+          </svg>
+        </div>
+        <span class="ficha-label">Testada Mínima</span>
+        <strong class="ficha-value">12,00 m</strong>
+      </div>
+      <div class="ficha-card card-shine--top">
+        <div class="ficha-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="5" width="20" height="14" rx="2"/>
+            <line x1="2" y1="10" x2="22" y2="10"/>
+          </svg>
+        </div>
+        <span class="ficha-label">Custo Estimado da Obra</span>
+        <strong class="ficha-value sm">R$ 95k – 150k</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── FASES DO PROJETO ─── -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-header--left reveal">
+      <div class="section-tag section-tag--left">O que você vai construir</div>
+      <h2 class="section-title">Duas fases, <span class="accent">um projeto só</span></h2>
+      <p class="section-sub">Não tem todos os recursos agora? Comece com uma casa que cabe no orçamento hoje e expanda para o alto padrão no futuro, sem quebrar paredes.</p>
+    </div>
+    <div class="phases-grid reveal">
+      <div class="phase-card card-shine--left reveal reveal-d1">
+        <div class="phase-label">Fase 01 — A base sólida</div>
+        <div class="phase-title">70m²</div>
+        <div class="phase-area">Construção inicial completa e econômica</div>
+        <ul class="phase-list">
+          <li>02 quartos confortáveis</li>
+          <li>Banheiro social bem dimensionado</li>
+          <li>Cozinha integrada com sala de estar e jantar</li>
+          <li>Área de serviço funcional</li>
+        </ul>
+      </div>
+      <div class="phase-card card-shine--left reveal reveal-d2">
+        <div class="phase-label">Fase 02 — A expansão premium</div>
+        <div class="phase-title">170m²</div>
+        <div class="phase-area">Ampliação sem derrubar nada do que já foi feito</div>
+        <ul class="phase-list">
+          <li>Suíte master com closet</li>
+          <li>Área gourmet completa</li>
+          <li>Garagem coberta para 02 carros</li>
+          <li>Fachada moderna com pé-direito alto</li>
+        </ul>
+      </div>
+    </div>
+    <div class="scroll-wrapper reveal">
+      <div class="scroll-inner">
+        <img src="plantaa.png" alt="Planta da casa 70m²" class="scroll-card-image">
+        <img src="plantab.png" alt="Planta da casa 170m²" class="scroll-card-image">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GALERIA — logo após fases ─── -->
+<section class="gallery-section">
+  <div class="wrap">
+    <div class="section-header--left reveal">
+      <div class="section-tag section-tag--left">Visualização</div>
+      <h2 class="section-title">Veja o projeto <span class="accent">por dentro</span></h2>
+      <p class="section-sub">Renders e plantas do projeto real — fachada, perspectiva 3D e layouts de ambos os pavimentos.</p>
+    </div>
+  </div>
+  <div style="padding: 0 40px; max-width: 1180px; margin: 0 auto; position: relative; z-index: 1;">
+    <div class="gallery-scroll-wrapper reveal">
+      <div class="gallery-scroll-inner">
+        <!-- Cards com imagem real -->
+        <div class="gal-slide">
+          <img src="image001.png" alt="Fachada principal">
+          <div class="gal-tag">Fachada</div>
+        </div>
+        <div class="gal-slide">
+          <img src="image002.png" alt="Perspectiva 3D">
+          <div class="gal-tag">Fachada</div>
+        </div>
+        <div class="gal-slide">
+          <img src="image003.png" alt="Planta Fase 01">
+          <div class="gal-tag">Fachada</div>
+        </div>
+        <div class="gal-slide">
+          <img src="image004.png" alt="Planta Fase 02">
+          <div class="gal-tag">Fachada sem muro</div>
+        </div>
+        <div class="gal-slide">
+          <img src="image005.png" alt="Ambiente interno">
+          <div class="gal-tag">Área piscina</div>
+        </div>
+        <!-- Cards bloqueados -->
+        <div class="gal-slide-lock">
+          <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
+        </div>
+        <div class="gal-slide-lock">
+          <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
+        </div>
+        <div class="gal-slide-lock">
+          <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
+        </div>
+        <div class="gal-slide-lock">
+          <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
+        </div>
+        <div class="gal-slide-lock">
+          <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── O PROBLEMA ─── -->
+<section class="problem-section">
+  <div class="wrap">
+    <div class="problem-grid">
+      <div class="reveal">
+        <div class="section-tag section-tag--left">Por que isso importa</div>
+        <h2 class="section-title">Sua casa financiada não precisa <span class="accent">parecer popular</span></h2>
+        <div style="width:40px;height:2px;background:var(--blue);opacity:0.4;margin:20px 0 24px;"></div>
+        <p class="problem-text">
+          Muitos acham que para construir barato é preciso abrir mão da beleza. O resultado são casas sem graça e puxadinhos mal planejados. Com o projeto certo, você une <em>economia extrema na obra</em> com um visual moderno e imponente.
+        </p>
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="problem-highlight card-shine--left">
+          <p>Economia no projeto e na obra, mas com valorização de imóvel premium.</p>
+        </div>
+        <div class="method-points">
+          <div class="method-point card-shine--right">Ideal para aprovação rápida no Minha Casa Minha Vida</div>
+          <div class="method-point card-shine--right">Zero desperdício de material na Fase 1 de 70m²</div>
+          <div class="method-point card-shine--right">Expansão planejada: a casa cresce junto com o seu bolso</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── O QUE VOCÊ RECEBE ─── -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-header--left reveal">
+      <div class="section-tag section-tag--left">Conteúdo do acesso</div>
+      <h2 class="section-title">O que você <span class="accent">recebe</span></h2>
+      <p class="section-sub">Cinco documentos técnicos prontos para usar com seu pedreiro, engenheiro ou na prefeitura.</p>
+    </div>
+    <div class="items-list">
+      <div class="item-row reveal reveal-d1">
+        <span class="item-num">01</span>
+        <div class="item-text"><strong>Planta baixa detalhada</strong><span>Todas as cotas e medidas para o pedreiro não errar.</span></div>
+      </div>
+      <div class="item-row reveal reveal-d2">
+        <span class="item-num">02</span>
+        <div class="item-text"><strong>Planta de implantação</strong><span>Como posicionar a casa no terreno 12×25 respeitando os recuos.</span></div>
+      </div>
+      <div class="item-row reveal reveal-d1">
+        <span class="item-num">03</span>
+        <div class="item-text"><strong>Fachada em alta definição</strong><span>Visualize exatamente o acabamento final da casa.</span></div>
+      </div>
+      <div class="item-row reveal reveal-d2">
+        <span class="item-num">04</span>
+        <div class="item-text"><strong>Layout humanizado</strong><span>Sugestão de posição de móveis para testar a circulação dos ambientes.</span></div>
+      </div>
+      <div class="item-row reveal reveal-d1">
+        <span class="item-num">05</span>
+        <div class="item-text"><strong>Guia de ampliação</strong><span>Passo a passo de onde conectar a nova estrutura da Fase 2.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── PARA QUEM É ─── -->
+<section class="forwho-section">
+  <div class="wrap">
+    <div class="section-header--center reveal">
+      <div class="section-tag section-tag--center">Perfil ideal</div>
+      <h2 class="section-title">Esse projeto é <span class="accent">para quem</span></h2>
+      <p class="section-sub">Se você se identificar com algum desses cenários, este projeto foi feito para você.</p>
+    </div>
+    <div class="forwho-grid">
+      <div class="forwho-card card-shine--bottom reveal reveal-d1">
+        <h3 class="forwho-title">Quer aprovação rápida no Minha Casa Minha Vida</h3>
+        <p class="forwho-desc">E precisa de um projeto técnico inteligente que caiba exatamente no orçamento do financiamento.</p>
+      </div>
+      <div class="forwho-card card-shine--bottom reveal reveal-d2">
+        <h3 class="forwho-title">Não tem todo o dinheiro para construir de uma vez</h3>
+        <p class="forwho-desc">Começa com a fase de 70m² hoje e expande para 170m² amanhã, sem precisar quebrar nenhuma parede pronta.</p>
+      </div>
+      <div class="forwho-card card-shine--bottom reveal reveal-d3">
+        <h3 class="forwho-title">Busca economia, mas não abre mão do Alto Padrão</h3>
+        <p class="forwho-desc">Quer uma fachada imponente, moderna e valorizada pagando preço de construção popular.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GARANTIA ─── -->
+<section class="section">
+  <div class="wrap">
+    <div class="guarantee-box card-shine--top reveal">
+      <div class="guarantee-title">Garantia de 7 dias — risco zero</div>
+      <p class="guarantee-text">Analise o projeto com calma. Se sentir que as medidas não são profissionais ou que o layout não te atende, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── NOTA TÉCNICA ─── -->
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div style="max-width:640px;margin:0 auto;text-align:center" class="reveal">
+      <p style="font-size:13px;color:var(--muted);line-height:1.7">
+        Este material é um Estudo Preliminar Avançado. Entrega toda a parte criativa e dimensional, servindo como base exata para o seu engenheiro ou arquiteto local emitir a ART/RRT e dar entrada na prefeitura.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section class="faq-section" style="padding-top:0">
+  <div class="wrap">
+    <div class="faq-wrap">
+      <div class="section-header--center reveal">
+        <div class="section-tag section-tag--center">Dúvidas</div>
+        <h2 class="section-title">Perguntas <span class="accent">frequentes</span></h2>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q">O projeto serve para terreno com declive?<div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-a"><div class="faq-a-inner">Foi otimizado para terrenos planos. Para terrenos inclinados, pequenas adaptações na fundação serão necessárias com o seu engenheiro.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Vem com projeto elétrico e hidráulico?<div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-a"><div class="faq-a-inner">Não. Entregamos o projeto arquitetônico completo. Os complementares devem ser feitos com base no solo e normas da sua cidade.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Posso espelhar a planta?<div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-a"><div class="faq-a-inner">Sim. O projeto permite inversão total para se adequar à posição do sol no seu terreno.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Como recebo o material?<div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-a"><div class="faq-a-inner">Imediatamente após a confirmação do pagamento, você recebe o link de download no seu e-mail.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── SOBRE O ARQUITETO ─── -->
+<section class="section about-section">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-content reveal">
+        <div class="section-tag section-tag--left">Quem sou eu?</div>
+        <h2 class="section-title">Anderson <span class="accent">Greco</span></h2>
+        <p class="about-text">
+          Sou arquiteto, tenho 36 anos e um grande objetivo: <strong>tornar a arquitetura funcional e de alto padrão acessível para todos.</strong>
+        </p>
+        <p class="about-text">
+          Acredito que a beleza, o conforto e a eficiência não devem ser exclusividade de orçamentos milionários. Construir é um dos passos mais importantes da vida de uma pessoa, e iniciar isso no escuro é sinônimo de prejuízo.
+        </p>
+        <p class="about-text">
+          Por isso, criei este projeto pensando em otimizar os seus recursos. O objetivo é que você construa com economia e inteligência hoje, e tenha o mapa exato para expandir no futuro — entregando uma casa que você terá orgulho de chamar de sua.
+        </p>
+      </div>
+      <div class="about-image-wrap reveal reveal-d2">
+        <div class="about-image-card card-shine--left">
+          <img src="perfilpb.png" alt="Arquiteto Anderson Greco" style="width:100%;height:auto;display:block;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FINAL CTA ─── -->
+<section class="final-section">
+  <div class="wrap">
+    <div class="final-inner">
+      <div class="reveal">
+        <h2 class="final-title">Pare de sonhar.<br>Comece a <span class="accent">planejar</span>.</h2>
+        <p class="final-sub">Por R$47 — menos que o preço de uma pizza — você evita erros de milhares de reais na sua obra e garante o projeto completo para começar hoje.</p>
+      </div>
+      <div class="price-card card-shine--top reveal" style="max-width:420px;margin:0 auto 40px;text-align:left;">
+        <p class="price-old">De R$ 1.470,00</p>
+        <div class="price-value"><sup>R$</sup>47</div>
+        <p class="price-type">Pagamento único</p>
+        <ul class="price-benefits">
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Planta técnica + Fachada 3D</strong></span>
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Guia de Ampliação (70m² a 170m²)</strong></span>
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Acesso imediato</strong> (E-mail e WhatsApp)</span>
+          </li>
+        </ul>
+        <a href="#" class="btn btn-primary price-cta">Garantir meu projeto agora</a>
+        <div class="price-safe">Garantia de 7 dias — Risco zero</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <img src="logogreco.svg" alt="Anderson Greco Logo" class="site-logo" style="opacity:0.8">
+  <ul class="footer-links">
+    <li><a href="#">Projeto</a></li>
+    <li><a href="#">Galeria</a></li>
+    <li><a href="#">FAQ</a></li>
+    <li><a href="#">Contato</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 · Todos os direitos reservados</p>
+</footer>
+
+<!-- ─── THEME SWITCHER ─── -->
+<button id="themeSwitcher" aria-label="Trocar tema de cores">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+  </svg>
+  <div id="themeAccentDot"></div>
+  <span id="themeLabel">default</span>
+</button>
+
+<script>
+// ── STICKY BAR ──────────────────────────────────────────
+const bar = document.getElementById('stickyBar');
+window.addEventListener('scroll', () => {
+  bar.classList.toggle('show', window.scrollY > 400);
+});
+
+// ── SCROLL REVEAL ────────────────────────────────────────
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.1 });
+reveals.forEach(el => io.observe(el));
+
+// ── FAQ ACCORDION ────────────────────────────────────────
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// ── THEME SWITCHER ───────────────────────────────────────
+const themes = [
+  {
+    label: 'default',
+    vars: {
+      '--black': '#080A0F', '--dark': '#0D1017', '--card': '#111620', '--card2': '#151B27',
+      '--border': 'rgba(99,140,255,0.12)', '--border2': 'rgba(255,255,255,0.06)',
+      '--blue': '#638CFF', '--slate': '#8899BB', '--muted': '#4A5568',
+      '--white': '#F0F4FF', '--text': '#C8D4EE',
+      '--glow': 'rgba(99,140,255,0.08)', '--grid-line': 'rgba(99,140,255,0.04)',
+    }
+  },
+  {
+    label: 'meta',
+    vars: {
+      '--black': '#0A0E14', '--dark': '#0F1620', '--card': '#141D2B', '--card2': '#192334',
+      '--border': 'rgba(0,130,251,0.15)', '--border2': 'rgba(255,255,255,0.07)',
+      '--blue': '#0082FB', '--slate': '#7A9AB8', '--muted': '#3D5266',
+      '--white': '#E8F4FF', '--text': '#B8D0E8',
+      '--glow': 'rgba(0,130,251,0.10)', '--grid-line': 'rgba(0,100,224,0.05)',
+    }
+  },
+  {
+    label: 'spotify',
+    vars: {
+      '--black': '#0A0A0A', '--dark': '#111111', '--card': '#181818', '--card2': '#1F1F1F',
+      '--border': 'rgba(30,215,96,0.14)', '--border2': 'rgba(255,255,255,0.06)',
+      '--blue': '#1ED760', '--slate': '#7A9A80', '--muted': '#444444',
+      '--white': '#F2FFF5', '--text': '#B3D4BA',
+      '--glow': 'rgba(30,215,96,0.09)', '--grid-line': 'rgba(30,215,96,0.04)',
+    }
+  },
+  {
+    label: 'premium',
+    vars: {
+      '--black': '#0D0C10', '--dark': '#131118', '--card': '#1A1820', '--card2': '#201E28',
+      '--border': 'rgba(107,127,255,0.16)', '--border2': 'rgba(255,255,255,0.06)',
+      '--blue': '#6B7FFF', '--slate': '#8A8FAA', '--muted': '#4A4860',
+      '--white': '#EEEEFF', '--text': '#C0C4DC',
+      '--glow': 'rgba(107,127,255,0.10)', '--grid-line': 'rgba(107,127,255,0.04)',
+    }
+  },
+  {
+    label: 'minimal',
+    vars: {
+      '--black': '#050507', '--dark': '#09090D', '--card': '#0F0F14', '--card2': '#141419',
+      '--border': 'rgba(61,107,255,0.16)', '--border2': 'rgba(255,255,255,0.05)',
+      '--blue': '#3D6BFF', '--slate': '#6A7A99', '--muted': '#383848',
+      '--white': '#F0F2FF', '--text': '#B0B8D0',
+      '--glow': 'rgba(61,107,255,0.09)', '--grid-line': 'rgba(61,107,255,0.03)',
+    }
+  }
+];
+
+let current = 0;
+function applyTheme(t) {
+  const root = document.documentElement;
+  Object.entries(t.vars).forEach(([k, v]) => root.style.setProperty(k, v));
+  document.getElementById('themeLabel').textContent = t.label;
+  document.getElementById('themeAccentDot').style.background = t.vars['--blue'];
+}
+document.getElementById('themeSwitcher').addEventListener('click', () => {
+  current = (current + 1) % themes.length;
+  applyTheme(themes[current]);
+});
+</script>
+</body>
+</html>
