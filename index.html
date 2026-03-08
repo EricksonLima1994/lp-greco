@@ -346,9 +346,10 @@ body::before {
 /* ── SCROLL PLANTAS (O que você vai construir) ── */
 .scroll-wrapper {
   width: 100vw;
-  margin-left: calc(50% - 50vw);
-  padding-left: calc(50vw - 50%);
-  padding-right: calc(50vw - 50%);
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding-left: calc(50vw - 50% + 40px);
+  padding-right: calc(50vw - 50% + 40px);
   box-sizing: border-box;
   overflow-x: auto;
   padding-bottom: 20px;
@@ -362,76 +363,72 @@ body::before {
 .scroll-wrapper::-webkit-scrollbar-thumb:hover { background: var(--blue); }
 .scroll-inner { display: flex; gap: 16px; width: max-content; }
 
-/* Cards de planta com imagem e tag overlay */
+/* Cards originais de planta */
+.scroll-card-image {
+  width: 340px; height: 420px; object-fit: cover;
+  border-radius: var(--radius-2xl); scroll-snap-align: start; flex-shrink: 0;
+  display: block; border: 1px solid var(--border);
+}
 .scroll-card-wrap {
-  width: 340px;
-  height: auto !important;
-  aspect-ratio: auto !important;
-  border-radius: var(--radius-2xl);
-  overflow: hidden;
+  position: relative; flex-shrink: 0; scroll-snap-align: start;
+  width: 340px; border-radius: var(--radius-2xl); overflow: hidden;
   border: 1px solid var(--border);
-  position: relative;
-  flex-shrink: 0;
-  scroll-snap-align: start;
 }
 .scroll-card-wrap .scroll-card-image {
-  width: 100% !important;
-  height: auto !important;
-  display: block;
-  object-fit: fill !important;
-  position: static !important;
-  transform: none !important;
-  aspect-ratio: auto !important;
+  width: 100%; height: 100%; scroll-snap-align: unset; flex-shrink: unset;
+  border-radius: 0; border: none;
 }
 .scroll-card-tag {
   position: absolute; top: 14px; left: 14px;
-  background: rgba(8,10,15,0.82); backdrop-filter: blur(8px);
-  border: 1px solid rgba(99,140,255,0.5); color: var(--blue);
-  font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 600;
-  letter-spacing: 0.09em; text-transform: uppercase;
+  background: rgba(8,10,15,0.75); backdrop-filter: blur(8px);
+  border: 1px solid rgba(99,140,255,0.45); color: var(--blue);
+  font-size: 10px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase;
   padding: 5px 12px; border-radius: var(--radius-full);
-  box-shadow: 0 0 10px rgba(99,140,255,0.18);
+  box-shadow: 0 0 10px rgba(99,140,255,0.2), inset 0 0 6px rgba(99,140,255,0.06);
   pointer-events: none; z-index: 2;
 }
-
-/* Cards bloqueados no scroll de plantas */
 .scroll-card-lock {
-  width: 340px;
-  height: auto;
-  align-self: stretch;
-  flex-shrink: 0; scroll-snap-align: start;
+  width: 340px; height: 420px; flex-shrink: 0; scroll-snap-align: start;
   border-radius: var(--radius-2xl); border: 1px solid var(--border);
   background: var(--card); display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 16px;
-  position: relative; overflow: hidden; text-align: center; padding: 32px;
+  align-items: center; justify-content: center; gap: 14px;
+  position: relative; overflow: hidden;
 }
 .scroll-card-lock::before {
   content: ''; position: absolute; inset: 0;
   background: repeating-linear-gradient(
-    -45deg, transparent, transparent 20px,
-    rgba(99,140,255,0.025) 20px, rgba(99,140,255,0.025) 21px
+    -45deg,
+    transparent,
+    transparent 20px,
+    rgba(99,140,255,0.025) 20px,
+    rgba(99,140,255,0.025) 21px
   );
 }
 .scroll-lock-icon {
-  width: 48px; height: 48px; border-radius: 50%;
+  width: 40px; height: 40px; border-radius: 50%;
   background: rgba(99,140,255,0.08); border: 1px solid rgba(99,140,255,0.2);
   display: flex; align-items: center; justify-content: center;
-  color: var(--blue); position: relative; z-index: 1; flex-shrink: 0;
+  color: var(--blue); position: relative; z-index: 1;
 }
-.scroll-lock-text { position: relative; z-index: 1; }
+.scroll-lock-text {
+  text-align: center; padding: 0 28px; position: relative; z-index: 1;
+}
 .scroll-lock-text strong {
   display: block; font-size: 13px; font-weight: 600; color: var(--slate);
-  margin-bottom: 8px; letter-spacing: 0.02em;
+  margin-bottom: 6px; letter-spacing: 0.02em;
 }
-.scroll-lock-text span { font-size: 12px; color: var(--muted); line-height: 1.55; }
+.scroll-lock-text span {
+  font-size: 12px; color: var(--muted); line-height: 1.5;
+}
 
 
 /* ── GALLERY SLIDE (Visualização) ── */
 .gallery-scroll-wrapper {
   width: 100vw;
-  margin-left: calc(50% - 50vw);
-  padding-left: calc(50vw - 50%);
-  padding-right: calc(50vw - 50%);
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding-left: calc(50vw - 50% + 40px);
+  padding-right: calc(50vw - 50% + 40px);
   box-sizing: border-box;
   overflow-x: auto;
   padding-bottom: 20px;
@@ -621,6 +618,12 @@ footer {
   .ficha-grid { grid-template-columns: repeat(2, 1fr); }
   .wrap { padding: 0 24px; }
   .sticky-bar { padding: 14px 24px; }
+  
+  /* Mantendo o padding equivalente ao wrap mobile pros scrolls */
+  .scroll-wrapper, .gallery-scroll-wrapper {
+    padding-left: calc(50vw - 50% + 24px);
+    padding-right: calc(50vw - 50% + 24px);
+  }
 }
 @media (max-width: 600px) {
   :root { --section-py: 52px; --section-py-lg: 72px; }
