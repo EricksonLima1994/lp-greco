@@ -31,12 +31,12 @@
   --radius-2xl:  24px;
   --radius-full: 9999px;
 
-  /* ── Gap padrão entre seções ───────────────────────────────
-     Todas as seções usam --section-py como padding vertical.
-     Seções de destaque (hero, final-cta) usam --section-py-lg.
-  ──────────────────────────────────────────────────────── */
   --section-py:    88px;
   --section-py-lg: 120px;
+
+  /* Wrap metrics for scroll alignment */
+  --wrap-max: 1100px;
+  --wrap-px: 40px;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -116,7 +116,7 @@ body::before {
 .btn-sm { padding: 13px 32px !important; font-size: 12px !important; }
 
 /* ── WRAP ── */
-.wrap { max-width: 1100px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 1; }
+.wrap { max-width: var(--wrap-max); margin: 0 auto; padding: 0 var(--wrap-px); position: relative; z-index: 1; }
 
 /* ═══════════════════════════════════════════════════
    HERO
@@ -343,105 +343,112 @@ body::before {
 .phase-list li { font-size: 14px; color: var(--slate); padding-left: 16px; position: relative; }
 .phase-list li::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
 
-/* ── SCROLL PLANTAS (O que você vai construir) ── */
-.scroll-wrapper {
+/* ══════════════════════════════════════════════════════
+   SCROLL HORIZONTAL — SISTEMA UNIFICADO
+   Alinha o primeiro card com a borda interna do .wrap
+══════════════════════════════════════════════════════ */
+.scroll-wrapper,
+.gallery-scroll-wrapper {
   width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  padding-left: calc(50vw - 50% + 40px);
-  padding-right: calc(50vw - 50% + 40px);
+  margin-left: calc(50% - 50vw);
   box-sizing: border-box;
   overflow-x: auto;
   padding-bottom: 20px;
-  margin-top: 32px;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  /* Alinha o primeiro card com o conteúdo do .wrap:
+     Em telas largas: (50vw - metade do max-width) = margem do wrap
+     Em telas estreitas: cai no padding mínimo do wrap */
+  padding-left: max(calc(50vw - var(--wrap-max) / 2 + var(--wrap-px)), var(--wrap-px));
+  padding-right: var(--wrap-px);
 }
-.scroll-wrapper::-webkit-scrollbar { height: 6px; }
-.scroll-wrapper::-webkit-scrollbar-track { background: var(--border2); border-radius: 10px; }
-.scroll-wrapper::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
-.scroll-wrapper::-webkit-scrollbar-thumb:hover { background: var(--blue); }
-.scroll-inner { display: flex; gap: 16px; width: max-content; }
+.scroll-wrapper {
+  margin-top: 32px;
+}
+.gallery-scroll-wrapper {
+  margin-top: 0;
+}
 
-/* Cards originais de planta */
-.scroll-card-image {
-  width: 340px; height: 420px; object-fit: cover;
-  border-radius: var(--radius-2xl); scroll-snap-align: start; flex-shrink: 0;
-  display: block; border: 1px solid var(--border);
-}
+/* Scrollbar styling compartilhado */
+.scroll-wrapper::-webkit-scrollbar,
+.gallery-scroll-wrapper::-webkit-scrollbar { height: 6px; }
+.scroll-wrapper::-webkit-scrollbar-track,
+.gallery-scroll-wrapper::-webkit-scrollbar-track { background: var(--border2); border-radius: 10px; }
+.scroll-wrapper::-webkit-scrollbar-thumb,
+.gallery-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+.scroll-wrapper::-webkit-scrollbar-thumb:hover,
+.gallery-scroll-wrapper::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+
+.scroll-inner,
+.gallery-scroll-inner { display: flex; gap: 16px; width: max-content; padding: 4px 2px; }
+
+.gallery-scroll-inner { gap: 12px; }
+
+/* Cards de planta com imagem e tag overlay */
 .scroll-card-wrap {
-  position: relative; flex-shrink: 0; scroll-snap-align: start;
-  width: 340px; border-radius: var(--radius-2xl); overflow: hidden;
+  width: 340px;
+  height: auto !important;
+  aspect-ratio: auto !important;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
   border: 1px solid var(--border);
+  position: relative;
+  flex-shrink: 0;
+  scroll-snap-align: start;
 }
 .scroll-card-wrap .scroll-card-image {
-  width: 100%; height: 100%; scroll-snap-align: unset; flex-shrink: unset;
-  border-radius: 0; border: none;
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+  object-fit: fill !important;
+  position: static !important;
+  transform: none !important;
+  aspect-ratio: auto !important;
 }
 .scroll-card-tag {
   position: absolute; top: 14px; left: 14px;
-  background: rgba(8,10,15,0.75); backdrop-filter: blur(8px);
-  border: 1px solid rgba(99,140,255,0.45); color: var(--blue);
-  font-size: 10px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase;
+  background: rgba(8,10,15,0.82); backdrop-filter: blur(8px);
+  border: 1px solid rgba(99,140,255,0.5); color: var(--blue);
+  font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 600;
+  letter-spacing: 0.09em; text-transform: uppercase;
   padding: 5px 12px; border-radius: var(--radius-full);
-  box-shadow: 0 0 10px rgba(99,140,255,0.2), inset 0 0 6px rgba(99,140,255,0.06);
+  box-shadow: 0 0 10px rgba(99,140,255,0.18);
   pointer-events: none; z-index: 2;
 }
+
+/* Cards bloqueados no scroll de plantas */
 .scroll-card-lock {
-  width: 340px; height: 420px; flex-shrink: 0; scroll-snap-align: start;
+  width: 340px;
+  height: auto;
+  align-self: stretch;
+  flex-shrink: 0; scroll-snap-align: start;
   border-radius: var(--radius-2xl); border: 1px solid var(--border);
   background: var(--card); display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 14px;
-  position: relative; overflow: hidden;
+  align-items: center; justify-content: center; gap: 16px;
+  position: relative; overflow: hidden; text-align: center; padding: 32px;
 }
 .scroll-card-lock::before {
   content: ''; position: absolute; inset: 0;
   background: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 20px,
-    rgba(99,140,255,0.025) 20px,
-    rgba(99,140,255,0.025) 21px
+    -45deg, transparent, transparent 20px,
+    rgba(99,140,255,0.025) 20px, rgba(99,140,255,0.025) 21px
   );
 }
 .scroll-lock-icon {
-  width: 40px; height: 40px; border-radius: 50%;
+  width: 48px; height: 48px; border-radius: 50%;
   background: rgba(99,140,255,0.08); border: 1px solid rgba(99,140,255,0.2);
   display: flex; align-items: center; justify-content: center;
-  color: var(--blue); position: relative; z-index: 1;
+  color: var(--blue); position: relative; z-index: 1; flex-shrink: 0;
 }
-.scroll-lock-text {
-  text-align: center; padding: 0 28px; position: relative; z-index: 1;
-}
+.scroll-lock-text { position: relative; z-index: 1; }
 .scroll-lock-text strong {
   display: block; font-size: 13px; font-weight: 600; color: var(--slate);
-  margin-bottom: 6px; letter-spacing: 0.02em;
+  margin-bottom: 8px; letter-spacing: 0.02em;
 }
-.scroll-lock-text span {
-  font-size: 12px; color: var(--muted); line-height: 1.5;
-}
+.scroll-lock-text span { font-size: 12px; color: var(--muted); line-height: 1.55; }
 
 
 /* ── GALLERY SLIDE (Visualização) ── */
-.gallery-scroll-wrapper {
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  padding-left: calc(50vw - 50% + 40px);
-  padding-right: calc(50vw - 50% + 40px);
-  box-sizing: border-box;
-  overflow-x: auto;
-  padding-bottom: 20px;
-  margin-top: 0;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-.gallery-scroll-wrapper::-webkit-scrollbar { height: 6px; }
-.gallery-scroll-wrapper::-webkit-scrollbar-track { background: var(--border2); border-radius: 10px; }
-.gallery-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
-.gallery-scroll-wrapper::-webkit-scrollbar-thumb:hover { background: var(--blue); }
-.gallery-scroll-inner { display: flex; gap: 12px; width: max-content; padding: 4px 2px; }
-
 .gal-slide {
   width: 480px; height: 300px; flex-shrink: 0; scroll-snap-align: start;
   border-radius: var(--radius-2xl); position: relative; overflow: hidden;
@@ -607,7 +614,7 @@ footer {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  :root { --section-py: 64px; --section-py-lg: 88px; }
+  :root { --section-py: 64px; --section-py-lg: 88px; --wrap-px: 24px; }
   .site-header .wrap { text-align: center; }
   .site-header { padding: 24px 0; }
   .hero-inner { grid-template-columns: 1fr; gap: 48px; }
@@ -618,15 +625,9 @@ footer {
   .ficha-grid { grid-template-columns: repeat(2, 1fr); }
   .wrap { padding: 0 24px; }
   .sticky-bar { padding: 14px 24px; }
-  
-  /* Mantendo o padding equivalente ao wrap mobile pros scrolls */
-  .scroll-wrapper, .gallery-scroll-wrapper {
-    padding-left: calc(50vw - 50% + 24px);
-    padding-right: calc(50vw - 50% + 24px);
-  }
 }
 @media (max-width: 600px) {
-  :root { --section-py: 52px; --section-py-lg: 72px; }
+  :root { --section-py: 52px; --section-py-lg: 72px; --wrap-px: 20px; }
   .selos { flex-wrap: wrap; gap: 8px; }
   footer { flex-direction: column; text-align: center; }
   .footer-links { justify-content: center; }
@@ -883,28 +884,29 @@ footer {
         </ul>
       </div>
     </div>
-    <div class="scroll-wrapper reveal">
-      <div class="scroll-inner">
-        <div class="scroll-card-wrap">
-          <img src="plantaa.png" alt="Planta da casa 70m²" class="scroll-card-image">
-          <div class="scroll-card-tag">Planta inicial · 70m²</div>
-        </div>
-        <div class="scroll-card-wrap">
-          <img src="plantab.png" alt="Planta da casa 170m²" class="scroll-card-image">
-          <div class="scroll-card-tag">Projeto com ampliação · 170m²</div>
-        </div>
-        <div class="scroll-card-lock">
-          <div class="scroll-lock-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-          <div class="scroll-lock-text"><strong>⚠ Conteúdo Bloqueado</strong><span>Compre e libere o projeto completo com as medidas.</span></div>
-        </div>
-        <div class="scroll-card-lock">
-          <div class="scroll-lock-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-          <div class="scroll-lock-text"><strong>⚠ Conteúdo Bloqueado</strong><span>Compre e libere o projeto completo com as medidas.</span></div>
-        </div>
-        <div class="scroll-card-lock">
-          <div class="scroll-lock-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-          <div class="scroll-lock-text"><strong>⚠ Conteúdo Bloqueado</strong><span>Compre e libere o projeto completo com as medidas.</span></div>
-        </div>
+  </div>
+  <!-- Scroll de plantas — agora fora do .wrap mas com padding alinhado -->
+  <div class="scroll-wrapper reveal">
+    <div class="scroll-inner">
+      <div class="scroll-card-wrap">
+        <img src="plantaa.png" alt="Planta da casa 70m²" class="scroll-card-image">
+        <div class="scroll-card-tag">Planta inicial · 70m²</div>
+      </div>
+      <div class="scroll-card-wrap">
+        <img src="plantab.png" alt="Planta da casa 170m²" class="scroll-card-image">
+        <div class="scroll-card-tag">Projeto com ampliação · 170m²</div>
+      </div>
+      <div class="scroll-card-lock">
+        <div class="scroll-lock-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div class="scroll-lock-text"><strong>⚠ Conteúdo Bloqueado</strong><span>Compre e libere o projeto completo com as medidas.</span></div>
+      </div>
+      <div class="scroll-card-lock">
+        <div class="scroll-lock-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div class="scroll-lock-text"><strong>⚠ Conteúdo Bloqueado</strong><span>Compre e libere o projeto completo com as medidas.</span></div>
+      </div>
+      <div class="scroll-card-lock">
+        <div class="scroll-lock-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div class="scroll-lock-text"><strong>⚠ Conteúdo Bloqueado</strong><span>Compre e libere o projeto completo com as medidas.</span></div>
       </div>
     </div>
   </div>
@@ -918,49 +920,48 @@ footer {
       <p class="section-sub">Renders e plantas do projeto real — fachada, perspectiva 3D e layouts de ambos os pavimentos.</p>
     </div>
   </div>
-  <div style="padding: 0 40px; max-width: 1180px; margin: 0 auto; position: relative; z-index: 1;">
-    <div class="gallery-scroll-wrapper reveal">
-      <div class="gallery-scroll-inner">
-        <div class="gal-slide">
-          <img src="image001.png" alt="Fachada principal">
-          <div class="gal-tag">Fachada</div>
-        </div>
-        <div class="gal-slide">
-          <img src="image002.png" alt="Perspectiva 3D">
-          <div class="gal-tag">Fachada</div>
-        </div>
-        <div class="gal-slide">
-          <img src="image003.png" alt="Planta Fase 01">
-          <div class="gal-tag">Fachada</div>
-        </div>
-        <div class="gal-slide">
-          <img src="image004.png" alt="Planta Fase 02">
-          <div class="gal-tag">Facahda sem muro</div>
-        </div>
-        <div class="gal-slide">
-          <img src="image005.png" alt="Ambiente interno">
-          <div class="gal-tag">Fundos</div>
-        </div>
-        <div class="gal-slide-lock">
-          <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-          <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
-        </div>
-        <div class="gal-slide-lock">
-          <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-          <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
-        </div>
-        <div class="gal-slide-lock">
-          <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-          <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
-        </div>
-        <div class="gal-slide-lock">
-          <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-          <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
-        </div>
-        <div class="gal-slide-lock">
-          <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-          <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
-        </div>
+  <!-- Gallery scroll — agora fora do .wrap mas com padding alinhado -->
+  <div class="gallery-scroll-wrapper reveal">
+    <div class="gallery-scroll-inner">
+      <div class="gal-slide">
+        <img src="image001.png" alt="Fachada principal">
+        <div class="gal-tag">Fachada</div>
+      </div>
+      <div class="gal-slide">
+        <img src="image002.png" alt="Perspectiva 3D">
+        <div class="gal-tag">Fachada</div>
+      </div>
+      <div class="gal-slide">
+        <img src="image003.png" alt="Planta Fase 01">
+        <div class="gal-tag">Fachada</div>
+      </div>
+      <div class="gal-slide">
+        <img src="image004.png" alt="Planta Fase 02">
+        <div class="gal-tag">Facahda sem muro</div>
+      </div>
+      <div class="gal-slide">
+        <img src="image005.png" alt="Ambiente interno">
+        <div class="gal-tag">Fundos</div>
+      </div>
+      <div class="gal-slide-lock">
+        <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
+      </div>
+      <div class="gal-slide-lock">
+        <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
+      </div>
+      <div class="gal-slide-lock">
+        <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
+      </div>
+      <div class="gal-slide-lock">
+        <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
+      </div>
+      <div class="gal-slide-lock">
+        <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
       </div>
     </div>
   </div>
@@ -1168,7 +1169,7 @@ footer {
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#sobre">Contato</a></li>
   </ul>
-  <p class="footer-copy">© 2025 · Todos os direitos reservados</p>
+  <p class="footer-copy">© 2026 · Todos os direitos reservados</p>
 </footer>
 
 <button id="themeSwitcher" aria-label="Trocar tema de cores">
