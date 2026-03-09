@@ -538,7 +538,6 @@ body::before {
 .forwho-title { font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 600; color: var(--white); line-height: 1.4; margin-bottom: 10px; }
 .forwho-desc { font-size: 13px; line-height: 1.65; color: var(--slate); }
 
-/* ── GUARANTEE ── */
 .guarantee-box {
   background: var(--card); border: 1px solid var(--border);
   border-radius: var(--radius-lg); padding: 36px; max-width: 640px;
@@ -547,7 +546,6 @@ body::before {
 .guarantee-title { font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 12px; }
 .guarantee-text { font-size: 14px; line-height: 1.7; color: var(--slate); }
 
-/* ── FAQ ── */
 .faq-wrap { max-width: 720px; margin: 0 auto; }
 .faq-list { display: flex; flex-direction: column; gap: 0; margin-top: 40px; }
 .faq-item { border-bottom: 1px solid var(--border2); }
@@ -569,7 +567,6 @@ body::before {
 .faq-a-inner { padding-bottom: 20px; font-size: 14px; line-height: 1.7; color: var(--slate); }
 .faq-item.open .faq-a { max-height: 200px; }
 
-/* ── FINAL CTA ── */
 .final-section::before {
   content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
   width: 800px; height: 500px; background: radial-gradient(ellipse, rgba(99,140,255,0.09) 0%, transparent 70%); pointer-events: none;
@@ -658,27 +655,10 @@ footer {
 }
 [class*="card-shine--"] > * { position: relative; z-index: 1; }
 
-/* ══════════════════════════════════════
-   THEME SWITCHER
-══════════════════════════════════════ */
-#themeSwitcher {
-  position: fixed; bottom: 88px; right: 20px; z-index: 998;
-  display: flex; align-items: center; gap: 7px; padding: 7px 14px 7px 10px;
-  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-  border-radius: var(--radius-full); cursor: pointer;
-  font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 500;
-  letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.25);
-  backdrop-filter: blur(12px); user-select: none;
-}
-#themeSwitcher:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.5); }
-#themeSwitcher svg { flex-shrink: 0; transition: transform 0.5s ease; }
-#themeSwitcher:hover svg { transform: rotate(60deg); }
-#themeAccentDot { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
-
 *, *::before, *::after {
   transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease !important;
 }
-.btn-primary, .forwho-card, .faq-icon, .faq-q, #themeSwitcher svg {
+.btn-primary, .forwho-card, .faq-icon, .faq-q {
   transition:
     background-color 0.3s cubic-bezier(0.16,1,0.3,1),
     color 0.2s ease, border-color 0.3s ease,
@@ -742,7 +722,7 @@ footer {
     <span class="sticky-offer">Oferta atual</span>
     <span class="sticky-price"><sup style="font-size:14px;vertical-align:super;color:var(--blue)">R$</sup>47</span>
   </div>
-  <a href="#comprar" class="btn btn-primary btn-sm">Quero o projeto</a>
+  <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" target="_blank" rel="noopener" class="btn btn-primary btn-sm js-checkout-link">Quero o projeto</a>
 </div>
 
 <section class="hero">
@@ -791,7 +771,7 @@ footer {
             <span><strong>Acesso imediato</strong> — Receba agora no E-mail e WhatsApp</span>
           </li>
         </ul>
-        <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" target="_blank" rel="noopener" class="btn btn-primary price-cta">Quero acessar o projeto agora</a>
+        <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" target="_blank" rel="noopener" class="btn btn-primary price-cta js-checkout-link">Quero acessar o projeto agora</a>
         <div class="price-safe">Garantia de 7 dias — Risco zero</div>
       </div>
     </div>
@@ -1154,7 +1134,7 @@ footer {
             <span><strong>Acesso imediato</strong> (E-mail e WhatsApp)</span>
           </li>
         </ul>
-        <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" target="_blank" rel="noopener" class="btn btn-primary price-cta">Garantir meu projeto agora</a>
+        <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" target="_blank" rel="noopener" class="btn btn-primary price-cta js-checkout-link">Garantir meu projeto agora</a>
         <div class="price-safe">Garantia de 7 dias — Risco zero</div>
       </div>
     </div>
@@ -1169,17 +1149,8 @@ footer {
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#sobre">Contato</a></li>
   </ul>
-  <p class="footer-copy">© 2025 · Todos os direitos reservados</p>
+  <p class="footer-copy">© 2026 · Todos os direitos reservados</p> 
 </footer>
-
-<button id="themeSwitcher" aria-label="Trocar tema de cores">
-  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <circle cx="12" cy="12" r="4"/>
-    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
-  </svg>
-  <div id="themeAccentDot"></div>
-  <span id="themeLabel">meta</span>
-</button>
 
 <script>
 // ── STICKY BAR ──────────────────────────────────────────
@@ -1205,7 +1176,15 @@ document.querySelectorAll('.faq-q').forEach(btn => {
   });
 });
 
-// ── THEME SWITCHER ───────────────────────────────────────
+// ── THEME CONFIG (SEM BOTÃO NA UI) ───────────────────────
+const THEME_FLAGS = {
+  meta: true,
+  default: false,
+  spotify: false,
+  premium: false,
+  minimal: false
+};
+
 const themes = [
   {
     label: 'meta',
@@ -1259,22 +1238,23 @@ const themes = [
   }
 ];
 
-let current = 0;
 function applyTheme(t) {
   const root = document.documentElement;
   Object.entries(t.vars).forEach(([k, v]) => root.style.setProperty(k, v));
-  document.getElementById('themeLabel').textContent = t.label;
-  document.getElementById('themeAccentDot').style.background = t.vars['--blue'];
 }
-document.getElementById('themeSwitcher').addEventListener('click', () => {
-  current = (current + 1) % themes.length;
-  applyTheme(themes[current]);
-});
 
-// ── VISIT TRACKER ───────────────────────────────────────
+function getSelectedTheme() {
+  const activeTheme = Object.keys(THEME_FLAGS).find((key) => THEME_FLAGS[key]);
+  return themes.find((theme) => theme.label === activeTheme) || themes[0];
+}
+
+applyTheme(getSelectedTheme());
+
+// ── VISIT TRACKER + UTM REPLAY PARA CHECKOUT ────────────
 (function () {
   var ORG_ID = "cmm8rtff60000l404zb96q4ld";
   var BASE_URL = "https://everestpayments.com.br";
+  var CAMPAIGN_KEYS = ["fbclid", "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
 
   function getParam(name) {
     try { return new URL(window.location.href).searchParams.get(name); } catch { return null; }
@@ -1288,25 +1268,98 @@ document.getElementById('themeSwitcher').addEventListener('click', () => {
     try { sessionStorage.setItem(key, "1"); } catch {}
   }
 
+  function getOrCreateClientId() {
+    try {
+      var existing = localStorage.getItem("sv:clientId");
+      if (existing) return existing;
+
+      var created =
+        (typeof crypto !== "undefined" && crypto.randomUUID)
+          ? crypto.randomUUID()
+          : "cid_" + Date.now() + "_" + Math.random().toString(36).slice(2);
+
+      localStorage.setItem("sv:clientId", created);
+      return created;
+    } catch {
+      return null;
+    }
+  }
+
+  function persistCampaignParams() {
+    for (var i = 0; i < CAMPAIGN_KEYS.length; i++) {
+      try {
+        var key = CAMPAIGN_KEYS[i];
+        var value = getParam(key);
+        if (value) sessionStorage.setItem("sv:" + key, value);
+      } catch {}
+    }
+  }
+
+  function getStoredParam(name) {
+    try {
+      var fromUrl = getParam(name);
+      if (fromUrl) {
+        sessionStorage.setItem("sv:" + name, fromUrl);
+        return fromUrl;
+      }
+      return sessionStorage.getItem("sv:" + name);
+    } catch {
+      return getParam(name);
+    }
+  }
+
   function buildPayload() {
     return {
       site: "lp",
       path: window.location.pathname + window.location.search,
       organizationId: ORG_ID,
       referrer: document.referrer || null,
-      fbclid: getParam("fbclid"),
-      utm_source: getParam("utm_source"),
-      utm_medium: getParam("utm_medium"),
-      utm_campaign: getParam("utm_campaign"),
-      utm_content: getParam("utm_content"),
-      utm_term: getParam("utm_term"),
+      fbclid: getStoredParam("fbclid"),
+      utm_source: getStoredParam("utm_source"),
+      utm_medium: getStoredParam("utm_medium"),
+      utm_campaign: getStoredParam("utm_campaign"),
+      utm_content: getStoredParam("utm_content"),
+      utm_term: getStoredParam("utm_term"),
       userAgent: navigator.userAgent || null,
+      clientId: getOrCreateClientId(),
     };
   }
 
+  function appendCampaignParamsToCheckoutLinks() {
+    var links = document.querySelectorAll(".js-checkout-link");
+    if (!links.length) return;
+
+    for (var i = 0; i < links.length; i++) {
+      var link = links[i];
+      var href = link.getAttribute("href");
+      if (!href) continue;
+
+      try {
+        var url = new URL(href);
+        for (var j = 0; j < CAMPAIGN_KEYS.length; j++) {
+          var key = CAMPAIGN_KEYS[j];
+          var value = getStoredParam(key);
+          if (value && !url.searchParams.get(key)) {
+            url.searchParams.set(key, value);
+          }
+        }
+
+        var clientId = getOrCreateClientId();
+        if (clientId && !url.searchParams.get("clientId")) {
+          url.searchParams.set("clientId", clientId);
+        }
+
+        link.setAttribute("href", url.toString());
+      } catch {}
+    }
+  }
+
   function sendVisit() {
-    var pathFull = window.location.pathname + window.location.search;
-    var dedupeKey = "sv:v1:" + pathFull;
+    persistCampaignParams();
+    appendCampaignParamsToCheckoutLinks();
+
+    var pathname = window.location.pathname || "/";
+    var dedupeKey = "sv:v1:" + pathname;
 
     if (alreadySent(dedupeKey)) return;
 
@@ -1315,7 +1368,6 @@ document.getElementById('themeSwitcher').addEventListener('click', () => {
     fetch(BASE_URL + "/api/track/visit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      keepalive: true,
       body: JSON.stringify(payload),
     })
       .then(function (res) {
@@ -1323,19 +1375,7 @@ document.getElementById('themeSwitcher').addEventListener('click', () => {
         markSent(dedupeKey);
         return res.text();
       })
-      .catch(function () {
-        fetch(BASE_URL + "/api/track/visit", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        })
-          .then(function (res) {
-            if (!res.ok) throw new Error("Falha ao registrar visita");
-            markSent(dedupeKey);
-            return res.text();
-          })
-          .catch(function () {});
-      });
+      .catch(function () {});
   }
 
   if (document.readyState === "complete") {
@@ -1347,7 +1387,7 @@ document.getElementById('themeSwitcher').addEventListener('click', () => {
 </script>
 
 <div class="mobile-cta-bar">
-  <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" target="_blank" rel="noopener">
+  <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" target="_blank" rel="noopener" class="js-checkout-link">
     <span>Garantir meu projeto</span>
     <span class="mobile-cta-bar-price">R$47 · Acesso imediato</span>
   </a>
