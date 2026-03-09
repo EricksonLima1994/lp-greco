@@ -1378,10 +1378,10 @@ applyTheme(getSelectedTheme());
       .catch(function () {});
   }
 
-  if (document.readyState === "complete") {
+    if (document.readyState === "complete" || document.readyState === "interactive") {
     sendVisit();
   } else {
-    window.addEventListener("load", sendVisit, { once: true });
+    document.addEventListener("DOMContentLoaded", sendVisit, { once: true });
   }
 })();
 </script>
