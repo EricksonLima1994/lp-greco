@@ -269,6 +269,7 @@ body::before {
 .problem-section  { padding: var(--section-py) 0; background: var(--dark); position: relative; overflow: hidden; }
 .forwho-section   { padding: var(--section-py) 0; background: var(--dark); }
 .gallery-section  { padding: var(--section-py) 0; touch-action: manipulation; }
+.social-section   { padding: var(--section-py) 0; position: relative; background: var(--dark); overflow: hidden; }
 .faq-section      { padding: var(--section-py) 0; }
 .ficha-section    { padding: var(--section-py) 0; position: relative; z-index: 1; }
 .final-section    { padding: var(--section-py-lg) 0; background: var(--dark); position: relative; overflow: hidden; text-align: center; }
@@ -380,7 +381,8 @@ body::before {
    SCROLL HORIZONTAL — SISTEMA UNIFICADO
 ══════════════════════════════════════════════════════ */
 .scroll-wrapper,
-.gallery-scroll-wrapper {
+.gallery-scroll-wrapper,
+.depo-gallery-scroll-wrapper {
   overflow-x: auto;
   overflow-y: hidden;
   padding-bottom: 20px;
@@ -393,28 +395,35 @@ body::before {
 .scroll-wrapper {
   margin-top: 32px;
 }
-.gallery-scroll-wrapper {
+.gallery-scroll-wrapper,
+.depo-gallery-scroll-wrapper {
   margin-top: 0;
 }
 
 .scroll-wrapper::-webkit-scrollbar,
-.gallery-scroll-wrapper::-webkit-scrollbar { height: 6px; }
+.gallery-scroll-wrapper::-webkit-scrollbar,
+.depo-gallery-scroll-wrapper::-webkit-scrollbar { height: 6px; }
 .scroll-wrapper::-webkit-scrollbar-track,
-.gallery-scroll-wrapper::-webkit-scrollbar-track { background: var(--border2); border-radius: 10px; }
+.gallery-scroll-wrapper::-webkit-scrollbar-track,
+.depo-gallery-scroll-wrapper::-webkit-scrollbar-track { background: var(--border2); border-radius: 10px; }
 .scroll-wrapper::-webkit-scrollbar-thumb,
-.gallery-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+.gallery-scroll-wrapper::-webkit-scrollbar-thumb,
+.depo-gallery-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
 .scroll-wrapper::-webkit-scrollbar-thumb:hover,
-.gallery-scroll-wrapper::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+.gallery-scroll-wrapper::-webkit-scrollbar-thumb:hover,
+.depo-gallery-scroll-wrapper::-webkit-scrollbar-thumb:hover { background: var(--blue); }
 
 .scroll-inner,
-.gallery-scroll-inner {
+.gallery-scroll-inner,
+.depo-gallery-scroll-inner {
   display: flex;
   gap: 16px;
   width: max-content;
   padding: 4px 0;
 }
 
-.gallery-scroll-inner { gap: 12px; }
+.gallery-scroll-inner,
+.depo-gallery-scroll-inner { gap: 12px; }
 
 .scroll-card-wrap {
   width: 340px;
@@ -477,15 +486,18 @@ body::before {
 }
 .scroll-lock-text span { font-size: 12px; color: var(--muted); line-height: 1.55; }
 
-.gal-slide {
+.gal-slide,
+.depo-gal-slide {
   width: 480px; height: 300px; flex-shrink: 0; scroll-snap-align: start;
   border-radius: var(--radius-2xl); position: relative; overflow: hidden;
   border: 1px solid var(--border2); display: block;
 }
-.gal-slide img {
+.gal-slide img,
+.depo-gal-slide img {
   width: 100%; height: 100%; object-fit: cover; display: block;
 }
-.gal-slide-lock {
+.gal-slide-lock,
+.depo-gal-slide-lock {
   width: 480px; height: 300px; flex-shrink: 0; scroll-snap-align: start;
   border-radius: var(--radius-2xl); position: relative; overflow: hidden;
   border: 1px solid var(--border);
@@ -494,7 +506,8 @@ body::before {
   gap: 14px; text-align: center; padding: 32px;
   cursor: default;
 }
-.gal-slide-lock::before {
+.gal-slide-lock::before,
+.depo-gal-slide-lock::before {
   content: '';
   position: absolute; inset: 0;
   background: repeating-linear-gradient(
@@ -503,7 +516,8 @@ body::before {
     rgba(99,140,255,0.02) 8px, rgba(99,140,255,0.02) 16px
   );
 }
-.gal-lock-icon {
+.gal-lock-icon,
+.depo-gal-lock-icon {
   width: 44px; height: 44px;
   background: rgba(99,140,255,0.08);
   border: 1px solid var(--border);
@@ -511,12 +525,15 @@ body::before {
   display: flex; align-items: center; justify-content: center;
   color: var(--blue); flex-shrink: 0; position: relative; z-index: 1;
 }
-.gal-lock-text {
+.gal-lock-text,
+.depo-gal-lock-text {
   font-size: 12px; line-height: 1.6; color: var(--muted);
   max-width: 260px; position: relative; z-index: 1;
 }
-.gal-lock-text strong { display: block; color: var(--slate); font-weight: 500; font-size: 13px; margin-bottom: 4px; }
-.gal-tag {
+.gal-lock-text strong,
+.depo-gal-lock-text strong { display: block; color: var(--slate); font-weight: 500; font-size: 13px; margin-bottom: 4px; }
+.gal-tag,
+.depo-gal-tag {
   position: absolute; bottom: 12px; left: 12px;
   background: rgba(8,10,15,0.9); border: 1px solid var(--border);
   border-radius: var(--radius-xs); padding: 4px 10px;
@@ -637,6 +654,108 @@ footer {
 .reveal-d2 { transition-delay: 0.12s; }
 .reveal-d3 { transition-delay: 0.18s; }
 
+/* ══════════════════════════════════════════════════════
+   EXPERIÊNCIAS REAIS — CARD DEPOIMENTO
+══════════════════════════════════════════════════════ */
+.social-section::before {
+  content: '';
+  position: absolute;
+  left: -200px; top: 50%; transform: translateY(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.depo-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 32px 36px;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, background 0.3s;
+}
+.depo-card:hover {
+  border-color: rgba(0, 130, 251, 0.25);
+  background: var(--card2);
+}
+
+.depo-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.depo-avatar {
+  width: 44px; height: 44px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, rgba(0, 130, 251, 0.3) 0%, rgba(0, 82, 160, 0.5) 100%);
+  border: 1px solid rgba(0, 130, 251, 0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px; font-weight: 700;
+  color: var(--blue);
+  flex-shrink: 0;
+  letter-spacing: 0.04em;
+}
+
+.depo-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.depo-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px; font-weight: 600;
+  color: var(--white);
+  display: block;
+}
+
+.depo-meta {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+.depo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: rgba(0, 130, 251, 0.07);
+  border: 1px solid rgba(0, 130, 251, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--blue);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.depo-badge svg { flex-shrink: 0; }
+
+.depo-stars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 16px;
+  color: #F6C90E;
+}
+
+.depo-text {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--slate);
+  font-style: normal;
+  border-left: 2px solid rgba(0, 130, 251, 0.3);
+  padding-left: 20px;
+  margin: 0;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   :root { --section-py: 64px; --section-py-lg: 88px; --wrap-px: 24px; }
@@ -650,6 +769,8 @@ footer {
   .ficha-grid { grid-template-columns: repeat(2, 1fr); }
   .wrap { padding: 0 24px; }
   .sticky-bar { padding: 14px 24px; }
+  .depo-card { padding: 24px; }
+  .depo-badge { display: none; }
 }
 @media (max-width: 600px) {
   :root { --section-py: 52px; --section-py-lg: 72px; --wrap-px: 20px; }
@@ -659,6 +780,14 @@ footer {
   .scroll-card-image { width: 280px; }
   .hero-bg-image { height: 55%; }
   .ficha-grid { grid-template-columns: repeat(2, 1fr); }
+  .depo-text { font-size: 14px; }
+  .gal-slide,
+  .gal-slide-lock,
+  .depo-gal-slide,
+  .depo-gal-slide-lock {
+    width: 320px;
+    height: 220px;
+  }
 }
 
 /* ══════════════════════════════════════════════════════════════════
@@ -937,6 +1066,71 @@ footer {
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="social-section" id="depoimento">
+  <div class="wrap">
+    <div class="section-header--center reveal">
+      <div class="section-tag section-tag--center">Experiências Reais</div>
+      <h2 class="section-title">Veja na prática quem já está <span class="accent">tirando do papel</span></h2>
+      <p class="section-sub">Relatos de quem comprou, recebeu o projeto e já começou a transformar o sonho em obra.</p>
+    </div>
+
+    <div class="depo-gallery-scroll-wrapper reveal">
+      <div class="depo-gallery-scroll-inner">
+        <div class="depo-gal-slide image-protect-wrap">
+          <img src="depo01.png" alt="Obra em andamento - foto 1" class="protected-image" draggable="false">
+          <div class="image-guard" aria-hidden="true"></div>
+          <div class="depo-gal-tag">Obra em andamento</div>
+        </div>
+        <div class="depo-gal-slide image-protect-wrap">
+          <img src="depo02.png" alt="Obra em andamento - foto 2" class="protected-image" draggable="false">
+          <div class="image-guard" aria-hidden="true"></div>
+          <div class="depo-gal-tag">Execução real</div>
+        </div>
+        <div class="depo-gal-slide image-protect-wrap">
+          <img src="depo03.png" alt="Obra em andamento - foto 3" class="protected-image" draggable="false">
+          <div class="image-guard" aria-hidden="true"></div>
+          <div class="depo-gal-tag">Resultado parcial</div>
+        </div>
+        <div class="depo-gal-slide-lock">
+          <div class="depo-gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="depo-gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie mais registros reais de execução.</div>
+        </div>
+        <div class="depo-gal-slide-lock">
+          <div class="depo-gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="depo-gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie mais registros reais de execução.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="depo-card card-shine--top reveal reveal-d2">
+      <div class="depo-card-header">
+        <div class="depo-avatar">PA</div>
+        <div class="depo-info">
+          <strong class="depo-name">Pablo Alves</strong>
+          <span class="depo-meta">Comprador verificado · há 7 dias</span>
+        </div>
+        <div class="depo-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Compra verificada
+        </div>
+      </div>
+      <div class="depo-stars">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <blockquote class="depo-text">
+        "Eu estou construindo esse projeto e veio completo e está ficando uma casa maravilhosa, quando finalizar será a mais bonita da rua. Precisei fazer uma adaptação e o Anderson foi super atencioso. Recomendo muito!"
+      </blockquote>
+    </div>
+
   </div>
 </section>
 
