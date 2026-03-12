@@ -93,10 +93,99 @@ body::before {
   touch-action: manipulation;
 }
 
+/* ── URGENCY BANNER MINIMALISTA ── */
+.urgency-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(10, 14, 20, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+}
+.urgency-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: 'Poppins', sans-serif;
+}
+.urgency-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: rgba(0, 130, 251, 0.08);
+  border: 1px solid rgba(0, 130, 251, 0.2);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+.urgency-text {
+  font-size: 13px;
+  color: var(--slate);
+  font-weight: 400;
+}
+.urgency-price-old {
+  text-decoration: line-through;
+  opacity: 0.6;
+  margin-right: 4px;
+}
+.urgency-price-now {
+  color: var(--white);
+  font-weight: 600;
+}
+.countdown {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.cd-val {
+  font-variant-numeric: tabular-nums;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 13px;
+}
+.cd-sep {
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 12px;
+}
+.cd-label {
+  font-size: 9px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-left: 2px;
+}
+
+@media (max-width: 600px) {
+  .urgency-banner {
+    height: auto;
+    padding: 10px 16px;
+  }
+  .urgency-inner {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+  .urgency-text {
+    font-size: 12px;
+  }
+}
+
 /* ── HEADER ── */
 .site-header {
   position: absolute;
-  top: 0; left: 0; width: 100%;
+  top: 48px;
+  left: 0; width: 100%;
   padding: 40px 0;
   z-index: 10;
 }
@@ -153,10 +242,29 @@ body::before {
 /* ═══════════════════════════════════════════════════
    HERO
 ═══════════════════════════════════════════════════ */
+
+footer { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+  .scroll-card-image { width: 280px; }
+  
+  .hero { 
+    padding-top: 220px; /* CORREÇÃO 2: Devolve o respiro exato entre a logo e as tags */
+  }
+  
+  .hero-bg-image { height: 55%; }
+  .ficha-grid { grid-template-columns: repeat(2, 1fr); }
+  .depo-text { font-size: 14px; }
+  .gal-slide,
+  .gal-slide-lock,
+  .depo-gal-slide {
+    width: 320px;
+    height: 220px;
+  }
+}
 .hero {
   min-height: 100vh;
   display: flex; flex-direction: column; justify-content: center;
-  padding: 140px 0 var(--section-py);
+  padding: 300px 0 var(--section-py);
   position: relative; overflow: hidden;
   touch-action: manipulation;
 }
@@ -181,11 +289,12 @@ body::before {
 
 .selos {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
+  flex-wrap: nowrap;
   gap: 10px;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
   animation: fadeUp 0.7s ease both;
+  align-items: flex-start;
 }
 
 .selo {
@@ -209,7 +318,7 @@ body::before {
   font-family: 'Poppins', sans-serif;
   font-size: clamp(30px, 3.8vw, 50px); font-weight: 800;
   line-height: 1.1; letter-spacing: -0.02em;
-  color: var(--white); margin-bottom: 20px;
+  color: var(--white); margin-bottom: 0px;
   animation: fadeUp 0.7s 0.1s ease both;
 }
 .hero-headline .accent { color: var(--blue); }
@@ -758,9 +867,12 @@ footer {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  :root { --section-py: 64px; --section-py-lg: 88px; --wrap-px: 24px; }
+  :root { --section-py: 52px; --section-py-lg: 72px; --wrap-px: 20px; }
   .site-header .wrap { text-align: center; }
-  .site-header { padding: 24px 0; }
+  .site-header { 
+    padding: 24px 0; 
+    top: 96px; /* CORREÇÃO 1: Desce a logo para sair de trás do banner */
+  }
   .hero-inner { grid-template-columns: 1fr; gap: 48px; }
   .phases-grid { grid-template-columns: 1fr; }
   .problem-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -772,9 +884,11 @@ footer {
   .depo-card { padding: 24px; }
   .depo-badge { display: none; }
 }
+
 @media (max-width: 600px) {
   :root { --section-py: 52px; --section-py-lg: 72px; --wrap-px: 20px; }
-  .selos { flex-wrap: wrap; gap: 8px; }
+  .site-header .wrap { text-align: center; }
+  .site-header { padding: 24px 0; }
   footer { flex-direction: column; text-align: center; }
   .footer-links { justify-content: center; }
   .scroll-card-image { width: 280px; }
@@ -873,6 +987,25 @@ footer {
 </head>
 <body>
 
+<div class="urgency-banner" id="urgencyBanner">
+  <div class="urgency-inner">
+    <div class="urgency-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Lote Promocional
+    </div>
+    <span class="urgency-text">
+      <span class="urgency-price-old">De R$ 1.470,00</span> por <span class="urgency-price-now">R$ 67</span>. Acaba hoje em:
+    </span>
+    <div class="countdown" id="countdown">
+      <span class="cd-val" id="cd-hours">00</span><span class="cd-label">H</span>
+      <span class="cd-sep">:</span>
+      <span class="cd-val" id="cd-minutes">00</span><span class="cd-label">M</span>
+      <span class="cd-sep">:</span>
+      <span class="cd-val" id="cd-seconds">00</span><span class="cd-label">S</span>
+    </div>
+  </div>
+</div>
+
 <script
   src="https://everestpayments.com.br/meta-tracking.js"
   data-org="cmm8rtff60000l404zb96q4ld"
@@ -903,15 +1036,17 @@ footer {
   <div class="image-guard" aria-hidden="true"></div>
   <div class="wrap">
     <div class="hero-inner">
-      <div>
+      <div style="display: flex; flex-direction: column; gap: 25px;">
         <div class="selos">
           <div class="selo">Aprovável no MCMV</div>
           <div class="selo">Estilo Alto Padrão</div>
           <div class="selo">Construção Econômica</div>
         </div>
+
         <h1 class="hero-headline">
           O projeto arquitetônico econômico com <span class="accent">fachada imponente e sofisticada</span>.
         </h1>
+
         <p class="hero-sub">
           Receba o projeto completo e pronto para construir, com o mapa exato para ampliar no futuro sem quebra-quebra. Você não precisa fazer tudo de uma vez. Você só precisa começar!
         </p>
@@ -1086,7 +1221,7 @@ footer {
           <li>02 quartos confortáveis</li>
           <li>Banheiro social bem dimensionado</li>
           <li>Cozinha integrada com sala de estar e jantar</li>
-          <li>Área de serviço funcional</li>
+          <li>Área de serviço functional</li>
         </ul>
       </div>
       <div class="phase-card card-shine--left reveal reveal-d2">
@@ -1429,6 +1564,38 @@ footer {
 </footer>
 
 <script>
+// ── CRONÔMETRO PROFISSIONAL: ACABA HOJE (RENOVA À MEIA-NOITE) ──
+function updateCountdown() {
+  const now = new Date();
+  const tomorrow = new Date(now);
+  tomorrow.setHours(24, 0, 0, 0);
+  
+  const diff = tomorrow - now;
+  
+  const hours = Math.floor(diff / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  
+  const h = hours.toString().padStart(2, '0');
+  const m = minutes.toString().padStart(2, '0');
+  const s = seconds.toString().padStart(2, '0');
+  
+  const elHours = document.getElementById('cd-hours');
+  const elMinutes = document.getElementById('cd-minutes');
+  const elSeconds = document.getElementById('cd-seconds');
+  
+  if (elHours) elHours.textContent = h;
+  if (elMinutes) elMinutes.textContent = m;
+  if (elSeconds) elSeconds.textContent = s;
+  
+  if (diff <= 0) {
+    setTimeout(updateCountdown, 1000);
+  }
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
 // ── STICKY BAR ──────────────────────────────────────────
 const bar = document.getElementById('stickyBar');
 window.addEventListener('scroll', () => {
