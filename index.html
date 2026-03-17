@@ -283,7 +283,7 @@ footer { flex-direction: column; text-align: center; }
 }
 .hero .wrap { z-index: 2; }
 .hero-inner {
-  display: grid; grid-template-columns: 1fr 420px;
+  display: grid; grid-template-columns: 1fr;
   gap: 80px; align-items: center; position: relative;
 }
 
@@ -362,6 +362,15 @@ footer { flex-direction: column; text-align: center; }
 .price-benefits li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--slate); line-height: 1.4; }
 .price-benefits li svg { color: var(--blue); flex-shrink: 0; margin-top: 2px; }
 .price-benefits li strong { color: var(--white); font-weight: 500; }
+
+/* ── PRICE CARD APÓS DEPOIMENTOS ── */
+.offer-after-depo {
+  padding: var(--section-py) 0;
+}
+.offer-after-depo .price-card {
+  max-width: 480px;
+  margin: 0 auto;
+}
 
 /* ═══════════════════════════════════════════════════
    DIVIDER
@@ -1031,6 +1040,7 @@ footer {
   <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" class="btn btn-primary btn-sm js-checkout-link">Quero o projeto</a>
 </div>
 
+<!-- ═══ HERO (sem o price card) ═══ -->
 <section class="hero image-protect-wrap">
   <img src="hero-otimizada.webp" alt="Projeto Casa Moderna" class="hero-bg-image protected-image" draggable="false">
   <div class="image-guard" aria-hidden="true"></div>
@@ -1050,38 +1060,6 @@ footer {
         <p class="hero-sub">
           Receba o projeto completo e pronto para construir, com o mapa exato para ampliar no futuro sem quebra-quebra. Você não precisa fazer tudo de uma vez. Você só precisa começar!
         </p>
-      </div>
-
-      <div class="price-card card-shine--top" id="comprar">
-        <div class="price-header">
-          <p class="price-old">De R$ 1.470,00</p>
-          <div class="price-value"><sup>R$</sup>67</div>
-          <p class="price-type">no PIX</p>
-        </div>
-        <ul class="price-benefits">
-          <li>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Planta técnica + Fachada 3D</strong> — Pronto para o pedreiro e engenheiro</span>
-          </li>
-          <li>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Guia de Ampliação</strong> — O mapa para crescer de 70m² a 170m²</span>
-          </li>
-          <li>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Otimizado para MCMV</strong> — Ideal para aprovação de financiamento</span>
-          </li>
-          <li>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Economia na Obra</strong> — Projeto pensado para zero desperdício</span>
-          </li>
-          <li>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Acesso imediato</strong> — Receba agora no E-mail e WhatsApp</span>
-          </li>
-        </ul>
-        <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" class="btn btn-primary price-cta js-checkout-link">Quero acessar o projeto agora</a>
-        <div class="price-safe">Garantia de 7 dias — Risco zero</div>
       </div>
     </div>
   </div>
@@ -1205,6 +1183,7 @@ footer {
 
 <div class="divider"></div>
 
+<!-- ═══ SEÇÃO: O QUE VAI CONSTRUIR — slides de plantas ANTES dos containers de fase ═══ -->
 <section class="section">
   <div class="wrap">
     <div class="section-header--left reveal">
@@ -1212,30 +1191,8 @@ footer {
       <h2 class="section-title">Duas fases, <span class="accent">um projeto só</span></h2>
       <p class="section-sub">Não tem todos os recursos agora? Comece com uma casa que cabe no orçamento hoje e expanda para o alto padrão no futuro, sem quebrar paredes.</p>
     </div>
-    <div class="phases-grid reveal">
-      <div class="phase-card card-shine--left reveal reveal-d1">
-        <div class="phase-label">Fase 01 — A base sólida</div>
-        <div class="phase-title">70m²</div>
-        <div class="phase-area">Construção inicial completa e econômica</div>
-        <ul class="phase-list">
-          <li>02 quartos confortáveis</li>
-          <li>Banheiro social bem dimensionado</li>
-          <li>Cozinha integrada com sala de estar e jantar</li>
-          <li>Área de serviço functional</li>
-        </ul>
-      </div>
-      <div class="phase-card card-shine--left reveal reveal-d2">
-        <div class="phase-label">Fase 02 — A expansão premium</div>
-        <div class="phase-title">170m²</div>
-        <div class="phase-area">Ampliação sem derrubar nada do que já foi feito</div>
-        <ul class="phase-list">
-          <li>Suíte master com closet</li>
-          <li>Área gourmet completa</li>
-          <li>Garagem coberta para 02 carros</li>
-          <li>Fachada moderna com pé-direito alto</li>
-        </ul>
-      </div>
-    </div>
+
+    <!-- ALTERAÇÃO 2: scroll-wrapper de plantas vem ANTES dos phase-cards -->
     <div class="scroll-wrapper reveal">
       <div class="scroll-inner">
         <div class="scroll-card-wrap image-protect-wrap">
@@ -1262,11 +1219,38 @@ footer {
         </div>
       </div>
     </div>
+
+    <!-- phase cards vêm depois do scroll -->
+    <div class="phases-grid reveal" style="margin-top: 32px;">
+      <div class="phase-card card-shine--left reveal reveal-d1">
+        <div class="phase-label">Fase 01 — A base sólida</div>
+        <div class="phase-title">70m²</div>
+        <div class="phase-area">Construção inicial completa e econômica</div>
+        <ul class="phase-list">
+          <li>02 quartos confortáveis</li>
+          <li>Banheiro social bem dimensionado</li>
+          <li>Cozinha integrada com sala de estar e jantar</li>
+          <li>Área de serviço functional</li>
+        </ul>
+      </div>
+      <div class="phase-card card-shine--left reveal reveal-d2">
+        <div class="phase-label">Fase 02 — A expansão premium</div>
+        <div class="phase-title">170m²</div>
+        <div class="phase-area">Ampliação sem derrubar nada do que já foi feito</div>
+        <ul class="phase-list">
+          <li>Suíte master com closet</li>
+          <li>Área gourmet completa</li>
+          <li>Garagem coberta para 02 carros</li>
+          <li>Fachada moderna com pé-direito alto</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
+<!-- ═══ EXPERIÊNCIAS REAIS ═══ -->
 <section class="social-section" id="depoimento">
   <div class="wrap">
     <div class="section-header--center reveal">
@@ -1319,6 +1303,45 @@ footer {
       </blockquote>
     </div>
 
+  </div>
+</section>
+
+<!-- ALTERAÇÃO 1: price card movido para depois da seção Experiências Reais -->
+<div class="divider"></div>
+
+<section class="offer-after-depo" id="comprar">
+  <div class="wrap">
+    <div class="price-card card-shine--top reveal" style="max-width:480px;margin:0 auto;">
+      <div class="price-header">
+        <p class="price-old">De R$ 1.470,00</p>
+        <div class="price-value"><sup>R$</sup>67</div>
+        <p class="price-type">no PIX</p>
+      </div>
+      <ul class="price-benefits">
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Planta técnica + Fachada 3D</strong> — Pronto para o pedreiro e engenheiro</span>
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Guia de Ampliação</strong> — O mapa para crescer de 70m² a 170m²</span>
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Otimizado para MCMV</strong> — Ideal para aprovação de financiamento</span>
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Economia na Obra</strong> — Projeto pensado para zero desperdício</span>
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Acesso imediato</strong> — Receba agora no E-mail e WhatsApp</span>
+        </li>
+      </ul>
+      <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" class="btn btn-primary price-cta js-checkout-link">Quero acessar o projeto agora</a>
+      <div class="price-safe">Garantia de 7 dias — Risco zero</div>
+    </div>
   </div>
 </section>
 
