@@ -34,7 +34,6 @@
   --section-py:    88px;
   --section-py-lg: 120px;
 
-  /* Wrap metrics for scroll alignment */
   --wrap-max: 1100px;
   --wrap-px: 40px;
 }
@@ -93,15 +92,18 @@ body::before {
   touch-action: manipulation;
 }
 
-/* ── URGENCY BANNER MINIMALISTA ── */
+/* ══════════════════════════════════════════════════════
+   URGENCY BANNER — LAYOUT 2 COLUNAS PROFISSIONAL
+══════════════════════════════════════════════════════ */
 .urgency-banner {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(10, 14, 20, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(10, 14, 20, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -111,8 +113,17 @@ body::before {
 .urgency-inner {
   display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--wrap-max);
+  padding: 0 var(--wrap-px);
   font-family: 'Poppins', sans-serif;
+}
+/* Coluna esquerda: badge + texto de preço */
+.urgency-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 .urgency-badge {
   display: inline-flex;
@@ -127,11 +138,13 @@ body::before {
   border: 1px solid rgba(0, 130, 251, 0.2);
   padding: 4px 10px;
   border-radius: var(--radius-full);
+  white-space: nowrap;
 }
 .urgency-text {
   font-size: 13px;
   color: var(--slate);
   font-weight: 400;
+  white-space: nowrap;
 }
 .urgency-price-old {
   text-decoration: line-through;
@@ -142,42 +155,98 @@ body::before {
   color: var(--white);
   font-weight: 600;
 }
+/* Coluna direita: countdown limpo */
+.urgency-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.urgency-ends-label {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  margin-right: 4px;
+  white-space: nowrap;
+}
 .countdown {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 0;
+  background: rgba(0, 130, 251, 0.06);
+  border: 1px solid rgba(0, 130, 251, 0.15);
+  border-radius: var(--radius-sm);
+  padding: 5px 12px;
 }
 .cd-val {
   font-variant-numeric: tabular-nums;
   color: var(--white);
   font-weight: 700;
-  font-size: 13px;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  min-width: 20px;
+  text-align: center;
 }
 .cd-sep {
-  color: var(--muted);
+  color: var(--blue);
   font-weight: 700;
-  font-size: 12px;
-}
-.cd-label {
-  font-size: 9px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-left: 2px;
+  font-size: 14px;
+  margin: 0 2px;
+  opacity: 0.7;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .urgency-banner {
     height: auto;
-    padding: 10px 16px;
+    padding: 10px 0;
   }
   .urgency-inner {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 16px;
     gap: 8px;
-    text-align: center;
+  }
+  .urgency-left {
+    gap: 10px;
+  }
+  .urgency-badge {
+    font-size: 9px;
+    padding: 3px 8px;
   }
   .urgency-text {
     font-size: 12px;
+  }
+  .urgency-ends-label {
+    display: none;
+  }
+  .countdown {
+    padding: 4px 10px;
+  }
+  .cd-val {
+    font-size: 13px;
+  }
+  .cd-sep {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 420px) {
+  .urgency-inner {
+    justify-content: center;
+    gap: 6px;
+  }
+  .urgency-left {
+    flex: 1;
+    min-width: 0;
+  }
+  .urgency-badge {
+    display: none;
+  }
+  .urgency-text {
+    font-size: 11px;
+    white-space: normal;
   }
 }
 
@@ -240,27 +309,8 @@ body::before {
 .wrap { max-width: var(--wrap-max); margin: 0 auto; padding: 0 var(--wrap-px); position: relative; z-index: 1; }
 
 /* ═══════════════════════════════════════════════════
-   HERO
+   HERO — BG IMAGE CORTADA NO FIM DO SUBTÍTULO
 ═══════════════════════════════════════════════════ */
-
-footer { flex-direction: column; text-align: center; }
-  .footer-links { justify-content: center; }
-  .scroll-card-image { width: 280px; }
-  
-  .hero { 
-    padding-top: 220px; /* CORREÇÃO 2: Devolve o respiro exato entre a logo e as tags */
-  }
-  
-  .hero-bg-image { height: 55%; }
-  .ficha-grid { grid-template-columns: repeat(2, 1fr); }
-  .depo-text { font-size: 14px; }
-  .gal-slide,
-  .gal-slide-lock,
-  .depo-gal-slide {
-    width: 320px;
-    height: 220px;
-  }
-}
 .hero {
   min-height: 100vh;
   display: flex; flex-direction: column; justify-content: center;
@@ -268,9 +318,27 @@ footer { flex-direction: column; text-align: center; }
   position: relative; overflow: hidden;
   touch-action: manipulation;
 }
+/* A imagem de fundo agora fica dimensionada pelo JS para terminar no subtítulo */
 .hero-bg-image {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  object-fit: cover; opacity: .2; z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* fallback — JS sobrescreve */
+  object-fit: cover;
+  opacity: .2;
+  z-index: 0;
+}
+/* Fade suave na borda inferior da imagem */
+.hero-bg-fade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 60%, var(--black) 100%);
 }
 .hero::before {
   content: ''; position: absolute; inset: 0;
@@ -880,7 +948,10 @@ footer {
   .site-header .wrap { text-align: center; }
   .site-header { 
     padding: 24px 0; 
-    top: 96px; /* CORREÇÃO 1: Desce a logo para sair de trás do banner */
+    top: 96px;
+  }
+  .hero {
+    padding-top: 220px;
   }
   .hero-inner { grid-template-columns: 1fr; gap: 48px; }
   .phases-grid { grid-template-columns: 1fr; }
@@ -996,21 +1067,29 @@ footer {
 </head>
 <body>
 
+<!-- ══════════════════════════════════════════════════════
+     URGENCY BANNER — 2 COLUNAS, COUNTDOWN LIMPO
+══════════════════════════════════════════════════════ -->
 <div class="urgency-banner" id="urgencyBanner">
   <div class="urgency-inner">
-    <div class="urgency-badge">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      Lote Promocional
+    <div class="urgency-left">
+      <div class="urgency-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Lote Promocional
+      </div>
+      <span class="urgency-text">
+        <span class="urgency-price-old">De R$ 1.470,00</span> por <span class="urgency-price-now">R$ 67</span>
+      </span>
     </div>
-    <span class="urgency-text">
-      <span class="urgency-price-old">De R$ 1.470,00</span> por <span class="urgency-price-now">R$ 67</span>. Acaba hoje em:
-    </span>
-    <div class="countdown" id="countdown">
-      <span class="cd-val" id="cd-hours">00</span><span class="cd-label">H</span>
-      <span class="cd-sep">:</span>
-      <span class="cd-val" id="cd-minutes">00</span><span class="cd-label">M</span>
-      <span class="cd-sep">:</span>
-      <span class="cd-val" id="cd-seconds">00</span><span class="cd-label">S</span>
+    <div class="urgency-right">
+      <span class="urgency-ends-label">Encerra em</span>
+      <div class="countdown" id="countdown">
+        <span class="cd-val" id="cd-hours">00</span>
+        <span class="cd-sep">:</span>
+        <span class="cd-val" id="cd-minutes">00</span>
+        <span class="cd-sep">:</span>
+        <span class="cd-val" id="cd-seconds">00</span>
+      </div>
     </div>
   </div>
 </div>
@@ -1040,9 +1119,10 @@ footer {
   <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" class="btn btn-primary btn-sm js-checkout-link">Quero o projeto</a>
 </div>
 
-<!-- ═══ HERO (sem o price card) ═══ -->
-<section class="hero image-protect-wrap">
-  <img src="hero-otimizada.webp" alt="Projeto Casa Moderna" class="hero-bg-image protected-image" draggable="false">
+<!-- ═══ HERO — BG IMAGE CORTADA NO SUBTÍTULO ═══ -->
+<section class="hero image-protect-wrap" id="heroSection">
+  <img src="hero-otimizada.webp" alt="Projeto Casa Moderna" class="hero-bg-image protected-image" id="heroBgImage" draggable="false">
+  <div class="hero-bg-fade" id="heroBgFade"></div>
   <div class="image-guard" aria-hidden="true"></div>
   <div class="wrap">
     <div class="hero-inner">
@@ -1057,7 +1137,7 @@ footer {
           O projeto arquitetônico econômico com <span class="accent">fachada imponente e sofisticada</span>.
         </h1>
 
-        <p class="hero-sub">
+        <p class="hero-sub" id="heroSub">
           Receba o projeto completo e pronto para construir, com o mapa exato para ampliar no futuro sem quebra-quebra. Você não precisa fazer tudo de uma vez. Você só precisa começar!
         </p>
       </div>
@@ -1192,7 +1272,6 @@ footer {
       <p class="section-sub">Não tem todos os recursos agora? Comece com uma casa que cabe no orçamento hoje e expanda para o alto padrão no futuro, sem quebrar paredes.</p>
     </div>
 
-    <!-- ALTERAÇÃO 2: scroll-wrapper de plantas vem ANTES dos phase-cards -->
     <div class="scroll-wrapper reveal">
       <div class="scroll-inner">
         <div class="scroll-card-wrap image-protect-wrap">
@@ -1220,7 +1299,6 @@ footer {
       </div>
     </div>
 
-    <!-- phase cards vêm depois do scroll -->
     <div class="phases-grid reveal" style="margin-top: 32px;">
       <div class="phase-card card-shine--left reveal reveal-d1">
         <div class="phase-label">Fase 01 — A base sólida</div>
@@ -1306,7 +1384,6 @@ footer {
   </div>
 </section>
 
-<!-- ALTERAÇÃO 1: price card movido para depois da seção Experiências Reais -->
 <div class="divider"></div>
 
 <section class="offer-after-depo" id="comprar">
@@ -1589,23 +1666,23 @@ footer {
 <script>
 // ── CRONÔMETRO PROFISSIONAL: ACABA HOJE (RENOVA À MEIA-NOITE) ──
 function updateCountdown() {
-  const now = new Date();
-  const tomorrow = new Date(now);
+  var now = new Date();
+  var tomorrow = new Date(now);
   tomorrow.setHours(24, 0, 0, 0);
   
-  const diff = tomorrow - now;
+  var diff = tomorrow - now;
   
-  const hours = Math.floor(diff / (1000 * 60 * 60));
-  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  var hours = Math.floor(diff / (1000 * 60 * 60));
+  var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((diff % (1000 * 60)) / 1000);
   
-  const h = hours.toString().padStart(2, '0');
-  const m = minutes.toString().padStart(2, '0');
-  const s = seconds.toString().padStart(2, '0');
+  var h = hours.toString().padStart(2, '0');
+  var m = minutes.toString().padStart(2, '0');
+  var s = seconds.toString().padStart(2, '0');
   
-  const elHours = document.getElementById('cd-hours');
-  const elMinutes = document.getElementById('cd-minutes');
-  const elSeconds = document.getElementById('cd-seconds');
+  var elHours = document.getElementById('cd-hours');
+  var elMinutes = document.getElementById('cd-minutes');
+  var elSeconds = document.getElementById('cd-seconds');
   
   if (elHours) elHours.textContent = h;
   if (elMinutes) elMinutes.textContent = m;
@@ -1619,31 +1696,58 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
+// ── HERO BG IMAGE: CORTA NA ALTURA DO SUBTÍTULO + MARGIN ──
+function adjustHeroBg() {
+  var heroSub = document.getElementById('heroSub');
+  var heroBgImage = document.getElementById('heroBgImage');
+  var heroBgFade = document.getElementById('heroBgFade');
+  var heroSection = document.getElementById('heroSection');
+  
+  if (!heroSub || !heroBgImage || !heroSection) return;
+  
+  var heroRect = heroSection.getBoundingClientRect();
+  var subRect = heroSub.getBoundingClientRect();
+  
+  // Distância do topo da section hero até o final do subtítulo + 60px de margem
+  var cutHeight = (subRect.bottom - heroRect.top) + 60;
+  
+  heroBgImage.style.height = cutHeight + 'px';
+  if (heroBgFade) heroBgFade.style.height = cutHeight + 'px';
+}
+
+// Executar após fonts e imagens carregarem
+window.addEventListener('load', adjustHeroBg);
+window.addEventListener('resize', adjustHeroBg);
+// Executar também no DOMContentLoaded como fallback rápido
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(adjustHeroBg, 100);
+});
+
 // ── STICKY BAR ──────────────────────────────────────────
-const bar = document.getElementById('stickyBar');
-window.addEventListener('scroll', () => {
+var bar = document.getElementById('stickyBar');
+window.addEventListener('scroll', function() {
   bar.classList.toggle('show', window.scrollY > 400);
 });
 
 // ── SCROLL REVEAL ────────────────────────────────────────
-const reveals = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+var reveals = document.querySelectorAll('.reveal');
+var io = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('in'); });
 }, { threshold: 0.1 });
-reveals.forEach(el => io.observe(el));
+reveals.forEach(function(el) { io.observe(el); });
 
 // ── FAQ ACCORDION ────────────────────────────────────────
-document.querySelectorAll('.faq-q').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+document.querySelectorAll('.faq-q').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var item = btn.closest('.faq-item');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
     if (!isOpen) item.classList.add('open');
   });
 });
 
 // ── THEME CONFIG (SEM BOTÃO NA UI) ───────────────────────
-const THEME_FLAGS = {
+var THEME_FLAGS = {
   meta: true,
   default: false,
   spotify: false,
@@ -1651,7 +1755,7 @@ const THEME_FLAGS = {
   minimal: false
 };
 
-const themes = [
+var themes = [
   {
     label: 'meta',
     vars: {
@@ -1705,13 +1809,13 @@ const themes = [
 ];
 
 function applyTheme(t) {
-  const root = document.documentElement;
-  Object.entries(t.vars).forEach(([k, v]) => root.style.setProperty(k, v));
+  var root = document.documentElement;
+  Object.entries(t.vars).forEach(function(entry) { root.style.setProperty(entry[0], entry[1]); });
 }
 
 function getSelectedTheme() {
-  const activeTheme = Object.keys(THEME_FLAGS).find((key) => THEME_FLAGS[key]);
-  return themes.find((theme) => theme.label === activeTheme) || themes[0];
+  var activeTheme = Object.keys(THEME_FLAGS).find(function(key) { return THEME_FLAGS[key]; });
+  return themes.find(function(theme) { return theme.label === activeTheme; }) || themes[0];
 }
 
 applyTheme(getSelectedTheme());
