@@ -93,24 +93,70 @@ body::before {
 }
 
 /* ══════════════════════════════════════════════════════
-   URGENCY BANNER — LAYOUT 2 COLUNAS PROFISSIONAL
+   URGENCY BANNER — 2 LINHAS: MARQUEE + PREÇO/COUNTDOWN
 ══════════════════════════════════════════════════════ */
-.urgency-banner {
+.urgency-wrap {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── LINHA 1: MARQUEE ── */
+.urgency-marquee {
+  width: 100%;
+  height: 32px;
+  background: #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.urgency-marquee-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: marqueeScroll 28s linear infinite;
+  will-change: transform;
+}
+.urgency-marquee-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 0 60px;
+  flex-shrink: 0;
+}
+.urgency-marquee-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--blue);
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+@keyframes marqueeScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── LINHA 2: PREÇO + COUNTDOWN ── */
+.urgency-bar {
+  width: 100%;
+  height: 42px;
   background: rgba(10, 14, 20, 0.97);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 48px;
 }
-.urgency-inner {
+.urgency-bar-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -119,28 +165,27 @@ body::before {
   padding: 0 var(--wrap-px);
   font-family: 'Poppins', sans-serif;
 }
-/* Coluna esquerda: badge + texto de preço */
-.urgency-left {
+.urgency-bar-left {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 .urgency-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   font-size: 10px;
   font-weight: 600;
   color: var(--blue);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   background: rgba(0, 130, 251, 0.08);
   border: 1px solid rgba(0, 130, 251, 0.2);
-  padding: 4px 10px;
+  padding: 3px 10px;
   border-radius: var(--radius-full);
   white-space: nowrap;
 }
-.urgency-text {
+.urgency-price {
   font-size: 13px;
   color: var(--slate);
   font-weight: 400;
@@ -148,31 +193,24 @@ body::before {
 }
 .urgency-price-old {
   text-decoration: line-through;
-  opacity: 0.6;
-  margin-right: 4px;
+  opacity: 0.5;
 }
 .urgency-price-now {
   color: var(--white);
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 15px;
 }
-.urgency-expires {
-  color: #FF6B6B;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-/* Coluna direita: countdown limpo */
-.urgency-right {
+.urgency-bar-right {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
-.urgency-ends-label {
+.urgency-bar-label {
   font-size: 11px;
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   font-weight: 500;
-  margin-right: 4px;
   white-space: nowrap;
 }
 .countdown {
@@ -182,83 +220,47 @@ body::before {
   background: rgba(0, 130, 251, 0.06);
   border: 1px solid rgba(0, 130, 251, 0.15);
   border-radius: var(--radius-sm);
-  padding: 5px 12px;
+  padding: 5px 14px;
 }
 .cd-val {
   font-variant-numeric: tabular-nums;
   color: var(--white);
   font-weight: 700;
-  font-size: 14px;
+  font-size: 15px;
   letter-spacing: 0.04em;
-  min-width: 20px;
+  min-width: 22px;
   text-align: center;
 }
 .cd-sep {
   color: var(--blue);
   font-weight: 700;
-  font-size: 14px;
-  margin: 0 2px;
-  opacity: 0.7;
+  font-size: 15px;
+  margin: 0 3px;
+  opacity: 0.6;
 }
 
 @media (max-width: 768px) {
-  .urgency-banner {
-    height: auto;
-    padding: 10px 0;
-  }
-  .urgency-inner {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 0 16px;
-    gap: 8px;
-  }
-  .urgency-left {
-    gap: 10px;
-  }
-  .urgency-badge {
-    font-size: 9px;
-    padding: 3px 8px;
-  }
-  .urgency-text {
-    font-size: 12px;
-  }
-  .urgency-ends-label {
-    display: none;
-  }
-  .countdown {
-    padding: 4px 10px;
-  }
-  .cd-val {
-    font-size: 13px;
-  }
-  .cd-sep {
-    font-size: 13px;
-  }
+  .urgency-marquee { height: 28px; }
+  .urgency-marquee-text { font-size: 10px; padding: 0 40px; }
+  .urgency-bar { height: 38px; }
+  .urgency-bar-inner { padding: 0 16px; }
+  .urgency-badge { display: none; }
+  .urgency-bar-label { display: none; }
+  .urgency-price { font-size: 12px; }
+  .urgency-price-now { font-size: 14px; }
+  .cd-val { font-size: 14px; min-width: 20px; }
+  .cd-sep { font-size: 14px; }
+  .countdown { padding: 4px 10px; }
 }
 
 @media (max-width: 420px) {
-  .urgency-inner {
-    justify-content: center;
-    gap: 6px;
-  }
-  .urgency-left {
-    flex: 1;
-    min-width: 0;
-  }
-  .urgency-badge {
-    display: none;
-  }
-  .urgency-text {
-    font-size: 11px;
-    white-space: normal;
-  }
+  .urgency-marquee-text { font-size: 10px; padding: 0 30px; letter-spacing: 0.1em; }
 }
 
 /* ── HEADER ── */
 .site-header {
   position: absolute;
-  top: 48px;
+  top: 74px;
   left: 0; width: 100%;
   padding: 40px 0;
   z-index: 10;
@@ -319,7 +321,7 @@ body::before {
 .hero {
   min-height: 100vh;
   display: flex; flex-direction: column; justify-content: center;
-  padding: 300px 0 var(--section-py);
+  padding: 320px 0 var(--section-py);
   position: relative; overflow: hidden;
   touch-action: manipulation;
 }
@@ -953,10 +955,10 @@ footer {
   .site-header .wrap { text-align: center; }
   .site-header { 
     padding: 24px 0; 
-    top: 96px;
+    top: 74px;
   }
   .hero {
-    padding-top: 220px;
+    padding-top: 240px;
   }
   .hero-inner { grid-template-columns: 1fr; gap: 48px; }
   .phases-grid { grid-template-columns: 1fr; }
@@ -1073,27 +1075,43 @@ footer {
 <body>
 
 <!-- ══════════════════════════════════════════════════════
-     URGENCY BANNER — 2 COLUNAS, COUNTDOWN LIMPO
+     URGENCY — LINHA 1: MARQUEE | LINHA 2: PREÇO + COUNTDOWN
 ══════════════════════════════════════════════════════ -->
-<div class="urgency-banner" id="urgencyBanner">
-  <div class="urgency-inner">
-    <div class="urgency-left">
-      <div class="urgency-badge">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        Lote Promocional
-      </div>
-      <span class="urgency-text">
-        <span class="urgency-price-old">De R$ 1.470,00</span> por <span class="urgency-price-now">R$ 67</span> — <span class="urgency-expires">Promoção acaba hoje!</span>
-      </span>
+<div class="urgency-wrap" id="urgencyBanner">
+  <!-- LINHA 1: Texto rolando -->
+  <div class="urgency-marquee">
+    <div class="urgency-marquee-track">
+      <span class="urgency-marquee-dot"></span>
+      <span class="urgency-marquee-text">PROMOÇÃO ACABA HOJE — LOTE PROMOCIONAL COM 95% DE DESCONTO</span>
+      <span class="urgency-marquee-dot"></span>
+      <span class="urgency-marquee-text">PROMOÇÃO ACABA HOJE — LOTE PROMOCIONAL COM 95% DE DESCONTO</span>
+      <span class="urgency-marquee-dot"></span>
+      <span class="urgency-marquee-text">PROMOÇÃO ACABA HOJE — LOTE PROMOCIONAL COM 95% DE DESCONTO</span>
+      <span class="urgency-marquee-dot"></span>
+      <span class="urgency-marquee-text">PROMOÇÃO ACABA HOJE — LOTE PROMOCIONAL COM 95% DE DESCONTO</span>
     </div>
-    <div class="urgency-right">
-      <span class="urgency-ends-label">Encerra em</span>
-      <div class="countdown" id="countdown">
-        <span class="cd-val" id="cd-hours">00</span>
-        <span class="cd-sep">:</span>
-        <span class="cd-val" id="cd-minutes">00</span>
-        <span class="cd-sep">:</span>
-        <span class="cd-val" id="cd-seconds">00</span>
+  </div>
+  <!-- LINHA 2: Preço + Countdown -->
+  <div class="urgency-bar">
+    <div class="urgency-bar-inner">
+      <div class="urgency-bar-left">
+        <div class="urgency-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Oferta
+        </div>
+        <span class="urgency-price">
+          <span class="urgency-price-old">R$ 1.470</span> por <span class="urgency-price-now">R$ 67</span>
+        </span>
+      </div>
+      <div class="urgency-bar-right">
+        <span class="urgency-bar-label">Encerra em</span>
+        <div class="countdown" id="countdown">
+          <span class="cd-val" id="cd-hours">00</span>
+          <span class="cd-sep">:</span>
+          <span class="cd-val" id="cd-minutes">00</span>
+          <span class="cd-sep">:</span>
+          <span class="cd-val" id="cd-seconds">00</span>
+        </div>
       </div>
     </div>
   </div>
