@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Projeto Casa Moderna 10x20 | De 69m² a 100m² + Piscina | R$87</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* TEMA PADRÃO: META */
+  --black: #0A0E14;
+  --dark: #0F1620;
+  --card: #141D2B;
+  --card2: #192334;
+  --border: rgba(0,130,251,0.15);
+  --border2: rgba(255,255,255,0.07);
+  --blue: #0082FB;
+  --slate: #7A9AB8;
+  --muted: #3D5266;
+  --white: #E8F4FF;
+  --text: #B8D0E8;
+  --glow: rgba(0,130,251,0.10);
+  --grid-line: rgba(0,100,224,0.05);
+
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   20px;
+  --radius-2xl:  24px;
+  --radius-full: 9999px;
+
+  --section-py:    88px;
+  --section-py-lg: 120px;
+
+  --wrap-max: 1100px;
+  --wrap-px: 40px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--text);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* ── IMAGE PROTECTION ── */
+.protected-image {
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  pointer-events: none;
+}
+
+.image-protect-wrap {
+  position: relative;
+  overflow: hidden;
+  touch-action: manipulation;
+}
+
+.image-guard {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: transparent;
+  cursor: default;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+}
+
+/* ══════════════════════════════════════════════════════
+   URGENCY BANNER — 2 LINHAS: MARQUEE + PREÇO/COUNTDOWN
+══════════════════════════════════════════════════════ */
+.urgency-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── LINHA 1: MARQUEE ── */
+.urgency-marquee {
+  width: 100%;
+  height: 32px;
+  background: #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.urgency-marquee-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: marqueeScroll 28s linear infinite;
+  will-change: transform;
+}
+.urgency-marquee-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 0 60px;
+  flex-shrink: 0;
+}
+.urgency-marquee-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--blue);
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+@keyframes marqueeScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── LINHA 2: PREÇO + COUNTDOWN ── */
+.urgency-bar {
+  width: 100%;
+  height: 42px;
+  background: rgba(10, 14, 20, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.urgency-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--wrap-max);
+  padding: 0 var(--wrap-px);
+  font-family: 'Poppins', sans-serif;
+}
+.urgency-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.urgency-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(0, 130, 251, 0.08);
+  border: 1px solid rgba(0, 130, 251, 0.2);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+.urgency-price {
+  font-size: 13px;
+  color: var(--slate);
+  font-weight: 400;
+  white-space: nowrap;
+}
+.urgency-price-old {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+.urgency-price-now {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 15px;
+}
+.urgency-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.urgency-bar-label {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.countdown {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: rgba(0, 130, 251, 0.06);
+  border: 1px solid rgba(0, 130, 251, 0.15);
+  border-radius: var(--radius-sm);
+  padding: 5px 14px;
+}
+.cd-val {
+  font-variant-numeric: tabular-nums;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  min-width: 22px;
+  text-align: center;
+}
+.cd-sep {
+  color: var(--blue);
+  font-weight: 700;
+  font-size: 15px;
+  margin: 0 3px;
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .urgency-marquee { height: 28px; }
+  .urgency-marquee-text { font-size: 10px; padding: 0 40px; }
+  .urgency-bar { height: 38px; }
+  .urgency-bar-inner { padding: 0 16px; }
+  .urgency-badge { display: none; }
+  .urgency-bar-label { display: none; }
+  .urgency-price { font-size: 12px; }
+  .urgency-price-now { font-size: 14px; }
+  .cd-val { font-size: 14px; min-width: 20px; }
+  .cd-sep { font-size: 14px; }
+  .countdown { padding: 4px 10px; }
+}
+
+@media (max-width: 420px) {
+  .urgency-marquee-text { font-size: 10px; padding: 0 30px; letter-spacing: 0.1em; }
+}
+
+/* ── HEADER ── */
+.site-header {
+  position: absolute;
+  top: 74px;
+  left: 0; width: 100%;
+  padding: 40px 0;
+  z-index: 10;
+}
+.site-logo { height: 32px; width: auto; display: inline-block; }
+
+/* ── STICKY BAR ── */
+.sticky-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 999;
+  background: rgba(8,10,15,0.96);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+  padding: 14px 40px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transform: translateY(100%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sticky-bar.show { transform: translateY(0); }
+.sticky-bar-left { display: flex; align-items: center; gap: 16px; }
+.sticky-offer { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.sticky-price { font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 700; color: var(--white); }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 10px;
+  font-family: 'Poppins', sans-serif !important; font-size: 13px !important; font-weight: 600 !important;
+  letter-spacing: 0.08em !important; text-transform: uppercase !important; text-decoration: none !important;
+  cursor: pointer; border: none !important; border-radius: var(--radius-md) !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, background-color 0.3s ease, opacity 0.3s ease !important;
+  position: relative !important; overflow: hidden !important;
+  line-height: 1 !important; white-space: nowrap;
+}
+.btn-primary {
+  background: var(--blue) !important; color: #fff !important;
+  padding: 18px 44px !important;
+}
+.btn-primary::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.3s !important;
+}
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary:hover { transform: translateY(-2px) !important; box-shadow: 0 12px 40px rgba(99,140,255,0.35) !important; }
+.btn-sm { padding: 13px 32px !important; font-size: 12px !important; }
+
+/* ── WRAP ── */
+.wrap { max-width: var(--wrap-max); margin: 0 auto; padding: 0 var(--wrap-px); position: relative; z-index: 1; }
+
+/* ═══════════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 320px 0 var(--section-py);
+  position: relative; overflow: hidden;
+  touch-action: manipulation;
+}
+.hero-bg-image {
+  position: absolute;
+  top: 0; left: 0; width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .2;
+  z-index: 0;
+}
+.hero-bg-fade {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0; pointer-events: none;
+  background: linear-gradient(to bottom, transparent 60%, var(--black) 100%);
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 40%, transparent 100%);
+  z-index: 1;
+}
+.hero .wrap { z-index: 2; }
+.hero-inner {
+  display: grid; grid-template-columns: 1fr;
+  gap: 80px; align-items: center; position: relative;
+}
+
+.selos {
+  display: flex; flex-direction: column; flex-wrap: nowrap;
+  gap: 10px; margin-bottom: 25px;
+  animation: fadeUp 0.7s ease both; align-items: flex-start;
+}
+
+.selo {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid rgba(99,140,255,0.5);
+  background: rgba(99,140,255,0.06);
+  padding: 7px 16px; font-size: 11px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--blue); border-radius: var(--radius-full);
+  box-shadow: 0 0 12px rgba(99,140,255,0.15), inset 0 0 8px rgba(99,140,255,0.06);
+  white-space: nowrap;
+}
+
+.hero-headline {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(30px, 3.8vw, 50px); font-weight: 800;
+  line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--white); margin-bottom: 0px;
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+.hero-headline .accent { color: var(--blue); }
+
+.hero-sub {
+  font-size: 15px; line-height: 1.7; color: var(--slate);
+  max-width: 540px; margin-bottom: 0;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+
+/* ── PRICE CARD ── */
+.price-card {
+  background: var(--card); border: 1px solid var(--border); padding: 40px 36px;
+  position: relative; border-radius: var(--radius-lg); overflow: hidden;
+  animation: fadeUp 0.7s 0.1s ease both; z-index: 3;
+}
+.price-header {
+  text-align: center; padding-bottom: 28px; margin-bottom: 28px;
+  border-bottom: 1px solid var(--border2);
+}
+.price-old { font-size: 13px; color: var(--muted); text-decoration: line-through; margin-bottom: 10px; letter-spacing: 0.05em; }
+.price-value { font-family: 'Poppins', sans-serif; font-size: 72px; font-weight: 800; color: var(--white); line-height: 1; letter-spacing: -0.03em; margin-bottom: 8px; }
+.price-value sup { font-size: 26px; vertical-align: super; margin-right: 2px; color: var(--blue); }
+.price-type {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--blue); background: rgba(99,140,255,0.08);
+  border: 1px solid rgba(99,140,255,0.2);
+  border-radius: var(--radius-full); padding: 4px 14px;
+}
+.price-cta { width: 100% !important; font-size: clamp(11px, 3.2vw, 14px) !important; padding: 18px 16px !important; border-radius: var(--radius-md) !important; letter-spacing: 0.06em !important; text-align: center !important; }
+.price-safe {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-top: 14px; padding: 10px 14px;
+  background: rgba(99,140,255,0.04); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); font-size: 12px; color: var(--muted);
+}
+.price-benefits { list-style: none; margin: 0 0 28px; display: flex; flex-direction: column; gap: 12px; }
+.price-benefits li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--slate); line-height: 1.4; }
+.price-benefits li svg { color: var(--blue); flex-shrink: 0; margin-top: 2px; }
+.price-benefits li strong { color: var(--white); font-weight: 500; }
+
+/* ── PRICE CARD APÓS DEPOIMENTOS ── */
+.offer-after-depo { padding: var(--section-py) 0; }
+.offer-after-depo .price-card { max-width: 480px; margin: 0 auto; }
+
+/* ── DIVIDER ── */
+.divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+
+/* ── SISTEMA DE SEÇÕES ── */
+.section          { padding: var(--section-py) 0; position: relative; }
+.problem-section  { padding: var(--section-py) 0; background: var(--dark); position: relative; overflow: hidden; }
+.forwho-section   { padding: var(--section-py) 0; background: var(--dark); }
+.gallery-section  { padding: var(--section-py) 0; touch-action: manipulation; }
+.social-section   { padding: var(--section-py) 0; position: relative; background: var(--dark); overflow: hidden; }
+.faq-section      { padding: var(--section-py) 0; }
+.ficha-section    { padding: var(--section-py) 0; position: relative; z-index: 1; }
+.final-section    { padding: var(--section-py-lg) 0; background: var(--dark); position: relative; overflow: hidden; text-align: center; }
+.outros-projetos-section { padding: var(--section-py) 0; position: relative; background: var(--dark); overflow: hidden; }
+
+/* ── SISTEMA DE CABEÇALHOS ── */
+.section-tag {
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+}
+.section-tag--left::before {
+  content: ''; width: 24px; height: 1px; background: var(--blue); opacity: 0.5; flex-shrink: 0;
+}
+.section-tag--center { justify-content: center; }
+.section-tag--center::before {
+  content: ''; width: 24px; height: 1px; background: var(--blue); opacity: 0.5; flex-shrink: 0;
+}
+
+.section-title {
+  font-family: 'Poppins', sans-serif; font-size: clamp(26px, 3vw, 40px);
+  font-weight: 700; color: var(--white); line-height: 1.1;
+  letter-spacing: -0.02em; margin-bottom: 12px;
+}
+.section-title .accent { color: var(--blue); }
+
+.section-sub { font-size: 15px; color: var(--slate); line-height: 1.7; margin-bottom: 40px; max-width: 560px; }
+.section-header--center .section-sub { margin-left: auto; margin-right: auto; }
+
+.section-header--center { text-align: center; max-width: 600px; margin: 0 auto 48px; }
+.section-header--left { margin-bottom: 40px; }
+
+/* ── FICHA TÉCNICA ── */
+.ficha-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.ficha-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-xl);
+  padding: 24px 20px; display: flex; flex-direction: column; align-items: center; text-align: center;
+  gap: 0; position: relative; overflow: hidden; transition: border-color 0.3s, background 0.3s;
+}
+.ficha-card:hover { border-color: rgba(99,140,255,0.3); background: var(--card2); }
+.ficha-icon {
+  width: 36px; height: 36px; background: rgba(99,140,255,0.08); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center;
+  color: var(--blue); margin-bottom: 12px; flex-shrink: 0;
+}
+.ficha-label { font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.ficha-value { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 700; color: var(--white); line-height: 1.1; letter-spacing: -0.02em; }
+.ficha-value.sm { font-size: 16px; }
+
+/* ── PHASES ── */
+.phases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.phase-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 36px 32px; position: relative; overflow: hidden;
+}
+.phase-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+.phase-title { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+.phase-area { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.phase-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.phase-list li { font-size: 14px; color: var(--slate); padding-left: 16px; position: relative; }
+.phase-list li::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
+
+/* ── SCROLL HORIZONTAL ── */
+.scroll-wrapper,
+.gallery-scroll-wrapper,
+.projetos-scroll-wrapper {
+  overflow-x: auto; overflow-y: hidden; padding-bottom: 20px;
+  scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+  margin-right: calc(-1 * var(--wrap-px)); padding-right: var(--wrap-px);
+  touch-action: manipulation;
+}
+.scroll-wrapper { margin-top: 32px; }
+.gallery-scroll-wrapper, .projetos-scroll-wrapper { margin-top: 0; }
+
+.scroll-wrapper::-webkit-scrollbar,
+.gallery-scroll-wrapper::-webkit-scrollbar,
+.projetos-scroll-wrapper::-webkit-scrollbar { height: 6px; }
+.scroll-wrapper::-webkit-scrollbar-track,
+.gallery-scroll-wrapper::-webkit-scrollbar-track,
+.projetos-scroll-wrapper::-webkit-scrollbar-track { background: var(--border2); border-radius: 10px; }
+.scroll-wrapper::-webkit-scrollbar-thumb,
+.gallery-scroll-wrapper::-webkit-scrollbar-thumb,
+.projetos-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+.scroll-wrapper::-webkit-scrollbar-thumb:hover,
+.gallery-scroll-wrapper::-webkit-scrollbar-thumb:hover,
+.projetos-scroll-wrapper::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+
+.scroll-inner,
+.gallery-scroll-inner,
+.projetos-scroll-inner {
+  display: flex; gap: 16px; width: max-content; padding: 4px 0;
+}
+.gallery-scroll-inner, .projetos-scroll-inner { gap: 12px; }
+
+.scroll-card-wrap {
+  width: 340px; height: auto !important; aspect-ratio: auto !important;
+  border-radius: var(--radius-2xl); overflow: hidden; border: 1px solid var(--border);
+  position: relative; flex-shrink: 0; scroll-snap-align: start;
+}
+.scroll-card-wrap .scroll-card-image {
+  width: 100% !important; height: auto !important; display: block;
+  object-fit: fill !important; position: static !important; transform: none !important; aspect-ratio: auto !important;
+}
+.scroll-card-tag {
+  position: absolute; top: 14px; left: 14px;
+  background: rgba(8,10,15,0.82); backdrop-filter: blur(8px);
+  border: 1px solid rgba(99,140,255,0.5); color: var(--blue);
+  font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 600;
+  letter-spacing: 0.09em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: var(--radius-full);
+  box-shadow: 0 0 10px rgba(99,140,255,0.18); pointer-events: none; z-index: 2;
+}
+
+.scroll-card-lock {
+  width: 340px; height: auto; align-self: stretch; flex-shrink: 0; scroll-snap-align: start;
+  border-radius: var(--radius-2xl); border: 1px solid var(--border);
+  background: var(--card); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 16px;
+  position: relative; overflow: hidden; text-align: center; padding: 32px;
+}
+.scroll-card-lock::before {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(99,140,255,0.025) 20px, rgba(99,140,255,0.025) 21px);
+}
+.scroll-lock-icon {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(99,140,255,0.08); border: 1px solid rgba(99,140,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--blue); position: relative; z-index: 1; flex-shrink: 0;
+}
+.scroll-lock-text { position: relative; z-index: 1; }
+.scroll-lock-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--slate); margin-bottom: 8px; letter-spacing: 0.02em; }
+.scroll-lock-text span { font-size: 12px; color: var(--muted); line-height: 1.55; }
+
+.gal-slide, .projeto-gal-slide {
+  width: 480px; height: 300px; flex-shrink: 0; scroll-snap-align: start;
+  border-radius: var(--radius-2xl); position: relative; overflow: hidden;
+  border: 1px solid var(--border2); display: block;
+}
+.gal-slide img, .projeto-gal-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gal-slide-lock {
+  width: 480px; height: 300px; flex-shrink: 0; scroll-snap-align: start;
+  border-radius: var(--radius-2xl); position: relative; overflow: hidden;
+  border: 1px solid var(--border); background: var(--card);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; text-align: center; padding: 32px; cursor: default;
+}
+.gal-slide-lock::before {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(99,140,255,0.02) 8px, rgba(99,140,255,0.02) 16px);
+}
+.gal-lock-icon {
+  width: 44px; height: 44px; background: rgba(99,140,255,0.08); border: 1px solid var(--border);
+  border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;
+  color: var(--blue); flex-shrink: 0; position: relative; z-index: 1;
+}
+.gal-lock-text { font-size: 12px; line-height: 1.6; color: var(--muted); max-width: 260px; position: relative; z-index: 1; }
+.gal-lock-text strong { display: block; color: var(--slate); font-weight: 500; font-size: 13px; margin-bottom: 4px; }
+.gal-tag, .projeto-gal-tag {
+  position: absolute; bottom: 12px; left: 12px;
+  background: rgba(8,10,15,0.9); border: 1px solid var(--border);
+  border-radius: var(--radius-xs); padding: 4px 10px;
+  font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--blue); z-index: 2;
+}
+
+/* ── OUTROS PROJETOS CARD OVERLAY ── */
+.projeto-gal-slide { cursor: pointer; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+.projeto-gal-slide:hover { transform: translateY(-2px); }
+.projeto-card-overlay {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 2; padding: 16px 18px;
+  background: linear-gradient(to bottom, rgba(8,10,15,0.85) 0%, rgba(8,10,15,0.4) 70%, transparent 100%);
+  pointer-events: none;
+}
+.projeto-card-title { font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 700; color: var(--white); letter-spacing: -0.01em; margin-bottom: 2px; }
+.projeto-card-badge {
+  position: absolute; top: 14px; right: 14px; z-index: 2;
+  display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px;
+  background: rgba(0, 130, 251, 0.12); border: 1px solid rgba(0, 130, 251, 0.3);
+  border-radius: var(--radius-full); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue); pointer-events: none;
+}
+
+/* ── ITEMS LIST ── */
+.items-list { display: flex; flex-direction: column; gap: 0; }
+.item-row { display: flex; align-items: flex-start; gap: 16px; padding: 22px 0; border-bottom: 1px solid var(--border2); }
+.item-row:first-child { border-top: 1px solid var(--border2); }
+.item-num { font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--blue); opacity: 0.4; min-width: 24px; padding-top: 2px; }
+.item-text strong { display: block; font-size: 15px; font-weight: 500; color: var(--white); margin-bottom: 2px; }
+.item-text span { font-size: 13px; color: var(--slate); }
+
+/* ── PROBLEM SECTION ── */
+.problem-section::before {
+  content: ''; position: absolute; right: -200px; top: 50%; transform: translateY(-50%);
+  width: 600px; height: 600px; background: radial-gradient(circle, var(--glow) 0%, transparent 70%); pointer-events: none;
+}
+.problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.problem-text { font-size: 16px; line-height: 1.75; color: var(--slate); }
+.problem-text em { font-style: normal; color: var(--white); }
+.problem-highlight {
+  background: var(--card); border: 1px solid var(--border); padding: 32px;
+  position: relative; border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 4px;
+}
+.problem-highlight p { font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 600; color: var(--white); line-height: 1.45; }
+.method-points { display: flex; flex-direction: column; gap: 4px; }
+.method-point {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-md); padding: 18px 24px; font-size: 14px; color: var(--slate); position: relative; overflow: hidden;
+}
+
+/* ── ABOUT ── */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-text { font-size: 15px; line-height: 1.75; color: var(--slate); margin-bottom: 16px; }
+.about-text strong { color: var(--white); font-weight: 500; }
+.about-image-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-2xl); position: relative; overflow: hidden; display: block;
+}
+
+/* ── FOR WHO ── */
+.forwho-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+.forwho-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-xl);
+  padding: 32px 28px; transition: border-color 0.3s, background 0.3s; position: relative; overflow: hidden;
+}
+.forwho-card:hover { border-color: rgba(99,140,255,0.3); background: var(--card2); }
+.forwho-title { font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 600; color: var(--white); line-height: 1.4; margin-bottom: 10px; }
+.forwho-desc { font-size: 13px; line-height: 1.65; color: var(--slate); }
+
+.guarantee-box {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  padding: 36px; max-width: 640px; margin: 0 auto; text-align: center; position: relative; overflow: hidden;
+}
+.guarantee-title { font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+.guarantee-text { font-size: 14px; line-height: 1.7; color: var(--slate); }
+
+.faq-wrap { max-width: 720px; margin: 0 auto; }
+.faq-list { display: flex; flex-direction: column; gap: 0; margin-top: 40px; }
+.faq-item { border-bottom: 1px solid var(--border2); }
+.faq-item:first-child { border-top: 1px solid var(--border2); }
+.faq-q {
+  width: 100%; background: none; border: none; text-align: left; padding: 22px 0;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  cursor: pointer; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 600;
+  color: var(--white); transition: color 0.2s;
+}
+.faq-q:hover { color: var(--blue); }
+.faq-icon {
+  width: 28px; height: 28px; border: 1px solid var(--border); border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  color: var(--blue); transition: transform 0.3s, background 0.3s;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); background: rgba(99,140,255,0.1); }
+.faq-a { overflow: hidden; max-height: 0; transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.faq-a-inner { padding-bottom: 20px; font-size: 14px; line-height: 1.7; color: var(--slate); }
+.faq-item.open .faq-a { max-height: 200px; }
+
+.final-section::before {
+  content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 800px; height: 500px; background: radial-gradient(ellipse, rgba(99,140,255,0.09) 0%, transparent 70%); pointer-events: none;
+}
+.final-section::after {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black, transparent);
+}
+.final-inner { position: relative; z-index: 1; }
+.final-title { font-family: 'Poppins', sans-serif; font-size: clamp(30px, 4vw, 52px); font-weight: 800; color: var(--white); letter-spacing: -0.02em; line-height: 1.08; margin-bottom: 16px; }
+.final-title .accent { color: var(--blue); }
+.final-sub { font-size: 15px; color: var(--slate); max-width: 460px; margin: 0 auto 40px; line-height: 1.7; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black); border-top: 1px solid var(--border2);
+  padding: 40px 40px 100px; display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 16px; position: relative; z-index: 1;
+}
+.footer-links { display: flex; gap: 28px; list-style: none; }
+.footer-links a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--blue); }
+.footer-copy { font-size: 12px; color: rgba(74,85,104,0.5); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.05s; }
+.reveal-d2 { transition-delay: 0.12s; }
+.reveal-d3 { transition-delay: 0.18s; }
+
+/* ── CARD SHINE SYSTEM ── */
+[class*="card-shine--"]::before {
+  content: ''; position: absolute; opacity: var(--shine-opacity, 0.7); pointer-events: none; z-index: 0;
+}
+.card-shine--top::before { top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--card) 0%, transparent 20%, var(--blue) 50%, transparent 80%, var(--card) 100%) !important; }
+.card-shine--bottom::before { bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--card) 0%, transparent 20%, var(--blue) 50%, transparent 80%, var(--card) 100%) !important; }
+.card-shine--left::before { left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--card) 0%, transparent 20%, var(--blue) 50%, transparent 80%, var(--card) 100%) !important; }
+[class*="card-shine--"] > * { position: relative; z-index: 1; }
+
+*, *::before, *::after {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease !important;
+}
+.btn-primary, .forwho-card, .faq-icon, .faq-q {
+  transition: background-color 0.3s cubic-bezier(0.16,1,0.3,1), color 0.2s ease, border-color 0.3s ease, transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease !important;
+}
+
+/* ── MOBILE CTA BAR ── */
+.mobile-cta-bar {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+  background: rgba(8,10,15,0.97); backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border); padding: 10px 20px;
+  padding-bottom: calc(10px + env(safe-area-inset-bottom));
+}
+.mobile-cta-inner {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+}
+.mobile-cta-info {
+  display: flex; flex-direction: column; gap: 1px; min-width: 0;
+}
+.mobile-cta-label {
+  font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted);
+  line-height: 1.2;
+}
+.mobile-cta-price {
+  font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 700;
+  color: var(--white); line-height: 1.1; letter-spacing: -0.02em;
+}
+.mobile-cta-price sup {
+  font-size: 12px; vertical-align: super; color: var(--blue); font-weight: 600; margin-right: 1px;
+}
+.mobile-cta-bar a {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--blue); color: #fff;
+  font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+  border-radius: var(--radius-md); padding: 14px 24px;
+  white-space: nowrap; flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  .mobile-cta-bar { display: block; }
+  .sticky-bar { display: none !important; }
+  footer { padding-bottom: 90px; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  :root { --section-py: 52px; --section-py-lg: 72px; --wrap-px: 20px; }
+  .site-header .wrap { text-align: center; }
+  .site-header { padding: 24px 0; top: 74px; }
+  .hero { padding-top: 180px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+  .phases-grid { grid-template-columns: 1fr; }
+  .problem-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .forwho-grid { grid-template-columns: 1fr; }
+  .ficha-grid { grid-template-columns: repeat(2, 1fr); }
+  .wrap { padding: 0 24px; }
+  .sticky-bar { padding: 14px 24px; }
+}
+
+@media (max-width: 600px) {
+  :root { --section-py: 52px; --section-py-lg: 72px; --wrap-px: 20px; }
+  .site-header .wrap { text-align: center; }
+  .site-header { padding: 24px 0; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+  .scroll-card-image { width: 280px; }
+  .hero-bg-image { height: 55%; }
+  .ficha-grid { grid-template-columns: repeat(2, 1fr); }
+  .gal-slide, .gal-slide-lock, .projeto-gal-slide { width: 320px; height: 220px; }
+}
+</style>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "vsk50ykemb");
+</script>
+
+</head>
+<body>
+
+<!-- ═══ URGENCY BANNER ═══ -->
+<div class="urgency-wrap" id="urgencyBanner">
+  <div class="urgency-marquee">
+    <div class="urgency-marquee-track">
+      <span class="urgency-marquee-dot"></span>
+      <span class="urgency-marquee-text">PROMOÇÃO ACABA HOJE — LOTE PROMOCIONAL COM 95% DE DESCONTO</span>
+      <span class="urgency-marquee-dot"></span>
+      <span class="urgency-marquee-text">PROMOÇÃO ACABA HOJE — LOTE PROMOCIONAL COM 95% DE DESCONTO</span>
+      <span class="urgency-marquee-dot"></span>
+      <span class="urgency-marquee-text">PROMOÇÃO ACABA HOJE — LOTE PROMOCIONAL COM 95% DE DESCONTO</span>
+      <span class="urgency-marquee-dot"></span>
+      <span class="urgency-marquee-text">PROMOÇÃO ACABA HOJE — LOTE PROMOCIONAL COM 95% DE DESCONTO</span>
+    </div>
+  </div>
+  <div class="urgency-bar">
+    <div class="urgency-bar-inner">
+      <div class="urgency-bar-left">
+        <div class="urgency-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Oferta
+        </div>
+        <span class="urgency-price">
+          <span class="urgency-price-old">R$ 1.470</span> por <span class="urgency-price-now">R$ 87</span>
+        </span>
+      </div>
+      <div class="urgency-bar-right">
+        <span class="urgency-bar-label">Encerra em</span>
+        <div class="countdown" id="countdown">
+          <span class="cd-val" id="cd-hours">00</span>
+          <span class="cd-sep">:</span>
+          <span class="cd-val" id="cd-minutes">00</span>
+          <span class="cd-sep">:</span>
+          <span class="cd-val" id="cd-seconds">00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script
+  src="https://everestpayments.com.br/meta-tracking.js"
+  data-org="cmm8rtff60000l404zb96q4ld"
+  data-track-page-view="true"
+  data-track-view-content="true"
+  data-view-content-name="Projeto Casa Moderna 10x20"
+  data-view-content-value="87"
+  data-view-content-currency="BRL"
+  defer
+></script>
+
+<header class="site-header">
+  <div class="wrap">
+    <img src="../logogreco.svg" alt="Anderson Greco Logo" class="site-logo protected-image" draggable="false">
+  </div>
+</header>
+
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-bar-left">
+    <span class="sticky-offer">Oferta atual</span>
+    <span class="sticky-price"><sup style="font-size:14px;vertical-align:super;color:var(--blue)">R$</sup>87</span>
+  </div>
+  <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa002?org=cmm8rtff60000l404zb96q4ld" class="btn btn-primary btn-sm js-checkout-link">Quero o projeto</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero image-protect-wrap" id="heroSection">
+  <img src="image001-otimizada.webp" alt="Projeto Casa Moderna 10x20" class="hero-bg-image protected-image" id="heroBgImage" draggable="false">
+  <div class="hero-bg-fade" id="heroBgFade"></div>
+  <div class="image-guard" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <div style="display: flex; flex-direction: column; gap: 25px;">
+        <div class="selos">
+          <div class="selo">Terreno 10×20</div>
+          <div class="selo">Piscina na Fase 2</div>
+          <div class="selo">Construção Econômica</div>
+        </div>
+
+        <h1 class="hero-headline">
+          Casa moderna em terreno 10×20 com <span class="accent">piscina, garagem e cozinha gourmet</span>.
+        </h1>
+
+        <p class="hero-sub" id="heroSub">
+          Comece com 69m² e expanda para 100m² com garagem, suíte master, piscina e lavabo — tudo sem quebrar o que já foi feito. Seu terreno padrão merece um projeto de alto padrão.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ FICHA TÉCNICA ═══ -->
+<section class="ficha-section">
+  <div class="wrap">
+    <div class="section-header--center reveal">
+      <div class="section-tag section-tag--center">Informações Importantes</div>
+      <h2 class="section-title">Ficha Técnica do <span class="accent">Projeto 002</span></h2>
+      <p class="section-sub">Dimensões, área e referência de custo para você planejar com segurança.</p>
+    </div>
+    <div class="ficha-grid reveal">
+      <div class="ficha-card card-shine--top">
+        <div class="ficha-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M13 12H3"/></svg>
+        </div>
+        <span class="ficha-label">Área Construída Inicial</span>
+        <strong class="ficha-value">69,00 m²</strong>
+      </div>
+      <div class="ficha-card card-shine--top">
+        <div class="ficha-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        </div>
+        <span class="ficha-label">Terreno (Lar × Prof)</span>
+        <strong class="ficha-value">10m × 20m</strong>
+      </div>
+      <div class="ficha-card card-shine--top">
+        <div class="ficha-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="2" y1="12" x2="22" y2="12"/><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg>
+        </div>
+        <span class="ficha-label">Testada Mínima</span>
+        <strong class="ficha-value">10,00 m</strong>
+      </div>
+      <div class="ficha-card card-shine--top">
+        <div class="ficha-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <span class="ficha-label">Custo Estimado da Obra</span>
+        <strong class="ficha-value sm">R$ 90k – 140k</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ GALERIA 3D ═══ -->
+<section class="gallery-section" id="galeria">
+  <div class="wrap">
+    <div class="section-header--left reveal">
+      <div class="section-tag section-tag--left">Visualização</div>
+      <h2 class="section-title">Veja o projeto <span class="accent">em 3D</span></h2>
+      <p class="section-sub">Renders e plantas do projeto real — fachada diurna, noturna, piscina e layouts de ambas as fases.</p>
+    </div>
+    <div class="gallery-scroll-wrapper reveal">
+      <div class="gallery-scroll-inner">
+        <div class="gal-slide image-protect-wrap">
+          <img src="image001-otimizada.webp" alt="Fachada sem portão" class="protected-image" draggable="false">
+          <div class="image-guard" aria-hidden="true"></div>
+          <div class="gal-tag">Fachada</div>
+        </div>
+        <div class="gal-slide image-protect-wrap">
+          <img src="image002-otimizada.webp" alt="Fachada com portão" class="protected-image" draggable="false">
+          <div class="image-guard" aria-hidden="true"></div>
+          <div class="gal-tag">Fachada com portão</div>
+        </div>
+        <div class="gal-slide image-protect-wrap">
+          <img src="image003-otimizada.webp" alt="Perspectiva lateral" class="protected-image" draggable="false">
+          <div class="image-guard" aria-hidden="true"></div>
+          <div class="gal-tag">Perspectiva</div>
+        </div>
+        <div class="gal-slide image-protect-wrap">
+          <img src="image004-otimizada.webp" alt="Fachada noturna" class="protected-image" draggable="false">
+          <div class="image-guard" aria-hidden="true"></div>
+          <div class="gal-tag">Noturna</div>
+        </div>
+        <div class="gal-slide image-protect-wrap">
+          <img src="image005-otimizada.webp" alt="Piscina" class="protected-image" draggable="false">
+          <div class="image-guard" aria-hidden="true"></div>
+          <div class="gal-tag">Piscina</div>
+        </div>
+        <div class="gal-slide-lock">
+          <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
+        </div>
+        <div class="gal-slide-lock">
+          <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
+        </div>
+        <div class="gal-slide-lock">
+          <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
+        </div>
+        <div class="gal-slide-lock">
+          <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
+        </div>
+        <div class="gal-slide-lock">
+          <div class="gal-lock-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="gal-lock-text"><strong>Conteúdo bloqueado</strong>Compre o projeto e desbloqueie o pacote completo de imagens e renders.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ O QUE VAI CONSTRUIR ═══ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-header--left reveal">
+      <div class="section-tag section-tag--left">O que você vai construir</div>
+      <h2 class="section-title">Duas fases, <span class="accent">um projeto só</span></h2>
+      <p class="section-sub">Comece com uma casa funcional e completa em 69m² e expanda para 100m² com garagem, suíte, piscina e lavabo — sem quebrar nada.</p>
+    </div>
+
+    <div class="scroll-wrapper reveal">
+      <div class="scroll-inner">
+        <div class="scroll-card-wrap image-protect-wrap">
+          <img src="plantaa-otimizada.webp" alt="Planta Fase 1 — 69m²" class="scroll-card-image protected-image" draggable="false">
+          <div class="image-guard" aria-hidden="true"></div>
+          <div class="scroll-card-tag">Planta inicial · 69m²</div>
+        </div>
+        <div class="scroll-card-wrap image-protect-wrap">
+          <img src="plantab-otimizada.webp" alt="Planta Fase 2 — 100m²" class="scroll-card-image protected-image" draggable="false">
+          <div class="image-guard" aria-hidden="true"></div>
+          <div class="scroll-card-tag">Projeto com ampliação · 100m²</div>
+        </div>
+        <div class="scroll-card-lock">
+          <div class="scroll-lock-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="scroll-lock-text"><strong>⚠ Conteúdo Bloqueado</strong><span>Compre e libere o projeto completo com as medidas.</span></div>
+        </div>
+        <div class="scroll-card-lock">
+          <div class="scroll-lock-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="scroll-lock-text"><strong>⚠ Conteúdo Bloqueado</strong><span>Compre e libere o projeto completo com as medidas.</span></div>
+        </div>
+        <div class="scroll-card-lock">
+          <div class="scroll-lock-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="scroll-lock-text"><strong>⚠ Conteúdo Bloqueado</strong><span>Compre e libere o projeto completo com as medidas.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phases-grid reveal" style="margin-top: 32px;">
+      <div class="phase-card card-shine--left reveal reveal-d1">
+        <div class="phase-label">Fase 01 — A base sólida</div>
+        <div class="phase-title">69m²</div>
+        <div class="phase-area">Construção inicial completa e econômica</div>
+        <ul class="phase-list">
+          <li>02 dormitórios confortáveis</li>
+          <li>Banheiro social bem dimensionado</li>
+          <li>Cozinha gourmet integrada com sala de estar/TV</li>
+          <li>Lavanderia aberta</li>
+        </ul>
+      </div>
+      <div class="phase-card card-shine--left reveal reveal-d2">
+        <div class="phase-label">Fase 02 — A expansão premium</div>
+        <div class="phase-title">100m²</div>
+        <div class="phase-area">Ampliação sem derrubar nada do que já foi feito</div>
+        <ul class="phase-list">
+          <li>Suíte master com closet</li>
+          <li>Garagem coberta (24,5m²)</li>
+          <li>Piscina (6,4m²) com paisagismo</li>
+          <li>Lavabo + lavanderia fechada</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ OFERTA ═══ -->
+<section class="offer-after-depo" id="comprar">
+  <div class="wrap">
+    <div class="price-card card-shine--top reveal" style="max-width:480px;margin:0 auto;">
+      <div class="price-header">
+        <p class="price-old">De R$ 1.470,00</p>
+        <div class="price-value"><sup>R$</sup>87</div>
+        <p class="price-type">no PIX</p>
+      </div>
+      <ul class="price-benefits">
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Planta técnica + Fachada 3D</strong> — Pronto para o pedreiro e engenheiro</span>
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Guia de Ampliação</strong> — O mapa para crescer de 69m² a 100m² + piscina</span>
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Projeto completo</strong> — Implantação, cortes, elevações e cobertura</span>
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Economia na Obra</strong> — Projeto pensado para zero desperdício</span>
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Acesso imediato</strong> — Receba agora no E-mail e WhatsApp</span>
+        </li>
+      </ul>
+      <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa002?org=cmm8rtff60000l404zb96q4ld" class="btn btn-primary price-cta js-checkout-link">Quero acessar o projeto agora</a>
+      <div class="price-safe">Garantia de 7 dias — Risco zero</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ OUTROS PROJETOS ═══ -->
+<section class="outros-projetos-section" id="outros-projetos">
+  <div class="wrap">
+    <div class="section-header--left reveal">
+      <div class="section-tag section-tag--left">Conheça mais</div>
+      <h2 class="section-title">Outros projetos <span class="accent">disponíveis</span></h2>
+      <p class="section-sub">Explore mais opções pensadas para diferentes terrenos e necessidades.</p>
+    </div>
+    <div class="projetos-scroll-wrapper reveal">
+      <div class="projetos-scroll-inner">
+        <a href="../" class="projeto-gal-slide image-protect-wrap" style="text-decoration:none;">
+          <img src="../image001-otimizada.webp" alt="Projeto 001 - Fachada" class="protected-image" draggable="false">
+          <div class="image-guard" aria-hidden="true"></div>
+          <div class="projeto-card-overlay">
+            <div class="projeto-card-title">Projeto 001</div>
+          </div>
+          <div class="projeto-card-badge">Terreno 12×25</div>
+          <div class="projeto-gal-tag">Fachada</div>
+        </a>
+        <a href="../" class="projeto-gal-slide image-protect-wrap" style="text-decoration:none;">
+          <img src="../image002-otimizada.webp" alt="Projeto 001 - Perspectiva" class="protected-image" draggable="false">
+          <div class="image-guard" aria-hidden="true"></div>
+          <div class="projeto-card-overlay">
+            <div class="projeto-card-title">Projeto 001</div>
+          </div>
+          <div class="projeto-card-badge">Terreno 12×25</div>
+          <div class="projeto-gal-tag">Perspectiva</div>
+        </a>
+        <a href="../" class="projeto-gal-slide image-protect-wrap" style="text-decoration:none;">
+          <img src="../image003-otimizada.webp" alt="Projeto 001 - Planta" class="protected-image" draggable="false">
+          <div class="image-guard" aria-hidden="true"></div>
+          <div class="projeto-card-overlay">
+            <div class="projeto-card-title">Projeto 001</div>
+          </div>
+          <div class="projeto-card-badge">Terreno 12×25</div>
+          <div class="projeto-gal-tag">Fachada</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ POR QUE IMPORTA ═══ -->
+<section class="problem-section">
+  <div class="wrap">
+    <div class="problem-grid">
+      <div class="reveal">
+        <div class="section-tag section-tag--left">Por que isso importa</div>
+        <h2 class="section-title">Terreno pequeno não significa <span class="accent">casa apertada</span></h2>
+        <div style="width:40px;height:2px;background:var(--blue);opacity:0.4;margin:20px 0 24px;"></div>
+        <p class="problem-text">
+          A maioria dos projetos para terrenos 10×20 entrega casas sem personalidade, sem garagem e sem espaço gourmet. Com o projeto certo, você tem <em>cozinha gourmet, suíte master, piscina e garagem</em> — tudo em 200m² de terreno.
+        </p>
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="problem-highlight card-shine--left">
+          <p>Cada metro quadrado é aproveitado com inteligência — do paisagismo à piscina.</p>
+        </div>
+        <div class="method-points">
+          <div class="method-point">Cozinha gourmet integrada desde a Fase 1</div>
+          <div class="method-point">Garagem + piscina na Fase 2 sem quebrar nada</div>
+          <div class="method-point">Fachada moderna com acabamento em granelli e tijolinho</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ O QUE RECEBE ═══ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-header--left reveal">
+      <div class="section-tag section-tag--left">Conteúdo do acesso</div>
+      <h2 class="section-title">O que você <span class="accent">recebe</span></h2>
+      <p class="section-sub">Documentação técnica completa pronta para usar com seu pedreiro, engenheiro ou na prefeitura.</p>
+    </div>
+    <div class="items-list">
+      <div class="item-row reveal reveal-d1">
+        <span class="item-num">01</span>
+        <div class="item-text"><strong>Planta baixa detalhada (Fase 1 e 2)</strong><span>Todas as cotas e medidas para o pedreiro não errar.</span></div>
+      </div>
+      <div class="item-row reveal reveal-d2">
+        <span class="item-num">02</span>
+        <div class="item-text"><strong>Planta de implantação</strong><span>Como posicionar a casa no terreno 10×20 respeitando os recuos.</span></div>
+      </div>
+      <div class="item-row reveal reveal-d1">
+        <span class="item-num">03</span>
+        <div class="item-text"><strong>Fachada 3D em alta definição</strong><span>Visualize diurna, noturna, com e sem portão.</span></div>
+      </div>
+      <div class="item-row reveal reveal-d2">
+        <span class="item-num">04</span>
+        <div class="item-text"><strong>Cortes e elevações completos</strong><span>Cortes AA, BB, CC, DD + 4 elevações com cotas de nível.</span></div>
+      </div>
+      <div class="item-row reveal reveal-d1">
+        <span class="item-num">05</span>
+        <div class="item-text"><strong>Planta de cobertura + tabela de esquadrias</strong><span>Detalhamento de telhado, calhas, rufos e especificação de portas e janelas.</span></div>
+      </div>
+      <div class="item-row reveal reveal-d2">
+        <span class="item-num">06</span>
+        <div class="item-text"><strong>Guia de ampliação</strong><span>Passo a passo de onde conectar garagem, suíte, piscina e lavabo na Fase 2.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ PARA QUEM ═══ -->
+<section class="forwho-section">
+  <div class="wrap">
+    <div class="section-header--center reveal">
+      <div class="section-tag section-tag--center">Perfil ideal</div>
+      <h2 class="section-title">Esse projeto é <span class="accent">para quem</span></h2>
+      <p class="section-sub">Se você se identificar com algum desses cenários, este projeto foi feito para você.</p>
+    </div>
+    <div class="forwho-grid">
+      <div class="forwho-card card-shine--bottom reveal reveal-d1">
+        <h3 class="forwho-title">Tem terreno 10×20 e não sabe como aproveitar</h3>
+        <p class="forwho-desc">Este projeto maximiza cada m² do seu terreno padrão com cozinha gourmet, piscina e garagem.</p>
+      </div>
+      <div class="forwho-card card-shine--bottom reveal reveal-d2">
+        <h3 class="forwho-title">Não tem todo o dinheiro para construir de uma vez</h3>
+        <p class="forwho-desc">Começa com a fase de 69m² hoje e expande para 100m² + piscina amanhã, sem quebrar nenhuma parede pronta.</p>
+      </div>
+      <div class="forwho-card card-shine--bottom reveal reveal-d3">
+        <h3 class="forwho-title">Quer piscina e garagem mesmo em terreno compacto</h3>
+        <p class="forwho-desc">O projeto já prevê a posição exata da piscina (6,4m²) e garagem (24,5m²) na planta de ampliação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="guarantee-box card-shine--top reveal">
+      <div class="guarantee-title">Garantia de 7 dias — risco zero</div>
+      <p class="guarantee-text">Analise o projeto com calma. Se sentir que as medidas não são profissionais ou que o layout não te atende, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div style="max-width:640px;margin:0 auto;text-align:center" class="reveal">
+      <p style="font-size:13px;color:var(--muted);line-height:1.7">
+        Este material é um Estudo Preliminar Avançado. Entrega toda a parte criativa e dimensional, servindo como base exata para o seu engenheiro ou arquiteto local emitir a ART/RRT e dar entrada na prefeitura.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq-section" style="padding-top:0">
+  <div class="wrap">
+    <div class="faq-wrap" id="faq">
+      <div class="section-header--center reveal">
+        <div class="section-tag section-tag--center">Dúvidas</div>
+        <h2 class="section-title">Perguntas <span class="accent">frequentes</span></h2>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q">O projeto cabe mesmo em um terreno 10×20?<div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-a"><div class="faq-a-inner">Sim! O Projeto 002 foi desenhado especificamente para terrenos de 10m de frente por 20m de profundidade (200m²), que são os mais comuns em loteamentos. Todas as medidas, recuos e posicionamento já estão calculados para esse lote.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Como funciona a ampliação? Vou precisar quebrar paredes?<div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-a"><div class="faq-a-inner">Não! O projeto já prevê os pontos de espera para a Fase 2. A garagem, suíte master, piscina e lavabo se conectam à estrutura existente sem derrubar nada. Você constrói a Fase 1 sabendo exatamente onde cada novo ambiente vai encaixar.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">A piscina é viável em um terreno tão compacto?<div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-a"><div class="faq-a-inner">Sim! A piscina de 6,4m² foi posicionada nos fundos com paisagismo integrado, aproveitando o espaço que sobra da construção principal. É compacta mas funcional, perfeita para relaxar e valorizar o imóvel.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">O projeto vem com todas as medidas detalhadas?<div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-a"><div class="faq-a-inner">Sim, você recebe plantas baixas com todas as cotas, cortes com níveis, elevações completas e até a tabela de esquadrias com dimensões de cada porta e janela. Seu pedreiro e engenheiro terão tudo que precisam.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Por que o projeto custa apenas R$ 87?<div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-a"><div class="faq-a-inner">O Anderson Greco acredita na democratização da arquitetura. Em vez de cobrar R$ 3.000 de um único cliente, entregamos um estudo preliminar avançado para milhares de pessoas. Você economiza no design e investe esse dinheiro na sua obra.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">O que eu recebo assim que o pagamento for aprovado?<div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-a"><div class="faq-a-inner">O envio é imediato. Você recebe um e-mail e uma mensagem no WhatsApp com o link para baixar o pacote completo: Plantas, Implantação, Cortes, Elevações, Fachada 3D e o Guia de Ampliação. Sem espera.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">E se eu comprar e não gostar?<div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-a"><div class="faq-a-inner">Você tem 7 dias de garantia incondicional. Se abrir o material e achar que não serve, devolvemos 100% do valor. Risco zero.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ SOBRE ═══ -->
+<section class="section about-section" id="sobre">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-content reveal">
+        <div class="section-tag section-tag--left">Quem sou eu?</div>
+        <h2 class="section-title">Anderson <span class="accent">Greco</span></h2>
+        <p class="about-text">
+          Sou arquiteto, tenho 36 anos e um grande objetivo: <strong>tornar a arquitetura funcional e de alto padrão acessível para todos.</strong>
+        </p>
+        <p class="about-text">
+          Acredito que a beleza, o conforto e a eficiência não devem ser exclusividade de orçamentos milionários. Construir é um dos passos mais importantes da vida de uma pessoa, e iniciar isso no escuro é sinônimo de prejuízo.
+        </p>
+        <p class="about-text">
+          Por isso, criei este projeto pensando em otimizar cada metro quadrado do terreno 10×20. O objetivo é que você construa com economia e inteligência hoje, e tenha o mapa exato para expandir no futuro.
+        </p>
+      </div>
+      <div class="about-image-wrap reveal reveal-d2">
+        <div class="about-image-card card-shine--left image-protect-wrap">
+          <img src="../perfilpb-otimizada.webp" alt="Arquiteto Anderson Greco" class="protected-image" draggable="false" style="width:100%;height:auto;display:block;">
+          <div class="image-guard" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA FINAL ═══ -->
+<section class="final-section">
+  <div class="wrap">
+    <div class="final-inner">
+      <div class="reveal">
+        <h2 class="final-title">Pare de sonhar.<br>Comece a <span class="accent">planejar</span>.</h2>
+        <p class="final-sub">Por R$87 — menos que o preço de uma pizza — você garante o projeto completo com piscina, garagem e cozinha gourmet para o seu terreno 10×20.</p>
+      </div>
+      <div class="price-card card-shine--top reveal" style="max-width:420px;margin:0 auto 40px;text-align:left;">
+        <div class="price-header">
+          <p class="price-old">De R$ 1.470,00</p>
+          <div class="price-value"><sup>R$</sup>87</div>
+          <p class="price-type">Pagamento único</p>
+        </div>
+        <ul class="price-benefits">
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Planta técnica + Fachada 3D</strong></span>
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Guia de Ampliação (69m² a 100m² + piscina)</strong></span>
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Acesso imediato</strong> (E-mail e WhatsApp)</span>
+          </li>
+        </ul>
+        <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa002?org=cmm8rtff60000l404zb96q4ld" class="btn btn-primary price-cta js-checkout-link">Garantir meu projeto agora</a>
+        <div class="price-safe">Garantia de 7 dias — Risco zero</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="../logogreco.svg" alt="Anderson Greco Logo" class="site-logo protected-image" draggable="false" style="opacity:0.8">
+  <ul class="footer-links">
+    <li><a href="#comprar">Projeto</a></li>
+    <li><a href="#galeria">Galeria</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#sobre">Contato</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 · Todos os direitos reservados</p>
+</footer>
+
+<script>
+// ── CRONÔMETRO ──
+function updateCountdown() {
+  var now = new Date();
+  var tomorrow = new Date(now);
+  tomorrow.setHours(24, 0, 0, 0);
+  var diff = tomorrow - now;
+  var hours = Math.floor(diff / (1000 * 60 * 60));
+  var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  var elH = document.getElementById('cd-hours');
+  var elM = document.getElementById('cd-minutes');
+  var elS = document.getElementById('cd-seconds');
+  if (elH) elH.textContent = hours.toString().padStart(2, '0');
+  if (elM) elM.textContent = minutes.toString().padStart(2, '0');
+  if (elS) elS.textContent = seconds.toString().padStart(2, '0');
+  if (diff <= 0) setTimeout(updateCountdown, 1000);
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// ── HERO BG ──
+function adjustHeroBg() {
+  var heroSub = document.getElementById('heroSub');
+  var heroBgImage = document.getElementById('heroBgImage');
+  var heroBgFade = document.getElementById('heroBgFade');
+  var heroSection = document.getElementById('heroSection');
+  if (!heroSub || !heroBgImage || !heroSection) return;
+  var heroRect = heroSection.getBoundingClientRect();
+  var subRect = heroSub.getBoundingClientRect();
+  var cutHeight = (subRect.bottom - heroRect.top) + 60;
+  heroBgImage.style.height = cutHeight + 'px';
+  if (heroBgFade) heroBgFade.style.height = cutHeight + 'px';
+}
+window.addEventListener('load', adjustHeroBg);
+window.addEventListener('resize', adjustHeroBg);
+document.addEventListener('DOMContentLoaded', function() { setTimeout(adjustHeroBg, 100); });
+
+// ── STICKY BAR ──
+var bar = document.getElementById('stickyBar');
+window.addEventListener('scroll', function() { bar.classList.toggle('show', window.scrollY > 400); });
+
+// ── SCROLL REVEAL ──
+var reveals = document.querySelectorAll('.reveal');
+var io = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.1 });
+reveals.forEach(function(el) { io.observe(el); });
+
+// ── FAQ ACCORDION ──
+document.querySelectorAll('.faq-q').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var item = btn.closest('.faq-item');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// ── THEME ──
+var themes = [{ label: 'meta', vars: {
+  '--black': '#0A0E14', '--dark': '#0F1620', '--card': '#141D2B', '--card2': '#192334',
+  '--border': 'rgba(0,130,251,0.15)', '--border2': 'rgba(255,255,255,0.07)',
+  '--blue': '#0082FB', '--slate': '#7A9AB8', '--muted': '#3D5266',
+  '--white': '#E8F4FF', '--text': '#B8D0E8',
+  '--glow': 'rgba(0,130,251,0.10)', '--grid-line': 'rgba(0,100,224,0.05)',
+}}];
+function applyTheme(t) { Object.entries(t.vars).forEach(function(e) { document.documentElement.style.setProperty(e[0], e[1]); }); }
+applyTheme(themes[0]);
+
+// ── IMAGE PROTECTION ──
+document.addEventListener('contextmenu', function(e) { if (e.target.closest('img') || e.target.closest('.image-guard')) e.preventDefault(); });
+document.addEventListener('dragstart', function(e) { if (e.target.closest('img') || e.target.closest('.image-guard')) e.preventDefault(); });
+document.addEventListener('selectstart', function(e) { if (e.target.closest('img') || e.target.closest('.image-guard')) e.preventDefault(); });
+document.addEventListener('mousedown', function(e) { if (e.detail > 1 && (e.target.closest('img') || e.target.closest('.image-guard'))) e.preventDefault(); });
+document.querySelectorAll('img').forEach(function(img) { img.setAttribute('draggable', 'false'); });
+
+// ── VISIT TRACKER + UTM REPLAY ──
+(function () {
+  var ORG_ID = "cmm8rtff60000l404zb96q4ld";
+  var BASE_URL = "https://everestpayments.com.br";
+  var CAMPAIGN_KEYS = ["fbclid", "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+  function getParam(name) { try { return new URL(window.location.href).searchParams.get(name); } catch { return null; } }
+  function alreadySent(key) { try { return sessionStorage.getItem(key) === "1"; } catch { return false; } }
+  function markSent(key) { try { sessionStorage.setItem(key, "1"); } catch {} }
+  function getOrCreateClientId() {
+    try {
+      var existing = localStorage.getItem("sv:clientId");
+      if (existing) return existing;
+      var created = (typeof crypto !== "undefined" && crypto.randomUUID) ? crypto.randomUUID() : "cid_" + Date.now() + "_" + Math.random().toString(36).slice(2);
+      localStorage.setItem("sv:clientId", created);
+      return created;
+    } catch { return null; }
+  }
+  function persistCampaignParams() { for (var i = 0; i < CAMPAIGN_KEYS.length; i++) { try { var k = CAMPAIGN_KEYS[i]; var v = getParam(k); if (v) sessionStorage.setItem("sv:" + k, v); } catch {} } }
+  function getStoredParam(name) { try { var fromUrl = getParam(name); if (fromUrl) { sessionStorage.setItem("sv:" + name, fromUrl); return fromUrl; } return sessionStorage.getItem("sv:" + name); } catch { return getParam(name); } }
+  function buildPayload() {
+    return { site: "lp", path: window.location.pathname + window.location.search, organizationId: ORG_ID,
+      referrer: document.referrer || null, fbclid: getStoredParam("fbclid"),
+      utm_source: getStoredParam("utm_source"), utm_medium: getStoredParam("utm_medium"),
+      utm_campaign: getStoredParam("utm_campaign"), utm_content: getStoredParam("utm_content"),
+      utm_term: getStoredParam("utm_term"), userAgent: navigator.userAgent || null, clientId: getOrCreateClientId() };
+  }
+  function appendCampaignParamsToCheckoutLinks() {
+    var links = document.querySelectorAll(".js-checkout-link");
+    if (!links.length) return;
+    for (var i = 0; i < links.length; i++) {
+      var link = links[i]; var href = link.getAttribute("href"); if (!href) continue;
+      try {
+        var url = new URL(href);
+        for (var j = 0; j < CAMPAIGN_KEYS.length; j++) { var k = CAMPAIGN_KEYS[j]; var v = getStoredParam(k); if (v && !url.searchParams.get(k)) url.searchParams.set(k, v); }
+        var clientId = getOrCreateClientId(); if (clientId && !url.searchParams.get("clientId")) url.searchParams.set("clientId", clientId);
+        link.setAttribute("href", url.toString());
+      } catch {}
+    }
+  }
+  function sendVisit() {
+    persistCampaignParams(); appendCampaignParamsToCheckoutLinks();
+    var pathname = window.location.pathname || "/"; var dedupeKey = "sv:v1:" + pathname;
+    if (alreadySent(dedupeKey)) return;
+    var payload = buildPayload();
+    fetch(BASE_URL + "/api/track/visit", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) })
+      .then(function(res) { if (!res.ok) throw new Error("Falha"); markSent(dedupeKey); return res.text(); }).catch(function() {});
+  }
+  if (document.readyState === "complete" || document.readyState === "interactive") { sendVisit(); }
+  else { document.addEventListener("DOMContentLoaded", sendVisit, { once: true }); }
+})();
+</script>
+
+<div class="mobile-cta-bar">
+  <div class="mobile-cta-inner">
+    <div class="mobile-cta-info">
+      <span class="mobile-cta-label">Oferta por tempo limitado</span>
+      <span class="mobile-cta-price"><sup>R$</sup>87</span>
+    </div>
+    <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa002?org=cmm8rtff60000l404zb96q4ld" class="js-checkout-link">Quero o projeto</a>
+  </div>
+</div>
+</body>
+</html>

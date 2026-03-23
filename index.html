@@ -426,7 +426,7 @@ body::before {
   border: 1px solid rgba(99,140,255,0.2);
   border-radius: var(--radius-full); padding: 4px 14px;
 }
-.price-cta { width: 100% !important; font-size: 14px !important; padding: 18px !important; border-radius: var(--radius-md) !important; letter-spacing: 0.06em !important; text-align: center !important; }
+.price-cta { width: 100% !important; font-size: clamp(11px, 3.2vw, 14px) !important; padding: 18px 16px !important; border-radius: var(--radius-md) !important; letter-spacing: 0.06em !important; text-align: center !important; }
 .price-safe {
   display: flex; align-items: center; justify-content: center; gap: 8px;
   margin-top: 14px; padding: 10px 14px;
@@ -466,6 +466,7 @@ body::before {
 .faq-section      { padding: var(--section-py) 0; }
 .ficha-section    { padding: var(--section-py) 0; position: relative; z-index: 1; }
 .final-section    { padding: var(--section-py-lg) 0; background: var(--dark); position: relative; overflow: hidden; text-align: center; }
+.outros-projetos-section { padding: var(--section-py) 0; position: relative; background: var(--dark); overflow: hidden; }
 
 /* ═══════════════════════════════════════════════════
    SISTEMA DE CABEÇALHOS
@@ -575,7 +576,8 @@ body::before {
 ══════════════════════════════════════════════════════ */
 .scroll-wrapper,
 .gallery-scroll-wrapper,
-.depo-gallery-scroll-wrapper {
+.depo-gallery-scroll-wrapper,
+.projetos-scroll-wrapper {
   overflow-x: auto;
   overflow-y: hidden;
   padding-bottom: 20px;
@@ -589,26 +591,32 @@ body::before {
   margin-top: 32px;
 }
 .gallery-scroll-wrapper,
-.depo-gallery-scroll-wrapper {
+.depo-gallery-scroll-wrapper,
+.projetos-scroll-wrapper {
   margin-top: 0;
 }
 
 .scroll-wrapper::-webkit-scrollbar,
 .gallery-scroll-wrapper::-webkit-scrollbar,
-.depo-gallery-scroll-wrapper::-webkit-scrollbar { height: 6px; }
+.depo-gallery-scroll-wrapper::-webkit-scrollbar,
+.projetos-scroll-wrapper::-webkit-scrollbar { height: 6px; }
 .scroll-wrapper::-webkit-scrollbar-track,
 .gallery-scroll-wrapper::-webkit-scrollbar-track,
-.depo-gallery-scroll-wrapper::-webkit-scrollbar-track { background: var(--border2); border-radius: 10px; }
+.depo-gallery-scroll-wrapper::-webkit-scrollbar-track,
+.projetos-scroll-wrapper::-webkit-scrollbar-track { background: var(--border2); border-radius: 10px; }
 .scroll-wrapper::-webkit-scrollbar-thumb,
 .gallery-scroll-wrapper::-webkit-scrollbar-thumb,
-.depo-gallery-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+.depo-gallery-scroll-wrapper::-webkit-scrollbar-thumb,
+.projetos-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
 .scroll-wrapper::-webkit-scrollbar-thumb:hover,
 .gallery-scroll-wrapper::-webkit-scrollbar-thumb:hover,
-.depo-gallery-scroll-wrapper::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+.depo-gallery-scroll-wrapper::-webkit-scrollbar-thumb:hover,
+.projetos-scroll-wrapper::-webkit-scrollbar-thumb:hover { background: var(--blue); }
 
 .scroll-inner,
 .gallery-scroll-inner,
-.depo-gallery-scroll-inner {
+.depo-gallery-scroll-inner,
+.projetos-scroll-inner {
   display: flex;
   gap: 16px;
   width: max-content;
@@ -616,7 +624,8 @@ body::before {
 }
 
 .gallery-scroll-inner,
-.depo-gallery-scroll-inner { gap: 12px; }
+.depo-gallery-scroll-inner,
+.projetos-scroll-inner { gap: 12px; }
 
 .scroll-card-wrap {
   width: 340px;
@@ -680,13 +689,15 @@ body::before {
 .scroll-lock-text span { font-size: 12px; color: var(--muted); line-height: 1.55; }
 
 .gal-slide,
-.depo-gal-slide {
+.depo-gal-slide,
+.projeto-gal-slide {
   width: 480px; height: 300px; flex-shrink: 0; scroll-snap-align: start;
   border-radius: var(--radius-2xl); position: relative; overflow: hidden;
   border: 1px solid var(--border2); display: block;
 }
 .gal-slide img,
-.depo-gal-slide img {
+.depo-gal-slide img,
+.projeto-gal-slide img {
   width: 100%; height: 100%; object-fit: cover; display: block;
 }
 .gal-slide-lock,
@@ -726,12 +737,65 @@ body::before {
 .gal-lock-text strong,
 .depo-gal-lock-text strong { display: block; color: var(--slate); font-weight: 500; font-size: 13px; margin-bottom: 4px; }
 .gal-tag,
-.depo-gal-tag {
+.depo-gal-tag,
+.projeto-gal-tag {
   position: absolute; bottom: 12px; left: 12px;
   background: rgba(8,10,15,0.9); border: 1px solid var(--border);
   border-radius: var(--radius-xs); padding: 4px 10px;
   font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--blue);
   z-index: 2;
+}
+
+/* ══════════════════════════════════════════════════════
+   OUTROS PROJETOS — CARD OVERLAY
+══════════════════════════════════════════════════════ */
+.projeto-gal-slide {
+  cursor: pointer;
+  transition: border-color 0.3s, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.projeto-gal-slide:hover {
+  transform: translateY(-2px);
+}
+.projeto-card-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 2;
+  padding: 16px 18px;
+  background: linear-gradient(to bottom, rgba(8,10,15,0.85) 0%, rgba(8,10,15,0.4) 70%, transparent 100%);
+  pointer-events: none;
+}
+.projeto-card-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.01em;
+  margin-bottom: 2px;
+}
+.projeto-card-badge {
+  position: absolute;
+  top: 14px; right: 14px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  background: rgba(0, 130, 251, 0.12);
+  border: 1px solid rgba(0, 130, 251, 0.3);
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blue);
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .projeto-gal-slide {
+    width: 320px;
+    height: 220px;
+  }
 }
 
 /* ── ITEMS LIST ── */
@@ -958,7 +1022,7 @@ footer {
     top: 74px;
   }
   .hero {
-    padding-top: 240px;
+    padding-top: 180px;
   }
   .hero-inner { grid-template-columns: 1fr; gap: 48px; }
   .phases-grid { grid-template-columns: 1fr; }
@@ -1031,30 +1095,36 @@ footer {
 
 /* ── MOBILE CTA BAR ── */
 .mobile-cta-bar {
-  display: none;
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  z-index: 999;
-  background: rgba(8,10,15,0.97);
-  backdrop-filter: blur(20px);
-  border-top: 1px solid var(--border);
-  padding: 12px 20px;
-  padding-bottom: calc(12px + env(safe-area-inset-bottom));
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+  background: rgba(8,10,15,0.97); backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border); padding: 10px 20px;
+  padding-bottom: calc(10px + env(safe-area-inset-bottom));
+}
+.mobile-cta-inner {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+}
+.mobile-cta-info {
+  display: flex; flex-direction: column; gap: 1px; min-width: 0;
+}
+.mobile-cta-label {
+  font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted);
+  line-height: 1.2;
+}
+.mobile-cta-price {
+  font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 700;
+  color: var(--white); line-height: 1.1; letter-spacing: -0.02em;
+}
+.mobile-cta-price sup {
+  font-size: 12px; vertical-align: super; color: var(--blue); font-weight: 600; margin-right: 1px;
 }
 .mobile-cta-bar a {
-  display: flex; align-items: center; justify-content: center; gap: 10px;
+  display: flex; align-items: center; justify-content: center;
   background: var(--blue); color: #fff;
-  font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
+  font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600;
   letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
-  border-radius: var(--radius-md); padding: 15px;
-  position: relative; overflow: hidden;
-}
-.mobile-cta-bar a::before {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
-}
-.mobile-cta-bar-price {
-  font-size: 11px; opacity: 0.75; font-weight: 400; letter-spacing: 0.04em;
+  border-radius: var(--radius-md); padding: 14px 24px;
+  white-space: nowrap; flex-shrink: 0;
 }
 @media (max-width: 768px) {
   .mobile-cta-bar { display: block; }
@@ -1441,6 +1511,57 @@ footer {
       </ul>
       <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" class="btn btn-primary price-cta js-checkout-link">Quero acessar o projeto agora</a>
       <div class="price-safe">Garantia de 7 dias — Risco zero</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════════════
+     OUTROS PROJETOS — SEÇÃO NOVA
+══════════════════════════════════════════════════════ -->
+<section class="outros-projetos-section" id="outros-projetos">
+  <div class="wrap">
+    <div class="section-header--left reveal">
+      <div class="section-tag section-tag--left">Conheça mais</div>
+      <h2 class="section-title">Outros projetos <span class="accent">disponíveis</span></h2>
+      <p class="section-sub">Explore mais opções pensadas para diferentes terrenos e necessidades. Cada projeto segue a mesma filosofia: economia na obra com acabamento de alto padrão.</p>
+    </div>
+
+    <div class="projetos-scroll-wrapper reveal">
+      <div class="projetos-scroll-inner">
+
+        <a href="/projeto-002" class="projeto-gal-slide image-protect-wrap" style="text-decoration:none;">
+          <img src="P002IMG001.webp" alt="Projeto 002 - Fachada" class="protected-image" draggable="false">
+          <div class="image-guard" aria-hidden="true"></div>
+          <div class="projeto-card-overlay">
+            <div class="projeto-card-title">Projeto 002</div>
+          </div>
+          <div class="projeto-card-badge">Terreno 10×20</div>
+          <div class="projeto-gal-tag">Fachada</div>
+        </a>
+
+        <a href="/projeto-002" class="projeto-gal-slide image-protect-wrap" style="text-decoration:none;">
+          <img src="P002IMG002.webp" alt="Projeto 002 - Perspectiva" class="protected-image" draggable="false">
+          <div class="image-guard" aria-hidden="true"></div>
+          <div class="projeto-card-overlay">
+            <div class="projeto-card-title">Projeto 002</div>
+          </div>
+          <div class="projeto-card-badge">Terreno 10×20</div>
+          <div class="projeto-gal-tag">Perspectiva 3D</div>
+        </a>
+
+        <a href="/projeto-002" class="projeto-gal-slide image-protect-wrap" style="text-decoration:none;">
+          <img src="P002IMG003.webp" alt="Projeto 002 - Planta" class="protected-image" draggable="false">
+          <div class="image-guard" aria-hidden="true"></div>
+          <div class="projeto-card-overlay">
+            <div class="projeto-card-title">Projeto 002</div>
+          </div>
+          <div class="projeto-card-badge">Terreno 10×20</div>
+          <div class="projeto-gal-tag">Planta</div>
+        </a>
+
+      </div>
     </div>
   </div>
 </section>
@@ -2009,10 +2130,13 @@ document.querySelectorAll('img').forEach(function(img) {
 </script>
 
 <div class="mobile-cta-bar">
-  <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" class="js-checkout-link">
-    <span>Garantir meu projeto</span>
-    <span class="mobile-cta-bar-price">R$67 · Acesso imediato</span>
-  </a>
+  <div class="mobile-cta-inner">
+    <div class="mobile-cta-info">
+      <span class="mobile-cta-label">Oferta por tempo limitado</span>
+      <span class="mobile-cta-price"><sup>R$</sup>67</span>
+    </div>
+    <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" class="js-checkout-link">Quero o projeto</a>
+  </div>
 </div>
 </body>
 </html>
