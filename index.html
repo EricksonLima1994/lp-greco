@@ -321,32 +321,82 @@ body::before {
 .hero {
   min-height: 100vh;
   display: flex; flex-direction: column; justify-content: center;
-  padding: 320px 0 var(--section-py);
+  padding: 390px 0 0;
   position: relative; overflow: hidden;
   touch-action: manipulation;
 }
-/* A imagem de fundo agora fica dimensionada pelo JS para terminar no subtítulo */
-.hero-bg-image {
+
+/* ── HERO FLOATING TEXT (behind image) ── */
+.hero-floating-text {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; /* fallback — JS sobrescreve */
-  object-fit: cover;
-  opacity: .2;
+  top: 200px; right: -20px;
   z-index: 0;
-}
-/* Fade suave na borda inferior da imagem */
-.hero-bg-fade {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
+  display: flex; flex-direction: column;
+  align-items: flex-end;
+  line-height: 0.85;
   pointer-events: none;
-  background: linear-gradient(to bottom, transparent 60%, var(--black) 100%);
+  user-select: none;
+  animation: heroTextFloat 6s ease-in-out infinite;
 }
+@keyframes heroTextFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.hero-floating-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(18px, 3vw, 28px);
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: -5px;
+}
+.hero-floating-number {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(120px, 22vw, 280px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  background: linear-gradient(180deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.02) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── HERO CUTOUT IMAGE (on top of text) ── */
+.hero-cutout-wrap {
+  position: absolute;
+  top: 290px; left: 0; right: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  pointer-events: none;
+}
+.hero-cutout-img {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 35%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 35%, transparent 100%);
+}
+
+/* ── HERO BOTTOM FADE (image to section transition) ── */
+.hero-bottom-fade {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 200px;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 0%, var(--black) 100%);
+}
+
 .hero::before {
   content: ''; position: absolute; inset: 0;
   background-image:
@@ -356,7 +406,7 @@ body::before {
   mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 40%, transparent 100%);
   z-index: 1;
 }
-.hero .wrap { z-index: 2; }
+.hero .wrap { z-index: 3; }
 .hero-inner {
   display: grid; grid-template-columns: 1fr;
   gap: 80px; align-items: center; position: relative;
@@ -368,6 +418,7 @@ body::before {
   flex-wrap: nowrap;
   gap: 10px;
   margin-bottom: 25px;
+  margin-top: 120px;
   animation: fadeUp 0.7s ease both;
   align-items: flex-start;
 }
@@ -376,16 +427,18 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid rgba(99,140,255,0.5);
-  background: rgba(99,140,255,0.06);
+  border: 1px solid rgba(130, 200, 255, 0.45);
+  background: rgba(10, 14, 20, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   padding: 7px 16px;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--blue);
+  color: #8EC8FF;
   border-radius: var(--radius-full);
-  box-shadow: 0 0 12px rgba(99,140,255,0.15), inset 0 0 8px rgba(99,140,255,0.06);
+  box-shadow: 0 0 12px rgba(130, 200, 255, 0.12), inset 0 0 8px rgba(130, 200, 255, 0.05);
   white-space: nowrap;
 }
 
@@ -1022,8 +1075,13 @@ footer {
     top: 74px;
   }
   .hero {
-    padding-top: 180px;
+    padding-top: 250px;
   }
+  .hero-floating-text { top: 170px; right: -10px; }
+  .hero-floating-number { font-size: clamp(100px, 28vw, 200px); }
+  .hero-cutout-wrap { top: 250px; }
+  .hero-cutout-img { max-width: 100%; }
+  .hero-bottom-fade { height: 150px; }
   .hero-inner { grid-template-columns: 1fr; gap: 48px; }
   .phases-grid { grid-template-columns: 1fr; }
   .problem-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -1043,7 +1101,12 @@ footer {
   footer { flex-direction: column; text-align: center; }
   .footer-links { justify-content: center; }
   .scroll-card-image { width: 280px; }
-  .hero-bg-image { height: 55%; }
+  .hero-bg-image { display: none; }
+  .hero-floating-text { top: 150px; right: -5px; }
+  .hero-floating-label { font-size: 14px; }
+  .hero-floating-number { font-size: 100px; }
+  .hero-cutout-wrap { top: 210px; }
+  .hero-bottom-fade { height: 120px; }
   .ficha-grid { grid-template-columns: repeat(2, 1fr); }
   .depo-text { font-size: 14px; }
   .gal-slide,
@@ -1212,10 +1275,22 @@ footer {
   <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" class="btn btn-primary btn-sm js-checkout-link">Quero o projeto</a>
 </div>
 
-<!-- ═══ HERO — BG IMAGE CORTADA NO SUBTÍTULO ═══ -->
+<!-- ═══ HERO ═══ -->
 <section class="hero image-protect-wrap" id="heroSection">
-  <img src="hero-otimizada.webp" alt="Projeto Casa Moderna" class="hero-bg-image protected-image" id="heroBgImage" draggable="false">
-  <div class="hero-bg-fade" id="heroBgFade"></div>
+  <!-- Floating text BEHIND the image -->
+  <div class="hero-floating-text">
+    <span class="hero-floating-label">Projeto</span>
+    <span class="hero-floating-number">001</span>
+  </div>
+
+  <!-- Cutout image ON TOP of text -->
+  <div class="hero-cutout-wrap">
+    <img src="hero-recortada.png" alt="Projeto Casa Moderna 12x25" class="hero-cutout-img protected-image" draggable="false">
+  </div>
+
+  <!-- Bottom fade to next section -->
+  <div class="hero-bottom-fade"></div>
+
   <div class="image-guard" aria-hidden="true"></div>
   <div class="wrap">
     <div class="hero-inner">
@@ -1841,31 +1916,7 @@ setInterval(updateCountdown, 1000);
 updateCountdown();
 
 // ── HERO BG IMAGE: CORTA NA ALTURA DO SUBTÍTULO + MARGIN ──
-function adjustHeroBg() {
-  var heroSub = document.getElementById('heroSub');
-  var heroBgImage = document.getElementById('heroBgImage');
-  var heroBgFade = document.getElementById('heroBgFade');
-  var heroSection = document.getElementById('heroSection');
-  
-  if (!heroSub || !heroBgImage || !heroSection) return;
-  
-  var heroRect = heroSection.getBoundingClientRect();
-  var subRect = heroSub.getBoundingClientRect();
-  
-  // Distância do topo da section hero até o final do subtítulo + 60px de margem
-  var cutHeight = (subRect.bottom - heroRect.top) + 60;
-  
-  heroBgImage.style.height = cutHeight + 'px';
-  if (heroBgFade) heroBgFade.style.height = cutHeight + 'px';
-}
-
-// Executar após fonts e imagens carregarem
-window.addEventListener('load', adjustHeroBg);
-window.addEventListener('resize', adjustHeroBg);
-// Executar também no DOMContentLoaded como fallback rápido
-document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(adjustHeroBg, 100);
-});
+// ── HERO BG (removed — new cutout layout) ──
 
 // ── STICKY BAR ──────────────────────────────────────────
 var bar = document.getElementById('stickyBar');
