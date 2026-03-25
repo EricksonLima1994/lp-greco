@@ -799,27 +799,46 @@ footer {
 ═══════════════════════════════════ */
 .escape-section { padding: 0; margin-top: -20px; }
 .escape-card {
-  background: var(--card); border: 1px solid var(--accent-border);
-  border-radius: var(--r-xl); padding: 32px 36px;
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 32px; position: relative; overflow: hidden;
+  background: var(--card); border: 1px solid var(--border2);
+  border-radius: var(--r-lg); padding: 32px 28px; position: relative; overflow: hidden;
+  transition: border-color 0.3s ease;
 }
+.escape-card:hover { border-color: var(--accent-border); }
 .escape-card::before {
-  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
-  background: var(--accent); border-radius: 0 2px 2px 0; opacity: 0.6;
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(180deg, transparent 0%, var(--accent) 50%, transparent 100%);
+  opacity: 0.5; border-radius: 0 2px 2px 0;
 }
-.escape-card-content { flex: 1; min-width: 0; }
+.escape-card-content { }
 .escape-card-tag {
   font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
 }
 .escape-card-title {
-  font-size: clamp(18px, 2.2vw, 24px); font-weight: 800; color: var(--white);
-  line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.02em;
+  font-size: clamp(17px, 2.2vw, 22px); font-weight: 800; color: var(--white);
+  line-height: 1.2; margin-bottom: 8px; letter-spacing: -0.02em;
 }
 .escape-card-sub { font-size: 13px; color: var(--slate); line-height: 1.6; }
-.escape-card-sub a { transition: opacity 0.2s; }
-.escape-card-sub a:hover { opacity: 0.8; }
+
+/* CTA link below terrain cards */
+.terrain-cta-row {
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 20px;
+}
+.terrain-cta-link {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--accent); text-decoration: none;
+  padding: 12px 24px; border-radius: var(--r-md);
+  background: var(--accent-dim); border: 1px solid var(--accent-border);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.terrain-cta-link:hover {
+  background: rgba(205,251,84,0.12); transform: translateX(4px);
+}
+.terrain-cta-link svg { flex-shrink: 0; transition: transform 0.3s; }
+.terrain-cta-link:hover svg { transform: translateX(3px); }
 
 /* Terrain mini-cards scroll */
 .terrain-scroll-wrapper {
@@ -885,7 +904,8 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .escape-card { flex-direction: column; align-items: flex-start; padding: 24px 20px; gap: 16px; }
+  .escape-card { padding: 24px 20px; }
+  .terrain-cta-link { font-size: 11px; padding: 10px 18px; }
 }
 
 /* ═══════════════════════════════════
@@ -893,6 +913,7 @@ footer {
 ═══════════════════════════════════ */
 .custom-section {
   padding: var(--section-py) 0; position: relative; overflow: hidden;
+  scroll-margin-top: 40px;
 }
 .custom-card {
   max-width: 640px; margin: 0 auto;
@@ -1081,26 +1102,6 @@ footer {
   </div>
 </section>
 
-<!-- ── TRUST BAR ── -->
-<div class="trust-bar">
-  <div class="trust-item">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    Pagamento seguro
-  </div>
-  <div class="trust-item">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-    Acesso imediato
-  </div>
-  <div class="trust-item">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-    Garantia de 7 dias
-  </div>
-  <div class="trust-item">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-    PIX ou Cartão
-  </div>
-</div>
-
 <div class="divider"></div>
 
 <!-- ═══ FICHA TÉCNICA ═══ -->
@@ -1151,7 +1152,7 @@ footer {
       <div class="escape-card-content">
         <div class="escape-card-tag">Seu terreno tem outras medidas?</div>
         <h3 class="escape-card-title">Temos projetos para diferentes terrenos</h3>
-        <p class="escape-card-sub">Arraste para ver os projetos disponíveis e os que estão em desenvolvimento. Não encontrou? <a href="#projeto-personalizado" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">Peça um projeto sob medida</a>.</p>
+        <p class="escape-card-sub">Confira abaixo os projetos disponíveis e os que estão em desenvolvimento.</p>
       </div>
     </div>
     <div class="terrain-scroll-wrapper reveal">
@@ -1220,6 +1221,12 @@ footer {
           <div class="terrain-soon-size">Terreno 15×25</div>
         </div>
       </div>
+    </div>
+    <div class="terrain-cta-row reveal">
+      <a href="#projeto-personalizado" class="terrain-cta-link">
+        Não encontrou seu terreno? Peça um projeto sob medida
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -1406,6 +1413,26 @@ footer {
         Garantia de 7 dias — Risco zero
       </div>
     </div>
+
+    <div class="trust-bar reveal">
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Pagamento seguro
+      </div>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Acesso imediato
+      </div>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Garantia de 7 dias
+      </div>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        PIX ou Cartão
+      </div>
+    </div>
+
   </div>
 </section>
 
