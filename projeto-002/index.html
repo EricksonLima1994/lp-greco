@@ -793,6 +793,164 @@ footer {
   background: linear-gradient(90deg, var(--teal) 0%, var(--accent) 100%);
   transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+/* ═══════════════════════════════════
+   OUTROS TERRENOS — ESCAPE SECTION
+═══════════════════════════════════ */
+.escape-section { padding: 0; margin-top: -20px; }
+.escape-card {
+  background: var(--card); border: 1px solid var(--accent-border);
+  border-radius: var(--r-xl); padding: 32px 36px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 32px; position: relative; overflow: hidden;
+}
+.escape-card::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+  background: var(--accent); border-radius: 0 2px 2px 0; opacity: 0.6;
+}
+.escape-card-content { flex: 1; min-width: 0; }
+.escape-card-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+}
+.escape-card-title {
+  font-size: clamp(18px, 2.2vw, 24px); font-weight: 800; color: var(--white);
+  line-height: 1.15; margin-bottom: 6px; letter-spacing: -0.02em;
+}
+.escape-card-sub { font-size: 13px; color: var(--slate); line-height: 1.6; }
+.escape-card-sub a { transition: opacity 0.2s; }
+.escape-card-sub a:hover { opacity: 0.8; }
+
+/* Terrain mini-cards scroll */
+.terrain-scroll-wrapper {
+  overflow-x: auto; overflow-y: hidden; padding-bottom: 12px;
+  scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+  margin-top: 20px; touch-action: manipulation;
+}
+.terrain-scroll-wrapper::-webkit-scrollbar { height: 3px; }
+.terrain-scroll-wrapper::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); border-radius: 10px; }
+.terrain-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--accent-border); border-radius: 10px; }
+.terrain-scroll-inner {
+  display: flex; gap: 10px; width: max-content; padding: 4px 0;
+}
+
+.terrain-card {
+  width: 180px; flex-shrink: 0; scroll-snap-align: start;
+  border-radius: var(--r-lg); overflow: hidden; position: relative;
+  border: 1px solid var(--border2); transition: border-color 0.3s, transform 0.3s;
+  text-decoration: none; display: block;
+}
+.terrain-card:hover { border-color: var(--accent-border); transform: translateY(-2px); }
+.terrain-card-img {
+  width: 100%; height: 110px; object-fit: cover; display: block;
+}
+.terrain-card-body { padding: 12px 14px; background: var(--card); }
+.terrain-card-name {
+  font-size: 12px; font-weight: 700; color: var(--white); margin-bottom: 2px;
+  letter-spacing: -0.01em;
+}
+.terrain-card-size {
+  font-size: 10px; font-weight: 600; color: var(--accent); text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.terrain-card-badge-current {
+  position: absolute; top: 8px; right: 8px;
+  background: var(--accent); color: #0E0E0E;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; padding: 3px 8px;
+  border-radius: var(--r-full);
+}
+
+/* Em breve cards */
+.terrain-card--soon {
+  width: 180px; flex-shrink: 0; scroll-snap-align: start;
+  border-radius: var(--r-lg); border: 1px solid var(--border2);
+  background: var(--card); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 8px;
+  text-align: center; padding: 20px 16px; cursor: default;
+  min-height: 170px; position: relative; overflow: hidden;
+}
+.terrain-soon-icon {
+  width: 32px; height: 32px; border-radius: var(--r-xs);
+  background: var(--accent-dim); border: 1px solid var(--accent-border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent); position: relative; z-index: 1;
+}
+.terrain-soon-label {
+  font-size: 11px; font-weight: 600; color: var(--slate);
+  position: relative; z-index: 1;
+}
+.terrain-soon-size {
+  font-size: 10px; color: var(--muted); position: relative; z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .escape-card { flex-direction: column; align-items: flex-start; padding: 24px 20px; gap: 16px; }
+}
+
+/* ═══════════════════════════════════
+   PROJETO PERSONALIZADO — WHATSAPP CTA
+═══════════════════════════════════ */
+.custom-section {
+  padding: var(--section-py) 0; position: relative; overflow: hidden;
+}
+.custom-card {
+  max-width: 640px; margin: 0 auto;
+  background: var(--card); border: 1px solid var(--border2);
+  border-radius: var(--r-xl); padding: 48px 40px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.custom-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(205,251,84,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+.custom-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--teal), var(--accent), transparent);
+  opacity: 0.4;
+}
+.custom-icon {
+  width: 52px; height: 52px; border-radius: var(--r-md);
+  background: var(--accent-dim); border: 1px solid var(--accent-border);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--accent); margin-bottom: 20px; position: relative; z-index: 1;
+}
+.custom-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 12px;
+  position: relative; z-index: 1;
+}
+.custom-title {
+  font-size: clamp(22px, 2.8vw, 32px); font-weight: 800; color: var(--white);
+  line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 12px;
+  position: relative; z-index: 1;
+}
+.custom-title .accent { color: var(--accent); }
+.custom-sub {
+  font-size: 14px; color: var(--slate); line-height: 1.7;
+  max-width: 440px; margin: 0 auto 28px;
+  position: relative; z-index: 1;
+}
+.btn-whatsapp {
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none;
+  cursor: pointer; border: none; border-radius: var(--r-md);
+  background: var(--accent); color: #0E0E0E; padding: 16px 40px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative; z-index: 1; white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.btn-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(205,251,84,0.15), 0 8px 24px rgba(0,0,0,0.4);
+}
+.btn-whatsapp svg { flex-shrink: 0; width: 22px; height: 22px; }
+.custom-note {
+  font-size: 11px; color: var(--muted); margin-top: 14px;
+  position: relative; z-index: 1;
+}
 </style>
 
 <script type="text/javascript">
@@ -904,8 +1062,8 @@ footer {
         <div class="hero-cta-row">
           <a href="#comprar" class="btn btn-primary">Quero o projeto por R$87</a>
           <span class="hero-cta-hint">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Garantia de 7 dias
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Acesso imediato após o pagamento
           </span>
         </div>
 
@@ -986,9 +1144,87 @@ footer {
   </div>
 </section>
 
-<div class="divider"></div>
+<!-- ═══ OUTROS TERRENOS — ESCAPE ═══ -->
+<section class="escape-section">
+  <div class="wrap">
+    <div class="escape-card reveal">
+      <div class="escape-card-content">
+        <div class="escape-card-tag">Seu terreno tem outras medidas?</div>
+        <h3 class="escape-card-title">Temos projetos para diferentes terrenos</h3>
+        <p class="escape-card-sub">Arraste para ver os projetos disponíveis e os que estão em desenvolvimento. Não encontrou? <a href="#projeto-personalizado" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">Peça um projeto sob medida</a>.</p>
+      </div>
+    </div>
+    <div class="terrain-scroll-wrapper reveal">
+      <div class="terrain-scroll-inner">
+        <!-- Projeto atual (destaque) -->
+        <a href="#comprar" class="terrain-card">
+          <div class="terrain-card-badge-current">Você está aqui</div>
+          <img src="image001-otimizada.webp" alt="Projeto 002" class="terrain-card-img protected-image" draggable="false">
+          <div class="terrain-card-body">
+            <div class="terrain-card-name">Projeto 002</div>
+            <div class="terrain-card-size">Terreno 10×20</div>
+          </div>
+        </a>
+        <!-- Projeto 001 -->
+        <a href="../" class="terrain-card">
+          <img src="../image001-otimizada.webp" alt="Projeto 001" class="terrain-card-img protected-image" draggable="false">
+          <div class="terrain-card-body">
+            <div class="terrain-card-name">Projeto 001</div>
+            <div class="terrain-card-size">Terreno 12×25</div>
+          </div>
+        </a>
+        <!-- Em breve -->
+        <div class="terrain-card--soon">
+          <div class="terrain-soon-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="terrain-soon-label">Em breve</div>
+          <div class="terrain-soon-size">Terreno 8×20</div>
+        </div>
+        <div class="terrain-card--soon">
+          <div class="terrain-soon-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="terrain-soon-label">Em breve</div>
+          <div class="terrain-soon-size">Terreno 10×25</div>
+        </div>
+        <div class="terrain-card--soon">
+          <div class="terrain-soon-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="terrain-soon-label">Em breve</div>
+          <div class="terrain-soon-size">Terreno 12×30</div>
+        </div>
+        <div class="terrain-card--soon">
+          <div class="terrain-soon-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="terrain-soon-label">Em breve</div>
+          <div class="terrain-soon-size">Terreno 15×30</div>
+        </div>
+        <div class="terrain-card--soon">
+          <div class="terrain-soon-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="terrain-soon-label">Em breve</div>
+          <div class="terrain-soon-size">Terreno 10×30</div>
+        </div>
+        <div class="terrain-card--soon">
+          <div class="terrain-soon-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="terrain-soon-label">Em breve</div>
+          <div class="terrain-soon-size">Terreno 8×25</div>
+        </div>
+        <div class="terrain-card--soon">
+          <div class="terrain-soon-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="terrain-soon-label">Em breve</div>
+          <div class="terrain-soon-size">Terreno 7×20</div>
+        </div>
+        <div class="terrain-card--soon">
+          <div class="terrain-soon-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="terrain-soon-label">Em breve</div>
+          <div class="terrain-soon-size">Terreno 10×22</div>
+        </div>
+        <div class="terrain-card--soon">
+          <div class="terrain-soon-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="terrain-soon-label">Em breve</div>
+          <div class="terrain-soon-size">Terreno 15×25</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- ═══ GALERIA 3D ═══ -->
+<div class="divider"></div>
 <section class="section" id="galeria">
   <div class="wrap">
     <div class="section-header--left reveal">
@@ -1321,6 +1557,29 @@ footer {
     </div>
   </div>
 </section>
+
+<!-- ═══ PROJETO PERSONALIZADO — WHATSAPP ═══ -->
+<section class="custom-section" id="projeto-personalizado">
+  <div class="wrap">
+    <div class="custom-card reveal">
+      <div class="custom-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </div>
+      <div class="custom-tag">Projeto sob medida</div>
+      <h3 class="custom-title">Seu terreno é <span class="accent">diferente</span>?<br>A gente projeta para você.</h3>
+      <p class="custom-sub">O Anderson Greco cria projetos personalizados para qualquer medida de terreno — com a mesma qualidade dos projetos prontos. Atendemos todo o Brasil.</p>
+      <p style="font-size:20px;font-weight:800;color:var(--white);margin-bottom:6px;position:relative;z-index:1;letter-spacing:-0.02em;">A partir de <span style="color:var(--accent)">R$ 1.400</span></p>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:24px;position:relative;z-index:1;">Valor varia conforme tamanho e complexidade do projeto</p>
+      <a href="https://wa.me/556796862195?text=Ol%C3%A1%20Anderson%2C%20tenho%20interesse%20em%20um%20projeto%20personalizado%20para%20meu%20terreno." class="btn-whatsapp" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar com o arquiteto
+      </a>
+      <p class="custom-note">Resposta em até 24h · Atendemos todo o Brasil · Sem compromisso</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
 
 <!-- ═══ FAQ ═══ -->
 <section class="section" style="padding-top:0" id="faq">
