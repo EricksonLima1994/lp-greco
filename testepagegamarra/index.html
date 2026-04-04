@@ -2,910 +2,538 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gamarra — Projeto Residencial</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Gamarra — Projeto Residencial 12×25</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-
 :root{
-  --white:#ffffff;
-  --ice:#adebff; /* <- SUA COR PRINCIPAL EM HEXADECIMAL */
-  --ice-dim:rgba(173,235,255,.10); /* <- MESMA COR EM RGB */
-  --ice-glow:rgba(173,235,255,.35); /* <- MESMA COR EM RGB */
-  --ice-bloom:0 0 20px rgba(173,235,255,.18), 0 0 60px rgba(173,235,255,.06);
-  --mid:#777;
-  --mid2:#999;
-  --dark:#555;
-  --dark2:#444;
-  --surface:#1e1e22;
-  --surface2:#232328;
-  --surface3:#2a2a30;
-  --deep:#141417;
-  --bg:#161619;
-  --glass:rgba(255,255,255,.04);
-  --glass2:rgba(255,255,255,.07);
-  --glass3:rgba(255,255,255,.10);
-  --border:rgba(255,255,255,.07);
-  --border2:rgba(255,255,255,.11);
-  --border3:rgba(255,255,255,.16);
-  --display:'Bebas Neue',sans-serif;
-  --body:'DM Sans',sans-serif;
+  --white:#fff;--ice:#adebff;
+  --ice-10:rgba(173,235,255,.10);--ice-20:rgba(173,235,255,.18);--ice-border:rgba(173,235,255,.14);
+  --ice-bloom:0 0 18px rgba(173,235,255,.14),0 0 48px rgba(173,235,255,.04);
+  --t1:#ccc;--t2:#9CA3AF;--t3:#666;--t4:#525252;
+  --s1:#1e1e22;--s2:#232328;--s3:#2a2a30;
+  --card:#1A1A1E;--card2:#1F1F23;
+  --bg:#131316;--deep:#0E0E11;
+  --glass:rgba(255,255,255,.04);--glass2:rgba(255,255,255,.06);--glass3:rgba(255,255,255,.09);
+  --border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.10);
+  --ff:'Plus Jakarta Sans',sans-serif;--ff-logo:'Bebas Neue',sans-serif;
   --ease:cubic-bezier(.16,1,.3,1);
+  --sec:80px;--gutter:20px;--r:14px;--r-sm:10px;--r-full:9999px;
 }
-
-@keyframes shine{
-  0%{background-position:200% center}
-  100%{background-position:-200% center}
-}
-@keyframes bloomPulse{
-  0%,100%{filter:drop-shadow(0 0 4px rgba(180,201,222,.2))}
-  50%{filter:drop-shadow(0 0 12px rgba(180,201,222,.35))}
-}
-@keyframes neonGlow{
-  0%,100%{text-shadow:0 0 8px rgba(180,201,222,.3),0 0 24px rgba(180,201,222,.1)}
-  50%{text-shadow:0 0 14px rgba(180,201,222,.5),0 0 40px rgba(180,201,222,.15)}
-}
-
-html{scroll-behavior:smooth;font-size:16px}
-body{background:var(--bg);color:var(--white);font-family:var(--body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-a{text-decoration:none;color:inherit}
-img{max-width:100%;display:block}
+@keyframes shine{0%{background-position:200% center}100%{background-position:-200% center}}
+@keyframes neonGlow{0%,100%{text-shadow:0 0 6px rgba(173,235,255,.25)}50%{text-shadow:0 0 12px rgba(173,235,255,.45),0 0 32px rgba(173,235,255,.1)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--t2);font-family:var(--ff);font-weight:400;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
 button{cursor:pointer;border:none;background:none;font-family:inherit;color:inherit}
-::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-track{background:var(--deep)}
-::-webkit-scrollbar-thumb{background:var(--surface3);border-radius:2px}
+::-webkit-scrollbar{width:3px;height:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--s3);border-radius:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 var(--gutter)}
 
-.container{max-width:1260px;margin:0 auto;padding:0 24px}
+/* Section header */
+.sh{margin-bottom:32px}.sh.center{text-align:center;max-width:560px;margin-left:auto;margin-right:auto;margin-bottom:40px}
+.sh-tag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ice);font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:10px;animation:neonGlow 4s ease-in-out infinite}
+.sh-tag::before{content:'';width:18px;height:2px;background:var(--ice);opacity:.4;border-radius:1px;flex-shrink:0}
+.sh.center .sh-tag{justify-content:center}
+.sh-title{font-size:clamp(22px,3vw,36px);font-weight:800;color:var(--white);line-height:1.1;letter-spacing:-.03em;margin-bottom:12px}
+.sh-desc{font-size:14px;color:var(--t2);line-height:1.75;max-width:480px}
+.sh.center .sh-desc{margin-left:auto;margin-right:auto}
 
-/* ===== LABEL & TITLE ===== */
-.label{
-  font-size:.65rem;letter-spacing:4px;text-transform:uppercase;
-  color:var(--ice);font-weight:500;margin-bottom:14px;
-  animation:neonGlow 4s ease-in-out infinite;
-}
-.title{
-  font-family:var(--display);
-  font-size:clamp(2rem,5vw,3.4rem);
-  letter-spacing:2px;line-height:1.05;color:var(--white);
-}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .55s var(--ease),transform .55s var(--ease)}.rv.vis{opacity:1;transform:none}
+.scroll-t{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}.scroll-t::-webkit-scrollbar{display:none}
 
-/* ===== GLASS UTIL ===== */
-.glass-card{
-  background:var(--glass2);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  border:1px solid var(--border2);
-  border-radius:14px;
-}
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--ff);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:var(--r);padding:16px 36px;transition:all .35s var(--ease);line-height:1;white-space:nowrap}
+.btn svg{width:14px;height:14px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2.5}
+.btn-p{background:var(--white);color:var(--deep)}.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,255,255,.07)}
+.btn-g{border:1px solid var(--border2);color:var(--white);backdrop-filter:blur(6px);background:var(--glass)}.btn-g:hover{border-color:var(--ice);color:var(--ice)}
+.btn-i{background:var(--ice);color:var(--deep);box-shadow:var(--ice-bloom);background-image:linear-gradient(110deg,var(--ice) 0%,var(--ice) 38%,rgba(255,255,255,.4) 50%,var(--ice) 62%,var(--ice) 100%);background-size:200% auto;animation:shine 4.5s linear infinite}.btn-i:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(173,235,255,.2),0 8px 32px rgba(0,0,0,.4)}
+.btn-sm{padding:14px 28px;font-size:12px}
 
-/* ===== NAV ===== */
-nav{
-  position:fixed;top:0;left:0;width:100%;z-index:1000;
-  padding:18px 0;
-  background:rgba(22,22,25,.5);
-  backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
-  border-bottom:1px solid var(--border);
-  transition:padding .4s var(--ease),background .4s;
-}
-nav.scrolled{padding:10px 0;background:rgba(22,22,25,.92)}
-nav .container{display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-family:var(--display);font-size:1.5rem;letter-spacing:5px;color:var(--white)}
-.nav-links{display:flex;gap:28px;align-items:center}
-.nav-links a{
-  font-size:.7rem;letter-spacing:2px;text-transform:uppercase;
-  color:var(--dark);transition:color .3s;font-weight:500;position:relative;
-}
-.nav-links a.active{color:var(--white)}
-.nav-links a.active::after{
-  content:'';position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);
-  width:16px;height:1.5px;background:var(--ice);
-  box-shadow:0 0 8px rgba(180,201,222,.4);
-}
-.nav-links a:hover{color:var(--mid2)}
-.nav-cta-link{
-  background:var(--ice);color:var(--deep);
-  padding:9px 20px;border-radius:100px;
-  font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  transition:all .3s var(--ease);
-  box-shadow:var(--ice-bloom);
-  background-image:linear-gradient(110deg,var(--ice) 0%,var(--ice) 38%,rgba(255,255,255,.5) 50%,var(--ice) 62%,var(--ice) 100%);
-  background-size:200% auto;animation:shine 4s linear infinite;
-}
-.nav-cta-link:hover{transform:scale(1.04);box-shadow:0 0 28px rgba(180,201,222,.3)}
-.hamburger{display:none;flex-direction:column;gap:5px;padding:6px}
-.hamburger span{width:20px;height:1.5px;background:var(--white);transition:.3s;display:block}
+/* NAV */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:14px 0;background:rgba(19,19,22,.4);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:padding .3s,background .3s}
+.nav.scrolled{padding:8px 0;background:rgba(19,19,22,.94)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--ff-logo);font-size:1.3rem;letter-spacing:.3em;color:var(--white)}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);transition:color .25s;font-weight:600}
+.nav-links a:hover,.nav-links a.on{color:var(--white)}
+.nav-cta{background:var(--ice);color:var(--deep);padding:7px 16px;border-radius:var(--r-full);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;box-shadow:var(--ice-bloom)}
+.burger{display:none;width:28px;height:20px;position:relative}
+.burger span{position:absolute;left:0;width:100%;height:1.5px;background:var(--white);transition:.25s;border-radius:1px}
+.burger span:nth-child(1){top:0}.burger span:nth-child(2){top:50%;transform:translateY(-50%)}.burger span:nth-child(3){bottom:0}
+.burger.open span:nth-child(1){top:50%;transform:rotate(45deg)}.burger.open span:nth-child(2){opacity:0}.burger.open span:nth-child(3){bottom:50%;transform:rotate(-45deg)}
+.mob-nav{display:none;position:fixed;inset:0;z-index:99;background:rgba(14,14,17,.98);backdrop-filter:blur(24px);flex-direction:column;justify-content:center;align-items:center;gap:20px}
+.mob-nav.open{display:flex}
+.mob-nav a{font-size:15px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t4);transition:color .25s}.mob-nav a:hover{color:var(--ice)}
 
-/* ===== HERO ===== */
-.hero{
-  position:relative;min-height:100vh;
-  display:flex;align-items:flex-end;overflow:hidden;
-}
-.hero-bg{
-  position:absolute;inset:0;
-  background:url('images/hero-fachada.jpg') center/cover no-repeat;
-  filter:brightness(.32) saturate(.55);
-  transform:scale(1.06);transition:transform 12s linear;
-}
-.hero:hover .hero-bg{transform:scale(1)}
-.hero-fallback{
-  position:absolute;inset:0;
-  background:linear-gradient(155deg,#1a1a1f 0%,var(--deep) 40%,#15151a 100%);
-}
-.hero-grad{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,var(--bg) 0%,rgba(22,22,25,.35) 45%,rgba(22,22,25,.05) 100%);
-}
-.hero-ghost{
-  position:absolute;top:38%;left:50%;transform:translate(-50%,-50%);
-  font-family:var(--display);font-size:clamp(6rem,20vw,18rem);
-  letter-spacing:12px;color:rgba(180,201,222,.025);
-  white-space:nowrap;pointer-events:none;user-select:none;
-}
-.hero-social{
-  position:absolute;right:28px;top:50%;transform:translateY(-50%);
-  z-index:10;display:flex;flex-direction:column;gap:22px;align-items:center;
-}
-.hero-social a{
-  writing-mode:vertical-rl;font-size:.58rem;letter-spacing:3px;
-  text-transform:uppercase;color:var(--dark);transition:color .3s;
-}
-.hero-social a:hover{color:var(--ice)}
-.hero-social-line{width:1px;height:36px;background:var(--dark2)}
+/* SOCIAL PROOF — below hero, not inside */
+.social-proof{padding:20px 0;background:var(--bg)}
+.social-proof-inner{display:flex;align-items:center;justify-content:center;gap:10px}
+.social-avatars{display:flex}
+.social-avatars .av{width:28px;height:28px;border-radius:50%;margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:var(--deep)}
+.social-avatars .av:first-child{margin-left:0}
+.av-1{background:var(--ice)}.av-2{background:#62929E}.av-3{background:#E0E0E0}.av-4{background:#7C9A5E}
+.social-proof-text{font-size:12px;color:var(--t4)}.social-proof-text strong{color:var(--t2);font-weight:600}
 
-.hero-content{position:relative;z-index:2;padding:0 0 70px;width:100%}
-.hero-content .container{display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px}
-.hero-sub-label{
-  font-size:.6rem;letter-spacing:4px;text-transform:uppercase;
-  color:var(--ice);margin-bottom:20px;
-  text-shadow:0 0 12px rgba(180,201,222,.3);
-  opacity:0;animation:hIn .8s var(--ease) .1s forwards;
-}
-.hero-title{
-  font-family:var(--display);
-  font-size:clamp(3.2rem,9vw,7rem);
-  letter-spacing:4px;line-height:.92;color:var(--white);
-  opacity:0;animation:hIn 1s var(--ease) .25s forwards;
-}
-.hero-desc{
-  font-size:.82rem;color:var(--mid);line-height:1.7;
-  max-width:340px;margin-top:22px;
-  opacity:0;animation:hIn .8s var(--ease) .5s forwards;
-}
-.hero-right{text-align:right;opacity:0;animation:hIn .8s var(--ease) .7s forwards}
-.hero-stat{margin-bottom:18px}
-.hero-stat-val{font-family:var(--display);font-size:2rem;letter-spacing:2px;color:var(--white)}
-.hero-stat-lbl{font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--dark);margin-top:2px}
-.hero-ctas{display:flex;gap:10px;margin-top:32px;opacity:0;animation:hIn .8s var(--ease) .9s forwards}
+/* GUARANTEE */
+.garantia{padding:var(--sec) 0;background:var(--bg)}
+.garantia-box{max-width:600px;margin:0 auto;background:var(--card);border:1px solid var(--ice-border);border-radius:var(--r);padding:32px;text-align:center;position:relative;overflow:hidden}
+.garantia-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--ice),transparent);opacity:.4}
+.garantia-ico{width:44px;height:44px;margin:0 auto 16px;background:var(--ice-10);border:1px solid var(--ice-border);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center}
+.garantia-ico svg{width:20px;height:20px;stroke:var(--ice);fill:none;stroke-width:1.5}
+.garantia-title{font-size:17px;font-weight:800;color:var(--white);margin-bottom:10px}
+.garantia-text{font-size:14px;line-height:1.7;color:var(--t2);max-width:440px;margin:0 auto}
 
-.btn-w{
-  background:var(--white);color:var(--deep);
-  padding:14px 32px;border-radius:100px;
-  font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  transition:all .3s var(--ease);display:inline-flex;align-items:center;gap:8px;
-}
-.btn-w:hover{opacity:.88;transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,255,255,.08)}
-.btn-o{
-  border:1px solid var(--border3);color:var(--white);
-  padding:14px 32px;border-radius:100px;
-  font-size:.72rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;
-  transition:all .3s;display:inline-flex;align-items:center;gap:8px;
-  backdrop-filter:blur(8px);background:var(--glass);
-}
-.btn-o:hover{border-color:var(--ice);color:var(--ice)}
+/* PARCEIROS */
+.parceiros{padding:var(--sec) 0;background:var(--deep)}
+.parc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:28px}
+.parc-stat{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px 16px;text-align:center}
+.parc-stat-v{font-size:28px;font-weight:800;color:var(--ice);text-shadow:0 0 12px rgba(173,235,255,.2);letter-spacing:-.02em}
+.parc-stat-l{font-size:11px;color:var(--t4);letter-spacing:.06em;text-transform:uppercase;font-weight:600;margin-top:4px}
+.parc-offer{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:32px 28px;max-width:540px;margin:0 auto;position:relative;overflow:hidden}
+.parc-offer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--ice),transparent);opacity:.5}
+.parc-offer-head{margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.parc-offer-tag{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ice);background:var(--ice-10);border:1px solid var(--ice-border);border-radius:var(--r-full);padding:5px 14px;font-weight:700;margin-bottom:12px}
+.parc-offer-title{font-size:18px;font-weight:800;color:var(--white);line-height:1.2}
+.parc-benefits{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
+.parc-ben{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--t2);line-height:1.5}
+.parc-ben svg{flex-shrink:0;margin-top:2px}
+.parc-ben strong{color:var(--white);font-weight:600}
+.parc-note{text-align:center;font-size:11px;color:var(--t4);margin-top:12px;letter-spacing:.04em}
 
-/* Ice accent button (for CTA areas) */
-.btn-ice{
-  background:var(--ice);color:var(--deep);
-  padding:16px 40px;border-radius:100px;
-  font-size:.78rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;
-  transition:all .3s var(--ease);display:inline-flex;align-items:center;gap:10px;
-  box-shadow:var(--ice-bloom);
-  background-image:linear-gradient(110deg,var(--ice) 0%,var(--ice) 38%,rgba(255,255,255,.45) 50%,var(--ice) 62%,var(--ice) 100%);
-  background-size:200% auto;animation:shine 4s linear infinite;
-}
-.btn-ice:hover{transform:scale(1.04);box-shadow:0 0 36px rgba(180,201,222,.25)}
+/* OUTROS — slide simples */
+.outros{padding:var(--sec) 0;background:var(--bg)}
+.proj-slide{flex:0 0 300px;scroll-snap-align:start;border-radius:var(--r);overflow:hidden;position:relative;aspect-ratio:16/10;display:block;border:1px solid var(--border);transition:border-color .3s,transform .3s var(--ease)}
+.proj-slide:hover{border-color:var(--ice-border);transform:translateY(-3px)}
+.proj-slide-img{width:100%;height:100%;position:absolute;inset:0}
+.proj-slide-overlay{position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(to top,rgba(14,14,17,.9),transparent);z-index:2}
+.proj-slide-tag{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ice);font-weight:600;margin-bottom:2px}
+.proj-slide-name{font-size:15px;font-weight:700;color:var(--white)}
+.proj-slide-badge{position:absolute;top:10px;right:10px;padding:4px 10px;border-radius:var(--r-full);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--ice);color:var(--deep);box-shadow:var(--ice-bloom);z-index:2}
+.proj-slide-badge.soon{background:var(--glass2);color:var(--ice);border:1px solid var(--ice-border)}
 
-/* Traverse counter */
-.hero-counter{
-  position:absolute;bottom:70px;right:140px;z-index:10;
-  display:flex;align-items:baseline;gap:2px;
-  opacity:0;animation:hIn .8s var(--ease) 1.1s forwards;
-}
-.hero-counter strong{font-family:var(--display);font-size:1.6rem;color:var(--white)}
-.hero-counter span{font-size:.75rem;color:var(--dark2)}
-.hero-counter-bar{
-  position:absolute;bottom:56px;right:140px;z-index:10;
-  width:100px;height:1.5px;background:var(--surface);
-  opacity:0;animation:hIn .8s var(--ease) 1.1s forwards;
-}
-.hero-counter-fill{
-  height:100%;width:16%;background:var(--ice);
-  box-shadow:0 0 8px rgba(180,201,222,.4);transition:width .4s;
-}
+/* HERO */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-start;overflow:hidden;padding-top:clamp(80px,14vh,120px)}
+.hero-bg{position:absolute;inset:0;background-image:url('hero-fachada.png');background-position:right center;background-size:cover;background-repeat:no-repeat}
+.hero-fb{position:absolute;inset:0;background:linear-gradient(160deg,#1a1a1f,var(--deep) 40%,#15151a);z-index:-1}
+/* Only bottom 15-20% fade to merge with background */
+.hero-ov{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 0%,transparent 80%,var(--bg) 100%)}
+.hero-c{position:relative;z-index:2;width:100%}
+.hero h1{font-size:clamp(28px,6vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1.08;color:var(--white);opacity:0;animation:fadeUp .8s var(--ease) .15s forwards;text-shadow:0 2px 20px rgba(0,0,0,.5)}
+.hero-d{font-size:15px;color:var(--t1);line-height:1.75;max-width:420px;margin-top:16px;opacity:0;animation:fadeUp .7s var(--ease) .35s forwards;text-shadow:0 1px 10px rgba(0,0,0,.4)}
+.hero-ctas{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap;opacity:0;animation:fadeUp .7s var(--ease) .55s forwards}
 
-@keyframes hIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+/* FICHA */
+.ficha{padding:var(--sec) 0;background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.ficha-g{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.ficha-c{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:22px 16px;text-align:center;transition:border-color .3s}
+.ficha-c:hover{border-color:var(--ice-border);background:var(--card2)}
+.ficha-ic{width:34px;height:34px;margin:0 auto 10px;background:var(--ice-10);border:1px solid var(--ice-border);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center}
+.ficha-ic svg{width:14px;height:14px;stroke:var(--ice);fill:none;stroke-width:1.5}
+.ficha-lbl{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--t4);margin-bottom:6px;font-weight:600}
+.ficha-val{font-size:20px;font-weight:800;color:var(--white);line-height:1.1;letter-spacing:-.02em}
+.ficha-val.sm{font-size:16px}
 
-/* ===== SPECS ===== */
-.specs{
-  background:var(--surface);
-  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  padding:40px 0;
-}
-.specs-grid{display:grid;grid-template-columns:repeat(5,1fr)}
-.spec{text-align:center;padding:14px;position:relative}
-.spec:not(:last-child)::after{
-  content:'';position:absolute;right:0;top:12%;height:76%;
-  width:1px;background:var(--border);
-}
-.spec-ico{
-  width:34px;height:34px;margin:0 auto 10px;
-  border:1px solid rgba(180,201,222,.18);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  animation:bloomPulse 4s ease-in-out infinite;
-}
-.spec-ico svg{width:14px;height:14px;stroke:var(--ice);fill:none;stroke-width:1.5}
-.spec-val{font-family:var(--display);font-size:1.6rem;letter-spacing:1px;color:var(--white)}
-.spec-lbl{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--dark);margin-top:3px}
+/* TERRENOS */
+.terrenos{padding:48px 0;background:var(--bg)}
+.ter-c{min-width:200px;flex:0 0 200px;scroll-snap-align:start;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);background:var(--card);transition:border-color .3s}
+.ter-c:hover{border-color:var(--border2)}.ter-c.now{border-color:var(--ice-border)}
+.ter-th{aspect-ratio:16/10;background:linear-gradient(145deg,var(--s1),var(--deep));display:flex;align-items:center;justify-content:center;position:relative}
+.ter-th span{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--t4)}
+.ter-badge{position:absolute;top:8px;left:8px;padding:3px 10px;border-radius:var(--r-full);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.ter-badge.a{background:var(--ice);color:var(--deep);box-shadow:var(--ice-bloom)}.ter-badge.s{background:var(--glass2);color:var(--ice);border:1px solid var(--ice-border)}
+.ter-b{padding:12px 14px}
+.ter-n{font-size:13px;font-weight:700;color:var(--white);letter-spacing:-.01em}
+.ter-s{font-size:11px;color:var(--t4);letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
+.ter-link{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--ice);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-top:14px;transition:opacity .3s}.ter-link:hover{opacity:.7}
+.ter-link svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.5}
 
-/* ===== SLIDER ===== */
-.slider-section{padding:90px 0;overflow:hidden}
-.slider-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px}
-.slider-nav{display:flex;gap:8px}
-.slider-btn{
-  width:44px;height:44px;border:1px solid var(--border2);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  color:var(--mid);font-size:.9rem;transition:all .3s;
-  backdrop-filter:blur(8px);background:var(--glass);
-}
-.slider-btn:hover{border-color:var(--ice);color:var(--ice);box-shadow:0 0 12px rgba(180,201,222,.15)}
-.slider-track{
-  display:flex;gap:16px;overflow-x:auto;
-  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
-}
-.slider-track::-webkit-scrollbar{display:none}
-.slide{
-  flex:0 0 68%;scroll-snap-align:start;
-  border-radius:12px;overflow:hidden;position:relative;
-  aspect-ratio:16/9;background:var(--surface);
-}
-.slide img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
-.slide:hover img{transform:scale(1.04)}
-.slide-info{
-  position:absolute;bottom:0;left:0;right:0;padding:28px;
-  background:linear-gradient(to top,rgba(20,20,23,.92) 0%,transparent 100%);
-}
-.slide-tag{
-  font-size:.55rem;letter-spacing:3px;text-transform:uppercase;
-  color:var(--ice);text-shadow:0 0 8px rgba(180,201,222,.3);
-}
-.slide-name{font-family:var(--display);font-size:1.5rem;letter-spacing:2px;margin-top:3px;color:var(--white)}
-.slide-ph{
-  width:100%;height:100%;
-  background:linear-gradient(145deg,var(--surface) 0%,var(--deep) 50%,var(--surface2) 100%);
-  display:flex;align-items:center;justify-content:center;
-  color:var(--dark2);font-size:.65rem;letter-spacing:2px;text-transform:uppercase;
-}
+/* GALERIA */
+.galeria{padding:var(--sec) 0;background:var(--bg)}
+.gal-c{flex:0 0 460px;scroll-snap-align:start;border-radius:var(--r);overflow:hidden;aspect-ratio:16/10;background:var(--card);position:relative;border:1px solid var(--border);transition:border-color .3s}
+.gal-c:hover{border-color:var(--ice-border)}
+.gal-tag{position:absolute;left:12px;bottom:12px;padding:4px 10px;border-radius:6px;background:rgba(14,14,17,.88);border:1px solid var(--border);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ice);font-weight:600}
+.gal-ph{width:100%;height:100%;background:linear-gradient(145deg,var(--card),var(--deep),var(--card2));display:flex;align-items:center;justify-content:center;color:var(--t4);font-size:10px;letter-spacing:.1em;text-transform:uppercase;overflow:hidden}
 
-/* ===== PLANTA ===== */
-.planta{padding:80px 0;background:var(--surface)}
-.planta-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}
-.planta-img{
-  border-radius:12px;overflow:hidden;background:var(--surface2);
-  aspect-ratio:4/3;border:1px solid var(--border);
-}
-.planta-img img{width:100%;height:100%;object-fit:contain}
-/* Compact rooms — 4 cols desktop, 2 cols mobile */
-.rooms{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:20px;
-}
-.room{
-  background:var(--glass2);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  border:1px solid var(--border);
-  border-radius:8px;padding:12px;transition:border-color .3s;
-}
-.room:hover{border-color:rgba(180,201,222,.25)}
-.room-name{font-size:.72rem;font-weight:600;color:var(--white);line-height:1.3}
-.room-area{font-size:.6rem;color:var(--mid);margin-top:2px;letter-spacing:1px}
+/* PLANTA */
+.planta{padding:var(--sec) 0;background:var(--deep)}
+.planta-g{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.planta-img{border-radius:var(--r);overflow:hidden;background:var(--card);aspect-ratio:4/3;border:1px solid var(--border)}
+.rooms{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.room{background:var(--card);border:1px solid var(--border);border-radius:var(--r-full);padding:8px 14px;display:inline-flex;align-items:baseline;gap:6px;transition:border-color .25s;white-space:nowrap}
+.room:hover{border-color:var(--ice-border)}
+.room-n{font-size:12px;font-weight:600;color:var(--white)}.room-a{font-size:11px;color:var(--t4)}
 
-/* ===== DELIVERABLES ===== */
-.deliverables{padding:90px 0;background:var(--bg)}
-.del-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
-.del-card{
-  background:var(--glass2);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border:1px solid var(--border);
-  border-radius:12px;padding:28px 22px;
-  transition:all .4s var(--ease);position:relative;overflow:hidden;
-}
-.del-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(to right,transparent,var(--ice),transparent);
-  opacity:0;transform:scaleX(0);
-  transition:transform .5s var(--ease),opacity .5s;
-}
-.del-card:hover::before{transform:scaleX(1);opacity:.5}
-.del-card:hover{transform:translateY(-3px);border-color:var(--border2);box-shadow:0 8px 32px rgba(0,0,0,.2)}
-.del-ico{
-  width:36px;height:36px;
-  border:1px solid rgba(180,201,222,.15);
-  border-radius:8px;display:flex;align-items:center;justify-content:center;
-  margin-bottom:16px;
-  animation:bloomPulse 5s ease-in-out infinite;
-}
-.del-ico svg{width:16px;height:16px;stroke:var(--ice);fill:none;stroke-width:1.5}
-.del-title{font-weight:700;font-size:.88rem;margin-bottom:6px;color:var(--white)}
-.del-desc{font-size:.75rem;color:var(--mid);line-height:1.6}
+/* ENTREGA */
+.entrega{padding:var(--sec) 0;background:var(--bg)}
+.ent-g{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:0}
+.ent-c{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:24px 20px;transition:all .35s var(--ease);position:relative;overflow:hidden}
+.ent-c::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--ice),transparent);opacity:0;transition:opacity .4s}.ent-c:hover::before{opacity:.4}
+.ent-c:hover{border-color:var(--ice-border);background:var(--card2)}
+.ent-ic{width:34px;height:34px;background:var(--ice-10);border:1px solid var(--ice-border);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.ent-ic svg{width:14px;height:14px;stroke:var(--ice);fill:none;stroke-width:1.5}
+.ent-t{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px}.ent-d{font-size:13px;color:var(--t2);line-height:1.6}
 
-/* ===== DIFERENCIAIS ===== */
-.diffs{padding:90px 0;background:var(--surface);position:relative;overflow:hidden}
-.diffs-ghost{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  font-family:var(--display);font-size:14rem;color:rgba(180,201,222,.018);
-  white-space:nowrap;pointer-events:none;
-}
-.diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px}
-.diff{
-  display:flex;gap:18px;padding:24px;
-  background:var(--glass2);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  border:1px solid var(--border);
-  border-radius:12px;transition:all .3s;
-}
-.diff:hover{border-color:rgba(180,201,222,.2);box-shadow:0 0 20px rgba(180,201,222,.04)}
-.diff-num{
-  font-family:var(--display);font-size:1.8rem;line-height:1;flex-shrink:0;
-  color:var(--ice);opacity:.4;
-  text-shadow:0 0 10px rgba(180,201,222,.15);
-}
-.diff h4{font-weight:700;font-size:.85rem;margin-bottom:5px;color:var(--white)}
-.diff p{font-size:.73rem;color:var(--mid);line-height:1.6}
+/* DIFERENCIAIS */
+.diffs{padding:var(--sec) 0;background:var(--deep);position:relative;overflow:hidden}
+.diffs-gh{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--ff-logo);font-size:clamp(5rem,16vw,13rem);color:rgba(173,235,255,.015);white-space:nowrap;pointer-events:none}
+.diff-g{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:0}
+.diff{display:flex;gap:14px;padding:22px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);transition:border-color .3s}
+.diff:hover{border-color:var(--ice-border);background:var(--card2)}
+.diff-n{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--ice);opacity:.3;min-width:22px;padding-top:2px}
+.diff h4{font-size:14px;font-weight:700;color:var(--white);margin-bottom:2px}.diff p{font-size:13px;color:var(--t2);line-height:1.6}
 
-/* ===== OUTRO PROJETO ===== */
-.other{padding:90px 0;background:var(--bg)}
-.other-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:50px;align-items:center;margin-top:40px}
-.other-img{border-radius:12px;overflow:hidden;aspect-ratio:16/10;background:var(--surface);position:relative}
-.other-img img{width:100%;height:100%;object-fit:cover}
-.other-badge{
-  position:absolute;top:14px;left:14px;
-  background:var(--ice);color:var(--deep);
-  padding:4px 12px;border-radius:100px;
-  font-size:.55rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  box-shadow:0 0 14px rgba(180,201,222,.3);
-  background-image:linear-gradient(110deg,var(--ice) 0%,var(--ice) 38%,rgba(255,255,255,.5) 50%,var(--ice) 62%,var(--ice) 100%);
-  background-size:200% auto;animation:shine 5s linear infinite;
-}
-.other-info h3{font-family:var(--display);font-size:2rem;letter-spacing:2px;margin-bottom:14px;color:var(--white)}
-.other-info>p{font-size:.82rem;color:var(--mid);line-height:1.7;margin-bottom:20px}
-.other-specs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:28px}
-.o-spec{
-  background:var(--glass2);backdrop-filter:blur(10px);
-  border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;
-}
-.o-spec-v{font-family:var(--display);font-size:1.1rem;color:var(--white)}
-.o-spec-l{font-size:.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--dark);margin-top:2px}
+/* OFERTA */
+.oferta{padding:var(--sec) 0;background:var(--bg)}
+.oferta-c{max-width:460px;margin:0 auto;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:36px 32px;position:relative;overflow:hidden}
+.oferta-c::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--ice),transparent);opacity:.5}
+.oferta-head{text-align:center;padding-bottom:24px;margin-bottom:24px;border-bottom:1px solid var(--border)}
+.oferta-old{font-size:13px;color:var(--t4);text-decoration:line-through;margin-bottom:8px;letter-spacing:.05em}
+.oferta-p{font-size:56px;font-weight:800;color:var(--white);line-height:1;letter-spacing:-.04em;margin-bottom:8px}
+.oferta-p sup{font-size:18px;vertical-align:super;color:var(--ice);font-weight:700;margin-right:2px}
+.oferta-type{display:inline-flex;align-items:center;gap:6px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ice);background:var(--ice-10);border:1px solid var(--ice-border);border-radius:var(--r-full);padding:5px 14px;font-weight:700}
+.oferta-benefits{list-style:none;margin:0 0 24px;display:flex;flex-direction:column;gap:12px}
+.oferta-benefits li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--t2);line-height:1.5}
+.oferta-benefits li svg{width:16px;height:16px;stroke:var(--ice);fill:none;stroke-width:2;flex-shrink:0;margin-top:2px}
+.oferta-benefits li strong{color:var(--white);font-weight:600}
+.oferta-cta{width:100%;text-align:center;border-radius:var(--r);padding:16px}
+.oferta-safe{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;padding:10px 14px;background:var(--ice-10);border:1px solid var(--ice-border);border-radius:var(--r-sm);font-size:12px;color:var(--t4);font-weight:500}
+.oferta-safe svg{width:14px;height:14px;stroke:var(--ice);fill:none;stroke-width:2;flex-shrink:0}
 
-/* ===== OFERTA ===== */
-.offer{padding:90px 0;background:var(--surface)}
-.offer-card{
-  max-width:740px;margin:0 auto;
-  background:linear-gradient(160deg,var(--glass3) 0%,var(--glass) 100%);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border:1px solid var(--border2);
-  border-radius:18px;padding:56px;text-align:center;position:relative;overflow:hidden;
-}
-.offer-card::before{
-  content:'';position:absolute;top:-1px;left:15%;right:15%;
-  height:1px;
-  background:linear-gradient(to right,transparent,var(--ice),transparent);
-  opacity:.5;
-  box-shadow:0 0 20px rgba(180,201,222,.2);
-}
-.offer-old{font-size:.95rem;color:var(--dark);text-decoration:line-through;margin-bottom:8px}
-.offer-price{font-family:var(--display);font-size:clamp(2.8rem,7vw,4.5rem);letter-spacing:3px;line-height:1;color:var(--white)}
-.offer-price small{
-  font-size:.28em;color:var(--mid);letter-spacing:2px;display:block;
-  margin-top:10px;font-family:var(--body);font-weight:400;
-}
-.offer-inst{font-size:.82rem;color:var(--mid);margin-top:12px}
-.offer-inst strong{color:var(--white)}
-.offer-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:28px 0}
-.offer-tag{
-  background:var(--ice-dim);color:var(--ice);
-  padding:7px 14px;border-radius:100px;
-  font-size:.63rem;font-weight:500;letter-spacing:1px;
-  border:1px solid rgba(180,201,222,.08);
-}
-.offer-safe{
-  font-size:.65rem;color:var(--dark);margin-top:18px;
-  display:flex;align-items:center;justify-content:center;gap:5px;
-}
-.offer-safe svg{width:12px;height:12px;stroke:var(--dark);fill:none;stroke-width:2}
+/* PERSONALIZADO */
+.custom{padding:var(--sec) 0;background:var(--deep)}
+.custom-g{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.cf-list{display:flex;flex-direction:column;gap:10px;margin:18px 0 28px}
+.cf{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--t2)}
+.cf-dot{width:22px;height:22px;background:var(--ice-10);border:1px solid var(--ice-border);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cf-dot svg{width:10px;height:10px;stroke:var(--ice);fill:none;stroke-width:2}
+.wa{background:var(--card);color:var(--white);border:1px solid var(--border2);padding:14px 28px;border-radius:var(--r);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;transition:all .3s var(--ease)}
+.wa svg{width:16px;height:16px;fill:var(--ice);flex-shrink:0}.wa:hover{border-color:var(--ice-border);background:var(--card2)}
+.custom-img{border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;background:var(--card);border:1px solid var(--border)}
 
-/* ===== SOBRE ===== */
-.about{padding:90px 0;background:var(--bg)}
-.about-grid{display:grid;grid-template-columns:auto 1fr;gap:50px;align-items:center}
-.about-photo{
-  width:260px;height:340px;border-radius:12px;overflow:hidden;
-  background:var(--surface);border:1px solid var(--border);position:relative;
-}
-.about-photo img{width:100%;height:100%;object-fit:cover}
-.about-line{
-  position:absolute;bottom:0;left:0;right:0;height:2px;
-  background:linear-gradient(to right,var(--ice),transparent);
-  box-shadow:0 0 12px rgba(180,201,222,.3);opacity:.6;
-}
-.about h3{font-family:var(--display);font-size:2.2rem;letter-spacing:3px;margin-bottom:18px;color:var(--white)}
-.about p{font-size:.82rem;color:var(--mid);line-height:1.8;margin-bottom:12px}
-.about-creds{display:flex;gap:32px;margin-top:24px}
-.cred-val{
-  font-family:var(--display);font-size:1.8rem;color:var(--ice);
-  text-shadow:0 0 12px rgba(180,201,222,.25);
-}
-.cred-lbl{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--dark)}
+/* SOBRE */
+.sobre{padding:var(--sec) 0;background:var(--deep)}
+.sobre-g{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
+.sobre-ph{width:220px;height:300px;border-radius:var(--r);overflow:hidden;background:var(--card);border:1px solid var(--border);position:relative;flex-shrink:0}
+.sobre-line{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ice),transparent);box-shadow:0 0 10px rgba(173,235,255,.25);opacity:.5}
+.sobre h3{font-size:clamp(20px,3vw,28px);font-weight:800;color:var(--white);letter-spacing:-.02em;margin-bottom:14px}
+.sobre p{font-size:14px;color:var(--t2);line-height:1.75;margin-bottom:10px}
+.sobre-cr{display:flex;gap:28px;margin-top:20px}
+.cr-v{font-size:22px;font-weight:800;color:var(--ice);text-shadow:0 0 10px rgba(173,235,255,.2)}.cr-l{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);font-weight:600}
 
-/* ===== PERSONALIZADO ===== */
-.custom{padding:90px 0;background:var(--surface)}
-.custom-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
-.custom p.desc{font-size:.82rem;color:var(--mid);line-height:1.8;margin:18px 0 24px}
-.custom-feats{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
-.custom-feat{display:flex;align-items:center;gap:12px;font-size:.8rem;color:var(--white)}
-.custom-feat-dot{
-  width:24px;height:24px;border:1px solid rgba(180,201,222,.2);border-radius:6px;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-}
-.custom-feat-dot svg{width:12px;height:12px;stroke:var(--ice);fill:none;stroke-width:2}
-/* WhatsApp button — styled to match site, not green eyesore */
-.wa-btn{
-  background:var(--glass2);color:var(--white);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  border:1px solid var(--border2);
-  padding:16px 36px;border-radius:100px;
-  font-size:.78rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;
-  display:inline-flex;align-items:center;gap:10px;transition:all .3s var(--ease);
-}
-.wa-btn svg{width:18px;height:18px;fill:var(--ice);flex-shrink:0}
-.wa-btn:hover{border-color:var(--ice);box-shadow:0 0 20px rgba(180,201,222,.12);background:var(--glass3)}
-.custom-img{
-  border-radius:12px;overflow:hidden;aspect-ratio:4/5;
-  background:var(--surface2);border:1px solid var(--border);
-}
-.custom-img img{width:100%;height:100%;object-fit:cover}
+/* FAQ */
+.faq{padding:var(--sec) 0;background:var(--bg)}
+.faq-list{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+.faq-item{border-bottom:1px solid var(--border)}.faq-item:first-child{border-top:1px solid var(--border)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;font-size:14px;font-weight:600;text-align:left;color:var(--white);transition:color .2s}
+.faq-q:hover{color:var(--ice)}
+.faq-icon{width:24px;height:24px;border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--ice);transition:transform .3s,background .3s,border-color .3s}
+.faq-icon svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--ice-10);border-color:var(--ice-border)}
+.faq-a{overflow:hidden;max-height:0;transition:max-height .4s var(--ease)}
+.faq-a-inner{padding-bottom:18px;font-size:14px;line-height:1.7;color:var(--t2)}
 
-/* ===== FOOTER ===== */
-footer{padding:40px 0 24px;border-top:1px solid var(--border);background:var(--bg)}
-.foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
-.foot-logo{font-family:var(--display);font-size:1.1rem;letter-spacing:4px;color:var(--white)}
-.foot-copy{font-size:.65rem;color:var(--dark);letter-spacing:1px}
-.foot-links{display:flex;gap:20px}
-.foot-links a{font-size:.65rem;color:var(--dark);letter-spacing:1px;text-transform:uppercase;transition:color .3s}
-.foot-links a:hover{color:var(--ice)}
+/* FOOTER */
+.footer{padding:36px var(--gutter) 20px;border-top:1px solid var(--border);background:var(--deep);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.footer-logo{font-family:var(--ff-logo);font-size:1rem;letter-spacing:.25em;color:var(--white)}
+.footer-copy{font-size:11px;color:rgba(82,82,82,.5)}
+.footer-links{display:flex;gap:24px;list-style:none}
+.footer-links a{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);font-weight:600;transition:color .2s}.footer-links a:hover{color:var(--ice)}
 
-/* ===== MOBILE CTA ===== */
-.m-cta{
-  display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;
-  background:rgba(22,22,25,.92);backdrop-filter:blur(20px);
-  border-top:1px solid var(--border);padding:12px 20px;
-}
-.m-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.m-cta-price{font-family:var(--display);font-size:1.3rem;letter-spacing:1px;color:var(--white)}
-.m-cta-price small{display:block;font-size:.5rem;color:var(--dark);letter-spacing:1px;font-family:var(--body)}
-.m-cta-btn{
-  background:var(--ice);color:var(--deep);
-  padding:12px 24px;border-radius:100px;
-  font-size:.68rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;flex-shrink:0;
-  box-shadow:0 0 16px rgba(180,201,222,.2);
-}
+/* MOBILE BAR */
+.m-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:98;background:rgba(14,14,17,.97);backdrop-filter:blur(24px);border-top:1px solid var(--border);padding:10px var(--gutter);padding-bottom:calc(10px + env(safe-area-inset-bottom))}
+.m-bar-in{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.m-bar-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--t4);line-height:1.2}
+.m-bar-p{font-size:22px;font-weight:800;color:var(--white);line-height:1.1;letter-spacing:-.02em}
+.m-bar-p sup{font-size:11px;vertical-align:super;color:var(--ice);font-weight:700;margin-right:1px}
+.m-bar a{display:flex;align-items:center;justify-content:center;background:var(--ice);color:var(--deep);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:var(--r);padding:14px 24px;white-space:nowrap;flex-shrink:0}
 
-/* ===== MOBILE MENU ===== */
-.mob-menu{
-  display:none;position:fixed;inset:0;z-index:998;
-  background:rgba(22,22,25,.98);backdrop-filter:blur(30px);
-  flex-direction:column;justify-content:center;align-items:center;gap:24px;
-}
-.mob-menu.active{display:flex}
-.mob-menu a{
-  font-family:var(--display);font-size:1.6rem;letter-spacing:5px;
-  color:var(--dark);transition:color .3s;
-}
-.mob-menu a:hover{color:var(--ice)}
-
-/* ===== REVEAL ===== */
-.rv{opacity:0;transform:translateY(35px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-.rv.vis{opacity:1;transform:translateY(0)}
-
-/* ===== RESPONSIVE ===== */
+/* RESPONSIVE */
 @media(max-width:1024px){
-  .specs-grid{grid-template-columns:repeat(3,1fr)}
-  .spec:nth-child(3)::after{display:none}
-  .planta-grid,.other-grid,.about-grid,.custom-grid{grid-template-columns:1fr;gap:36px}
-  .del-grid{grid-template-columns:repeat(2,1fr)}
-  .diff-grid{grid-template-columns:1fr}
-  .slide{flex:0 0 82%}
-  .hero-social,.hero-counter,.hero-counter-bar{display:none}
-  .rooms{grid-template-columns:repeat(3,1fr)}
+  .ficha-g{grid-template-columns:repeat(2,1fr)}
+  .planta-g,.custom-g,.sobre-g{grid-template-columns:1fr;gap:28px}
+  .parc-stats{grid-template-columns:repeat(3,1fr)}
+  .ent-g{grid-template-columns:repeat(2,1fr)}.diff-g{grid-template-columns:1fr}
+  .gal-c{flex:0 0 380px}
 }
 @media(max-width:768px){
-  html{font-size:15px}
-  .nav-links{display:none}
-  .hamburger{display:flex}
-  .hero{min-height:100svh}
-  .hero-content .container{grid-template-columns:1fr}
-  .hero-right{text-align:left;display:flex;gap:16px;flex-wrap:wrap}
-  .hero-right .hero-stat{margin-bottom:0}
-  .hero-ctas{flex-direction:column}
-  .hero-ctas a{text-align:center;justify-content:center}
-  .hero-ghost{display:none}
-  .specs-grid{grid-template-columns:repeat(2,1fr);gap:8px}
-  .spec::after{display:none!important}
-  .slide{flex:0 0 92%}
-  .del-grid{grid-template-columns:1fr}
-  .about-photo{width:100%;height:260px}
-  .about-creds{gap:16px}
-  .offer-card{padding:36px 18px}
-  .other-specs{grid-template-columns:repeat(2,1fr)}
-  .rooms{grid-template-columns:repeat(2,1fr)}
-  .m-cta{display:block}
-  footer{padding-bottom:80px}
-  .foot-inner{flex-direction:column;text-align:center}
+  :root{--sec:56px;--gutter:20px}
+  .nav-links{display:none}.burger{display:block}
+  .hero-bg{background-position:right center}
+  .hero h1{font-size:clamp(24px,7vw,36px)}
+  .ficha-g{grid-template-columns:1fr 1fr;gap:8px}
+  .gal-c{flex:0 0 300px}
+  .ent-g{grid-template-columns:1fr}
+  .sobre-ph{width:100%;height:220px}
+  .sobre-g{text-align:center}.sobre-cr{justify-content:center;gap:24px}
+  .sobre .sh{text-align:center}.sobre .sh-tag{justify-content:center}
+  .sobre .sh-desc{margin-left:auto;margin-right:auto}
+  .sobre h3{text-align:center}
+  .sobre p{text-align:center;max-width:420px;margin-left:auto;margin-right:auto}
+  .oferta-c{padding:28px 20px}
+  .parc-offer{padding:24px 18px}
+  .proj-slide{flex:0 0 260px}
+  .m-bar{display:block}
+  .footer{flex-direction:column;text-align:center;padding-bottom:90px}
+  .footer-links{justify-content:center}
 }
-@media(max-width:480px){
-  .hero-title{font-size:2.6rem}
-  .rooms{grid-template-columns:repeat(2,1fr)}
-  .about-creds{flex-direction:column;align-items:flex-start}
+@media(max-width:420px){
+  .hero h1{font-size:24px}
+  .hero-ctas{flex-direction:column}.hero-ctas .btn{justify-content:center;width:100%}
+  .sobre-cr{flex-wrap:wrap;justify-content:center}
+  .ter-c{min-width:170px;flex-basis:170px}
 }
 </style>
 </head>
 <body>
 
-<nav id="navbar">
-  <div class="container">
-    <a href="#" class="nav-logo">GAMARRA.</a>
-    <div class="nav-links">
-      <a href="#projeto" class="active">Home</a>
-      <a href="#galeria">Galeria</a>
-      <a href="#planta">Planta</a>
-      <a href="#diferenciais">Diferenciais</a>
-      <a href="#oferta">Oferta</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#personalizado" class="nav-cta-link">Sob Medida</a>
-    </div>
-    <button class="hamburger" id="menuToggle" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
+<nav class="nav" id="nav"><div class="wrap"><a href="#" class="nav-logo">GAMARRA.</a><div class="nav-links"><a href="#projeto" class="on">Home</a><a href="#galeria">Galeria</a><a href="#planta">Planta</a><a href="#oferta">Oferta</a><a href="#sobre">Sobre</a><a href="#custom" class="nav-cta">Sob Medida</a></div><button class="burger" id="burger"><span></span><span></span><span></span></button></div></nav>
+<div class="mob-nav" id="mobNav"><a href="#projeto">Home</a><a href="#galeria">Galeria</a><a href="#planta">Planta</a><a href="#oferta">Oferta</a><a href="#sobre">Sobre</a><a href="#custom">Sob Medida</a></div>
 
-<div class="mob-menu" id="mobMenu">
-  <a href="#projeto" onclick="closeMenu()">Home</a>
-  <a href="#galeria" onclick="closeMenu()">Galeria</a>
-  <a href="#planta" onclick="closeMenu()">Planta</a>
-  <a href="#diferenciais" onclick="closeMenu()">Diferenciais</a>
-  <a href="#oferta" onclick="closeMenu()">Oferta</a>
-  <a href="#sobre" onclick="closeMenu()">Sobre</a>
-  <a href="#personalizado" onclick="closeMenu()">Sob Medida</a>
-</div>
-
+<!-- 1. HERO -->
 <section class="hero" id="projeto">
-  <div class="hero-bg"><div class="hero-fallback"></div></div>
-  <div class="hero-grad"></div>
-  <div class="hero-ghost">GAMARRA</div>
-
-  <div class="hero-social">
-    <a href="#">Instagram</a>
-    <div class="hero-social-line"></div>
-    <a href="#">Facebook</a>
-  </div>
-
-  <div class="hero-counter"><strong>01</strong><span>/06</span></div>
-  <div class="hero-counter-bar"><div class="hero-counter-fill"></div></div>
-
-  <div class="hero-content">
-    <div class="container">
-      <div>
-        <div class="hero-sub-label">Engenheiro Erickson Lima</div>
-        <h1 class="hero-title">Projeto<br>Residencial.</h1>
-        <p class="hero-desc">
-          Projeto arquitetônico completo para terreno 12×25m.
-          Design moderno, funcional e pronto para construir.
-        </p>
-        <div class="hero-ctas">
-          <a href="#oferta" class="btn-w">
-            Quero Este Projeto
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#planta" class="btn-o">Ver Planta Baixa</a>
-        </div>
-      </div>
-      <div class="hero-right">
-        <div class="hero-stat"><div class="hero-stat-val">300M²</div><div class="hero-stat-lbl">Terreno</div></div>
-        <div class="hero-stat"><div class="hero-stat-val">180M²</div><div class="hero-stat-lbl">Área Construída</div></div>
-        <div class="hero-stat"><div class="hero-stat-val">12M</div><div class="hero-stat-lbl">Testada</div></div>
-      </div>
+  <div class="hero-bg"><div class="hero-fb"></div></div>
+  <div class="hero-ov"></div>
+  <div class="hero-c"><div class="wrap">
+    <h1>Projeto Residencial<br>Completo para 12×25m.</h1>
+    <p class="hero-d">Design contemporâneo, funcional e pronto para construir. Entrega digital imediata com toda a documentação técnica.</p>
+    <div class="hero-ctas">
+      <a href="#oferta" class="btn btn-p">Quero este projeto<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="#planta" class="btn btn-g">Ver planta baixa</a>
     </div>
-  </div>
+  </div></div>
 </section>
 
-<div class="specs">
-  <div class="container">
-    <div class="specs-grid">
-      <div class="spec rv">
-        <div class="spec-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
-        <div class="spec-val">3</div><div class="spec-lbl">Quartos</div>
-      </div>
-      <div class="spec rv">
-        <div class="spec-ico"><svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7z"/></svg></div>
-        <div class="spec-val">1</div><div class="spec-lbl">Suíte</div>
-      </div>
-      <div class="spec rv">
-        <div class="spec-ico"><svg viewBox="0 0 24 24"><path d="M4 12h16M4 12a8 8 0 018-8m-8 8a8 8 0 008 8m8-8a8 8 0 01-8 8m8-8a8 8 0 00-8-8"/></svg></div>
-        <div class="spec-val">2</div><div class="spec-lbl">Banheiros</div>
-      </div>
-      <div class="spec rv">
-        <div class="spec-ico"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 12h18"/></svg></div>
-        <div class="spec-val">2</div><div class="spec-lbl">Vagas</div>
-      </div>
-      <div class="spec rv">
-        <div class="spec-ico"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/><path d="M9 3v18M3 9h18"/></svg></div>
-        <div class="spec-val">180M²</div><div class="spec-lbl">Área Total</div>
-      </div>
-    </div>
+<!-- SOCIAL PROOF — below hero -->
+<div class="social-proof rv">
+  <div class="social-proof-inner">
+    <div class="social-avatars"><div class="av av-1">E</div><div class="av av-2">M</div><div class="av av-3">R</div><div class="av av-4">J</div></div>
+    <div class="social-proof-text"><strong>+140 pessoas</strong> já adquiriram este projeto</div>
   </div>
 </div>
 
-<section class="slider-section" id="galeria">
-  <div class="container">
-    <div class="slider-head rv">
-      <div>
-        <div class="label">Galeria do Projeto</div>
-        <h2 class="title">Explore Cada Detalhe.</h2>
-      </div>
-      <div class="slider-nav">
-        <button class="slider-btn" onclick="sScroll(-1)">←</button>
-        <button class="slider-btn" onclick="sScroll(1)">→</button>
-      </div>
-    </div>
-    <div class="slider-track" id="sTrack">
-      <div class="slide"><div class="slide-ph">slide-fachada-frontal.jpg</div><div class="slide-info"><div class="slide-tag">Vista 01</div><div class="slide-name">FACHADA FRONTAL</div></div></div>
-      <div class="slide"><div class="slide-ph">slide-fachada-lateral.jpg</div><div class="slide-info"><div class="slide-tag">Vista 02</div><div class="slide-name">FACHADA LATERAL</div></div></div>
-      <div class="slide"><div class="slide-ph">slide-sala-estar.jpg</div><div class="slide-info"><div class="slide-tag">Interior 01</div><div class="slide-name">SALA DE ESTAR</div></div></div>
-      <div class="slide"><div class="slide-ph">slide-cozinha.jpg</div><div class="slide-info"><div class="slide-tag">Interior 02</div><div class="slide-name">COZINHA GOURMET</div></div></div>
-      <div class="slide"><div class="slide-ph">slide-suite-master.jpg</div><div class="slide-info"><div class="slide-tag">Interior 03</div><div class="slide-name">SUÍTE MASTER</div></div></div>
-      <div class="slide"><div class="slide-ph">slide-area-gourmet.jpg</div><div class="slide-info"><div class="slide-tag">Lazer</div><div class="slide-name">ÁREA GOURMET</div></div></div>
+<!-- 2. FICHA -->
+<section class="ficha">
+  <div class="wrap">
+    <div class="sh rv"><div class="sh-tag">Ficha técnica</div><div class="sh-title">Dados do Projeto.</div><div class="sh-desc">Informações objetivas para você avaliar se o projeto atende ao seu terreno e orçamento.</div></div>
+    <div class="ficha-g">
+      <div class="ficha-c rv"><div class="ficha-ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12"/></svg></div><div class="ficha-lbl">Terreno</div><div class="ficha-val">300m²</div></div>
+      <div class="ficha-c rv"><div class="ficha-ic"><svg viewBox="0 0 24 24"><path d="M4 19h16M6 17V9l6-4 6 4v8"/></svg></div><div class="ficha-lbl">Área construída</div><div class="ficha-val">180m²</div></div>
+      <div class="ficha-c rv"><div class="ficha-ic"><svg viewBox="0 0 24 24"><line x1="2" y1="12" x2="22" y2="12"/><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg></div><div class="ficha-lbl">Testada</div><div class="ficha-val">12m</div></div>
+      <div class="ficha-c rv"><div class="ficha-ic"><svg viewBox="0 0 24 24"><path d="M12 1v4M12 19v4M4.2 4.2l2.8 2.8M17 17l2.8 2.8M1 12h4M19 12h4M4.2 19.8l2.8-2.8M17 7l2.8-2.8"/></svg></div><div class="ficha-lbl">Custo estimado</div><div class="ficha-val sm">~R$ 280mil</div></div>
     </div>
   </div>
 </section>
 
-<section class="planta" id="planta">
-  <div class="container">
-    <div class="planta-grid">
-      <div class="planta-img rv"><div class="slide-ph" style="height:100%">planta-baixa.jpg</div></div>
-      <div class="rv">
-        <div class="label">Planta Baixa</div>
-        <h2 class="title">Distribuição Inteligente.</h2>
-        <p style="color:var(--mid);margin-top:12px;font-size:.82rem;line-height:1.6">
-          Cada ambiente pensado para otimizar espaço e fluxo, garantindo conforto e funcionalidade.
-        </p>
-        <div class="rooms">
-          <div class="room"><div class="room-name">Sala de Estar</div><div class="room-area">28.5 m²</div></div>
-          <div class="room"><div class="room-name">Cozinha</div><div class="room-area">22.0 m²</div></div>
-          <div class="room"><div class="room-name">Suíte Master</div><div class="room-area">18.0 m²</div></div>
-          <div class="room"><div class="room-name">Quarto 02</div><div class="room-area">12.5 m²</div></div>
-          <div class="room"><div class="room-name">Quarto 03</div><div class="room-area">11.0 m²</div></div>
-          <div class="room"><div class="room-name">Gourmet</div><div class="room-area">20.0 m²</div></div>
-          <div class="room"><div class="room-name">Garagem</div><div class="room-area">36.0 m²</div></div>
-          <div class="room"><div class="room-name">Lavanderia</div><div class="room-area">6.5 m²</div></div>
-        </div>
-      </div>
-    </div>
+<!-- 3. TERRENOS -->
+<section class="terrenos"><div class="wrap">
+  <div class="sh rv"><div class="sh-tag">Outros terrenos</div><div class="sh-desc" style="margin-top:0">Gostou do estilo mas seu lote é diferente? Veja outras opções ou solicite sob medida.</div></div>
+  <div class="scroll-t rv">
+    <a href="#oferta" class="ter-c now"><div class="ter-th"><div class="ter-badge a">Atual</div><span>fachada.png</span></div><div class="ter-b"><div class="ter-n">Projeto 001</div><div class="ter-s">12 × 25m</div></div></a>
+    <a href="#outros" class="ter-c"><div class="ter-th"><span>projeto-002.png</span></div><div class="ter-b"><div class="ter-n">Projeto 002</div><div class="ter-s">10 × 20m</div></div></a>
+    <div class="ter-c"><div class="ter-th"><div class="ter-badge s">Em breve</div><span>—</span></div><div class="ter-b"><div class="ter-n">Projeto 003</div><div class="ter-s">10 × 25m</div></div></div>
+    <div class="ter-c"><div class="ter-th"><div class="ter-badge s">Em breve</div><span>—</span></div><div class="ter-b"><div class="ter-n">Projeto 004</div><div class="ter-s">12 × 30m</div></div></div>
   </div>
-</section>
+  <div class="rv" style="margin-top:14px"><a href="#custom" class="ter-link">Não encontrou seu terreno? Solicite sob medida <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+</div></section>
 
-<section class="deliverables">
-  <div class="container">
-    <div class="rv" style="text-align:center;max-width:560px;margin:0 auto">
-      <div class="label">Entrega Completa</div>
-      <h2 class="title">O Que Você Recebe.</h2>
-    </div>
-    <div class="del-grid">
-      <div class="del-card rv">
-        <div class="del-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div>
-        <div class="del-title">Projeto Arquitetônico</div>
-        <div class="del-desc">Planta baixa, cortes, fachadas e coberta com todas as dimensões e especificações técnicas.</div>
-      </div>
-      <div class="del-card rv">
-        <div class="del-ico"><svg viewBox="0 0 24 24"><path d="M2 20h20M5 20V8l7-5 7 5v12"/><path d="M9 20v-6h6v6"/></svg></div>
-        <div class="del-title">Projeto Estrutural</div>
-        <div class="del-desc">Fundação, pilares, vigas e laje dimensionados por engenheiro responsável.</div>
-      </div>
-      <div class="del-card rv">
-        <div class="del-ico"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-        <div class="del-title">Projeto Elétrico</div>
-        <div class="del-desc">Distribuição de pontos, circuitos, quadro de cargas e diagrama unifilar completo.</div>
-      </div>
-      <div class="del-card rv">
-        <div class="del-ico"><svg viewBox="0 0 24 24"><path d="M12 2v6M12 22v-6M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M2 12h6M22 12h-6M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24"/></svg></div>
-        <div class="del-title">Projeto Hidrossanitário</div>
-        <div class="del-desc">Água fria, esgoto, pluvial e detalhes de instalação hidráulica.</div>
-      </div>
-      <div class="del-card rv">
-        <div class="del-ico"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16M4 14h16M9 4v16M14 4v16"/></svg></div>
-        <div class="del-title">Planilha de Custo</div>
-        <div class="del-desc">Estimativa de custo detalhada da obra com quantitativos de materiais.</div>
-      </div>
-      <div class="del-card rv">
-        <div class="del-ico"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg></div>
-        <div class="del-title">Memorial Descritivo</div>
-        <div class="del-desc">Especificações de materiais e acabamentos para orientar a construção.</div>
-      </div>
-    </div>
+<!-- 4. GALERIA -->
+<section class="galeria" id="galeria"><div class="wrap">
+  <div class="sh rv"><div class="sh-tag">Visualização</div><div class="sh-title">Veja o Projeto.</div><div class="sh-desc">Fachada, perspectivas e ambientações para você imaginar o resultado final.</div></div>
+  <div class="scroll-t">
+    <div class="gal-c rv"><div class="gal-ph">fachada-frontal.png</div><div class="gal-tag">Fachada</div></div>
+    <div class="gal-c rv"><div class="gal-ph">fachada-lateral.png</div><div class="gal-tag">Perspectiva</div></div>
+    <div class="gal-c rv"><div class="gal-ph">sala-integrada.png</div><div class="gal-tag">Interior</div></div>
+    <div class="gal-c rv"><div class="gal-ph">cozinha-gourmet.png</div><div class="gal-tag">Cozinha</div></div>
+    <div class="gal-c rv"><div class="gal-ph">area-gourmet.png</div><div class="gal-tag">Área Gourmet</div></div>
   </div>
-</section>
+</div></section>
 
-<section class="diffs" id="diferenciais">
-  <div class="diffs-ghost">QUALIDADE</div>
-  <div class="container">
-    <div class="rv" style="text-align:center;max-width:560px;margin:0 auto">
-      <div class="label">Por Que Escolher</div>
-      <h2 class="title">Diferenciais do Projeto.</h2>
+<!-- 5. PLANTA -->
+<section class="planta" id="planta"><div class="wrap">
+  <div class="planta-g">
+    <div class="rv">
+      <div class="sh"><div class="sh-tag">Planta Baixa</div><div class="sh-title">Distribuição Inteligente.</div><div class="sh-desc">Ambientes organizados para conforto, fluxo e aproveitamento máximo do terreno 12×25m.</div></div>
+      <div class="rooms">
+        <div class="room"><span class="room-n">Sala Integrada</span><span class="room-a">28.5 m²</span></div>
+        <div class="room"><span class="room-n">Cozinha Gourmet</span><span class="room-a">22.0 m²</span></div>
+        <div class="room"><span class="room-n">Suíte Master</span><span class="room-a">18.0 m²</span></div>
+        <div class="room"><span class="room-n">Quarto 02</span><span class="room-a">12.5 m²</span></div>
+        <div class="room"><span class="room-n">Quarto 03</span><span class="room-a">11.0 m²</span></div>
+        <div class="room"><span class="room-n">Banheiro Social</span><span class="room-a">4.5 m²</span></div>
+        <div class="room"><span class="room-n">Lavanderia</span><span class="room-a">6.5 m²</span></div>
+        <div class="room"><span class="room-n">Garagem</span><span class="room-a">36.0 m²</span></div>
+      </div>
     </div>
-    <div class="diff-grid">
-      <div class="diff rv"><div class="diff-num">01</div><div><h4>Design Contemporâneo</h4><p>Linhas retas, volumes marcantes e fachada imponente que valorizam o imóvel.</p></div></div>
-      <div class="diff rv"><div class="diff-num">02</div><div><h4>Conforto Térmico</h4><p>Ventilação cruzada e iluminação natural projetadas para o clima local.</p></div></div>
-      <div class="diff rv"><div class="diff-num">03</div><div><h4>Otimização de Custos</h4><p>Modulação inteligente que reduz desperdício de materiais na obra.</p></div></div>
-      <div class="diff rv"><div class="diff-num">04</div><div><h4>Aprovação Simplificada</h4><p>Documentação pronta para protocolar na prefeitura sem complicações.</p></div></div>
-      <div class="diff rv"><div class="diff-num">05</div><div><h4>Suporte Técnico</h4><p>Tire dúvidas diretamente com o engenheiro responsável pelo projeto.</p></div></div>
-      <div class="diff rv"><div class="diff-num">06</div><div><h4>Entrega Digital Imediata</h4><p>Receba todos os arquivos em PDF e DWG logo após a compra.</p></div></div>
-    </div>
+    <div class="planta-img rv"><div class="gal-ph" style="height:100%">planta-baixa.png</div></div>
   </div>
-</section>
+</div></section>
 
-<section class="other" id="outros">
-  <div class="container">
-    <div class="label rv">Mais Projetos</div>
-    <h2 class="title rv">Conheça o Projeto 002.</h2>
-    <div class="other-grid">
-      <div class="other-img rv"><div class="slide-ph" style="height:100%">outro-projeto-fachada.jpg</div><div class="other-badge">Novo</div></div>
-      <div class="other-info rv">
-        <h3>RESIDÊNCIA COMPACTA 10×20M</h3>
-        <p>Projeto moderno e funcional para terrenos menores. Ideal para quem busca uma casa com ótima distribuição em um terreno de 10×20 metros.</p>
-        <div class="other-specs">
-          <div class="o-spec"><div class="o-spec-v">200M²</div><div class="o-spec-l">Terreno</div></div>
-          <div class="o-spec"><div class="o-spec-v">120M²</div><div class="o-spec-l">Construída</div></div>
-          <div class="o-spec"><div class="o-spec-v">10M</div><div class="o-spec-l">Testada</div></div>
-        </div>
-        <a href="#" class="btn-w">Ver Projeto 002 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+<!-- 6. ENTREGA -->
+<section class="entrega"><div class="wrap">
+  <div class="sh rv"><div class="sh-tag">Entrega</div><div class="sh-title">O Que Você Recebe.</div><div class="sh-desc">Todo o material técnico necessário para aprovar e construir.</div></div>
+  <div class="ent-g">
+    <div class="ent-c rv"><div class="ent-ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div><div class="ent-t">Projeto Arquitetônico</div><div class="ent-d">Planta baixa, cortes, fachadas e coberta com dimensões e especificações técnicas.</div></div>
+    <div class="ent-c rv"><div class="ent-ic"><svg viewBox="0 0 24 24"><path d="M2 20h20M5 20V8l7-5 7 5v12"/><path d="M9 20v-6h6v6"/></svg></div><div class="ent-t">Fachada e Visualizações</div><div class="ent-d">Perspectivas 3D da fachada e ambientes para apresentação e decisão.</div></div>
+    <div class="ent-c rv"><div class="ent-ic"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div class="ent-t">Complementares</div><div class="ent-d">Elétrico, hidrossanitário, estrutural, planilha de custo e memorial descritivo.</div></div>
+  </div>
+</div></section>
+
+<!-- 7. DIFERENCIAIS -->
+<section class="diffs" id="diferenciais"><div class="diffs-gh">GAMARRA</div><div class="wrap">
+  <div class="sh rv"><div class="sh-tag">Diferenciais</div><div class="sh-title">Por Que Este Projeto.</div><div class="sh-desc">O que diferencia este projeto de qualquer outro que você encontra por aí.</div></div>
+  <div class="diff-g">
+    <div class="diff rv"><div class="diff-n">01</div><div><h4>Estética contemporânea</h4><p>Fachada com identidade visual que valoriza o lote e se destaca.</p></div></div>
+    <div class="diff rv"><div class="diff-n">02</div><div><h4>Distribuição inteligente</h4><p>Circulação eficiente, ventilação cruzada e integração de ambientes.</p></div></div>
+    <div class="diff rv"><div class="diff-n">03</div><div><h4>Valorização do imóvel</h4><p>Projeto pensado para aumentar o valor percebido na revenda.</p></div></div>
+    <div class="diff rv"><div class="diff-n">04</div><div><h4>Leitura técnica clara</h4><p>Pranchas organizadas para execução em obra sem retrabalho.</p></div></div>
+    <div class="diff rv"><div class="diff-n">05</div><div><h4>Facilidade de execução</h4><p>Modulação que reduz desperdício de materiais na construção.</p></div></div>
+    <div class="diff rv"><div class="diff-n">06</div><div><h4>Apresentação premium</h4><p>Material visual de alta qualidade para gerar confiança.</p></div></div>
+  </div>
+</div></section>
+
+<!-- 8. OFERTA -->
+<section class="oferta" id="oferta"><div class="wrap">
+  <div class="sh center rv"><div class="sh-tag">Oferta</div><div class="sh-title">Projeto Completo.</div><div class="sh-desc">Tudo que você precisa para aprovar na prefeitura e começar a construir.</div></div>
+  <div class="oferta-c rv">
+    <div class="oferta-head">
+      <div class="oferta-old">De R$ 2.500,00</div>
+      <div class="oferta-p"><sup>R$</sup>114</div>
+      <div class="oferta-type"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Acesso imediato</div>
+    </div>
+    <ul class="oferta-benefits">
+      <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Projeto Arquitetônico</strong> — planta, cortes, fachadas</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Projeto Estrutural</strong> — fundação, pilares, vigas</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Projeto Elétrico</strong> — circuitos e diagrama unifilar</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Projeto Hidrossanitário</strong> — água, esgoto, pluvial</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Planilha de Custo</strong> — quantitativos detalhados</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Memorial Descritivo</strong> — materiais e acabamentos</span></li>
+    </ul>
+    <a href="#" class="btn btn-i oferta-cta">Comprar agora<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <div class="oferta-safe"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Pagamento seguro · Entrega imediata por e-mail</div>
+  </div>
+</div></section>
+
+<!-- 9. PERSONALIZADO -->
+<section class="custom" id="custom"><div class="wrap"><div class="custom-g">
+  <div class="rv">
+    <div class="sh"><div class="sh-tag">Projeto Exclusivo</div><div class="sh-title">Quer um Projeto com a<br>Minha Assinatura?</div><div class="sh-desc">Gostou do estilo e da qualidade dos meus projetos? Desenvolvo um projeto exclusivo para o seu terreno, com o mesmo padrão estético e técnico.</div></div>
+    <div class="cf-list">
+      <div class="cf"><div class="cf-dot"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>Projeto do zero para o seu lote</div>
+      <div class="cf"><div class="cf-dot"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>Mesmo padrão estético dos projetos prontos</div>
+      <div class="cf"><div class="cf-dot"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>Atendimento direto comigo do início ao fim</div>
+    </div>
+    <a href="https://wa.me/5567999999999?text=Olá!%20Quero%20um%20projeto%20personalizado" target="_blank" class="wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Falar no WhatsApp</a>
+  </div>
+  <div class="custom-img rv"><div class="gal-ph" style="height:100%">projeto-personalizado.png</div></div>
+</div></div></section>
+
+<!-- 10. OUTROS -->
+<section class="outros" id="outros"><div class="wrap">
+  <div class="sh rv"><div class="sh-tag">Mais Projetos</div><div class="sh-title">Conheça Outros Modelos.</div></div>
+  <div class="scroll-t rv">
+    <a href="#" class="proj-slide"><div class="proj-slide-img"><div class="gal-ph">projeto-002-fachada.png</div></div><div class="proj-slide-overlay"><div class="proj-slide-tag">10×20m</div><div class="proj-slide-name">Residência Compacta</div></div><div class="proj-slide-badge">Novo</div></a>
+    <a href="#" class="proj-slide"><div class="proj-slide-img"><div class="gal-ph">projeto-003-fachada.png</div></div><div class="proj-slide-overlay"><div class="proj-slide-tag">10×25m</div><div class="proj-slide-name">Residência Linear</div></div><div class="proj-slide-badge soon">Em breve</div></a>
+    <a href="#" class="proj-slide"><div class="proj-slide-img"><div class="gal-ph">projeto-004-fachada.png</div></div><div class="proj-slide-overlay"><div class="proj-slide-tag">12×30m</div><div class="proj-slide-name">Residência Premium</div></div><div class="proj-slide-badge soon">Em breve</div></a>
+  </div>
+</div></section>
+
+<!-- 11. SOBRE -->
+<section class="sobre" id="sobre"><div class="wrap">
+  <div class="sobre-g">
+    <div class="sobre-ph rv"><div class="gal-ph" style="height:100%">foto-erickson.png</div><div class="sobre-line"></div></div>
+    <div class="rv">
+      <div class="sh"><div class="sh-tag">Sobre</div><div class="sh-title">Erickson Gamarra</div><div class="sh-desc">Engenheiro civil em Dourados-MS. Projetos residenciais com foco em eficiência, conforto e valorização.</div></div>
+      <p>Cada projeto segue normas técnicas brasileiras e é pensado para facilitar a execução em obra com clareza e profissionalismo.</p>
+      <div class="sobre-cr">
+        <div><div class="cr-v">50+</div><div class="cr-l">Projetos</div></div>
+        <div><div class="cr-v">8+</div><div class="cr-l">Anos</div></div>
+        <div><div class="cr-v">100%</div><div class="cr-l">Aprovados</div></div>
       </div>
     </div>
   </div>
-</section>
+</div></section>
 
-<section class="offer" id="oferta">
-  <div class="container">
-    <div class="rv" style="text-align:center;max-width:560px;margin:0 auto 40px">
-      <div class="label">Oferta Especial</div>
-      <h2 class="title">Projeto Completo.</h2>
-    </div>
-    <div class="offer-card rv">
-      <div class="offer-old">De R$ 2.500,00</div>
-      <div class="offer-price">R$ 114<small>Pagamento Único · Acesso Imediato</small></div>
-      <div class="offer-inst">ou <strong>3x de R$ 38,00</strong> sem juros no cartão</div>
-      <div class="offer-tags">
-        <span class="offer-tag">✓ Projeto Arquitetônico</span>
-        <span class="offer-tag">✓ Projeto Estrutural</span>
-        <span class="offer-tag">✓ Projeto Elétrico</span>
-        <span class="offer-tag">✓ Projeto Hidrossanitário</span>
-        <span class="offer-tag">✓ Planilha de Custo</span>
-        <span class="offer-tag">✓ Memorial Descritivo</span>
-      </div>
-      <a href="#" class="btn-ice">Comprar Agora <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      <div class="offer-safe"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Pagamento seguro · Entrega imediata por e-mail</div>
-    </div>
+<!-- GARANTIA -->
+<section class="garantia"><div class="wrap">
+  <div class="garantia-box rv">
+    <div class="garantia-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+    <div class="garantia-title">Satisfação garantida ou seu dinheiro de volta.</div>
+    <div class="garantia-text">Se o projeto não atender às suas expectativas, você tem 7 dias após a compra para solicitar o reembolso integral. Sem burocracia, sem perguntas.</div>
   </div>
-</section>
+</div></section>
 
-<section class="about" id="sobre">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-photo rv">
-        <div class="slide-ph" style="height:100%">foto-erickson.jpg</div>
-        <div class="about-line"></div>
-      </div>
-      <div class="rv">
-        <div class="label">Quem Está Por Trás</div>
-        <h3>ERICKSON LIMA</h3>
-        <p>Engenheiro civil e empreendedor em Dourados-MS, desenvolvo projetos residenciais que unem engenharia de qualidade com design contemporâneo.</p>
-        <p>Cada projeto é pensado com foco em eficiência construtiva, conforto ambiental e valorização do imóvel, sempre respeitando as normas técnicas brasileiras.</p>
-        <div class="about-creds">
-          <div><div class="cred-val">50+</div><div class="cred-lbl">Projetos</div></div>
-          <div><div class="cred-val">8+</div><div class="cred-lbl">Anos de Exp.</div></div>
-          <div><div class="cred-val">100%</div><div class="cred-lbl">Aprovados</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- PARCEIROS -->
+<section class="parceiros" id="parceiros"><div class="wrap">
+  <div class="sh center rv"><div class="sh-tag">Para Profissionais</div><div class="sh-title">Seu Escritório Cresce<br>com a Gamarra.</div><div class="sh-desc">Mais de 70 profissionais já utilizam nossos projetos. Construtores, arquitetos e engenheiros que economizam tempo e entregam mais.</div></div>
 
-<section class="custom" id="personalizado">
-  <div class="container">
-    <div class="custom-grid">
-      <div class="rv">
-        <div class="label">Sob Medida</div>
-        <h2 class="title">Projeto Personalizado.</h2>
-        <p class="desc">Seu terreno é diferente? Suas necessidades são únicas? Desenvolvo projetos do zero, adaptados ao seu lote, ao seu estilo de vida e ao seu orçamento.</p>
-        <div class="custom-feats">
-          <div class="custom-feat"><div class="custom-feat-dot"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>Estudo do terreno e topografia</div>
-          <div class="custom-feat"><div class="custom-feat-dot"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>Programa de necessidades personalizado</div>
-          <div class="custom-feat"><div class="custom-feat-dot"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>Maquete 3D do projeto</div>
-          <div class="custom-feat"><div class="custom-feat-dot"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>Acompanhamento até a aprovação</div>
-          <div class="custom-feat"><div class="custom-feat-dot"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>Reuniões online para ajustes</div>
-        </div>
-        <a href="https://wa.me/5567999999999?text=Olá!%20Quero%20um%20projeto%20personalizado" target="_blank" class="wa-btn">
-          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Falar no WhatsApp
-        </a>
-      </div>
-      <div class="custom-img rv"><div class="slide-ph" style="height:100%">projeto-personalizado.jpg</div></div>
-    </div>
+  <div class="parc-stats rv">
+    <div class="parc-stat"><div class="parc-stat-v">70+</div><div class="parc-stat-l">Parceiros ativos</div></div>
+    <div class="parc-stat"><div class="parc-stat-v">3</div><div class="parc-stat-l">Projetos/mês por parceiro</div></div>
+    <div class="parc-stat"><div class="parc-stat-v">40%</div><div class="parc-stat-l">Economia de tempo</div></div>
   </div>
-</section>
 
-<footer>
-  <div class="container">
-    <div class="foot-inner">
-      <div class="foot-logo">GAMARRA.</div>
-      <div class="foot-copy">© 2026 Eng. Erickson Lima · Dourados, MS</div>
-      <div class="foot-links"><a href="#">Instagram</a><a href="#">WhatsApp</a></div>
+  <div class="parc-offer rv">
+    <div class="parc-offer-head">
+      <div class="parc-offer-tag"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Plano Parceiro</div>
+      <div class="parc-offer-title">Até 3 projetos por mês com condições exclusivas.</div>
     </div>
+    <div class="parc-benefits">
+      <div class="parc-ben"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--ice)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Desconto progressivo</strong> — quanto mais projetos, menor o valor unitário</span></div>
+      <div class="parc-ben"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--ice)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Entrega com sua marca</strong> — adaptamos carimbo e identidade visual</span></div>
+      <div class="parc-ben"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--ice)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Prioridade na fila</strong> — projetos personalizados entregues em até 15 dias</span></div>
+      <div class="parc-ben"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--ice)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Suporte técnico direto</strong> — canal exclusivo para dúvidas de obra</span></div>
+      <div class="parc-ben"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--ice)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Catálogo exclusivo</strong> — acesso antecipado a novos projetos da linha</span></div>
+    </div>
+    <a href="https://wa.me/5567999999999?text=Olá!%20Tenho%20interesse%20no%20plano%20parceiro" target="_blank" class="btn btn-i" style="width:100%;justify-content:center;margin-top:8px">Quero ser parceiro<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <div class="parc-note">Sem contrato mínimo · Cancele quando quiser</div>
   </div>
+</div></section>
+
+<!-- FAQ -->
+<section class="faq" id="faq"><div class="wrap">
+  <div class="sh center rv"><div class="sh-tag">Dúvidas</div><div class="sh-title">Perguntas Frequentes.</div></div>
+  <div class="faq-list">
+    <div class="faq-item rv"><button class="faq-q">O que está incluso no projeto?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Planta baixa, cortes, fachadas, coberta, projeto estrutural, elétrico, hidrossanitário, planilha de custo e memorial descritivo. Tudo em PDF e DWG.</div></div></div>
+    <div class="faq-item rv"><button class="faq-q">Posso usar em qualquer cidade?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Sim. O projeto vem com documentação técnica para aprovação em qualquer prefeitura. Adaptações locais podem ser feitas pelo profissional responsável pela obra.</div></div></div>
+    <div class="faq-item rv"><button class="faq-q">E se meu terreno for diferente?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Temos outros projetos prontos e também desenvolvo projetos personalizados sob medida. Entre em contato pelo WhatsApp.</div></div></div>
+    <div class="faq-item rv"><button class="faq-q">Como recebo após a compra?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Imediatamente após a confirmação do pagamento, você recebe por e-mail todos os arquivos digitais prontos para download.</div></div></div>
+    <div class="faq-item rv"><button class="faq-q">Qual o custo para construir?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Aproximadamente R$ 280 mil, variando conforme região, materiais e acabamento. O projeto inclui planilha de custo detalhada.</div></div></div>
+    <div class="faq-item rv"><button class="faq-q">Preciso de engenheiro para construir?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Sim. Para protocolar na prefeitura e acompanhar a obra, é necessário um profissional habilitado na sua cidade como responsável técnico.</div></div></div>
+  </div>
+</div></section>
+
+<footer class="footer">
+  <div class="footer-logo">GAMARRA.</div>
+  <div class="footer-copy">© 2026 Eng. Erickson Gamarra · Dourados, MS</div>
+  <div class="footer-links"><a href="#projeto">Home</a><a href="#galeria">Galeria</a><a href="#planta">Planta</a><a href="#sobre">Sobre</a></div>
 </footer>
 
-<div class="m-cta">
-  <div class="m-cta-inner">
-    <div class="m-cta-price">R$ 114<small>Projeto Completo</small></div>
-    <a href="#oferta" class="m-cta-btn">Comprar Agora</a>
-  </div>
-</div>
+<div class="m-bar"><div class="m-bar-in"><div><div class="m-bar-lbl">Projeto completo</div><div class="m-bar-p"><sup>R$</sup>114</div></div><a href="#oferta">Comprar agora</a></div></div>
 
 <script>
-const nb=document.getElementById('navbar');
-window.addEventListener('scroll',()=>nb.classList.toggle('scrolled',scrollY>50));
-
-const mt=document.getElementById('menuToggle'),mm=document.getElementById('mobMenu');
-let mo=false;
-mt.addEventListener('click',()=>{
-  mo=!mo;mm.classList.toggle('active',mo);
-  document.body.style.overflow=mo?'hidden':'';
-  const s=mt.querySelectorAll('span');
-  s[0].style.transform=mo?'rotate(45deg) translate(5px,5px)':'';
-  s[1].style.opacity=mo?'0':'1';
-  s[2].style.transform=mo?'rotate(-45deg) translate(5px,-5px)':'';
-});
-function closeMenu(){
-  mo=false;mm.classList.remove('active');document.body.style.overflow='';
-  const s=mt.querySelectorAll('span');
-  s[0].style.transform='';s[1].style.opacity='1';s[2].style.transform='';
-}
-
-function sScroll(d){
-  const t=document.getElementById('sTrack'),c=t.querySelector('.slide');
-  t.scrollBy({left:d*(c.offsetWidth+16),behavior:'smooth'});
-}
-
-document.querySelectorAll('.rv').forEach(el=>{
-  new IntersectionObserver(([e])=>{
-    if(e.isIntersecting){e.target.classList.add('vis')}
-  },{threshold:.1,rootMargin:'0px 0px -40px 0px'}).observe(el);
-});
-
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const t=document.querySelector(a.getAttribute('href'));
-    if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-nb.offsetHeight-16,behavior:'smooth'})}
-  });
-});
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30),{passive:true});
+const burger=document.getElementById('burger'),mobNav=document.getElementById('mobNav');
+burger.addEventListener('click',()=>{burger.classList.toggle('open');mobNav.classList.toggle('open');document.body.style.overflow=mobNav.classList.contains('open')?'hidden':''});
+mobNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');mobNav.classList.remove('open');document.body.style.overflow=''}));
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();scrollTo({top:t.offsetTop-nav.offsetHeight-12,behavior:'smooth'})}})});
+document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement,ans=item.querySelector('.faq-a'),open=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight='0'});if(!open){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px'}})});
+// Hero image fallback png -> webp
+const heroBg=document.querySelector('.hero-bg');
+const heroFb=document.querySelector('.hero-fb');
+const img=new Image();img.src='hero-fachada.png';
+img.onerror=()=>{
+  const img2=new Image();img2.src='hero-fachada.webp';
+  img2.onload=()=>{heroBg.style.backgroundImage="url('hero-fachada.webp')";heroFb.style.display='none'};
+  img2.onerror=()=>{heroFb.style.display='block'};
+};
+img.onload=()=>{heroBg.style.backgroundImage="url('hero-fachada.png')";heroFb.style.display='none'};
 </script>
 </body>
 </html>
