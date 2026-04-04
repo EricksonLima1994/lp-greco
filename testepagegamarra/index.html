@@ -43,7 +43,9 @@
     .scroll-t{display:flex;gap:12px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}.scroll-t::-webkit-scrollbar{display:none}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--ff);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:var(--r);padding:16px 36px;transition:all .35s var(--ease);line-height:1;white-space:nowrap}
     .btn svg{width:14px;height:14px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2.5}
-    .btn-p{background:var(--white);color:var(--deep)}.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,255,255,.07)}
+    .btn-p{background:var(--white);color:var(--deep);position:relative;overflow:hidden}.btn-p::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(110deg,transparent 0%,rgba(173,235,255,.2) 50%,transparent 100%);animation:btnShine 3s var(--ease) infinite}
+    @keyframes btnShine{0%{left:-100%}40%{left:120%}100%{left:120%}}
+    .btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,255,255,.07)}
     .btn-g{border:1px solid var(--border2);color:var(--white);backdrop-filter:blur(6px);background:var(--glass)}.btn-g:hover{border-color:var(--ice);color:var(--ice)}
     .btn-i{background:var(--ice);color:var(--deep);box-shadow:var(--ice-bloom);background-image:linear-gradient(110deg,var(--ice) 0%,var(--ice) 38%,rgba(255,255,255,.4) 50%,var(--ice) 62%,var(--ice) 100%);background-size:200% auto;animation:shine 4.5s linear infinite}.btn-i:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(173,235,255,.2),0 8px 32px rgba(0,0,0,.4)}
     .btn-sm{padding:14px 28px;font-size:12px}
@@ -78,7 +80,7 @@
     .garantia-text{font-size:14px;line-height:1.7;color:var(--t2);max-width:440px;margin:0 auto}
     .parceiros{padding:var(--sec) 0;background:var(--deep)}
     .parc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:28px}
-    .parc-stat{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px 16px;text-align:center}
+    .parc-stat{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 10px;text-align:center;overflow:hidden}
     .parc-stat-v{font-size:28px;font-weight:800;color:var(--ice);text-shadow:0 0 12px rgba(173,235,255,.2);letter-spacing:-.02em}
     .parc-stat-l{font-size:11px;color:var(--t4);letter-spacing:.06em;text-transform:uppercase;font-weight:600;margin-top:4px}
     .parc-offer{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:32px 28px;max-width:540px;margin:0 auto;position:relative;overflow:hidden}
@@ -100,11 +102,14 @@
     .proj-slide-name{font-size:15px;font-weight:700;color:var(--white)}
     .proj-slide-badge{position:absolute;top:10px;right:10px;padding:4px 10px;border-radius:var(--r-full);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--ice);color:var(--deep);box-shadow:var(--ice-bloom);z-index:2}
     .proj-slide-badge.soon{background:var(--glass2);color:var(--ice);border:1px solid var(--ice-border)}
-    .hero{position:relative;min-height:100svh;display:flex;align-items:flex-start;overflow:hidden;padding-top:clamp(80px,14vh,120px)}
+    .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:hidden;padding-top:clamp(80px,14vh,120px)}
     .hero-bg{position:absolute;inset:0;background-image:url('hero-fachada.png');background-position:right center;background-size:cover;background-repeat:no-repeat}
     .hero-fb{position:absolute;inset:0;background:linear-gradient(160deg,#1a1a1f,var(--deep) 40%,#15151a);z-index:-1}
-    .hero-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,14,17,.7) 0%,rgba(14,14,17,.35) 30%,transparent 55%,transparent 82%,var(--bg) 100%)}
-    .hero-c{position:relative;z-index:2;width:100%}
+    .hero-ov{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 0%,transparent 80%,var(--bg) 100%)}
+    .hero-c{position:relative;z-index:2;width:100%;display:flex;flex-direction:column;flex:1}
+    .hero-top{flex:0 0 auto}
+    .hero-spacer{flex:1}
+    .hero-ctas{display:flex;gap:10px;flex-wrap:wrap;opacity:0;animation:fadeUp .7s var(--ease) .5s forwards;padding-bottom:10px;flex:0 0 auto}
     .hero-dim{display:inline-flex;align-items:center;gap:6px;background:var(--ice-10);border:1px solid var(--ice-border);border-radius:var(--r-full);padding:6px 16px;margin-bottom:18px;opacity:0;animation:fadeUp .7s var(--ease) .1s forwards}
     .hero-dim span{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ice);font-weight:700}
     .hero-dim .hero-dim-dot{width:5px;height:5px;border-radius:50%;background:var(--ice);box-shadow:0 0 8px var(--ice);animation:dimPulse 2s ease-in-out infinite}
@@ -112,10 +117,6 @@
     .hero h1{font-size:clamp(32px,7vw,56px);font-weight:800;letter-spacing:-.03em;line-height:1.05;color:var(--white);opacity:0;animation:fadeUp .8s var(--ease) .2s forwards}
     .hero-d{font-size:14px;color:rgba(255,255,255,.65);line-height:1.75;max-width:400px;margin-top:14px;opacity:0;animation:fadeUp .7s var(--ease) .35s forwards}
     .hero-ctas{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap;opacity:0;animation:fadeUp .7s var(--ease) .5s forwards}
-    /* Hero primary btn with shine */
-    .hero-ctas .btn-p{background:var(--white);position:relative;overflow:hidden}
-    .hero-ctas .btn-p::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(110deg,transparent 0%,rgba(173,235,255,.25) 50%,transparent 100%);animation:btnShine 3s var(--ease) infinite}
-    @keyframes btnShine{0%{left:-100%}40%{left:120%}100%{left:120%}}
     /* Hero ghost btn glow on hover */
     .hero-ctas .btn-g:hover{box-shadow:0 0 20px rgba(173,235,255,.08)}
     /* Hero inline img — hidden, hero uses bg-image */
@@ -155,6 +156,13 @@
     .room:hover{border-color:var(--ice-border)}
     .room-n{font-size:12px;font-weight:600;color:var(--white)}.room-a{font-size:11px;color:var(--t4)}
     .entrega{padding:var(--sec) 0;background:var(--bg)}
+    .items-list{display:flex;flex-direction:column;gap:0}
+    .item-row{display:flex;align-items:flex-start;gap:16px;padding:20px 0;border-bottom:1px solid var(--border);transition:padding-left .3s}
+    .item-row:hover{padding-left:8px}
+    .item-row:first-child{border-top:1px solid var(--border)}
+    .item-num{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--ice);opacity:.3;min-width:24px;padding-top:2px}
+    .item-text strong{display:block;font-size:14px;font-weight:600;color:var(--white);margin-bottom:2px}
+    .item-text span{font-size:13px;color:var(--t2)}
     .ent-g{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:0}
     .ent-c{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:24px 20px;transition:all .35s var(--ease);position:relative;overflow:hidden}
     .ent-c::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--ice),transparent);opacity:0;transition:opacity .4s}.ent-c:hover::before{opacity:.4}
@@ -162,6 +170,19 @@
     .ent-ic{width:34px;height:34px;background:var(--ice-10);border:1px solid var(--ice-border);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;margin-bottom:14px;animation:bloomPulse 5s ease-in-out infinite}
     .ent-ic svg{width:14px;height:14px;stroke:var(--ice);fill:none;stroke-width:1.5}
     .ent-t{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px}.ent-d{font-size:13px;color:var(--t2);line-height:1.6}
+    /* DEPOIMENTOS */
+    .depos{padding:var(--sec) 0;background:var(--deep)}
+    .depo-card{min-width:300px;flex:0 0 300px;scroll-snap-align:start;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);background:var(--card);transition:border-color .3s}
+    .depo-card:hover{border-color:var(--ice-border)}
+    .depo-img{height:180px;background-size:cover;background-position:center;position:relative}
+    .depo-img-tag{position:absolute;bottom:10px;left:10px;padding:4px 10px;border-radius:6px;background:rgba(14,14,17,.88);border:1px solid var(--border);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ice);font-weight:600}
+    .depo-body{padding:18px}
+    .depo-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .depo-av{width:34px;height:34px;border-radius:50%;background:var(--ice-10);border:1px solid var(--ice-border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--ice);flex-shrink:0}
+    .depo-name{font-size:13px;font-weight:700;color:var(--white)}
+    .depo-meta{font-size:10px;color:var(--t4);margin-top:1px}
+    .depo-stars{font-size:13px;color:#F5C518;letter-spacing:2px;margin-bottom:8px}
+    .depo-text{font-size:13px;color:var(--t2);line-height:1.65;font-style:italic}
     .diffs{padding:var(--sec) 0;background:var(--deep);position:relative;overflow:hidden}
     .diffs-gh{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--ff-logo);font-size:clamp(5rem,16vw,13rem);color:rgba(173,235,255,.015);white-space:nowrap;pointer-events:none}
     .diff-g{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:0}
@@ -226,6 +247,8 @@
       .ficha-g{grid-template-columns:repeat(2,1fr)}
       .planta-g,.custom-g,.sobre-g{grid-template-columns:1fr;gap:28px}
       .parc-stats{grid-template-columns:repeat(3,1fr)}
+      .parc-stat-v{font-size:20px}
+      .parc-stat-l{font-size:8px;letter-spacing:.04em}
       .ent-g{grid-template-columns:repeat(2,1fr)}.diff-g{grid-template-columns:1fr}
       .gal-c{flex:0 0 380px}
     }
@@ -255,6 +278,7 @@
       .hero-ctas{flex-direction:column}.hero-ctas .btn{justify-content:center;width:100%}
       .sobre-cr{flex-wrap:wrap;justify-content:center}
       .ter-c{min-width:170px;flex-basis:170px}
+      .parc-stats{grid-template-columns:repeat(3,1fr)}
     }
   </style>
 </head>
@@ -281,10 +305,13 @@
   <section class="hero" id="projeto">
     <div class="hero-bg"><div class="hero-fb"></div></div>
     <div class="hero-ov"></div>
-    <div class="hero-c"><div class="wrap">
-      <div class="hero-dim"><div class="hero-dim-dot"></div><span>Terreno 12 × 25m · 300m²</span></div>
-      <h1>Projeto Harley.</h1>
-      <p class="hero-d">Residencial de médio padrão com estilo moderno e sofisticado. Para quem quer construir com qualidade, sem pagar por um projeto do zero.</p>
+    <div class="hero-c"><div class="wrap" style="display:flex;flex-direction:column;flex:1">
+      <div class="hero-top">
+        <div class="hero-dim"><div class="hero-dim-dot"></div><span>Terreno 12 × 25m · 300m²</span></div>
+        <h1>Projeto Harley.</h1>
+        <p class="hero-d">Residencial de médio padrão com estilo moderno e sofisticado. Para quem quer construir com qualidade, sem pagar por um projeto do zero.</p>
+      </div>
+      <div class="hero-spacer"></div>
       <div class="hero-ctas">
         <a href="#oferta" class="btn btn-p">Quero este projeto<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         <a href="#planta" class="btn btn-g">Ver planta baixa</a>
@@ -301,7 +328,7 @@
 
   <section class="ficha">
     <div class="wrap">
-      <div class="sh rv"><div class="sh-tag">Ficha técnica</div><div class="sh-title">Dados do Projeto.</div><div class="sh-desc">Informações objetivas para você avaliar se o projeto atende ao seu terreno e orçamento.</div></div>
+      <div class="sh rv"><div class="sh-tag">Ficha técnica</div><div class="sh-title">Dados do Projeto.</div><div class="sh-desc">Informações para você avaliar se o projeto atende ao seu terreno e orçamento.</div></div>
       <div class="ficha-g">
         <div class="ficha-c rv"><div class="ficha-ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12"/></svg></div><div class="ficha-lbl">Terreno</div><div class="ficha-val">300m²</div></div>
         <div class="ficha-c rv"><div class="ficha-ic"><svg viewBox="0 0 24 24"><path d="M4 19h16M6 17V9l6-4 6 4v8"/></svg></div><div class="ficha-lbl">Área construída</div><div class="ficha-val">180m²</div></div>
@@ -310,17 +337,6 @@
       </div>
     </div>
   </section>
-
-  <section class="terrenos"><div class="wrap">
-    <div class="sh rv"><div class="sh-tag">Outros terrenos</div><div class="sh-desc" style="margin-top:0">Gostou do estilo mas seu lote é diferente? Veja outras opções ou solicite sob medida.</div></div>
-    <div class="scroll-t rv">
-      <a href="#oferta" class="ter-c now"><div class="ter-th"><div class="ter-badge a">Atual</div><span>fachada.png</span></div><div class="ter-b"><div class="ter-n">Projeto 001</div><div class="ter-s">12 × 25m</div></div></a>
-      <a href="#outros" class="ter-c"><div class="ter-th"><span>projeto-002.png</span></div><div class="ter-b"><div class="ter-n">Projeto 002</div><div class="ter-s">10 × 20m</div></div></a>
-      <div class="ter-c"><div class="ter-th"><div class="ter-badge s">Em breve</div><span>—</span></div><div class="ter-b"><div class="ter-n">Projeto 003</div><div class="ter-s">10 × 25m</div></div></div>
-      <div class="ter-c"><div class="ter-th"><div class="ter-badge s">Em breve</div><span>—</span></div><div class="ter-b"><div class="ter-n">Projeto 004</div><div class="ter-s">12 × 30m</div></div></div>
-    </div>
-    <div class="rv" style="margin-top:14px"><a href="#custom" class="ter-link">Não encontrou seu terreno? Solicite sob medida <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-  </div></section>
 
   <section class="galeria" id="galeria"><div class="wrap">
     <div class="sh rv"><div class="sh-tag">Visualização</div><div class="sh-title">Veja o Projeto.</div><div class="sh-desc">Fachada, perspectivas e ambientações para você imaginar o resultado final.</div></div>
@@ -342,12 +358,26 @@
     </div>
   </div></section>
 
+  <!-- TERRENOS — after planta -->
+  <section class="terrenos" id="terrenos"><div class="wrap">
+    <div class="sh rv"><div class="sh-tag">Projetos para outros lotes</div><div class="sh-title">Gostou do Nosso Estilo?</div><div class="sh-desc">As dimensões do seu terreno são diferentes? Veja outras opções disponíveis ou solicite um projeto exclusivo sob medida.</div></div>
+    <div class="scroll-t rv">
+      <a href="#oferta" class="ter-c now"><div class="ter-th"><div class="ter-badge a">Atual</div><span>fachada.png</span></div><div class="ter-b"><div class="ter-n">Projeto Harley</div><div class="ter-s">12 × 25m</div></div></a>
+      <a href="#outros" class="ter-c"><div class="ter-th"><span>projeto-002.png</span></div><div class="ter-b"><div class="ter-n">Projeto 002</div><div class="ter-s">10 × 20m</div></div></a>
+      <div class="ter-c"><div class="ter-th"><div class="ter-badge s">Em breve</div><span>—</span></div><div class="ter-b"><div class="ter-n">Projeto 003</div><div class="ter-s">10 × 25m</div></div></div>
+      <div class="ter-c"><div class="ter-th"><div class="ter-badge s">Em breve</div><span>—</span></div><div class="ter-b"><div class="ter-n">Projeto 004</div><div class="ter-s">12 × 30m</div></div></div>
+    </div>
+    <div class="rv" style="margin-top:14px"><a href="#custom" class="ter-link">Precisa de algo diferente? Solicite um projeto exclusivo <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+  </div></section>
+
   <section class="entrega"><div class="wrap">
-    <div class="sh rv"><div class="sh-tag">Entrega</div><div class="sh-title">O Que Você Recebe.</div><div class="sh-desc">Todo o material técnico necessário para aprovar e construir.</div></div>
-    <div class="ent-g">
-      <div class="ent-c rv"><div class="ent-ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div><div class="ent-t">Projeto Arquitetônico</div><div class="ent-d">Planta baixa, cortes, fachadas e coberta com dimensões e especificações técnicas.</div></div>
-      <div class="ent-c rv"><div class="ent-ic"><svg viewBox="0 0 24 24"><path d="M2 20h20M5 20V8l7-5 7 5v12"/><path d="M9 20v-6h6v6"/></svg></div><div class="ent-t">Fachada e Visualizações</div><div class="ent-d">Perspectivas 3D da fachada e ambientes para apresentação e decisão.</div></div>
-      <div class="ent-c rv"><div class="ent-ic"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div class="ent-t">Complementares</div><div class="ent-d">Elétrico, hidrossanitário, estrutural, planilha de custo e memorial descritivo.</div></div>
+    <div class="sh rv"><div class="sh-tag">O que você recebe</div><div class="sh-title">Cinco Documentos Técnicos.</div><div class="sh-desc">Prontos para usar com seu pedreiro, engenheiro ou na prefeitura.</div></div>
+    <div class="items-list">
+      <div class="item-row rv"><div class="item-num">01</div><div class="item-text"><strong>Planta baixa detalhada</strong><span>Todas as cotas e medidas para o pedreiro não errar.</span></div></div>
+      <div class="item-row rv"><div class="item-num">02</div><div class="item-text"><strong>Planta de implantação</strong><span>Como posicionar a casa no terreno 12×25 respeitando os recuos.</span></div></div>
+      <div class="item-row rv"><div class="item-num">03</div><div class="item-text"><strong>Fachada 3D em alta definição</strong><span>Visualize exatamente o acabamento final da casa.</span></div></div>
+      <div class="item-row rv"><div class="item-num">04</div><div class="item-text"><strong>Layout humanizado</strong><span>Sugestão de posição de móveis para testar a circulação dos ambientes.</span></div></div>
+      <div class="item-row rv"><div class="item-num">05</div><div class="item-text"><strong>Guia de ampliação</strong><span>Passo a passo de onde conectar a nova estrutura da Fase 2.</span></div></div>
     </div>
   </div></section>
 
@@ -363,6 +393,37 @@
     </div>
   </div></section>
 
+  <!-- EXPERIÊNCIAS REAIS -->
+  <section class="depos" id="depos"><div class="wrap">
+    <div class="sh rv"><div class="sh-tag">Experiências reais</div><div class="sh-title">Quem Já Está Tirando<br>do Papel.</div><div class="sh-desc">Relatos de quem comprou, recebeu o projeto e já começou a transformar o sonho em obra.</div></div>
+    <div class="scroll-t rv">
+      <div class="depo-card">
+        <div class="depo-img" style="background-image:url('depo-obra-01.png')"><div class="depo-img-tag">Execução real</div></div>
+        <div class="depo-body">
+          <div class="depo-head"><div class="depo-av">PA</div><div><div class="depo-name">Pablo Alves</div><div class="depo-meta">Comprador verificado · há 8 meses</div></div></div>
+          <div class="depo-stars">★★★★★</div>
+          <div class="depo-text">"Eu estou construindo esse projeto e veio completo e está ficando uma casa maravilhosa, quando finalizar será a mais bonita da rua."</div>
+        </div>
+      </div>
+      <div class="depo-card">
+        <div class="depo-img" style="background-image:url('depo-obra-02.png')"><div class="depo-img-tag">Execução real</div></div>
+        <div class="depo-body">
+          <div class="depo-head"><div class="depo-av">RF</div><div><div class="depo-name">Ricardo Ferreira</div><div class="depo-meta">Comprador verificado · há 5 meses</div></div></div>
+          <div class="depo-stars">★★★★★</div>
+          <div class="depo-text">"Projeto muito bem feito. O pedreiro elogiou a planta e disse que é uma das mais claras que já recebeu. Recomendo."</div>
+        </div>
+      </div>
+      <div class="depo-card">
+        <div class="depo-img" style="background-image:url('depo-obra-03.png')"><div class="depo-img-tag">Render vs Real</div></div>
+        <div class="depo-body">
+          <div class="depo-head"><div class="depo-av">LS</div><div><div class="depo-name">Lucas Santos</div><div class="depo-meta">Comprador verificado · há 3 meses</div></div></div>
+          <div class="depo-stars">★★★★★</div>
+          <div class="depo-text">"Fiquei impressionado com a qualidade. A fachada ficou idêntica ao 3D. Valeu cada centavo investido no projeto."</div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
   <section class="oferta" id="oferta"><div class="wrap">
     <div class="sh center rv"><div class="sh-tag">Oferta</div><div class="sh-title">Projeto Completo.</div><div class="sh-desc">Tudo que você precisa para aprovar na prefeitura e começar a construir.</div></div>
     <div class="oferta-c rv">
@@ -372,12 +433,11 @@
         <div class="oferta-type"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Acesso imediato</div>
       </div>
       <ul class="oferta-benefits">
-        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Projeto Arquitetônico</strong> — planta, cortes, fachadas</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Projeto Estrutural</strong> — fundação, pilares, vigas</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Projeto Elétrico</strong> — circuitos e diagrama unifilar</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Projeto Hidrossanitário</strong> — água, esgoto, pluvial</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Planilha de Custo</strong> — quantitativos detalhados</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Memorial Descritivo</strong> — materiais e acabamentos</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Planta baixa detalhada</strong> — cotas e medidas completas</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Planta de implantação</strong> — posicionamento no terreno</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Fachada 3D em alta definição</strong> — acabamento final</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Layout humanizado</strong> — posição de móveis</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Guia de ampliação</strong> — expansão Fase 2</span></li>
       </ul>
       <a href="#" class="btn btn-i oferta-cta">Comprar agora<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       <div class="oferta-safe"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Pagamento seguro · Entrega imediata por e-mail</div>
@@ -432,9 +492,9 @@
   <section class="parceiros" id="parceiros"><div class="wrap">
     <div class="sh center rv"><div class="sh-tag">Para Profissionais</div><div class="sh-title">Seu Escritório Cresce<br>com a Gamarra.</div><div class="sh-desc">Mais de 70 profissionais já utilizam nossos projetos. Construtores, arquitetos e engenheiros que economizam tempo e entregam mais.</div></div>
     <div class="parc-stats rv">
-      <div class="parc-stat"><div class="parc-stat-v">70+</div><div class="parc-stat-l">Parceiros ativos</div></div>
-      <div class="parc-stat"><div class="parc-stat-v">3</div><div class="parc-stat-l">Projetos/mês por parceiro</div></div>
-      <div class="parc-stat"><div class="parc-stat-v">40%</div><div class="parc-stat-l">Economia de tempo</div></div>
+      <div class="parc-stat"><div class="parc-stat-v">70+</div><div class="parc-stat-l">Parceiros</div></div>
+      <div class="parc-stat"><div class="parc-stat-v">3/mês</div><div class="parc-stat-l">Projetos</div></div>
+      <div class="parc-stat"><div class="parc-stat-v">40%</div><div class="parc-stat-l">Economia</div></div>
     </div>
     <div class="parc-offer rv">
       <div class="parc-offer-head">
@@ -456,7 +516,7 @@
   <section class="faq" id="faq"><div class="wrap">
     <div class="sh center rv"><div class="sh-tag">Dúvidas</div><div class="sh-title">Perguntas Frequentes.</div></div>
     <div class="faq-list">
-      <div class="faq-item rv"><button class="faq-q">O que está incluso no projeto?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Planta baixa, cortes, fachadas, coberta, projeto estrutural, elétrico, hidrossanitário, planilha de custo e memorial descritivo. Tudo em PDF e DWG.</div></div></div>
+      <div class="faq-item rv"><button class="faq-q">O que está incluso no projeto?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Planta baixa detalhada, planta de implantação, fachada 3D em alta definição, layout humanizado e guia de ampliação. Tudo em formato digital.</div></div></div>
       <div class="faq-item rv"><button class="faq-q">Posso usar em qualquer cidade?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Sim. O projeto vem com documentação técnica para aprovação em qualquer prefeitura. Adaptações locais podem ser feitas pelo profissional responsável pela obra.</div></div></div>
       <div class="faq-item rv"><button class="faq-q">E se meu terreno for diferente?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Temos outros projetos prontos e também desenvolvo projetos personalizados sob medida. Entre em contato pelo WhatsApp.</div></div></div>
       <div class="faq-item rv"><button class="faq-q">Como recebo após a compra?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Imediatamente após a confirmação do pagamento, você recebe por e-mail todos os arquivos digitais prontos para download.</div></div></div>
