@@ -581,6 +581,12 @@
     const img=new Image();img.src='hero-fachada.webp?v=1.1';
     img.onload=()=>{heroBg.style.backgroundImage="url('hero-fachada.webp?v=1.1')";heroFb.style.display='none'};
     img.onerror=()=>{heroFb.style.display='block'};
+const mBarMenu = document.querySelector('.m-bar');
+    const secOferta = document.getElementById('oferta');
+    const obsOferta = new IntersectionObserver(entries => {
+      mBarMenu.style.display = entries[0].isIntersecting ? 'none' : '';
+    }, { threshold: 0.05 });
+    if(mBarMenu && secOferta) obsOferta.observe(secOferta);
   </script>
 </body>
 </html>
