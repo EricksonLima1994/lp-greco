@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Gamarra — Projeto Residencial 12×25</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
@@ -27,7 +28,8 @@
     @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth;font-size:16px;-webkit-text-size-adjust:100%}
-    body{background:var(--bg);color:var(--t2);font-family:var(--ff);font-weight:400;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    body{background:var(--bg);color:var(--t2);font-family:var(--ff);font-weight:400;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;opacity:0;transition:opacity .2s}
+    body.loaded{opacity:1}
     a{text-decoration:none;color:inherit;-webkit-tap-highlight-color:transparent}img{max-width:100%;display:block}
     button{cursor:pointer;border:none;background:none;font-family:inherit;color:inherit;-webkit-tap-highlight-color:transparent}
     ::-webkit-scrollbar{width:3px;height:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--s3);border-radius:2px}
@@ -291,7 +293,7 @@
 <body>
   <nav class="nav" id="nav">
     <div class="wrap">
-      <a href="#" class="nav-logo">GAMARRA.</a>
+      <a href="#" class="nav-logo">GAMARRA STUDIO.</a>
       <div class="nav-links">
         <a href="#projeto" class="on">Home</a>
         <a href="#galeria">Galeria</a>
@@ -315,7 +317,7 @@
       <div class="hero-top">
         <div class="hero-dim"><span>Terreno 12 × 25</span></div>
         <h1>Projeto Harley.</h1>
-        <p class="hero-d">O projeto que construtores escolhem pra valorizar e clientes escolhem pra morar. Assinatura Gamarra — reconhecido pela estética e pela qualidade técnica.</p>
+        <p class="hero-d">O projeto que construtores escolhem pra vender e clientes escolhem pra morar. Assinatura Gamarra — reconhecido pela estética e pela qualidade técnica.</p>
       </div>
       <div class="hero-spacer"></div>
       <div class="hero-ctas">
@@ -347,12 +349,12 @@
   <section class="galeria" id="galeria"><div class="wrap">
     <div class="sh rv"><div class="sh-tag">Visualização</div><div class="sh-title">Veja o Projeto.</div><div class="sh-desc">Fachada, perspectivas e ambientações para você imaginar o resultado final.</div></div>
     <div class="scroll-t">
-      <div class="gal-c rv" style="background-image:url('fachada-frontal.png')"><div class="gal-tag">Fachada com muro</div></div>
-      <div class="gal-c rv" style="background-image:url('fachada-lateral.png')"><div class="gal-tag">Fachada com muro</div></div>
-      <div class="gal-c rv" style="background-image:url('sala-integrada.png')"><div class="gal-tag">Fachada</div></div>
-      <div class="gal-c rv" style="background-image:url('cozinha-gourmet.png')"><div class="gal-tag">Fachada</div></div>
-      <div class="gal-c rv" style="background-image:url('area-gourmet.png')"><div class="gal-tag">Fundos</div></div>
-      <div class="gal-c rv" style="background-image:url('fundos-02.png')"><div class="gal-tag">Fundos</div></div>
+      <div class="gal-c" style="background-image:url('fachada-frontal.png')"><div class="gal-tag">Fachada com muro</div></div>
+      <div class="gal-c" style="background-image:url('fachada-lateral.png')"><div class="gal-tag">Fachada com muro</div></div>
+      <div class="gal-c" style="background-image:url('sala-integrada.png')"><div class="gal-tag">Fachada</div></div>
+      <div class="gal-c" style="background-image:url('cozinha-gourmet.png')"><div class="gal-tag">Fachada</div></div>
+      <div class="gal-c" style="background-image:url('area-gourmet.png')"><div class="gal-tag">Fundos</div></div>
+      <div class="gal-c" style="background-image:url('fundos-02.png')"><div class="gal-tag">Fundos</div></div>
     </div>
   </div></section>
 
@@ -552,12 +554,17 @@
   <div class="m-bar"><div class="m-bar-in"><div><div class="m-bar-lbl">Projeto completo</div><div class="m-bar-p"><sup>R$</sup>114</div></div><a href="#oferta">Comprar agora</a></div></div>
 
   <script>
+    // Show page after font loads (or 1.5s max)
+    const show=()=>document.body.classList.add('loaded');
+    document.fonts?document.fonts.ready.then(show):show();
+    setTimeout(show,1500);
+
     const nav=document.getElementById('nav');
     addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30),{passive:true});
     const burger=document.getElementById('burger'),mobNav=document.getElementById('mobNav');
     burger.addEventListener('click',()=>{burger.classList.toggle('open');mobNav.classList.toggle('open');document.body.style.overflow=mobNav.classList.contains('open')?'hidden':''});
     mobNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');mobNav.classList.remove('open');document.body.style.overflow=''}));
-    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.01,rootMargin:'0px 0px 100px 0px'});
     document.querySelectorAll('.rv').forEach(el=>io.observe(el));
     document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();scrollTo({top:t.offsetTop-nav.offsetHeight-12,behavior:'smooth'})}})});
     document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement,ans=item.querySelector('.faq-a'),open=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight='0'});if(!open){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px'}})});
