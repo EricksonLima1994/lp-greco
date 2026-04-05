@@ -546,7 +546,7 @@
     // Hero image fallback
     const heroBg=document.querySelector('.hero-bg'),heroFb=document.querySelector('.hero-fb');
     const img=new Image();img.src='hero-fachada.png';
-    img.onerror=()=>{const i2=new Image();i2.src='hero-fachadaII.webp';i2.onload=()=>{heroBg.style.backgroundImage="url('hero-fachadaII.webp')";heroFb.style.display='none'};i2.onerror=()=>{heroFb.style.display='block'}};
+    img.onerror=()=>{const i2=new Image();i2.src='hero-fachada.webp';i2.onload=()=>{heroBg.style.backgroundImage="url('hero-fachada.webp')";heroFb.style.display='none'};i2.onerror=()=>{heroFb.style.display='block'}};
     img.onload=()=>{heroBg.style.backgroundImage="url('hero-fachada.png')";heroFb.style.display='none'};
   </script>
 </body>
