@@ -182,13 +182,6 @@
     .depo-meta{font-size:10px;color:var(--t4);margin-top:1px}
     .depo-stars{font-size:13px;color:#F5C518;letter-spacing:2px;margin-bottom:8px}
     .depo-text{font-size:13px;color:var(--t2);line-height:1.65;font-style:italic}
-    .diffs{padding:var(--sec) 0;background:var(--deep);position:relative;overflow:hidden}
-    .diffs-gh{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--ff-logo);font-size:clamp(5rem,16vw,13rem);color:rgba(173,235,255,.015);white-space:nowrap;pointer-events:none}
-    .diff-g{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:0}
-    .diff{display:flex;gap:14px;padding:22px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);transition:border-color .3s}
-    .diff:hover{border-color:var(--ice-border);background:var(--card2)}
-    .diff-n{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--ice);opacity:.3;min-width:22px;padding-top:2px}
-    .diff h4{font-size:14px;font-weight:700;color:var(--white);margin-bottom:2px}.diff p{font-size:13px;color:var(--t2);line-height:1.6}
     .oferta{padding:var(--sec) 0;background:var(--bg)}
     .oferta-c{max-width:460px;margin:0 auto;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:36px 32px;position:relative;overflow:hidden}
     .oferta-c::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--ice),transparent);opacity:.5}
@@ -250,7 +243,6 @@
       .parc-stats{grid-template-columns:repeat(3,1fr)}
       .parc-stat-v{font-size:20px}
       .parc-stat-l{font-size:8px;letter-spacing:.04em}
-      .diff-g{grid-template-columns:1fr}
       .gal-c{flex:0 0 45%}
     }
     @media(max-width:768px){
@@ -366,10 +358,24 @@
   <section class="terrenos" id="terrenos"><div class="wrap">
     <div class="sh rv"><div class="sh-tag">Outros projetos prontos</div><div class="sh-title">Nosso Estilo, Seu Terreno.</div><div class="sh-desc">Todos os projetos carregam a assinatura Gamarra. Escolha o que se encaixa no seu lote — ou solicite um exclusivo.</div></div>
     <div class="scroll-t rv">
-      <a href="#oferta" class="ter-c now"><div class="ter-th"><div class="ter-badge a">Atual</div><span>fachada.png</span></div><div class="ter-b"><div class="ter-n">Projeto Harley</div><div class="ter-s">12 × 25m</div></div></a>
-      <a href="#outros" class="ter-c"><div class="ter-th"><span>projeto-002.png</span></div><div class="ter-b"><div class="ter-n">Projeto 002</div><div class="ter-s">10 × 20m</div></div></a>
-      <div class="ter-c"><div class="ter-th"><div class="ter-badge s">Em breve</div><span>—</span></div><div class="ter-b"><div class="ter-n">Projeto 003</div><div class="ter-s">10 × 25m</div></div></div>
-      <div class="ter-c"><div class="ter-th"><div class="ter-badge s">Em breve</div><span>—</span></div><div class="ter-b"><div class="ter-n">Projeto 004</div><div class="ter-s">12 × 30m</div></div></div>
+      <a href="#oferta" class="ter-c now">
+        <div class="ter-th" style="background-image:url('outros-projetos/harley.png'); background-size:cover; background-position:center; background-repeat:no-repeat; background-blend-mode: overlay; background-color: rgba(0,0,0,0.3);">
+          <div class="ter-badge a">Atual</div>
+        </div>
+        <div class="ter-b"><div class="ter-n">Projeto Harley</div><div class="ter-s">12 × 25m</div></div>
+      </a>
+      <div class="ter-c">
+        <div class="ter-th"><div class="ter-badge s">Em breve</div><span>—</span></div>
+        <div class="ter-b"><div class="ter-n">Projeto 002</div><div class="ter-s">10 × 20m</div></div>
+      </div>
+      <div class="ter-c">
+        <div class="ter-th"><div class="ter-badge s">Em breve</div><span>—</span></div>
+        <div class="ter-b"><div class="ter-n">Projeto 003</div><div class="ter-s">10 × 25m</div></div>
+      </div>
+      <div class="ter-c">
+        <div class="ter-th"><div class="ter-badge s">Em breve</div><span>—</span></div>
+        <div class="ter-b"><div class="ter-n">Projeto 004</div><div class="ter-s">12 × 30m</div></div>
+      </div>
     </div>
     <div class="rv" style="margin-top:14px"><a href="#custom" class="ter-link">Nenhum se encaixa? Peça um projeto exclusivo <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
   </div></section>
@@ -389,16 +395,6 @@
         <div class="item-row"><div class="item-num">07</div><div class="item-text"><strong>Imagens 3D realistas</strong><span>Fachada e ambientes</span></div></div>
         <div class="item-row last-opt"><div class="item-num" style="opacity:.15">+</div><div class="item-text"><strong style="color:var(--t2)">Opcionais:</strong><span>SketchUp · Layout · DWG</span></div></div>
       </div>
-    </div>
-  </div></section>
-
-  <section class="diffs" id="diferenciais"><div class="diffs-gh">GAMARRA</div><div class="wrap">
-    <div class="sh rv"><div class="sh-tag">Diferenciais</div><div class="sh-title">Por Que Este Projeto.</div></div>
-    <div class="diff-g">
-      <div class="diff rv"><div class="diff-n">01</div><div><h4>Estética que valoriza</h4><p>Fachada imponente que se destaca na rua.</p></div></div>
-      <div class="diff rv"><div class="diff-n">02</div><div><h4>Planta funcional</h4><p>Ventilação cruzada e ambientes integrados.</p></div></div>
-      <div class="diff rv"><div class="diff-n">03</div><div><h4>Alta liquidez</h4><p>Projeto pensado para revenda com valorização.</p></div></div>
-      <div class="diff rv"><div class="diff-n">04</div><div><h4>Execução sem retrabalho</h4><p>Pranchas organizadas e claras para a obra.</p></div></div>
     </div>
   </div></section>
 
@@ -426,7 +422,7 @@
         <div class="depo-body">
           <div class="depo-head"><div class="depo-av">LS</div><div><div class="depo-name">Lucas Santos</div><div class="depo-meta">Ivinhema, MS · há 3 meses</div></div></div>
           <div class="depo-stars">★★★★★</div>
-          <div class="depo-text">"Fiquei impressionado com a qualidade. A fachada ficou idêntica ao 3D. Valeu cada centavo investido no projeto."</div>
+          <div class="depo-text">"A fachada ficou exatamente igual ao 3D! É impressionante ver o projeto saindo do papel e ficando idêntico à foto que nos vendeu o sonho. A distribuição dos ambientes por dentro também ficou perfeita."</div>
         </div>
       </div>
     </div>
@@ -487,12 +483,12 @@
       <div class="cf"><div class="cf-dot"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>Acompanhamento direto do início ao fim</div>
     </div>
     <div class="scroll-t rv" style="margin-bottom:24px">
-      <a href="#" class="proj-slide"><div class="proj-slide-img" style="background-image:url('projeto-milena-carlos.png')"></div><div class="proj-slide-overlay"><div class="proj-slide-tag">Exclusivo</div><div class="proj-slide-name">Projeto Milena e Carlos</div></div></a>
-      <a href="#" class="proj-slide"><div class="proj-slide-img" style="background-image:url('projeto-jucilaine-pedro.png')"></div><div class="proj-slide-overlay"><div class="proj-slide-tag">Exclusivo</div><div class="proj-slide-name">Projeto Jucilaine e Pedro</div></div></a>
-      <a href="#" class="proj-slide"><div class="proj-slide-img" style="background-image:url('projeto-carlos-daniel.png')"></div><div class="proj-slide-overlay"><div class="proj-slide-tag">Exclusivo</div><div class="proj-slide-name">Projeto Carlos e Daniel</div></div></a>
-      <a href="#" class="proj-slide"><div class="proj-slide-img" style="background-image:url('projeto-paula-jander.png')"></div><div class="proj-slide-overlay"><div class="proj-slide-tag">Exclusivo</div><div class="proj-slide-name">Projeto Paula e Jander</div></div></a>
+      <a href="#" class="proj-slide"><div class="proj-slide-img" style="background-image:url('projetos-exclusivos/projeto-milena-carlos.webp')"></div><div class="proj-slide-overlay"><div class="proj-slide-tag">Exclusivo</div><div class="proj-slide-name">Projeto Milena e Carlos</div></div></a>
+      <a href="#" class="proj-slide"><div class="proj-slide-img" style="background-image:url('projetos-exclusivos/projeto-jucilaine-pedro.webp')"></div><div class="proj-slide-overlay"><div class="proj-slide-tag">Exclusivo</div><div class="proj-slide-name">Projeto Jucilaine e Pedro</div></div></a>
+      <a href="#" class="proj-slide"><div class="proj-slide-img" style="background-image:url('projetos-exclusivos/projeto-carlos-daniel.webp')"></div><div class="proj-slide-overlay"><div class="proj-slide-tag">Exclusivo</div><div class="proj-slide-name">Projeto Carlos e Daniel</div></div></a>
+      <a href="#" class="proj-slide"><div class="proj-slide-img" style="background-image:url('projetos-exclusivos/projeto-paula-jander.webp')"></div><div class="proj-slide-overlay"><div class="proj-slide-tag">Exclusivo</div><div class="proj-slide-name">Projeto Paula e Jander</div></div></a>
     </div>
-    <div class="rv">
+    <div class="rv" style="display: flex; justify-content: center;">
       <a href="https://wa.me/5567999999999?text=Ol%C3%A1!%20Quero%20um%20projeto%20exclusivo" target="_blank" class="wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Solicitar projeto exclusivo</a>
     </div>
   </div></section>
@@ -520,31 +516,73 @@
     </div>
   </div></section>
 
-  <section class="parceiros" id="parceiros"><div class="wrap">
-    <div class="sh center rv"><div class="sh-tag">Para Profissionais</div><div class="sh-title">Parceria para Escritórios.</div><div class="sh-desc">Para quem precisa de projetos com frequência. Condições exclusivas e prioridade.</div></div>
-    <div class="parc-stats rv">
-      <div class="parc-stat"><div class="parc-stat-v">70+</div><div class="parc-stat-l">Parceiros</div></div>
-      <div class="parc-stat"><div class="parc-stat-v">3/mês</div><div class="parc-stat-l">Projetos</div></div>
-      <div class="parc-stat"><div class="parc-stat-v">40%</div><div class="parc-stat-l">Economia</div></div>
-    </div>
-    <div class="parc-offer rv">
-      <div class="parc-offer-head">
-        <div class="parc-offer-tag"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Plano Parceiro</div>
-        <div class="parc-offer-title">Até 3 projetos por mês com condições exclusivas.</div>
+<section class="parceiros" id="parceiros">
+    <style>
+      .marquee-wrapper { margin-top: 80px; }
+      .marquee-container { background: #E5E7EB; padding: 10px 0; overflow: hidden; width: 100%; position: relative; }
+      .marquee-track { display: flex; width: max-content; animation: marquee-scroll 30s linear infinite; align-items: center; }
+      /* Logos em 80px */
+      .marquee-track img { height: 80px; margin: 0 40px; object-fit: contain; filter: grayscale(100%) opacity(0.6); transition: all 0.3s var(--ease); }
+      .marquee-track img:hover { filter: grayscale(0%) opacity(1); }
+      @keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-50%)); } }
+      .marquee-container::before, .marquee-container::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+      .marquee-container::before { left: 0; background: linear-gradient(to right, #E5E7EB, transparent); }
+      .marquee-container::after { right: 0; background: linear-gradient(to left, #E5E7EB, transparent); }
+      @media(max-width:768px) { .marquee-track img { height: 60px; margin: 0 25px; } }
+    </style>
+    
+    <div class="wrap">
+      <div class="sh center rv"><div class="sh-tag">Para Construtoras e Empreiteiros</div><div class="sh-title">Torne-se um Construtor Parceiro.</div><div class="sh-desc">Temos clientes no Brasil inteiro que compram nossos projetos e precisam de construtores de confiança. Seja a nossa indicação oficial na sua região.</div></div>
+      
+      <div class="parc-stats rv">
+        <div class="parc-stat"><div class="parc-stat-v">BR</div><div class="parc-stat-l">Todo o Brasil</div></div>
+        <div class="parc-stat"><div class="parc-stat-v">R$ 297</div><div class="parc-stat-l">Por Mês</div></div>
+        <div class="parc-stat"><div class="parc-stat-v">5%</div><div class="parc-stat-l">No Fechamento</div></div>
       </div>
-      <div class="parc-benefits">
-        <div class="parc-ben"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--ice)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Desconto progressivo</strong> — quanto mais projetos, menor o valor unitário</span></div>
-        <div class="parc-ben"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--ice)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Entrega com sua marca</strong> — adaptamos carimbo e identidade visual</span></div>
-        <div class="parc-ben"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--ice)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Prioridade na fila</strong> — projetos personalizados entregues em até 15 dias</span></div>
-        <div class="parc-ben"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--ice)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Suporte técnico direto</strong> — canal exclusivo para dúvidas de obra</span></div>
-        <div class="parc-ben"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--ice)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Catálogo exclusivo</strong> — acesso antecipado a novos projetos da linha</span></div>
-      </div>
-      <a href="https://wa.me/5567999999999?text=Ol%C3%A1!%20Tenho%20interesse%20no%20plano%20parceiro" target="_blank" class="btn btn-i" style="width:100%;justify-content:center;margin-top:8px">Quero ser parceiro<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      <div class="parc-note">Sem contrato mínimo · Cancele quando quiser</div>
-    </div>
-  </div></section>
 
-  <section class="faq" id="faq"><div class="wrap">
+      <div class="parc-offer rv">
+        <div class="parc-offer-head">
+          <div class="parc-offer-tag"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Plano Construtor</div>
+          <div class="parc-offer-title">Receba indicações diretas de clientes prontos para construir.</div>
+        </div>
+        <div class="parc-benefits">
+          <div class="parc-ben"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--ice)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Indicação Direta</strong> — Recomendamos sua empresa para clientes da sua cidade/região que compraram nossos projetos.</span></div>
+          <div class="parc-ben"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--ice)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Público Qualificado</strong> — O cliente chega até você com o projeto em mãos, pronto para orçar e iniciar a obra.</span></div>
+          <div class="parc-ben"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--ice)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Gestão de Contrato</strong> — Nós cuidamos de toda a elaboração do contrato, garantindo segurança e zero burocracia para você.</span></div>
+          <div class="parc-ben"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--ice)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Descontos Exclusivos</strong> — Condições especiais e descontos no desenvolvimento de projetos personalizados.</span></div>
+          <div class="parc-ben"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--ice)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Modelo Justo</strong> — Mensalidade fixa de R$ 297, e você só repassa os 5% da obra quando efetivamente fechar negócio.</span></div>
+        </div>
+        <a href="https://wa.me/5567999999999?text=Ol%C3%A1!%20Tenho%20interesse%20em%20ser%20um%20Construtor%20Parceiro" target="_blank" class="btn btn-i" style="width:100%;justify-content:center;margin-top:8px">Quero ser parceiro<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <div class="parc-note">Vagas limitadas por região para garantir o volume de indicações.</div>
+      </div>
+    </div>
+
+    <div class="marquee-wrapper">
+      <div class="wrap">
+        <div class="sh center rv" style="margin-bottom: 24px;"><div class="sh-title" style="font-size: clamp(20px,2.5vw,28px);">Junte-se ao nosso time de construtores.</div></div>
+      </div>
+      <div class="marquee-container rv">
+        <div class="marquee-track">
+          <img src="logo-parceiros/altopadrao.png" alt="Alto Padrão">
+          <img src="logo-parceiros/essencial.png" alt="Essencial">
+          <img src="logo-parceiros/horizonte.png" alt="Horizonte">
+          <img src="logo-parceiros/pilar.png" alt="Pilar">
+          <img src="logo-parceiros/prime.png" alt="Prime">
+          <img src="logo-parceiros/urbano.png" alt="Urbano">
+          <img src="logo-parceiros/valenobre.png" alt="Vale Nobre">
+          <img src="logo-parceiros/vertice.png" alt="Vértice">
+          <img src="logo-parceiros/altopadrao.png" alt="Alto Padrão">
+          <img src="logo-parceiros/essencial.png" alt="Essencial">
+          <img src="logo-parceiros/horizonte.png" alt="Horizonte">
+          <img src="logo-parceiros/pilar.png" alt="Pilar">
+          <img src="logo-parceiros/prime.png" alt="Prime">
+          <img src="logo-parceiros/urbano.png" alt="Urbano">
+          <img src="logo-parceiros/valenobre.png" alt="Vale Nobre">
+          <img src="logo-parceiros/vertice.png" alt="Vértice">
+        </div>
+      </div>
+    </div>
+  </section>  </section>  </section>  <section class="faq" id="faq"><div class="wrap">
     <div class="sh center rv"><div class="sh-tag">Dúvidas</div><div class="sh-title">Perguntas Frequentes.</div></div>
     <div class="faq-list">
       <div class="faq-item rv"><button class="faq-q">O que está incluso no projeto?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Planta de implantação, planta baixa, cobertura, cortes esquemáticos, fachadas, detalhamentos, tabelas e quantitativos, e imagens 3D realistas. Opcionais: arquivo SketchUp, pranchas Layout e DWG.</div></div></div>
@@ -581,12 +619,12 @@
     const img=new Image();img.src='hero-fachada.webp?v=1.1';
     img.onload=()=>{heroBg.style.backgroundImage="url('hero-fachada.webp?v=1.1')";heroFb.style.display='none'};
     img.onerror=()=>{heroFb.style.display='block'};
-const mBarMenu = document.querySelector('.m-bar');
-    const secOferta = document.getElementById('oferta');
-    const obsOferta = new IntersectionObserver(entries => {
-      mBarMenu.style.display = entries[0].isIntersecting ? 'none' : '';
-    }, { threshold: 0.05 });
-    if(mBarMenu && secOferta) obsOferta.observe(secOferta);
+    const mBarMenu = document.querySelector('.m-bar');
+    const secOferta = document.getElementById('oferta');
+    const obsOferta = new IntersectionObserver(entries => {
+      mBarMenu.style.display = entries[0].isIntersecting ? 'none' : '';
+    }, { threshold: 0, rootMargin: "-10% 0px -25% 0px" });
+    if(mBarMenu && secOferta) obsOferta.observe(secOferta);
   </script>
 </body>
 </html>
