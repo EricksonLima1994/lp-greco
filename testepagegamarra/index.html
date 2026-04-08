@@ -145,6 +145,11 @@
     .gal-c *{overflow:hidden}
     .gal-c:hover{border-color:var(--ice-border)}
     .gal-tag{position:absolute;left:12px;bottom:12px;padding:4px 10px;border-radius:6px;background:rgba(14,14,17,.88);border:1px solid var(--border);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ice);font-weight:600;z-index:2}
+    .gal-lock{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:default}
+    .gal-lock:hover{border-color:var(--border2)}
+    .gal-lock-ico{width:36px;height:36px;background:var(--ice-10);border:1px solid var(--ice-border);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center}
+    .gal-lock-ico svg{width:16px;height:16px;stroke:var(--ice);fill:none;stroke-width:1.5}
+    .gal-lock-txt{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--t4);font-weight:600}
     .planta{padding:var(--sec) 0;background:var(--deep)}
     .planta-g{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
     .planta-img{border-radius:var(--r);overflow:hidden;background-color:var(--card);background-size:100% auto;background-position:top center;background-repeat:no-repeat;border:1px solid var(--border);width:100%}
@@ -340,9 +345,14 @@
       <div class="gal-c" style="background-image:url('fachada-com-muro-01.webp')"><div class="gal-tag">Fachada com muro</div></div>
       <div class="gal-c" style="background-image:url('fachada-com-muro-02.webp')"><div class="gal-tag">Fachada com muro</div></div>
       <div class="gal-c" style="background-image:url('fachada-01.webp')"><div class="gal-tag">Fachada</div></div>
-      <div class="gal-c" style="background-image:url('fachada-02.webp')"><div class="gal-tag">Fachada</div></div>
       <div class="gal-c" style="background-image:url('fundos-01.webp')"><div class="gal-tag">Fundos</div></div>
       <div class="gal-c" style="background-image:url('fundos-02.webp')"><div class="gal-tag">Fundos</div></div>
+      <div class="gal-c gal-lock"><div class="gal-lock-ico"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div class="gal-lock-txt">Disponível após a compra</div></div>
+      <div class="gal-c gal-lock"><div class="gal-lock-ico"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div class="gal-lock-txt">Disponível após a compra</div></div>
+      <div class="gal-c gal-lock"><div class="gal-lock-ico"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div class="gal-lock-txt">Disponível após a compra</div></div>
+      <div class="gal-c gal-lock"><div class="gal-lock-ico"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div class="gal-lock-txt">Disponível após a compra</div></div>
+      <div class="gal-c gal-lock"><div class="gal-lock-ico"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div class="gal-lock-txt">Disponível após a compra</div></div>
+      <div class="gal-c gal-lock"><div class="gal-lock-ico"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div class="gal-lock-txt">Disponível após a compra</div></div>
     </div>
   </div></section>
 
@@ -582,7 +592,9 @@
         </div>
       </div>
     </div>
-  </section>  </section>  </section>  <section class="faq" id="faq"><div class="wrap">
+  </section>
+
+  <section class="faq" id="faq"><div class="wrap">
     <div class="sh center rv"><div class="sh-tag">Dúvidas</div><div class="sh-title">Perguntas Frequentes.</div></div>
     <div class="faq-list">
       <div class="faq-item rv"><button class="faq-q">O que está incluso no projeto?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Planta de implantação, planta baixa, cobertura, cortes esquemáticos, fachadas, detalhamentos, tabelas e quantitativos, e imagens 3D realistas. Opcionais: arquivo SketchUp, pranchas Layout e DWG.</div></div></div>
