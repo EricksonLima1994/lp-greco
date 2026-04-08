@@ -954,16 +954,17 @@ footer {
   position: relative; z-index: 1;
 }
 .btn-whatsapp {
-  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 700;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(11px, 3.5vw, 13px); font-weight: 700;
   letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none;
   cursor: pointer; border: none; border-radius: var(--r-md);
-  background: var(--accent); color: #0E0E0E; padding: 16px 40px;
+  background: var(--accent); color: #0E0E0E; padding: 16px 12px; width: 100%;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative; z-index: 1; white-space: nowrap;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  box-sizing: border-box;
 }
-.btn-whatsapp:hover {
+	.btn-whatsapp:hover {
   transform: translateY(-2px);
   box-shadow: 0 0 40px rgba(205,251,84,0.15), 0 8px 24px rgba(0,0,0,0.4);
 }
@@ -985,7 +986,6 @@ footer {
 </head>
 <body>
 
-<!-- ═══ URGENCY BANNER ═══ -->
 <div class="urgency-wrap" id="urgencyBanner">
   <div class="urgency-marquee">
     <div class="urgency-marquee-track">
@@ -1007,7 +1007,7 @@ footer {
           Oferta ativa
         </div>
         <span class="urgency-price">
-          <span class="urgency-price-old">R$ 1.470</span> por <span class="urgency-price-now">R$ 47</span>
+          <span class="urgency-price-old">R$ 1.470</span> por <span class="urgency-price-now" data-price-plain>R$ 47</span>
         </span>
       </div>
       <div class="urgency-bar-right">
@@ -1044,12 +1044,11 @@ footer {
 <div class="sticky-bar" id="stickyBar">
   <div class="sticky-bar-left">
     <span class="sticky-offer">Oferta atual</span>
-    <span class="sticky-price"><sup>R$</sup>47</span>
+    <span class="sticky-price" data-price><sup>R$</sup>47</span>
   </div>
   <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa002?org=cmm8rtff60000l404zb96q4ld" class="btn btn-primary btn-sm js-checkout-link">Quero o projeto</a>
 </div>
 
-<!-- ═══ HERO ═══ -->
 <section class="hero image-protect-wrap" id="heroSection">
   <div class="hero-floating-text">
     <span class="hero-floating-label">Projeto</span>
@@ -1104,7 +1103,6 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ═══ FICHA TÉCNICA ═══ -->
 <section class="section">
   <div class="wrap">
     <div class="section-header--center reveal">
@@ -1145,7 +1143,6 @@ footer {
   </div>
 </section>
 
-<!-- ═══ OUTROS TERRENOS — ESCAPE ═══ -->
 <section class="escape-section">
   <div class="wrap">
     <div class="escape-card reveal">
@@ -1157,7 +1154,6 @@ footer {
     </div>
     <div class="terrain-scroll-wrapper reveal">
       <div class="terrain-scroll-inner">
-        <!-- Projeto atual (destaque) -->
         <a href="#comprar" class="terrain-card">
           <div class="terrain-card-badge-current">Você está aqui</div>
           <img src="image001-otimizada.webp" alt="Projeto 002" class="terrain-card-img protected-image" draggable="false">
@@ -1166,7 +1162,6 @@ footer {
             <div class="terrain-card-size">Terreno 10×20</div>
           </div>
         </a>
-        <!-- Projeto 001 -->
         <a href="../" class="terrain-card">
           <img src="../image001-otimizada.webp" alt="Projeto 001" class="terrain-card-img protected-image" draggable="false">
           <div class="terrain-card-body">
@@ -1174,12 +1169,13 @@ footer {
             <div class="terrain-card-size">Terreno 12×25</div>
           </div>
         </a>
-        <!-- Em breve -->
-        <div class="terrain-card--soon">
-          <div class="terrain-soon-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <div class="terrain-soon-label">Em breve</div>
-          <div class="terrain-soon-size">Terreno 8×20</div>
-        </div>
+        <a href="../projeto-003/" class="terrain-card">
+          <img src="../projeto-003/image001-otimizada.webp" alt="Projeto 003" class="terrain-card-img protected-image" draggable="false">
+          <div class="terrain-card-body">
+            <div class="terrain-card-name">Projeto 003</div>
+            <div class="terrain-card-size">Terreno 8×20</div>
+          </div>
+        </a>
         <div class="terrain-card--soon">
           <div class="terrain-soon-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
           <div class="terrain-soon-label">Em breve</div>
@@ -1293,7 +1289,6 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ═══ O QUE VAI CONSTRUIR ═══ -->
 <section class="section">
   <div class="wrap">
     <div class="section-header--left reveal">
@@ -1358,13 +1353,12 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ═══ OFERTA ═══ -->
 <section class="offer-after-depo" id="comprar">
   <div class="wrap">
-    <div class="section-header--center reveal">
-      <div class="section-tag section-tag--center">Acesso completo</div>
-      <h2 class="section-title">O projeto inteiro por <span class="accent">R$ 47</span></h2>
-    </div>
+<div class="section-header--center reveal">
+  <div class="section-tag section-tag--center">Acesso completo</div>
+  <h2 class="section-title">O projeto inteiro por <span class="accent" data-price-plain>R$ 47</span></h2>
+</div>
 
     <div class="value-bar reveal">
       <div class="value-bar-label">
@@ -1379,7 +1373,7 @@ footer {
     <div class="price-card reveal" style="max-width:460px;margin:0 auto;">
       <div class="price-header">
         <p class="price-old">De R$ 1.470,00</p>
-        <div class="price-value"><sup>R$</sup>47</div>
+        <div class="price-value" data-price><sup>R$</sup>47</div>
         <p class="price-type">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           Pagamento único no PIX
@@ -1438,7 +1432,6 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ═══ OUTROS PROJETOS ═══ -->
 <section class="section--dark" id="outros-projetos">
   <div class="wrap">
     <div class="section-header--left reveal">
@@ -1455,20 +1448,24 @@ footer {
           <div class="projeto-card-badge">Terreno 12×25</div>
           <div class="projeto-gal-tag">Fachada</div>
         </a>
-        <a href="../" class="projeto-gal-slide image-protect-wrap" style="text-decoration:none;">
-          <img src="../image002-otimizada.webp" alt="Projeto 001 - Perspectiva" class="protected-image" draggable="false">
+        <a href="../projeto-003/" class="projeto-gal-slide image-protect-wrap" style="text-decoration:none;">
+          <img src="../projeto-003/image001-otimizada.webp" alt="Projeto 003 - Fachada" class="protected-image" draggable="false">
           <div class="image-guard" aria-hidden="true"></div>
-          <div class="projeto-card-overlay"><div class="projeto-card-title">Projeto 001</div></div>
-          <div class="projeto-card-badge">Terreno 12×25</div>
-          <div class="projeto-gal-tag">Perspectiva</div>
-        </a>
-        <a href="../" class="projeto-gal-slide image-protect-wrap" style="text-decoration:none;">
-          <img src="../image003-otimizada.webp" alt="Projeto 001 - Planta" class="protected-image" draggable="false">
-          <div class="image-guard" aria-hidden="true"></div>
-          <div class="projeto-card-overlay"><div class="projeto-card-title">Projeto 001</div></div>
-          <div class="projeto-card-badge">Terreno 12×25</div>
+          <div class="projeto-card-overlay"><div class="projeto-card-title">Projeto 003</div></div>
+          <div class="projeto-card-badge">Terreno 8×20</div>
           <div class="projeto-gal-tag">Fachada</div>
         </a>
+        <div class="projeto-gal-slide" style="background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:32px;cursor:default;position:relative;overflow:hidden;">
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(205,251,84,0.015) 8px,rgba(205,251,84,0.015) 16px);"></div>
+          <div style="width:44px;height:44px;border-radius:var(--r-sm);background:var(--accent-dim);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;color:var(--accent);position:relative;z-index:1;flex-shrink:0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div style="position:relative;z-index:1;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;">Em breve</div>
+            <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:2px;">Projeto 004</div>
+            <div style="font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;">Terreno 6×20</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1476,7 +1473,6 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ═══ POR QUE IMPORTA ═══ -->
 <section class="section--dark" style="overflow:hidden;">
   <div class="wrap">
     <div class="problem-grid">
@@ -1502,7 +1498,6 @@ footer {
   </div>
 </section>
 
-<!-- ═══ O QUE RECEBE ═══ -->
 <section class="section">
   <div class="wrap">
     <div class="section-header--left reveal">
@@ -1541,7 +1536,6 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ═══ PARA QUEM ═══ -->
 <section class="section--dark">
   <div class="wrap">
     <div class="section-header--center reveal">
@@ -1585,7 +1579,6 @@ footer {
   </div>
 </section>
 
-<!-- ═══ PROJETO PERSONALIZADO — WHATSAPP ═══ -->
 <section class="custom-section" id="projeto-personalizado">
   <div class="wrap">
     <div class="custom-card reveal">
@@ -1608,7 +1601,6 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ═══ FAQ ═══ -->
 <section class="section" style="padding-top:0" id="faq">
   <div class="wrap">
     <div class="faq-wrap">
@@ -1652,7 +1644,6 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ═══ SOBRE ═══ -->
 <section class="section" id="sobre">
   <div class="wrap">
     <div class="about-grid">
@@ -1679,7 +1670,6 @@ footer {
   </div>
 </section>
 
-<!-- ═══ CTA FINAL ═══ -->
 <section class="section--final">
   <div class="wrap">
     <div class="final-inner">
@@ -1690,7 +1680,7 @@ footer {
       <div class="price-card reveal" style="max-width:420px;margin:0 auto 40px;text-align:left;">
         <div class="price-header">
           <p class="price-old">De R$ 1.470,00</p>
-          <div class="price-value"><sup>R$</sup>47</div>
+          <div class="price-value" data-price><sup>R$</sup>47</div>
           <p class="price-type">Pagamento único</p>
         </div>
         <ul class="price-benefits">
@@ -1828,6 +1818,23 @@ document.querySelectorAll('img').forEach(function(img) { img.setAttribute('dragg
   else { document.addEventListener("DOMContentLoaded", sendVisit, { once: true }); }
 })();
 
+// ── Preço dinâmico via API Everest ──
+(async()=>{
+  try{
+    const r=await fetch('https://everestpayments.com.br/api/public/product?slug=projetos-arquitetonicos-avulsos-casa002&org=cmm8rtff60000l404zb96q4ld');
+    if(!r.ok)return;
+    const d=await r.json();
+    if(!d.ok||!d.valor)return;
+    const v=Math.floor(d.valor);
+    document.querySelectorAll('[data-price]').forEach(el=>{
+      el.innerHTML='<sup>R$</sup>'+v;
+    });
+    document.querySelectorAll('[data-price-plain]').forEach(el=>{
+      el.textContent='R$ '+v;
+    });
+  }catch(e){/* mantém valor fallback do HTML */}
+})();
+
 // ── VALUE BAR ANIMATION ──
 var valueBarFill = document.querySelector('.value-bar-fill');
 if (valueBarFill) {
@@ -1845,7 +1852,7 @@ if (valueBarFill) {
   <div class="mobile-cta-inner">
     <div class="mobile-cta-info">
       <span class="mobile-cta-label">Oferta por tempo limitado</span>
-      <span class="mobile-cta-price"><sup>R$</sup>47</span>
+      <span class="mobile-cta-price" data-price><sup>R$</sup>47</span>
     </div>
     <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa002?org=cmm8rtff60000l404zb96q4ld" class="js-checkout-link">Quero o projeto</a>
   </div>
