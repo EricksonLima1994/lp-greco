@@ -3,28 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Projeto Casa Moderna 12x25 | De 70m² a 170m² | R$47</title>
+<title>Projeto Casa Moderna 12x25 | De 70m² a 170m² | Anderson Greco</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --black: #0E0E0E;
-  --dark: #141414;
-  --card: #1A1A1A;
-  --card2: #1F1F1F;
-  --border: rgba(205,251,84,0.12);
+  --black: #0E0E11;
+  --dark: #131316;
+  --card: #1A1A1E;
+  --card2: #1F1F23;
+  --border: rgba(173,235,255,0.14);
   --border2: rgba(255,255,255,0.06);
-  --accent: #CDFB54;
-  --accent-dim: rgba(205,251,84,0.08);
-  --accent-border: rgba(205,251,84,0.18);
+  --accent: #adebff;
+  --accent-dim: rgba(173,235,255,0.10);
+  --accent-border: rgba(173,235,255,0.18);
   --teal: #62929E;
   --teal-dim: rgba(98,146,158,0.10);
   --slate: #9CA3AF;
   --muted: #525252;
   --white: #F0F0F0;
   --text: #A3A3A3;
-  --glow: rgba(205,251,84,0.06);
-  --grid-line: rgba(205,251,84,0.03);
+  --glow: rgba(173,235,255,0.08);
+  --grid-line: rgba(173,235,255,0.03);
 
   --r-xs: 6px;
   --r-sm: 10px;
@@ -38,7 +38,18 @@
   --section-py-lg: 120px;
   --wrap-max: 1080px;
   --wrap-px: 40px;
+
+  --ff-logo: 'Bebas Neue', sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ice-bloom: 0 0 18px rgba(173,235,255,.14), 0 0 48px rgba(173,235,255,.04);
 }
+
+/* ── Harley animations ── */
+@keyframes shineSweep { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
+@keyframes neonGlow { 0%, 100% { text-shadow: 0 0 6px rgba(173,235,255,.25); } 50% { text-shadow: 0 0 12px rgba(173,235,255,.45), 0 0 32px rgba(173,235,255,.1); } }
+@keyframes bloomPulse { 0%, 100% { filter: drop-shadow(0 0 3px rgba(173,235,255,.15)); } 50% { filter: drop-shadow(0 0 10px rgba(173,235,255,.3)); } }
+@keyframes borderShine { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 8px rgba(173,235,255,.15); } 50% { box-shadow: 0 0 18px rgba(173,235,255,.3); } }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -167,11 +178,11 @@ body::before {
 }
 .btn-primary {
   background: var(--accent); color: #0E0E0E; padding: 18px 44px;
-  box-shadow: 0 0 0 0 rgba(205,251,84,0), 0 2px 8px rgba(0,0,0,0.3);
+  box-shadow: 0 0 0 0 rgba(173,235,255,0), 0 2px 8px rgba(0,0,0,0.3);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 40px rgba(205,251,84,0.2), 0 8px 32px rgba(0,0,0,0.4);
+  box-shadow: 0 0 40px rgba(173,235,255,0.2), 0 8px 32px rgba(0,0,0,0.4);
 }
 .btn-primary:active { transform: translateY(0); }
 .btn-sm { padding: 14px 32px; font-size: 12px; }
@@ -221,7 +232,7 @@ body::before {
 .hero-floating-label {
   font-size: clamp(16px, 2.5vw, 24px); font-weight: 800;
   letter-spacing: 0.3em; text-transform: uppercase;
-  background: linear-gradient(180deg, rgba(205,251,84,0.12) 0%, rgba(205,251,84,0.03) 100%);
+  background: linear-gradient(180deg, rgba(173,235,255,0.12) 0%, rgba(173,235,255,0.03) 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .hero-floating-number {
@@ -263,7 +274,7 @@ body::before {
   letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--accent);
   border-radius: var(--r-full);
-  box-shadow: 0 0 16px rgba(205,251,84,0.08);
+  box-shadow: 0 0 16px rgba(173,235,255,0.08);
   white-space: nowrap;
 }
 
@@ -450,7 +461,7 @@ body::before {
 }
 .scroll-card-lock::before {
   content: ''; position: absolute; inset: 0;
-  background: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(205,251,84,0.015) 20px, rgba(205,251,84,0.015) 21px);
+  background: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(173,235,255,0.015) 20px, rgba(173,235,255,0.015) 21px);
 }
 .scroll-lock-icon {
   width: 44px; height: 44px; border-radius: var(--r-sm);
@@ -480,7 +491,7 @@ body::before {
 }
 .gal-slide-lock::before {
   content: ''; position: absolute; inset: 0;
-  background: repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(205,251,84,0.015) 8px, rgba(205,251,84,0.015) 16px);
+  background: repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(173,235,255,0.015) 8px, rgba(173,235,255,0.015) 16px);
 }
 .gal-lock-icon {
   width: 40px; height: 40px; background: var(--accent-dim); border: 1px solid var(--accent-border);
@@ -674,7 +685,7 @@ body::before {
 .section--final::before {
   content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
   width: 700px; height: 500px;
-  background: radial-gradient(ellipse, rgba(205,251,84,0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(173,235,255,0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 .section--final::after {
@@ -906,7 +917,7 @@ footer {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .terrain-cta-link:hover {
-  background: rgba(205,251,84,0.12); transform: translateX(4px);
+  background: rgba(173,235,255,0.12); transform: translateX(4px);
 }
 .terrain-cta-link svg { flex-shrink: 0; transition: transform 0.3s; }
 .terrain-cta-link:hover svg { transform: translateX(3px); }
@@ -994,7 +1005,7 @@ footer {
 }
 .custom-card::before {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(205,251,84,0.04) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 50% 0%, rgba(173,235,255,0.04) 0%, transparent 60%);
   pointer-events: none;
 }
 .custom-card::after {
@@ -1036,7 +1047,7 @@ footer {
 }
 .btn-whatsapp:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 40px rgba(205,251,84,0.15), 0 8px 24px rgba(0,0,0,0.4);
+  box-shadow: 0 0 40px rgba(173,235,255,0.15), 0 8px 24px rgba(0,0,0,0.4);
 }
 .btn-whatsapp svg { flex-shrink: 0; width: 22px; height: 22px; }
 .custom-note {
@@ -1099,10 +1110,6 @@ footer {
   src="https://everestpayments.com.br/meta-tracking.js"
   data-org="cmm8rtff60000l404zb96q4ld"
   data-track-page-view="true"
-  data-track-view-content="true"
-  data-view-content-name="Projeto Casa Moderna 12x25"
-  data-view-content-value="47"
-  data-view-content-currency="BRL"
   defer
 ></script>
 
@@ -1152,7 +1159,7 @@ footer {
         </p>
 
         <div class="hero-cta-row">
-          <a href="#comprar" class="btn btn-primary">Quero o projeto por R$47</a>
+          <a href="#comprar" class="btn btn-primary">Quero o projeto por <span data-price-plain>R$ 47</span></a>
           <span class="hero-cta-hint">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
             Acesso imediato após o pagamento
@@ -1494,7 +1501,7 @@ footer {
   <div class="wrap">
     <div class="section-header--center reveal">
       <div class="section-tag section-tag--center">Acesso completo</div>
-      <h2 class="section-title">O projeto inteiro por <span class="accent">R$ 47</span></h2>
+      <h2 class="section-title">O projeto inteiro por <span class="accent" data-price-plain>R$ 47</span></h2>
     </div>
 
     <div class="value-bar reveal">
@@ -1594,7 +1601,7 @@ footer {
           <div class="projeto-gal-tag">Fachada</div>
         </a>
         <div class="projeto-gal-slide" style="background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:32px;cursor:default;position:relative;overflow:hidden;">
-          <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(205,251,84,0.015) 8px,rgba(205,251,84,0.015) 16px);"></div>
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(173,235,255,0.015) 8px,rgba(173,235,255,0.015) 16px);"></div>
           <div style="width:44px;height:44px;border-radius:var(--r-sm);background:var(--accent-dim);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;color:var(--accent);position:relative;z-index:1;flex-shrink:0;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
@@ -1817,7 +1824,7 @@ footer {
     <div class="final-inner">
       <div class="reveal">
         <h2 class="final-title">Pare de sonhar.<br>Comece a <span class="accent">planejar</span>.</h2>
-        <p class="final-sub">Por R$47 — menos que um jantar fora — você evita erros de milhares de reais na sua obra e garante o projeto completo para começar hoje.</p>
+        <p class="final-sub">Por <span data-price-plain>R$ 47</span> — menos que um jantar fora — você evita erros de milhares de reais na sua obra e garante o projeto completo para começar hoje.</p>
       </div>
       <div class="price-card reveal" style="max-width:420px;margin:0 auto 40px;text-align:left;">
         <div class="price-header">
@@ -1961,20 +1968,23 @@ document.querySelectorAll('img').forEach(function(img) { img.setAttribute('dragg
 })();
 
 // ── Preço dinâmico via API Everest ──
+window.__priceReady = new Promise(function(resolve){ window.__resolvePrice = resolve; });
 (async()=>{
   try{
     const r=await fetch('https://everestpayments.com.br/api/public/product?slug=projetos-arquitetonicos-avulsos-casa001&org=cmm8rtff60000l404zb96q4ld');
-    if(!r.ok)return;
+    if(!r.ok){ window.__resolvePrice(null); return; }
     const d=await r.json();
-    if(!d.ok||!d.valor)return;
+    if(!d.ok||!d.valor){ window.__resolvePrice(null); return; }
     const v=Math.floor(d.valor);
+    window.__productValue=v;
     document.querySelectorAll('[data-price]').forEach(el=>{
       el.innerHTML='<sup>R$</sup>'+v;
     });
     document.querySelectorAll('[data-price-plain]').forEach(el=>{
       el.textContent='R$ '+v;
     });
-  }catch(e){/* mantém valor fallback do HTML */}
+    window.__resolvePrice(v);
+  }catch(e){ window.__resolvePrice(null); /* mantém valor fallback do HTML */ }
 })();
 
 var valueBarFill = document.querySelector('.value-bar-fill');
@@ -1998,5 +2008,182 @@ if (valueBarFill) {
     <a href="https://everestpayments.com.br/checkout/digital/projetos-arquitetonicos-avulsos-casa001?org=cmm8rtff60000l404zb96q4ld" class="js-checkout-link">Quero o projeto</a>
   </div>
 </div>
+
+<!-- ═══ TRACKING COMPORTAMENTAL META: ViewContent / AddToWishlist / AddToCart / Lead ═══ -->
+<script>
+(function(){
+  var ORG_ID='cmm8rtff60000l404zb96q4ld';
+  var CAPI_URL='https://everestpayments.com.br/api/meta/tracking/event';
+  var CONTENT_NAME='Projeto Casa Moderna 12x25';
+  var FALLBACK_VALUE=47;
+
+  // ── Helpers ──
+  function genId(){
+    try{if(crypto&&crypto.randomUUID)return crypto.randomUUID()}catch(e){}
+    return 'eid_'+Date.now()+'_'+Math.random().toString(36).slice(2,10);
+  }
+  function getCookie(n){var m=document.cookie.match(new RegExp('(?:^|; )'+n+'=([^;]*)'));return m?decodeURIComponent(m[1]):null}
+  function getUserData(){
+    var cid=null;try{cid=localStorage.getItem('sv:clientId')}catch(e){}
+    return {fbp:getCookie('_fbp')||undefined,fbc:getCookie('_fbc')||undefined,externalId:cid||undefined};
+  }
+  function getProductValue(){
+    return (typeof window.__productValue==='number' && window.__productValue>0) ? window.__productValue : FALLBACK_VALUE;
+  }
+
+  // ── Disparo dual: browser (fbq) + server (CAPI) com deduplicação por eventID ──
+  function fireEvent(eventName,customData){
+    var eid=genId();
+    // Browser (Pixel)
+    if(typeof fbq==='function'){
+      try{fbq('track',eventName,customData||{},{eventID:eid})}catch(e){}
+    }
+    // Server (CAPI)
+    var payload={orgId:ORG_ID,eventName:eventName,eventId:eid,eventSourceUrl:window.location.href,userData:getUserData()};
+    if(customData)payload.customData=customData;
+    try{fetch(CAPI_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(){})}catch(e){}
+  }
+
+  // ── Flags de deduplicação por sessão ──
+  var firedViewContent=false;
+  var firedWishlist=false;
+  var firedAddToCart=false;
+  var firedLead=false;
+
+  function tryViewContent(){
+    if(firedViewContent)return;
+    firedViewContent=true;
+    fireEvent('ViewContent',{content_name:CONTENT_NAME,value:getProductValue(),currency:'BRL'});
+  }
+  function tryWishlist(){
+    if(firedWishlist)return;
+    firedWishlist=true;
+    fireEvent('AddToWishlist',{content_name:CONTENT_NAME,value:getProductValue(),currency:'BRL'});
+  }
+  function tryAddToCart(){
+    if(firedAddToCart)return;
+    firedAddToCart=true;
+    fireEvent('AddToCart',{content_name:CONTENT_NAME,value:getProductValue(),currency:'BRL'});
+  }
+  function tryLead(){
+    if(firedLead)return;
+    firedLead=true;
+    fireEvent('Lead',{content_name:'WhatsApp - Projeto Personalizado'});
+  }
+
+  // ── Aguardar pixel carregar (meta-tracking.js é defer) ──
+  function onReady(fn){
+    if(typeof fbq==='function')return fn();
+    var checks=0;
+    var iv=setInterval(function(){
+      checks++;
+      if(typeof fbq==='function'){clearInterval(iv);fn()}
+      if(checks>100)clearInterval(iv); // desiste após 10s
+    },100);
+  }
+
+  onReady(function(){
+
+    // ═══ 1. ViewContent — Scroll até #comprar (seção oferta) ═══
+    var secOferta=document.getElementById('comprar');
+    if(secOferta){
+      var obsOferta=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){tryViewContent();obsOferta.disconnect()}
+        });
+      },{threshold:0.1});
+      obsOferta.observe(secOferta);
+    }
+
+    // ═══ 2. ViewContent — 40s de atividade real ═══
+    (function(){
+      var activeTime=0;
+      var lastTick=0;
+      var timer=null;
+      var THRESHOLD=40; // segundos
+
+      function startTimer(){
+        if(timer)return;
+        lastTick=Date.now();
+        timer=setInterval(function(){
+          var now=Date.now();
+          activeTime+=(now-lastTick)/1000;
+          lastTick=now;
+          if(activeTime>=THRESHOLD){
+            tryViewContent();
+            stopTimer();
+          }
+        },1000);
+      }
+      function stopTimer(){
+        if(timer){clearInterval(timer);timer=null}
+      }
+      function onActivity(){
+        if(firedViewContent)return;
+        startTimer();
+        // Para após 5s sem atividade
+        clearTimeout(window.__actTimeout);
+        window.__actTimeout=setTimeout(function(){stopTimer()},5000);
+      }
+
+      // Eventos de atividade real
+      var events=['scroll','touchstart','touchmove','mousemove','click','keydown'];
+      events.forEach(function(evt){
+        document.addEventListener(evt,onActivity,{passive:true});
+      });
+
+      // Pausa quando tab fica invisível
+      document.addEventListener('visibilitychange',function(){
+        if(document.hidden)stopTimer();
+      });
+    })();
+
+    // ═══ 3. AddToWishlist — Scroll na galeria ═══
+    var galScroll=document.querySelector('#galeria .gallery-scroll-inner');
+    if(galScroll){
+      var galScrolled=false;
+      galScroll.addEventListener('scroll',function(){
+        if(galScrolled)return;
+        if(galScroll.scrollLeft>80){
+          galScrolled=true;
+          tryWishlist();
+        }
+      },{passive:true});
+    }
+
+    // ═══ 4. AddToWishlist — Clique em FAQ ═══
+    document.querySelectorAll('.faq-q').forEach(function(btn){
+      btn.addEventListener('click',function(){tryWishlist()});
+    });
+
+    // ═══ 5. AddToWishlist — 10s na seção "Duas fases" (equivalente ao #planta da Harley) ═══
+    var secFases=document.querySelector('.phases-grid');
+    if(secFases){
+      var fasesTimer=null;
+      var obsFases=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){
+            fasesTimer=setTimeout(function(){tryWishlist()},10000);
+          }else{
+            if(fasesTimer){clearTimeout(fasesTimer);fasesTimer=null}
+          }
+        });
+      },{threshold:0.3});
+      obsFases.observe(secFases);
+    }
+
+    // ═══ 6. AddToCart — Clique em qualquer botão de compra ═══
+    document.querySelectorAll('.js-checkout-link').forEach(function(link){
+      link.addEventListener('click',function(){tryAddToCart()});
+    });
+
+    // ═══ 7. Lead — Clique em links de WhatsApp ═══
+    document.querySelectorAll('a[href*="wa.me"]').forEach(function(link){
+      link.addEventListener('click',function(){tryLead()});
+    });
+
+  }); // onReady
+})();
+</script>
 </body>
 </html>
